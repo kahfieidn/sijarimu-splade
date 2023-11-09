@@ -9,13 +9,13 @@
         </div>
         <div class="grid md:grid-cols-3 md:gap-6">
             <div class="relative z-999 w-full mb-6 group">
-                <x-splade-input name="waktu_awal_penelitian" date range label="Waktu Penelitian" />
+                <x-splade-input name="waktu_awal_penelitian" date label="Waktu Awal Penelitian" />
+            </div>
+            <div class="relative z-999 w-full mb-6 group">
+                <x-splade-input name="waktu_akhir_penelitian" date label="Waktu Akhir Penelitian" />
             </div>
             <div class="relative z-0 w-full mb-6 group">
-                <x-splade-input name="jenjang" type="text" placeholder="S1/S2/S3" label="Jenjang" />
-            </div>
-            <div class="relative z-0 w-full mb-6 group">
-                <x-splade-input name="jurusan" type="text" placeholder="Teknik Informatika" label="Jurusan" />
+                <x-splade-input name="lokasi_penelitian" type="text" placeholder="DPMPTSP Provinsi Kepulauan Riau, Dikominfo Kepri" label="Lokasi Penelitian" />
             </div>
         </div>
     </div>

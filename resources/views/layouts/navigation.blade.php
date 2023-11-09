@@ -4,18 +4,17 @@
             <div class="flex items-center justify-between">
                 <!-- Hamburger -->
                 <div class="sm:hidden ">
-                <x-dropdown placement="bottom-end absolute overflow-y-auto h-screen transition-transform -translate-y-full sm:translate-x-0">
+                    <x-dropdown placement="bottom-end  absolute w-256 overflow-y-scroll h-screen transition-transform -translate-y-full sm:translate-x-0">
                         <x-slot name="trigger">
                             <button @click="toggle" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
                                 <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                                    <path v-bind:class="{ hidden: toggled, 'inline-flex': !toggled }" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                                    <path v-bind:class="{ hidden: !toggled, 'inline-flex': toggled }" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                    <path v-bind:class="{ 'inline-flex': !toggled }" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                                 </svg>
                             </button>
                         </x-slot>
 
                         <x-slot name="content">
-                            <div class="flex items-center justify-start full-width">
+                            <div class="absolute h-screen w-screen px-3 pb-20 overflow-y-scroll bg-white dark:bg-gray-800">
                                 @include('layouts.menu-link')
                             </div>
                         </x-slot>
@@ -39,7 +38,7 @@
                             <x-slot name="trigger">
                                 <button type="button" class="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" aria-expanded="false">
                                     <span class="sr-only">Open user menu</span>
-                                    <img class="w-8 h-8 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="user photo">
+                                    <img class="w-8 h-8 rounded-full" src="https://ui-avatars.com/api/?name={{ Auth::user()->name }}" alt="user photo">
                                 </button>
                             </x-slot>
 
@@ -73,8 +72,10 @@
         </div>
     </nav>
 
-    <aside id="logo-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700" aria-label="Sidebar">
-        @include('layouts.menu-link')
+    <aside id="logo-sidebar" class="fixed top-0 left-0 z-40 w-256 h-full min-h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700" aria-label="Sidebar">
+        <div class="h-screen px-3 pb-20 overflow-y-auto bg-white dark:bg-gray-800">
+            @include('layouts.menu-link')
+        </div>
     </aside>
 
 </x-splade-toggle>

@@ -1,4 +1,4 @@
-<div class="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800">
+<div class="h-full px-3 pb-4 bg-white dark:bg-gray-800">
     <h6 class="text-lg font-bold dark:text-white">Apps</h6>
     <ul class="pt-2 mt-3 mb-2 space-y-2 font-medium border-t border-gray-200 dark:border-gray-700">
         <li>

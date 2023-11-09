@@ -3,13 +3,13 @@
 namespace App\Models;
 
 use Carbon\Carbon;
+use Kirschbaum\PowerJoins\PowerJoins;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Permohonan extends Model
 {
-    use HasFactory;
+    use HasFactory, PowerJoins;
 
     protected $fillable = [
         'perizinan_id',

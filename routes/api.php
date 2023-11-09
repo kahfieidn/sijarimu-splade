@@ -14,6 +14,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/jenis-identitas', function(){
+    $jenis_identitas = [
+        [
+            'id' => 1,
+            'value' => 'nik',
+            'name' => 'NIK'
+        ],
+        [
+            'id' => 2,
+            'value' => 'nim',
+            'name' => 'NIM'
+        ]
+    ];
+
+    return response()->json($jenis_identitas);
+});
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });

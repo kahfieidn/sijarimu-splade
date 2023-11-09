@@ -49,12 +49,12 @@ class Permohonans extends AbstractTable
     public function configure(SpladeTable $table)
     {
         $table
-            ->withGlobalSearch(columns: ['user.name', 'perizinan.nama_perizinan'])
-            ->column('id', sortable: true)
-            ->column('user.name', sortable: true,label: 'Pemohon')
-            ->column('perizinan.nama_perizinan', sortable: true, label: 'Jenis Izin')
-            ->column('status_permohonan.nama_status', sortable: true, label: 'Status Permohonan')
-            ->column('created_at', sortable: true, label:'Tanggal Pengajuan', as: fn($created_at) => $created_at->isoFormat('dddd, D MMMM Y'))
+            ->withGlobalSearch(columns: ['user.name', 'perizinan.nama_perizinan', 'status_permohonan.nama_status'])
+            ->column(key: 'id', sortable: true, label: 'ID')
+            ->column(key: 'perizinan.nama_perizinan', sortable: true, label: 'Jenis Izin')
+            ->column(key: 'perizinan.sektor.nama_sektor', sortable: true, label: 'Sektor')
+            ->column(key: 'status_permohonan.nama_status', sortable: true, label: 'Status Permohonan')
+            ->column(key: 'created_at', sortable: true, label:'Tanggal Pengajuan', as: fn($created_at) => $created_at->isoFormat('D MMMM Y'))
             ->rowSlideover(fn (Permohonan $permohonans) => route('pemohon.show', $permohonans->id))
             ->column('actions')
             ->paginate(5);

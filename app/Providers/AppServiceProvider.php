@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Carbon\Carbon;
 use Illuminate\Support\ServiceProvider;
+use ProtoneMedia\Splade\Components\Form\Input;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,6 +24,6 @@ class AppServiceProvider extends ServiceProvider
         //
         config(['app.locale' => 'id']);
         Carbon::setLocale('id');
-    
+        Input::defaultDateFormat('d-m-Y');
     }
 }

@@ -2,23 +2,16 @@
 
 namespace App\Http\Controllers\Pemohon;
 
-use App\Models\User;
-use App\Models\Berkas;
-use App\Models\JenisIzin;
+use Carbon\Carbon;
 use App\Models\Perizinan;
 use App\Models\Permohonan;
 use App\Models\Persyaratan;
 use Illuminate\Http\Request;
+use App\Models\StatusPermohonan;
 use App\Tables\Pemohon\Permohonans;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\BerkasRequest;
-use App\Models\StatusBerkas;
-use App\Models\StatusPermohonan;
 use Illuminate\Support\Facades\Auth;
-use ProtoneMedia\Splade\SpladeTable;
 use ProtoneMedia\Splade\Facades\Toast;
-use ProtoneMedia\Splade\Facades\Splade;
-use Illuminate\Support\Facades\Validator;
 
 class DashboardController extends Controller
 {
@@ -39,18 +32,25 @@ class DashboardController extends Controller
      */
     public function create(Request $request)
     {
+
         $perizinan = Perizinan::find($request->query('perizinans'));
         $persyaratan = Persyaratan::where('perizinan_id', $request->query('perizinans'))->get();
-        
+
         $request->validate([
             'perizinans' => ['required'],
         ], [
             'perizinans.required' => 'Pilih jenis izin yang ingin anda ajukan!'
         ]);
 
+        $jenis_identitas = [
+            'nik' => 'NIK',
+            'nim' => 'NIM',
+        ];        
+
         return view('pemohon.create', [
             'perizinan' => $perizinan,
-            'persyaratan' => $persyaratan
+            'persyaratan' => $persyaratan,
+            'jenis_identitas' => $jenis_identitas,
         ]);
     }
 
@@ -58,34 +58,37 @@ class DashboardController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    { 
+    {
         $typeId = $request->id;
-        
+
         $rules = [];
         $messages = [];
-        
         for ($i = 1; $i <= 30; $i++) {
             $rules["field_$i"] = 'file|max:2000';
             $messages["field_$i.file"] = "Perhatikan File $i harus format (.pdf) & tidak boleh lebih dari 2 MB!";
-        }        
-        
-        $berkasRequest = $request->validate($rules, $messages);
+        }
 
+        $berkasRequest = $request->validate($rules, $messages);
+        $currentMonthYear = Carbon::now()->format('Y-F');
         for ($i = 1; $i <= 30; $i++) {
             $fieldName = 'field_' . $i;
             if ($request->file($fieldName)) {
-                $file = $request->file($fieldName);
-
-                $fileExtension = $file->getClientOriginalExtension();
-                $monthDirectory = date('Y-m');
-                $file_name = uniqid() . '.' . $fileExtension;
-                $file->move(public_path('dokumen/user/' . $monthDirectory), $file_name);
-                $validatedData[$fieldName] = 'dokumen/user/' . $monthDirectory . '/' . $file_name;
+                $berkas = $request->file($fieldName);
+                $storageDirectory = 'public/docs/' . $currentMonthYear;
+                $fileName = $berkas->hashName();
+                $berkas->storeAs($storageDirectory, $fileName);
+                $berkasRequest[$fieldName] = $berkas->hashName();
             }
         };
-        
+
+        // Create Permohonan
+        $permohonan = Permohonan::create(['status_permohonan_id' => 3,'user_id' => Auth::user()->id,'perizinan_id' => $typeId]);
+        $permohonan->berkas()->create($berkasRequest);
+        $permohonan->status_berkas()->create([null]);
+
+        //Custom Perizinan        
         if ($typeId == 1) {
-            $request->validate([
+            $penelitianRequest = $request->validate([
                 'judul_penelitian' => ['required', 'string', 'max:255'],
                 'nim' => ['required', 'string', 'max:255'],
                 'jenjang' => ['required', 'string', 'max:255'],
@@ -93,26 +96,30 @@ class DashboardController extends Controller
                 'universitas' => ['required', 'string', 'max:255'],
                 'lokasi_penelitian' => ['required', 'string', 'max:255'],
             ]);
-            $permohonan = Permohonan::create([
-                'status_permohonan_id' => 3,
-                'user_id' => Auth::user()->id,
-                'perizinan_id' => $typeId,
+            $permohonan->penelitian()->create($penelitianRequest);
+        } else if ($typeId == 2) {
+            $penelitianRequest = $request->validate([
+                'lembaga' => ['required', 'string', 'max:255'],
+                'judul_penelitian' => ['required', 'string', 'max:255'],
+                'waktu_awal_penelitian' => 'date',
+                'waktu_akhir_penelitian' => 'date',
+                'lokasi_penelitian' => ['required', 'string', 'max:255'],
             ]);
-            $permohonan->berkas()->create($berkasRequest);
-            $permohonan->status_berkas()->create([null,]);
-            $permohonan->penelitian()->create([
-                'nim' => $request['nim'],
-                'judul_penelitian' => $request['judul_penelitian'],
-                'universitas' => $request['universitas'],
-                'jurusan' => $request['jurusan'],
-                'jenjang' => $request['jenjang'],
-                'lokasi_penelitian' => $request['lokasi_penelitian'],
+            $permohonan->penelitian()->create($penelitianRequest);
+        }else if($typeId == 3){
+            $penelitianLembagaRequest = $request->validate([
+                'lembaga' => ['required', 'string', 'max:255'],
+                'judul_penelitian' => ['required', 'string', 'max:255'],
+                'waktu_awal_penelitian' => 'date',
+                'waktu_akhir_penelitian' => 'date',
+                'lokasi_penelitian' => ['required', 'string', 'max:255'],
             ]);
+            $permohonan->penelitian()->create($penelitianLembagaRequest);
+            $permohonan->peneliti()->createMany($request->peneliti);
         }
-
         Toast::title('Permohonan anda berhasil di ajukan!')
-        ->rightBottom()
-        ->autoDismiss(10);
+            ->rightBottom()
+            ->autoDismiss(10);
         return to_route('pemohon.index');
     }
 

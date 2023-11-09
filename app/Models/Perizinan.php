@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Perizinan extends Model
 {
@@ -16,5 +16,9 @@ class Perizinan extends Model
         'jenis_izin_id',
         'status'
     ];
+
+    public function sektor(){
+        return $this->belongsTo(Sektor::class, 'sektor_id');
+    }
     
 }
