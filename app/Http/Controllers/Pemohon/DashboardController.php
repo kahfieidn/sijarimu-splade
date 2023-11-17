@@ -183,6 +183,12 @@ class DashboardController extends Controller
     public function update(Request $request, Permohonan $pemohon)
     {
         //
+
+        if ($pemohon->user_id != Auth::user()->id) {
+            abort(403);
+        }
+
+        
         HandleSpladeFileUploads::forRequest($request);
 
         $fields_existing = [
