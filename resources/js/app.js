@@ -7,7 +7,7 @@ import { createApp } from "vue/dist/vue.esm-bundler.js";
 import { renderSpladeApp, SpladePlugin } from "@protonemedia/laravel-splade";
 
 import Peneliti from "./components/Peneliti.vue";
-
+import editPeneliti from "./components/editPeneliti.vue";
 
 const el = document.getElementById("app");
 
@@ -20,4 +20,5 @@ createApp({
         "progress_bar": true
     })
     .component("Peneliti", Peneliti)
+    .component("editPeneliti", editPeneliti)
     .mount(el);

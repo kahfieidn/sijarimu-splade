@@ -2,8 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\Pemohon\DashboardController;
-use App\Http\Controllers\TestController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,9 +40,17 @@ Route::middleware('splade')->group(function () {
         Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     });
 
+
+
     Route::prefix('dashboard')->group(function () {
-        Route::resource('/pemohon', App\Http\Controllers\Pemohon\DashboardController::class);
+        Route::group(['middleware' => ['role:pemohon']], function () {
+            Route::resource('/pemohon', App\Http\Controllers\Pemohon\DashboardController::class);
+        });
+        Route::group(['middleware' => ['role:front_office']], function () {
+            Route::resource('/front-office', App\Http\Controllers\FrontOffice\DashboardController::class);
+        });
     });
-    
-    require __DIR__.'/auth.php';
+
+
+    require __DIR__ . '/auth.php';
 });

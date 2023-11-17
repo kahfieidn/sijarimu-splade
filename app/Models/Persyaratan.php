@@ -15,10 +15,4 @@ class Persyaratan extends Model
         'perizinan_id',
         'status'
     ];
-
-    public function perizinan(){
-        return $this->belongsTo(Perizinan::class, 'perizinan_id');
-    }
-
-
 }

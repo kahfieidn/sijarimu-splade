@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Berkas extends Model
 {
@@ -40,10 +41,21 @@ class Berkas extends Model
         'field_28',
         'field_29',
         'field_30',
+        'created_at',
+        'updated_at',
     ];
 
     public function berkas() {
         return $this->morphMany(Berkas::class, 'berkasable');
     }
+
+    // public function setCreatedAtAttribute($value)
+    // {
+    //     $this->attributes['created_at'] = Carbon::createFromFormat('d-m-Y', $value)->format('Y-m-d');
+    // }
+
+    // public function getCreatedAtAttribute(){
+    //     return Carbon::createFromFormat('Y-m-d', $this->attributes['created_at'])->format('d-m-Y');
+    // }
     
 }

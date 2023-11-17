@@ -20,5 +20,13 @@ class Perizinan extends Model
     public function sektor(){
         return $this->belongsTo(Sektor::class, 'sektor_id');
     }
-    
+
+    public function persyaratan()
+    {
+        return $this->belongsTo(Persyaratan::class, 'perizinan_id');
+    }
+
+
+
+
 }

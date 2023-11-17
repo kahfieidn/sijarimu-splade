@@ -5,13 +5,13 @@
 
     <x-splade-form confirm="Konfirmasi Submit Permohonan" confirm-text="Apakah anda yakin sudah memastikan seluruh berkas sesuai?" confirm-button="Ya, Saya Yakin!" cancel-button="Tidak, Masih ada yang salah!" :default="$perizinan" action="{{ route('pemohon.store') }}" method="post">
         <x-splade-input readonly class="hidden" name="id" />
-        <div v-show="{{$perizinan->id == 1}}">
+        <div v-if="{{$perizinan->id}} == 1">
             <x-formulir.penelitian-mahasiswa />
         </div>
-        <div v-show="{{$perizinan->id == 2}}">
+        <div v-if="{{$perizinan->id}} == 2">
             <x-formulir.penelitian-perorangan />
         </div>
-        <div v-show="{{$perizinan->id == 3}}">
+        <div v-if="{{$perizinan->id}} == 3">
             <x-formulir.penelitian-lembaga />
         </div>
         <div class="p-4 sm:ml-64">
