@@ -145,10 +145,9 @@ class DashboardController extends Controller
      */
     public function edit(Request $request, Permohonan $pemohon)
     {
-        //
-        if ($pemohon->user_id != Auth::user()->id) {
-            abort(403);
-        }
+        // if ($pemohon->user_id != Auth::user()->id or $pemohon->status_permohonan_id != 2) {
+        //     abort(403);
+        // }
 
         $berkas = $pemohon->berkas->first();
 
@@ -184,20 +183,11 @@ class DashboardController extends Controller
     {
         //
 
-        if ($pemohon->user_id != Auth::user()->id) {
-            abort(403);
-        }
+        // if ($pemohon->user_id != Auth::user()->id or $pemohon->status_permohonan_id != 2) {
+        //     abort(403);
+        // }
 
-        
         HandleSpladeFileUploads::forRequest($request);
-
-        $fields_existing = [
-            'field_1_existing' => $request->fields['field_1_existing'],
-            'field_2_existing' => $request->fields['field_2_existing'],
-            'field_3_existing' => $request->fields['field_3_existing'],
-            'field_4_existing' => $request->fields['field_4_existing'],
-            'field_5_existing' => $request->fields['field_5_existing'],
-        ];
 
         $typeId = $pemohon->perizinan_id;
 
@@ -222,6 +212,10 @@ class DashboardController extends Controller
                 $berkasRequest[$fieldName] = $currentMonthYear . '/' . $fileName;
             }
         };
+
+
+     
+
 
         // Create Permohonan
         $permohonan = Permohonan::find($pemohon->id);
@@ -252,16 +246,26 @@ class DashboardController extends Controller
                 'lokasi_penelitian' => ['required', 'string', 'max:255'],
             ]);
             $permohonan->penelitian()->create($penelitianRequest);
-        } else if ($typeId == 3) {
+        } else if ($typeId == 3) {  
             $penelitianLembagaRequest = $request->validate([
-                'lembaga' => ['required', 'string', 'max:255'],
-                'judul_penelitian' => ['required', 'string', 'max:255'],
-                'waktu_awal_penelitian' => 'date',
-                'waktu_akhir_penelitian' => 'date',
-                'lokasi_penelitian' => ['required', 'string', 'max:255'],
+                'penelitian.lembaga' => ['required', 'string', 'max:255'],
+                'penelitian.judul_penelitian' => ['required', 'string', 'max:255'],
+                'penelitian.waktu_awal_penelitian' => 'date',
+                'penelitian.waktu_akhir_penelitian' => 'date',
+                'penelitian.lokasi_penelitian' => ['required', 'string', 'max:255'],
             ]);
-            $permohonan->penelitian()->update($penelitianLembagaRequest);
+            $pemohon->penelitian()->first()->update($penelitianLembagaRequest);
+            // $pemohon->peneliti()->sync($penelitiRequest);
+            dd($request->peneliti());
+            for ($i = 0; $i < 3; $i++) {
+                $pemohon->peneliti[$i]->update($request->peneliti[$i]);
+            }
         }
+
+        Toast::title('Permohonan anda berhasil di ajukan kembali!')
+            ->rightBottom()
+            ->autoDismiss(10);
+        return to_route('pemohon.index');
     }
 
     /**

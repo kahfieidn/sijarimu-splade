@@ -26,10 +26,8 @@ class Penelitian extends Model
         'waktu_akhir_penelitian',
     ];
     
-
-    public function penelitianable()
-    {
-        return $this->morphTo();
+    public function penelitian() {
+        return $this->morphMany(Penelitian::class, 'penelitianable');
     }
 
     public function setWaktuAwalPenelitianAttribute($value)

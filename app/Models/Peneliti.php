@@ -22,4 +22,7 @@ class Peneliti extends Model
     {
         return $this->morphTo();
     }
+
+    
+
 }
