@@ -195,20 +195,22 @@ class DashboardController extends Controller
             $rules["field_$i"] = 'file|max:2000';
             $messages["field_$i.file"] = "Perhatikan File $i harus format (.pdf) & tidak boleh lebih dari 2 MB!";
         }
-
-        dd($request->hasFile('field_1'));
-
+        
         $berkasRequest = $request->validate($rules);
         $currentMonthYear = Carbon::now()->format('Y-F');
-        for ($i = 1; $i <= 30; $i++) {
+        for ($i = 1; $i <= 5; $i++) {
             $fieldName = 'field_' . $i;
-            dd("TRUE");
-                Storage::delete('public/docs/' . $fields_existing[$fieldName . '_existing']);
-                $berkasRequest[$fieldName] = $fields_existing[$fieldName . '_existing'];
-            
+            if (!isset($request->fields[$fieldName . '_existing'])) {
+                Storage::delete('/public/docs' . '/' . $pemohon->berkas->first()->$fieldName);
+
+                $berkas = $request->file('fields.' . $fieldName);
+                $storageDirectory = 'public/docs/' . $currentMonthYear;
+                $fileName = $berkas->hashName();
+                $berkas->storeAs($storageDirectory, $fileName);
+                $berkasRequest[$fieldName] = $currentMonthYear . '/' . $fileName;
+            }
         };
 
-        dd($berkasRequest);
 
         // Create Permohonan
         $permohonan = Permohonan::find($pemohon->id);
