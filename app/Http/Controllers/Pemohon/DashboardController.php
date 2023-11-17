@@ -23,6 +23,8 @@ class DashboardController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+
     public function index()
     {
         //
@@ -144,6 +146,10 @@ class DashboardController extends Controller
     public function edit(Request $request, Permohonan $pemohon)
     {
         //
+        if ($pemohon->user_id != Auth::user()->id) {
+            abort(403);
+        }
+
         $berkas = $pemohon->berkas->first();
 
         $fields = [
@@ -195,7 +201,7 @@ class DashboardController extends Controller
             $rules["field_$i"] = 'file|max:2000';
             $messages["field_$i.file"] = "Perhatikan File $i harus format (.pdf) & tidak boleh lebih dari 2 MB!";
         }
-        
+
         $berkasRequest = $request->validate($rules);
         $currentMonthYear = Carbon::now()->format('Y-F');
         for ($i = 1; $i <= 5; $i++) {
@@ -214,8 +220,8 @@ class DashboardController extends Controller
         // Create Permohonan
         $permohonan = Permohonan::find($pemohon->id);
         $permohonan->update([
-            'status_permohonan_id' => 3, 
-            'user_id' => Auth::user()->id, 
+            'status_permohonan_id' => 3,
+            'user_id' => Auth::user()->id,
             'perizinan_id' => $typeId,
         ]);
         $permohonan->berkas()->update($berkasRequest);
