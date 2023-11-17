@@ -203,14 +203,13 @@ class DashboardController extends Controller
             if (!isset($request->fields[$fieldName . '_existing'])) {
                 Storage::delete('/public/docs' . '/' . $pemohon->berkas->first()->$fieldName);
 
-                $berkas = $request->file('fields.' . $fieldName);
+                $berkas = $request->file('fields' . '.' . $fieldName);
                 $storageDirectory = 'public/docs/' . $currentMonthYear;
                 $fileName = $berkas->hashName();
                 $berkas->storeAs($storageDirectory, $fileName);
                 $berkasRequest[$fieldName] = $currentMonthYear . '/' . $fileName;
             }
         };
-
 
         // Create Permohonan
         $permohonan = Permohonan::find($pemohon->id);
