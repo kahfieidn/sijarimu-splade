@@ -226,7 +226,7 @@ class DashboardController extends Controller
         } else if ($typeId == 2) {
             $pemohon->penelitian()->first()->update($request->penelitian);
         } else if ($typeId == 3) {
-            $pemohon->penelitian->first()->update($request->penelitian);
+            $pemohon->penelitian()->first()->update($request->penelitian);
             foreach ($request->peneliti as $penelitiData) {
                 $penelitiId = $penelitiData['id'];
                 $pemohon->peneliti()->where('id', $penelitiId)->first()->update($penelitiData);
