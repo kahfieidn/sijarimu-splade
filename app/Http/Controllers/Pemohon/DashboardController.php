@@ -177,6 +177,7 @@ class DashboardController extends Controller
         $status_berkas = StatusBerkas::where('status_berkasable_id', $pemohon->id)->first();
         $penelitian = $pemohon->penelitian()->first();
         $peneliti = $pemohon->peneliti()->get();
+        $typeRpk = $pemohon->type_rpk()->first();
         return view('pemohon.edit', [
             'pemohon' => $pemohon,
             'perizinan' => $perizinan,
@@ -186,6 +187,7 @@ class DashboardController extends Controller
             'penelitian' => $penelitian,
             'peneliti' => $peneliti,
             'fields' => $fields,
+            'typeRpk' => $typeRpk,
         ]);
     }
 
