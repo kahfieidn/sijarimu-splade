@@ -20,6 +20,4 @@
         </div>
         <Peneliti v-model="form.peneliti"></Peneliti>
     </div>
-
-
 </div>

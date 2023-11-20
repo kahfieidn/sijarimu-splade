@@ -213,10 +213,6 @@ class DashboardController extends Controller
             }
         };
 
-
-     
-
-
         // Create Permohonan
         $permohonan = Permohonan::find($pemohon->id);
         $permohonan->update([
@@ -246,7 +242,7 @@ class DashboardController extends Controller
                 'lokasi_penelitian' => ['required', 'string', 'max:255'],
             ]);
             $permohonan->penelitian()->create($penelitianRequest);
-        } else if ($typeId == 3) {  
+        } else if ($typeId == 3) {
             $penelitianLembagaRequest = $request->validate([
                 'penelitian.lembaga' => ['required', 'string', 'max:255'],
                 'penelitian.judul_penelitian' => ['required', 'string', 'max:255'],
@@ -255,10 +251,9 @@ class DashboardController extends Controller
                 'penelitian.lokasi_penelitian' => ['required', 'string', 'max:255'],
             ]);
             $pemohon->penelitian()->first()->update($penelitianLembagaRequest);
-            // $pemohon->peneliti()->sync($penelitiRequest);
-            dd($request->peneliti());
-            for ($i = 0; $i < 3; $i++) {
-                $pemohon->peneliti[$i]->update($request->peneliti[$i]);
+            foreach ($request->peneliti as $penelitiData) {
+                $penelitiId = $penelitiData['id'];
+                $pemohon->peneliti()->where('id', $penelitiId)->first()->update($penelitiData);
             }
         }
 
