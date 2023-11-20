@@ -124,6 +124,20 @@ class DashboardController extends Controller
             ]);
             $permohonan->penelitian()->create($penelitianLembagaRequest);
             $permohonan->peneliti()->createMany($request->peneliti);
+        } else if ($typeId == 4) {
+            $typeRpk = $request->validate([
+                'nama_kapal' => ['required', 'string', 'max:255'],
+                'jenis_kapal' => ['required', 'string', 'max:255'],
+                'bendera' => ['required', 'string', 'max:255'],
+                'isi_kotor' => ['required', 'string', 'max:255'],
+                'tenaga_penggerak' => ['required', 'string', 'max:255'],
+                'status_kepemilikan_kapal' => ['required', 'string', 'max:255'],
+                'kapasitas_angkut' => ['required', 'string', 'max:255'],
+                'pelabuhan_pangkal' => ['required', 'string', 'max:255'],
+                'trayek' => ['required', 'string', 'max:255'],
+                'urgensi' => ['required', 'string', 'max:255'],
+            ]);
+            $permohonan->type_rpk()->create($typeRpk);
         }
         Toast::title('Permohonan anda berhasil di ajukan!')
             ->rightBottom()

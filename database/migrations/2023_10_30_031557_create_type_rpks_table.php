@@ -13,8 +13,23 @@ return new class extends Migration
     {
         Schema::create('type_rpks', function (Blueprint $table) {
             $table->id();
-            $table->integer('penelitiable_id');
-            $table->string('penelitiable_type');
+            $table->integer('type_rpkable_id');
+            $table->string('type_rpkable_type');
+            $table->string('nama_kapal')->nullable();
+            $table->string('jenis_kapal')->nullable();
+            $table->string('bendera')->nullable();
+            $table->string('isi_kotor')->nullable();
+            $table->string('tenaga_penggerak')->nullable();
+            $table->string('status_kepemilikan_kapal')->nullable();
+            $table->string('kapasitas_angkut')->nullable();
+            $table->string('pelabuhan_pangkal')->nullable();
+            $table->string('trayek')->nullable();
+            $table->string('urgensi')->nullable();
+            $table->string('nomor_rpk')->nullable();
+            $table->string('nomor_rpk_surat_pemohon')->nullable();
+            $table->string('nomor_siualper')->nullable();
+            $table->string('nomor_rpk_sebelumnya')->nullable();
+            $table->string('nomor_rpk_rekom_teknis')->nullable();
             $table->timestamps();
         });
     }

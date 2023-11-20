@@ -28,7 +28,6 @@ class Permohonan extends Model
         'kepala_dinas',
     ];
 
-
     public function type_rpk() {
         return $this->morphMany(TypeRpk::class, 'type_rpkable');
     }
