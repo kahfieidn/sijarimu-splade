@@ -12,13 +12,20 @@
         </div>
     </div>
 
-
-    <!-- <div v-if="{{ $perizinan->id }} == 1">
-            <x-formulir.penelitian-mahasiswa :penelitian="html_entity_decode($penelitian)" />
-        </div>
-        <div v-if="{{ $perizinan->id }} == 2">
-            <x-formulir.penelitian-perorangan />
-        </div> -->
+    <div v-if="{{ $perizinan->id }} == 1">
+        <x-splade-form :default="['penelitian' => $penelitian, 'fields' => $fields]" confirm="Konfirmasi Submit Permohonan" confirm-text="Apakah anda yakin sudah memastikan seluruh berkas sesuai?" confirm-button="Ya, Saya Yakin!" cancel-button="Tidak, Masih ada yang salah!" action="{{ route('pemohon.update', $pemohon->id) }}" method="PATCH">
+            <x-splade-input readonly class="hidden" name="id" /> 
+            @include('components/editFormulir/penelitian-mahasiswa')
+            @include('components/berkas-pemohon')
+        </x-splade-form>
+    </div>
+    <div v-if="{{ $perizinan->id }} == 2">
+        <x-splade-form :default="['penelitian' => $penelitian, 'fields' => $fields]" confirm="Konfirmasi Submit Permohonan" confirm-text="Apakah anda yakin sudah memastikan seluruh berkas sesuai?" confirm-button="Ya, Saya Yakin!" cancel-button="Tidak, Masih ada yang salah!" action="{{ route('pemohon.update', $pemohon->id) }}" method="PATCH">
+            <x-splade-input readonly class="hidden" name="id" /> 
+            @include('components/editFormulir/penelitian-perorangan')
+            @include('components/berkas-pemohon')
+        </x-splade-form>
+    </div>
     <div v-if="{{ $perizinan->id }} == 3">
         <x-splade-form :default="['penelitian' => $penelitian, 'fields' => $fields, 'peneliti' => $peneliti]" confirm="Konfirmasi Submit Permohonan" confirm-text="Apakah anda yakin sudah memastikan seluruh berkas sesuai?" confirm-button="Ya, Saya Yakin!" cancel-button="Tidak, Masih ada yang salah!" action="{{ route('pemohon.update', $pemohon->id) }}" method="PATCH">
             <x-splade-input readonly class="hidden" name="id" /> 

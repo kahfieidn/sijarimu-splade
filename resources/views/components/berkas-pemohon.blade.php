@@ -22,7 +22,7 @@
                         </span>
                     </a>
                 </h6>
-                <x-splade-file accept="application/pdf" filepond max-size="2MB" class="block mb-2 text-lg font-medium text-gray-900 dark:text-white" name="fields.field_{{$key+1}}" filepond preview />
+                <x-splade-file required accept="application/pdf" filepond max-size="2MB" class="block mb-2 text-lg font-medium text-gray-900 dark:text-white" name="fields.field_{{$key+1}}" filepond preview />
                 <p class="text-sm text-gray-500 dark:text-gray-300" id="file_input_help">Unggah berkas yang perlu diperbaiki saja, yang sudah benar tidak perlu di upload kembali karena sudah tersimpan di sistem.</p>
             </div>
             <?php $num_field++; ?>
