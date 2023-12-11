@@ -47,7 +47,9 @@ Route::middleware('splade')->group(function () {
             Route::resource('/pemohon', App\Http\Controllers\Pemohon\DashboardController::class);
         });
         Route::group(['middleware' => ['role:front_office']], function () {
-            Route::resource('/front-office', App\Http\Controllers\FrontOffice\DashboardController::class);
+            Route::resource('/front-office', App\Http\Controllers\FrontOffice\DashboardController::class)->parameters([
+                'front-office' => 'pemohon'
+            ]);
         });
     });
 

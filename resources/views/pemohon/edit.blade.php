@@ -41,5 +41,4 @@
         </x-splade-form>
     </div>
 
-
 </x-app-layout>

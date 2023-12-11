@@ -247,6 +247,8 @@ class DashboardController extends Controller
                 $penelitiId = $penelitiData['id'];
                 $pemohon->peneliti()->where('id', $penelitiId)->first()->update($penelitiData);
             }
+        } else if ($typeId == 4){
+            $pemohon->type_rpk()->first()->update($request->typeRpk);
         }
         Toast::title('Permohonan anda berhasil di ajukan kembali!')
             ->rightBottom()

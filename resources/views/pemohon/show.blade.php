@@ -42,7 +42,6 @@
             </div>
         </div>
 
-
     </x-splade-form>
 
 </x-splade-modal>

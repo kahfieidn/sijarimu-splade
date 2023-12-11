@@ -16,8 +16,8 @@ return new class extends Migration
             $table->foreignId('perizinan_id')->constrained();
             $table->foreignId('user_id')->constrained();
             $table->foreignId('status_permohonan_id')->constrained();
-            $table->string('catatan')->nullable();
-            $table->string('catatan_back_office')->nullable();
+            $table->text('catatan')->nullable();
+            $table->text('catatan_back_office')->nullable();
             $table->string('surat_rekomendasi')->nullable();
             $table->string('bap')->nullable();
             $table->string('izin_terbit')->nullable();
