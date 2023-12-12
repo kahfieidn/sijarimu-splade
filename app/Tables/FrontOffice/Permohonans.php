@@ -50,6 +50,7 @@ class Permohonans extends AbstractTable
         $table
             ->withGlobalSearch(columns: ['user.name', 'perizinan.nama_perizinan', 'status_permohonan.nama_status'])
             ->column(key: 'id', sortable: true, label: 'ID')
+            ->column(key: 'user.name', sortable: true, label: 'Nama Pemohon')
             ->column(key: 'perizinan.nama_perizinan', sortable: true, label: 'Jenis Izin')
             ->column(key: 'perizinan.sektor.nama_sektor', sortable: true, label: 'Sektor')
             ->column(key: 'status_permohonan.nama_status', sortable: true, label: 'Status Permohonan')

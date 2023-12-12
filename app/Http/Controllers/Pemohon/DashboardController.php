@@ -233,6 +233,8 @@ class DashboardController extends Controller
             'status_permohonan_id' => 3,
             'user_id' => Auth::user()->id,
             'perizinan_id' => $typeId,
+            'catatan' => null,
+            'catatan_back_office' => null,
         ]);
         $permohonan->berkas()->update($berkasRequest);
 

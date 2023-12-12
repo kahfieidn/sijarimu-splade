@@ -7,8 +7,9 @@ use App\Models\Permohonan;
 use App\Models\Persyaratan;
 use App\Models\StatusBerkas;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Models\StatusPermohonan;
+use App\Http\Controllers\Controller;
+use ProtoneMedia\Splade\Facades\Toast;
 use App\Tables\FrontOffice\Permohonans;
 
 class DashboardController extends Controller
@@ -49,28 +50,48 @@ class DashboardController extends Controller
         $perizinan = Perizinan::find($pemohon->perizinan_id);
         $persyaratan = Persyaratan::where('perizinan_id', $pemohon->perizinan->id)->get();
         $status_berkas = $pemohon->status_berkas->first();
-        $status_permohonan = $pemohon->status_permohonan->first();
-        $status_permohonan_front_office = [
-            '1' => 'Ditolak',
-            '2' => 'Revisi',
-            '5' => 'Sudah Lengkap (Teruskan Ke Back Office (2))',
-        ];
-        $penelitian = $pemohon->penelitian()->first();
-        $peneliti = $pemohon->peneliti()->get();
-        $typeRpk = $pemohon->type_rpk()->first();
-        return view('front-office.show', [
-            'pemohon' => $pemohon,
-            'berkas' => $berkas,
-            'persyaratan' => $persyaratan,
-            'status_berkas' => $status_berkas,
-            'perizinan' => $perizinan,
-            'berkas' => $berkas,
-            'penelitian' => $penelitian,
-            'peneliti' => $peneliti,
-            'typeRpk' => $typeRpk,
-            'status_permohonan' => $status_permohonan,
-            'status_permohonan_front_office' => $status_permohonan_front_office,
-        ]);
+        $user = $pemohon->user()->first();
+
+        //Custom Perizinan
+        if ($pemohon->perizinan_id == 1) {
+            $penelitian = $pemohon->penelitian()->first();
+            return view('front-office.show', [
+                'pemohon' => $pemohon,
+                'berkas' => $berkas,
+                'persyaratan' => $persyaratan,
+                'status_berkas' => $status_berkas,
+                'perizinan' => $perizinan,
+                'berkas' => $berkas,
+                'penelitian' => $penelitian,
+                'user' => $user,
+            ]);
+        } else if ($pemohon->perizinan_id == 2) {
+            $penelitian = $pemohon->penelitian()->first();
+            return view('front-office.show', [
+                'pemohon' => $pemohon,
+                'berkas' => $berkas,
+                'persyaratan' => $persyaratan,
+                'status_berkas' => $status_berkas,
+                'perizinan' => $perizinan,
+                'berkas' => $berkas,
+                'penelitian' => $penelitian,
+                'user' => $user,
+            ]);
+        }else if($pemohon->perizinan_id == 3){
+            $penelitian = $pemohon->penelitian()->first();
+            $peneliti = $pemohon->peneliti()->get();
+            return view('front-office.show', [
+                'pemohon' => $pemohon,
+                'berkas' => $berkas,
+                'persyaratan' => $persyaratan,
+                'status_berkas' => $status_berkas,
+                'perizinan' => $perizinan,
+                'berkas' => $berkas,
+                'penelitian' => $penelitian,
+                'peneliti' => $peneliti,
+                'user' => $user,
+            ]);
+        }
     }
 
     /**
@@ -84,10 +105,17 @@ class DashboardController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Permohonan $pemohon)
     {
-        //
-        dd($request->all());
+        $pemohon->update([
+            'status_permohonan_id' => $request->status_permohonan_id,
+            'catatan' => $request->catatan,
+        ]);
+        $pemohon->status_berkas()->update($request->status_berkas);
+        Toast::title('Permohonan berhasil di review!')
+            ->rightBottom()
+            ->autoDismiss(10);
+        return to_route('front-office.index');
     }
 
     /**

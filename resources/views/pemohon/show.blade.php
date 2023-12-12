@@ -4,8 +4,8 @@
         <div class="p-2 h-full">
             @if($permohonan->status_permohonan_id == 2)
             <blockquote class="p-2 my-4 border-l-4 border-gray-300 bg-gray-50 dark:border-gray-500 dark:bg-gray-800">
-                <p class="text-xl italic font-medium leading-relaxed text-gray-900 dark:text-white">"Berkas anda perlu di revisi,"</p>
-                <p class="text-xl italic font-medium leading-relaxed text-gray-900 dark:text-white">"Alasan Verifikator : {{$permohonan->catatan}}"</p>
+                <p class="text-xl italic font-medium leading-relaxed text-gray-900 dark:text-white">"Berkas anda perlu di revisi"</p>
+                <p class="text-xl italic font-medium leading-relaxed text-gray-900 dark:text-white">Alasan Verifikator : {!! $permohonan->catatan !!}</p>
             </blockquote>
             <Link href="{{ route('pemohon.edit', $permohonan->id) }}" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
             Edit Berkas
