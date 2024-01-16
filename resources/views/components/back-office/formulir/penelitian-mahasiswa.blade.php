@@ -2,48 +2,35 @@
     <div class="bg-white p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
         <h1 class="mb-8 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">Formulir <span class="underline underline-offset-3 decoration-8 decoration-blue-400 dark:decoration-blue-600">Permohonan</span></h1>
         <div class="relative z-0 w-full mb-6 group">
-            <x-splade-input disabled required name="penelitian.lembaga" type="text" placeholder="Tulis Nama Lembaga / Instansi / Perusahaan" label="Nama Lembaga / Instansi / Perusahaan" />
-        </div>
-        <div class="relative z-0 w-full mb-6 group">
             <x-splade-input disabled required name="penelitian.judul_penelitian" type="text" placeholder="Judul Penelitian Anda" label="Judul Penelitian" />
         </div>
         <div class="grid md:grid-cols-3 md:gap-6">
+            <div class="relative z-0 w-full mb-6 group">
+                <x-splade-input disabled required name="penelitian.nim" type="text" placeholder="Nomor Induk Mahasiswa" label="NIM" />
+            </div>
+            <div class="relative z-0 w-full mb-6 group">
+                <x-splade-input disabled required name="penelitian.jenjang" type="text" placeholder="S1/S2/S3" label="Jenjang" />
+            </div>
+            <div class="relative z-0 w-full mb-6 group">
+                <x-splade-input disabled required name="penelitian.jurusan" type="text" placeholder="Teknik Informatika" label="Jurusan" />
+            </div>
+        </div>
+        <div class="grid md:grid-cols-2 md:gap-6">
+            <div class="relative z-0 w-full mb-6 group">
+                <x-splade-input disabled required name="penelitian.universitas" type="text" placeholder="Universitas" label="Nama Universitas" />
+            </div>
+            <div class="relative z-0 w-full mb-6 group">
+                <x-splade-input disabled required name="penelitian.lokasi_penelitian" type="text" placeholder="DPMPTSP Provinsi Kepri, DPMPTSP Kota.." label="Lokasi Penelitian" />
+            </div>
+        </div>
+        <div class="grid md:grid-cols-2 md:gap-6">
             <div class="relative z-999 w-full mb-6 group">
                 <x-splade-input disabled required name="penelitian.waktu_awal_penelitian" date label="Waktu Awal Penelitian" />
             </div>
             <div class="relative z-999 w-full mb-6 group">
                 <x-splade-input disabled required name="penelitian.waktu_akhir_penelitian" date label="Waktu Akhir Penelitian" />
             </div>
-            <div class="relative z-0 w-full mb-6 group">
-                <x-splade-input disabled required name="penelitian.lokasi_penelitian" type="text" placeholder="Lokasi Penelitian" label="Lokasi Penelitian" />
-            </div>
         </div>
-        <!-- <editPeneliti v-model="form.editPeneliti"></editPeneliti> -->
-    </div>
-    <div class="bg-white p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
-        <h1 class="mb-8 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">Daftar <span class="underline underline-offset-3 decoration-8 decoration-blue-400 dark:decoration-blue-600">Peneliti</span></h1>
-
-        @foreach($peneliti as $key=>$peneliti)
-        <div class="grid md:grid-cols-4 md:gap-4">
-            <div class="relative z-999 w-full mb-6 group">
-                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jenis Identitas</label>
-                <x-splade-select disabled name="peneliti[{{$key}}].jenis_identitas">
-                    <option value="NIK">NIK</option>
-                    <option value="NIM">NIM</option>
-                </x-splade-select>
-            </div>
-            <div class="relative z-999 w-full mb-6 group">
-                <x-splade-input disabled name="peneliti[{{$key}}].no_identitas" type="text" placeholder="Nomor Identitas" label="Nomor Identitas" />
-            </div>
-            <div class="relative z-999 w-full mb-6 group">
-                <x-splade-input disabled name="peneliti[{{$key}}].nama" type="text" placeholder="Nama Peneliti" label="Nama Peneliti" />
-            </div>
-            <div class="relative z-999 w-full mb-6 group">
-                <x-splade-input disabled name="peneliti[{{$key}}].jabatan_peneliti" type="text" placeholder="Ketua/Wakil/Anggota" label="Jabatan Peneliti" />
-            </div>
-        </div>
-        @endforeach
-
     </div>
 </div>
 
@@ -59,9 +46,6 @@
                         </th>
                         <th scope="col" class="px-6 py-3">
                             Berkas
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Aksi
                         </th>
                     </tr>
                 </thead>
@@ -92,13 +76,6 @@
                                 </span>
                             </a>
                         </td>
-                        <td>
-                            <x-splade-group name="status_berkas" inline>
-                                <x-splade-radio required name="status_berkas.field_{{$key+1}}" value="terima" label="Terima" />
-                                <x-splade-radio name="status_berkas.field_{{$key+1}}" value="tolak" label="Tolak" />
-                            </x-splade-group>
-
-                        </td>
                         <?php $num_field++; ?>
                     </tr>
                     @endforeach
@@ -110,14 +87,39 @@
 
 <div class="p-4 sm:ml-64">
     <div class="bg-white p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
+        <h1 class="mb-8 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">Draft <span class="underline underline-offset-3 decoration-8 decoration-blue-400 dark:decoration-blue-600">Izin</span></h1>
+        <iframe src="{{ route('dashboard.cetak.request', [$pemohon->perizinan_id, $pemohon->id ]) }}" width="100%" height="500"></iframe>
+    </div>
+
+    <div class="bg-white p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
+        <h1 class="mb-8 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">Konfigurasi <span class="underline underline-offset-3 decoration-8 decoration-blue-400 dark:decoration-blue-600">Draft Izin</span></h1>
+        <div class="grid md:grid-cols-2 md:gap-6">
+            <div class="relative z-0 w-full mb-6 group">
+                <x-splade-input required name="penelitian.nomor" type="text" placeholder="Nomor" label="Nomor Izin" />
+            </div>
+            <div class="relative z-0 w-full mb-6 group">
+                <x-splade-input required name="penelitian.menimbang" type="text" placeholder="Kementerian Pendidikan, Kebudayaan, Riset dan Teknologi.." label="Menimbang" />
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<div class="p-4 sm:ml-64">
+    <div class="bg-white p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
         <h1 class="mb-8 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">Tindak <span class="underline underline-offset-3 decoration-8 decoration-blue-400 dark:decoration-blue-600">Lanjut</span></h1>
+
         <div class="relative z-999 w-full mb-6 group">
             <x-splade-select required choices label="Status" name="status_permohonan_id">
                 <option value="" disabled>Pilih salah satu...</option>
                 <option value="1">Ditolak</option>
                 <option value="2">Revisi</option>
-                <option value="5">Sudah Lengkap (Teruskan Ke Back Office (2))</option>
+                <option value="7">Sudah Lengkap (Teruskan Ke Verifikator (1))</option>
             </x-splade-select>
+
         </div>
         <div class="relative z-0 w-full mb-6 group">
             <x-splade-wysiwyg label="Tambahkan Catatan Ke Pemohon (Opsional)" class="mb-8" name="catatan" />

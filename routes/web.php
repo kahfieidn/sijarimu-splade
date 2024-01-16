@@ -51,6 +51,15 @@ Route::middleware('splade')->group(function () {
                 'front-office' => 'pemohon'
             ]);
         });
+        Route::group(['middleware' => ['role:back_office']], function () {
+            Route::resource('/back-office', App\Http\Controllers\BackOffice\DashboardController::class)->parameters([
+                'back-office' => 'pemohon'
+            ]);
+        });
+    });
+
+    Route::group(['middleware' => ['role:pemohon|front_office|back_office|opd|verifikator_1|verifikator_2|kepala_dinas|admin|admin_1|admin_2|admin3']], function () {
+        Route::get('/dashboard/generate/penelitian/{perizinan_id}/{permohonan_id}', [App\Http\Controllers\Cetak\GeneratePenelitian::class, 'generatePenelitian'])->name('dashboard.cetak.request');
     });
 
 
