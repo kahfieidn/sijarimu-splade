@@ -3,7 +3,7 @@
       <h1
           class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-2xl lg:text-3xl dark:text-white">
           Daftar
-          <span class="underline underline-offset-3 decoration-8 decoration-blue-400 dark:decoration-blue-600">Peneliti
+          <span class="underline underline-offset-3 decoration-8 decoration-blue-400 dark:decoration-blue-600">Anggota Peneliti
               :</span>
       </h1>
 

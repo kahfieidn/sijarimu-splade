@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Pemohon;
 
 use Carbon\Carbon;
+use App\Models\User;
 use App\Models\Berkas;
 use App\Models\Perizinan;
 use App\Models\Permohonan;
@@ -39,10 +40,8 @@ class DashboardController extends Controller
      */
     public function create(Request $request)
     {
-
         $perizinan = Perizinan::find($request->query('perizinans'));
         $persyaratan = Persyaratan::where('perizinan_id', $request->query('perizinans'))->get();
-
         $request->validate([
             'perizinans' => ['required'],
         ], [
@@ -54,10 +53,12 @@ class DashboardController extends Controller
             'nim' => 'NIM',
         ];
 
+        $user = User::find(Auth::id());
         return view('pemohon.create', [
             'perizinan' => $perizinan,
             'persyaratan' => $persyaratan,
             'jenis_identitas' => $jenis_identitas,
+            'user' => $user,
         ]);
     }
 
@@ -66,8 +67,7 @@ class DashboardController extends Controller
      */
     public function store(Request $request)
     {
-        $typeId = $request->id;
-
+        $typeId = $request->perizinan['id'];
         $rules = [];
         $messages = [];
         for ($i = 1; $i <= 30; $i++) {
@@ -123,7 +123,9 @@ class DashboardController extends Controller
                 'lokasi_penelitian' => ['required', 'string', 'max:255'],
             ]);
             $permohonan->penelitian()->create($penelitianLembagaRequest);
-            $permohonan->peneliti()->createMany($request->peneliti);
+            if($request->peneliti != null){
+                $permohonan->peneliti()->createMany($request->peneliti);
+            }
         } else if ($typeId == 4) {
             $typeRpk = $request->validate([
                 'nama_kapal' => ['required', 'string', 'max:255'],
@@ -150,6 +152,9 @@ class DashboardController extends Controller
      */
     public function show(Request $request, Permohonan $pemohon)
     {
+        if ($pemohon->user_id != Auth::user()->id) {
+            abort(403);
+        }
         return view('pemohon.show', [
             'status_permohonan' => StatusPermohonan::all(),
             'permohonan' => $pemohon,
