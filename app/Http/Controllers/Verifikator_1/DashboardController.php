@@ -107,7 +107,6 @@ class DashboardController extends Controller
      */
     public function update(Request $request, Permohonan $pemohon)
     {
-        //
         // Custom Perizinan
         if ($pemohon->perizinan->id == 1) {
             $pemohon->update([

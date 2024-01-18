@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Tables\Verifikator2;
+namespace App\Tables\KepalaDinas;
 
 use App\Models\Permohonan;
 use Illuminate\Http\Request;
@@ -42,7 +42,7 @@ class Permohonans extends AbstractTable
                     ->where(function ($subquery) {
                         $subquery->whereIn('perizinan_id', [1, 2, 3]);
                     })
-                    ->orWhere('status_permohonan_id', 8); // Additional condition;
+                    ->orWhere('status_permohonan_id', 9); // Additional condition;
             });
     }
 
@@ -62,8 +62,7 @@ class Permohonans extends AbstractTable
             ->column(key: 'perizinan.sektor.nama_sektor', sortable: true, label: 'Sektor')
             ->column(key: 'status_permohonan.nama_status', sortable: true, label: 'Status Permohonan')
             ->column(key: 'created_at', sortable: true, label: 'Tanggal Pengajuan', as: fn ($created_at) => $created_at->isoFormat('D MMMM Y'))
-            ->rowLink(fn (Permohonan $pemohon) => route('verifikator-2.show', $pemohon->id))
-            ->column('actions')
+            ->rowLink(fn (Permohonan $pemohon) => route('kepala-dinas.show', $pemohon->id))
             ->paginate(5);
 
         // ->searchInput()

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Verifikator_2;
+namespace App\Http\Controllers\KepalaDinas;
 
 use App\Models\Perizinan;
 use App\Models\Permohonan;
@@ -8,7 +8,7 @@ use App\Models\Persyaratan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use ProtoneMedia\Splade\Facades\Toast;
-use App\Tables\Verifikator2\Permohonans;
+use App\Tables\KepalaDinas\Permohonans;
 
 class DashboardController extends Controller
 {
@@ -18,7 +18,7 @@ class DashboardController extends Controller
     public function index()
     {
         //
-        return view('verifikator-2.index', [
+        return view('kepala-dinas.index', [
             'permohonans' => Permohonans::class
         ]);
     }
@@ -53,7 +53,7 @@ class DashboardController extends Controller
         //Custom Perizinan
         if ($pemohon->perizinan_id == 1) {
             $penelitian = $pemohon->penelitian()->first();
-            return view('verifikator-2.show', [
+            return view('kepala-dinas.show', [
                 'pemohon' => $pemohon,
                 'berkas' => $berkas,
                 'persyaratan' => $persyaratan,
@@ -65,7 +65,7 @@ class DashboardController extends Controller
             ]);
         } else if ($pemohon->perizinan_id == 2) {
             $penelitian = $pemohon->penelitian()->first();
-            return view('verifikator-2.show', [
+            return view('kepala-dinas.show', [
                 'pemohon' => $pemohon,
                 'berkas' => $berkas,
                 'persyaratan' => $persyaratan,
@@ -79,7 +79,7 @@ class DashboardController extends Controller
             $penelitian = $pemohon->penelitian()->first();
             $nomor_izin = '00' . $penelitian->id . '/2n.1' . '/DPMPTSP' . '/2024';
             $peneliti = $pemohon->peneliti()->get();
-            return view('verifikator-2.show', [
+            return view('kepala-dinas.show', [
                 'pemohon' => $pemohon,
                 'nomor_izin' => $nomor_izin,
                 'berkas' => $berkas,
@@ -107,6 +107,7 @@ class DashboardController extends Controller
      */
     public function update(Request $request, Permohonan $pemohon)
     {
+        //
         // Custom Perizinan
         if ($pemohon->perizinan->id == 1) {
             $pemohon->update([
@@ -128,7 +129,7 @@ class DashboardController extends Controller
         Toast::title('Permohonan berhasil di review!')
             ->rightBottom()
             ->autoDismiss(10);
-        return to_route('verifikator-2.index');
+        return to_route('kepala-dinas.index');
     }
 
     /**
