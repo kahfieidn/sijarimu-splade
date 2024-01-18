@@ -18,7 +18,7 @@ class DashboardController extends Controller
     public function index()
     {
         //
-        return view('back-office.index', [
+        return view('verifikator-1.index', [
             'permohonans' => Permohonans::class
         ]);
     }

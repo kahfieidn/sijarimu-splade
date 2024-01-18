@@ -61,6 +61,11 @@ Route::middleware('splade')->group(function () {
                 'verifikator-1' => 'pemohon'
             ]);
         });
+        Route::group(['middleware' => ['role:verifikator_2']], function () {
+            Route::resource('/verifikator-2', App\Http\Controllers\Verifikator_2\DashboardController::class)->parameters([
+                'verifikator-2' => 'pemohon'
+            ]);
+        });
     });
 
     Route::group(['middleware' => ['role:pemohon|front_office|back_office|opd|verifikator_1|verifikator_2|kepala_dinas|admin|admin_1|admin_2|admin3']], function () {
