@@ -70,12 +70,11 @@ class GeneratePenelitian extends Controller
             $customPaper = array(0, 0, 609.4488, 935.433);
             $pdf->set_paper($customPaper);
             $pdf->render();
-
-            if ($get_id_users == Auth::id()) {
-                return $pdf->download($get_nama_izin . ' ' . $nama_user . '.pdf');
-            } else if ($this->middleware(['role: admin|front_office|back_office|opd|sekretariat'])) {
-                return $pdf->stream($get_nama_izin . ' ' . $nama_user . '.pdf');
-            }
+        }
+        if ($get_id_users == Auth::id()) {
+            return $pdf->download($get_nama_izin . ' ' . $nama_user . '.pdf');
+        } else if ($this->middleware(['role: admin|front_office|back_office|opd|sekretariat'])) {
+            return $pdf->stream($get_nama_izin . ' ' . $nama_user . '.pdf');
         }
     }
 
