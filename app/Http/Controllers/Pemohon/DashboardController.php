@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Pemohon;
 use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Berkas;
+use App\Models\Profile;
 use App\Models\Perizinan;
 use App\Models\Permohonan;
 use App\Models\Persyaratan;
@@ -16,6 +17,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use ProtoneMedia\Splade\Facades\Toast;
 use Illuminate\Support\Facades\Storage;
+use App\Notifications\PermohonanCreated;
+use Illuminate\Support\Facades\Notification;
 use ProtoneMedia\Splade\FileUploads\ExistingFile;
 use ProtoneMedia\Splade\FileUploads\HandleSpladeFileUploads;
 
@@ -25,7 +28,6 @@ class DashboardController extends Controller
      * Display a listing of the resource.
      */
 
-
     public function index()
     {
         //
@@ -33,6 +35,20 @@ class DashboardController extends Controller
             'perizinans' => Perizinan::all(),
             'permohonans' => Permohonans::class
         ]);
+    }
+
+    public function profile(Request $request)
+    {
+        Profile::create([
+            'user_id' => Auth::id(),
+            'npwp' => $request->npwp,
+            'perusahaan' => $request->perusahaan,
+            'alamat' => $request->alamat,
+            'domisili' => $request->domisili,
+            'provinsi_domisili' => $request->provinsi_domisili,
+        ]);
+
+        return redirect()->back();
     }
 
     /**
@@ -54,11 +70,13 @@ class DashboardController extends Controller
         ];
 
         $user = User::find(Auth::id());
+        $profile = Profile::where('user_id', Auth::id())->first();
         return view('pemohon.create', [
             'perizinan' => $perizinan,
             'persyaratan' => $persyaratan,
             'jenis_identitas' => $jenis_identitas,
             'user' => $user,
+            'profile' => $profile,
         ]);
     }
 
@@ -123,10 +141,12 @@ class DashboardController extends Controller
                 'lokasi_penelitian' => ['required', 'string', 'max:255'],
             ]);
             $permohonan->penelitian()->create($penelitianLembagaRequest);
-            if($request->peneliti != null){
+            if ($request->peneliti != null) {
                 $permohonan->peneliti()->createMany($request->peneliti);
             }
         } else if ($typeId == 4) {
+            $profiles = Profile::where('user_id', Auth::id())->first();
+            $profiles->update($request->profile);
             $typeRpk = $request->validate([
                 'nama_kapal' => ['required', 'string', 'max:255'],
                 'jenis_kapal' => ['required', 'string', 'max:255'],
@@ -141,6 +161,9 @@ class DashboardController extends Controller
             ]);
             $permohonan->type_rpk()->create($typeRpk);
         }
+
+        $permohonan->user->notify(new PermohonanCreated($permohonan));
+
         Toast::title('Permohonan anda berhasil di ajukan!')
             ->rightBottom()
             ->autoDismiss(10);
@@ -182,6 +205,7 @@ class DashboardController extends Controller
         $status_berkas = StatusBerkas::where('status_berkasable_id', $pemohon->id)->first();
         $penelitian = $pemohon->penelitian()->first();
         $peneliti = $pemohon->peneliti()->get();
+        $profile = Profile::where('user_id', $pemohon->user_id)->first();
         $typeRpk = $pemohon->type_rpk()->first();
         return view('pemohon.edit', [
             'pemohon' => $pemohon,
@@ -192,6 +216,7 @@ class DashboardController extends Controller
             'penelitian' => $penelitian,
             'peneliti' => $peneliti,
             'fields' => $fields,
+            'profile' => $profile,
             'typeRpk' => $typeRpk,
         ]);
     }
@@ -254,7 +279,9 @@ class DashboardController extends Controller
                 $penelitiId = $penelitiData['id'];
                 $pemohon->peneliti()->where('id', $penelitiId)->first()->update($penelitiData);
             }
-        } else if ($typeId == 4){
+        } else if ($typeId == 4) {
+            $profile = Profile::where('user_id', Auth::id())->first();
+            $profile->update($request->profile);
             $pemohon->type_rpk()->first()->update($request->typeRpk);
         }
         Toast::title('Permohonan anda berhasil di ajukan kembali!')

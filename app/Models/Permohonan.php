@@ -43,6 +43,9 @@ class Permohonan extends Model
     public function status_berkas() {
         return $this->morphMany(StatusBerkas::class, 'status_berkasable');
     }
+    public function profile() {
+        return $this->belongsTo(Profile::class, 'user_id');
+    }
     public function status_permohonan() {
         return $this->belongsTo(StatusPermohonan::class, 'status_permohonan_id');
     }

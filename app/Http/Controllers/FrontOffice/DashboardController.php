@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\FrontOffice;
 
+use App\Models\Profile;
 use App\Models\Perizinan;
 use App\Models\Permohonan;
 use App\Models\Persyaratan;
@@ -90,6 +91,20 @@ class DashboardController extends Controller
                 'penelitian' => $penelitian,
                 'peneliti' => $peneliti,
                 'user' => $user,
+            ]);
+        } else if($pemohon->perizinan_id == 4){
+            $profile = Profile::where('user_id', $pemohon->user_id)->first();
+            $type_rpk = $pemohon->type_rpk()->first();
+            return view('front-office.show', [
+                'pemohon' => $pemohon,
+                'berkas' => $berkas,
+                'persyaratan' => $persyaratan,
+                'status_berkas' => $status_berkas,
+                'perizinan' => $perizinan,
+                'berkas' => $berkas,
+                'user' => $user,
+                'type_rpk' => $type_rpk,
+                'profile' => $profile,
             ]);
         }
     }

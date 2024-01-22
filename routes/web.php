@@ -39,12 +39,11 @@ Route::middleware('splade')->group(function () {
         Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
         Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     });
-
-
-
+    
     Route::prefix('dashboard')->group(function () {
         Route::group(['middleware' => ['role:pemohon']], function () {
             Route::resource('/pemohon', App\Http\Controllers\Pemohon\DashboardController::class);
+            Route::post('/pemohon/profile', [App\Http\Controllers\Pemohon\DashboardController::class, 'profile'])->name('pemohon.profile.store');
         });
         Route::group(['middleware' => ['role:front_office']], function () {
             Route::resource('/front-office', App\Http\Controllers\FrontOffice\DashboardController::class)->parameters([
