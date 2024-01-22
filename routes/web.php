@@ -54,6 +54,9 @@ Route::middleware('splade')->group(function () {
             Route::resource('/back-office', App\Http\Controllers\BackOffice\DashboardController::class)->parameters([
                 'back-office' => 'pemohon'
             ]);
+            Route::resource('/back-office-2', App\Http\Controllers\BackOffice2\DashboardController::class)->parameters([
+                'back-office-2' => 'pemohon'
+            ]);
         });
         Route::group(['middleware' => ['role:verifikator_1']], function () {
             Route::resource('/verifikator-1', App\Http\Controllers\Verifikator_1\DashboardController::class)->parameters([

@@ -4,40 +4,40 @@
     
         <div class="grid md:grid-cols-2 md:gap-6">
             <div class="relative z-0 w-full mb-6 group">
-                <x-splade-input required readonly name="type_rpk.nama_kapal" type="text" placeholder="Nama Kapal" label="Nama Kapal" />
+                <x-splade-input required disabled name="type_rpk.nama_kapal" type="text" placeholder="Nama Kapal" label="Nama Kapal" />
             </div>
             <div class="relative z-0 w-full mb-6 group">
-                <x-splade-input required readonly name="type_rpk.jenis_kapal" type="text" placeholder="Jenis Kapal" label="Jenis Kapal" />
-            </div>
-        </div>
-        <div class="grid md:grid-cols-3 md:gap-6">
-            <div class="relative z-0 w-full mb-6 group">
-                <x-splade-input required readonly name="type_rpk.bendera" type="text" placeholder="Bendera Kapal" label="Bendera Kapal" />
-            </div>
-            <div class="relative z-0 w-full mb-6 group">
-                <x-splade-input required readonly name="type_rpk.isi_kotor" type="text" placeholder="Isi Kotor" label="Isi Kotor/Bobot Mati" />
-            </div>
-            <div class="relative z-0 w-full mb-6 group">
-                <x-splade-input required readonly name="type_rpk.tenaga_penggerak" type="text" placeholder="Tenaga Penggerak" label="Tenaga Penggerak" />
+                <x-splade-input required disabled name="type_rpk.jenis_kapal" type="text" placeholder="Jenis Kapal" label="Jenis Kapal" />
             </div>
         </div>
         <div class="grid md:grid-cols-3 md:gap-6">
             <div class="relative z-0 w-full mb-6 group">
-                <x-splade-input required readonly name="type_rpk.status_kepemilikan_kapal" type="text" placeholder="Status Kepemilikan Kapal" label="Status Kepemilikan Kapal" />
+                <x-splade-input required disabled name="type_rpk.bendera" type="text" placeholder="Bendera Kapal" label="Bendera Kapal" />
             </div>
             <div class="relative z-0 w-full mb-6 group">
-                <x-splade-input required readonly name="type_rpk.kapasitas_angkut" type="text" placeholder="Kapasitas Angkut" label="Kapasitas Angkut" />
+                <x-splade-input required disabled name="type_rpk.isi_kotor" type="text" placeholder="Isi Kotor" label="Isi Kotor/Bobot Mati" />
             </div>
             <div class="relative z-0 w-full mb-6 group">
-                <x-splade-input required readonly name="type_rpk.pelabuhan_pangkal" type="text" placeholder="Pelabuhan Pangkal" label="Pelabuhan Pangkal" />
+                <x-splade-input required disabled name="type_rpk.tenaga_penggerak" type="text" placeholder="Tenaga Penggerak" label="Tenaga Penggerak" />
+            </div>
+        </div>
+        <div class="grid md:grid-cols-3 md:gap-6">
+            <div class="relative z-0 w-full mb-6 group">
+                <x-splade-input required disabled name="type_rpk.status_kepemilikan_kapal" type="text" placeholder="Status Kepemilikan Kapal" label="Status Kepemilikan Kapal" />
+            </div>
+            <div class="relative z-0 w-full mb-6 group">
+                <x-splade-input required disabled name="type_rpk.kapasitas_angkut" type="text" placeholder="Kapasitas Angkut" label="Kapasitas Angkut" />
+            </div>
+            <div class="relative z-0 w-full mb-6 group">
+                <x-splade-input required disabled name="type_rpk.pelabuhan_pangkal" type="text" placeholder="Pelabuhan Pangkal" label="Pelabuhan Pangkal" />
             </div>
         </div>
         <div class="grid md:grid-cols-2 md:gap-6">
             <div class="relative z-0 w-full mb-6 group">
-                <x-splade-input required readonly name="type_rpk.urgensi" type="text" placeholder="Urgensi" label="Urgensi" />
+                <x-splade-input required disabled name="type_rpk.urgensi" type="text" placeholder="Urgensi" label="Urgensi" />
             </div>
             <div class="relative z-0 w-full mb-6 group">
-                <x-splade-input required readonly name="type_rpk.trayek" type="text" placeholder="Trayek" label="Trayek" />
+                <x-splade-input required disabled name="type_rpk.trayek" type="text" placeholder="Trayek" label="Trayek" />
             </div>
         </div>
 
@@ -104,6 +104,7 @@
         </div>
     </div>
 </div>
+
 <div class="p-4 sm:ml-64">
     <div class="bg-white p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
         <h1 class="mb-8 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">Tindak <span class="underline underline-offset-3 decoration-8 decoration-blue-400 dark:decoration-blue-600">Lanjut</span></h1>

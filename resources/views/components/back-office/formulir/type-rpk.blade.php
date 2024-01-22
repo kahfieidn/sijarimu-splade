@@ -1,36 +1,46 @@
 <div class="p-4 sm:ml-64">
     <div class="bg-white p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
-        <h1 class="mb-8 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">Formulir <span class="underline underline-offset-3 decoration-8 decoration-blue-400 dark:decoration-blue-600">Permohonan</span></h1>
-        <div class="relative z-0 w-full mb-6 group">
-            <x-splade-input disabled required name="penelitian.judul_penelitian" type="text" placeholder="Judul Penelitian Anda" label="Judul Penelitian" />
+        <h1 class="mb-8 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">Isi <span class="underline underline-offset-3 decoration-8 decoration-blue-400 dark:decoration-blue-600">Formulir Permohonan</span></h1>
+
+        <div class="grid md:grid-cols-2 md:gap-6">
+            <div class="relative z-0 w-full mb-6 group">
+                <x-splade-input required disabled name="type_rpk.nama_kapal" type="text" placeholder="Nama Kapal" label="Nama Kapal" />
+            </div>
+            <div class="relative z-0 w-full mb-6 group">
+                <x-splade-input required disabled name="type_rpk.jenis_kapal" type="text" placeholder="Jenis Kapal" label="Jenis Kapal" />
+            </div>
         </div>
         <div class="grid md:grid-cols-3 md:gap-6">
             <div class="relative z-0 w-full mb-6 group">
-                <x-splade-input disabled required name="penelitian.nim" type="text" placeholder="Nomor Induk Mahasiswa" label="NIM" />
+                <x-splade-input required disabled name="type_rpk.bendera" type="text" placeholder="Bendera Kapal" label="Bendera Kapal" />
             </div>
             <div class="relative z-0 w-full mb-6 group">
-                <x-splade-input disabled required name="penelitian.jenjang" type="text" placeholder="S1/S2/S3" label="Jenjang" />
+                <x-splade-input required disabled name="type_rpk.isi_kotor" type="text" placeholder="Isi Kotor" label="Isi Kotor/Bobot Mati" />
             </div>
             <div class="relative z-0 w-full mb-6 group">
-                <x-splade-input disabled required name="penelitian.jurusan" type="text" placeholder="Teknik Informatika" label="Jurusan" />
+                <x-splade-input required disabled name="type_rpk.tenaga_penggerak" type="text" placeholder="Tenaga Penggerak" label="Tenaga Penggerak" />
+            </div>
+        </div>
+        <div class="grid md:grid-cols-3 md:gap-6">
+            <div class="relative z-0 w-full mb-6 group">
+                <x-splade-input required disabled name="type_rpk.status_kepemilikan_kapal" type="text" placeholder="Status Kepemilikan Kapal" label="Status Kepemilikan Kapal" />
+            </div>
+            <div class="relative z-0 w-full mb-6 group">
+                <x-splade-input required disabled name="type_rpk.kapasitas_angkut" type="text" placeholder="Kapasitas Angkut" label="Kapasitas Angkut" />
+            </div>
+            <div class="relative z-0 w-full mb-6 group">
+                <x-splade-input required disabled name="type_rpk.pelabuhan_pangkal" type="text" placeholder="Pelabuhan Pangkal" label="Pelabuhan Pangkal" />
             </div>
         </div>
         <div class="grid md:grid-cols-2 md:gap-6">
             <div class="relative z-0 w-full mb-6 group">
-                <x-splade-input disabled required name="penelitian.universitas" type="text" placeholder="Universitas" label="Nama Universitas" />
+                <x-splade-input required disabled name="type_rpk.urgensi" type="text" placeholder="Urgensi" label="Urgensi" />
             </div>
             <div class="relative z-0 w-full mb-6 group">
-                <x-splade-input disabled required name="penelitian.lokasi_penelitian" type="text" placeholder="DPMPTSP Provinsi Kepri, DPMPTSP Kota.." label="Lokasi Penelitian" />
+                <x-splade-input required disabled name="type_rpk.trayek" type="text" placeholder="Trayek" label="Trayek" />
             </div>
         </div>
-        <div class="grid md:grid-cols-2 md:gap-6">
-            <div class="relative z-999 w-full mb-6 group">
-                <x-splade-input disabled required name="penelitian.waktu_awal_penelitian" date label="Waktu Awal Penelitian" />
-            </div>
-            <div class="relative z-999 w-full mb-6 group">
-                <x-splade-input disabled required name="penelitian.waktu_akhir_penelitian" date label="Waktu Akhir Penelitian" />
-            </div>
-        </div>
+
     </div>
 </div>
 
@@ -97,16 +107,21 @@
 
 <div class="p-4 sm:ml-64">
     <div class="bg-white p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
-        <h1 class="mb-8 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">Tindak <span class="underline underline-offset-3 decoration-8 decoration-blue-400 dark:decoration-blue-600">Lanjut</span></h1>
+        <h1 class="mb-8 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">Surat <span class="underline underline-offset-3 decoration-8 decoration-blue-400 dark:decoration-blue-600">Rekomendasi</span></h1>
+            <x-splade-file accept="application/pdf" filepond max-size="2MB" class="block mb-2 text-lg font-medium text-gray-900 dark:text-white" name="surat_rekomendasi" filepond />
+    </div>
+</div>
 
+<div class="p-4 sm:ml-64">
+    <div class="bg-white p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
+        <h1 class="mb-8 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">Tindak <span class="underline underline-offset-3 decoration-8 decoration-blue-400 dark:decoration-blue-600">Lanjut</span></h1>
         <div class="relative z-999 w-full mb-6 group">
             <x-splade-select @input="data.status_permohonan_id = form.status_permohonan_id" required choices label="Status" name="status_permohonan_id">
                 <option value="" disabled>Pilih salah satu...</option>
                 <option value="1">Ditolak</option>
                 <option value="2">Revisi</option>
-                <option value="5">Sudah Lengkap (Teruskan Ke Back Office (2))</option>
+                <option value="6">Sudah Lengkap (Teruskan Ke OPD Teknis {{$pemohon->perizinan->sektor->nama_sektor}})</option>
             </x-splade-select>
-
         </div>
         <div v-show="form.status_permohonan_id == 1 || form.status_permohonan_id == 2" class="relative z-0 w-full mb-6 group">
             <x-splade-wysiwyg label="Tambahkan Catatan Ke Pemohon (Opsional)" class="mb-8" name="catatan" />

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Tables\BackOffice;
+namespace App\Tables\BackOffice2;
 
 use App\Models\Permohonan;
 use Illuminate\Http\Request;
@@ -36,7 +36,7 @@ class Permohonans extends AbstractTable
      */
     public function for()
     {
-        return Permohonan::query()->where('status_permohonan_id', 4);
+        return Permohonan::query()->where('status_permohonan_id', 5);
     }
 
     /**
@@ -55,9 +55,8 @@ class Permohonans extends AbstractTable
             ->column(key: 'perizinan.sektor.nama_sektor', sortable: true, label: 'Sektor')
             ->column(key: 'created_at', sortable: true, label: 'Tanggal Pengajuan', as: fn ($created_at) => $created_at->isoFormat('D MMMM Y'))
             ->column(key: 'status_permohonan.nama_status', sortable: true, label: 'Status Permohonan')
-            ->rowLink(fn (Permohonan $pemohon) => route('back-office.show', $pemohon->id))
+            ->rowLink(fn (Permohonan $pemohon) => route('back-office-2.show', $pemohon->id))
             ->paginate(5);
-
 
         // ->searchInput()
         // ->selectFilter()

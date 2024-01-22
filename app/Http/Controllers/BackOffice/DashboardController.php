@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\BackOffice;
 
+use Carbon\Carbon;
+use App\Models\Profile;
 use App\Models\Perizinan;
 use App\Models\Permohonan;
 use App\Models\Persyaratan;
@@ -9,6 +11,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Tables\BackOffice\Permohonans;
 use ProtoneMedia\Splade\Facades\Toast;
+use Illuminate\Support\Facades\Storage;
 
 class DashboardController extends Controller
 {
@@ -44,56 +47,26 @@ class DashboardController extends Controller
      */
     public function show(Permohonan $pemohon)
     {
-        //
         $berkas = $pemohon->berkas->first();
         $perizinan = Perizinan::find($pemohon->perizinan_id);
         $persyaratan = Persyaratan::where('perizinan_id', $pemohon->perizinan->id)->get();
         $status_berkas = $pemohon->status_berkas->first();
         $user = $pemohon->user()->first();
+
         //Custom Perizinan
-        if ($pemohon->perizinan_id == 1) {
-            $penelitian = $pemohon->penelitian()->first();
-            $nomor_izin = '00' . $penelitian->id . '/2n.1' . '/DPMPTSP' . '/2024';
+        if ($pemohon->perizinan_id == 4) {
+            $profile = Profile::where('user_id', $pemohon->user_id)->first();
+            $type_rpk = $pemohon->type_rpk()->first();
             return view('back-office.show', [
-                'nomor_izin' => $nomor_izin,
                 'pemohon' => $pemohon,
                 'berkas' => $berkas,
                 'persyaratan' => $persyaratan,
                 'status_berkas' => $status_berkas,
                 'perizinan' => $perizinan,
                 'berkas' => $berkas,
-                'penelitian' => $penelitian,
                 'user' => $user,
-            ]);
-        } else if ($pemohon->perizinan_id == 2) {
-            $penelitian = $pemohon->penelitian()->first();
-            $nomor_izin = '00' . $penelitian->id . '/2n.1' . '/DPMPTSP' . '/2024';
-            return view('back-office.show', [
-                'nomor_izin' => $nomor_izin,
-                'pemohon' => $pemohon,
-                'berkas' => $berkas,
-                'persyaratan' => $persyaratan,
-                'status_berkas' => $status_berkas,
-                'perizinan' => $perizinan,
-                'berkas' => $berkas,
-                'penelitian' => $penelitian,
-                'user' => $user,
-            ]);
-        } else if ($pemohon->perizinan_id == 3) {
-            $penelitian = $pemohon->penelitian()->first();
-            $nomor_izin = '00' . $penelitian->id . '/2n.1' . '/DPMPTSP' . '/2024';
-            $peneliti = $pemohon->peneliti()->get();
-            return view('back-office.show', [
-                'pemohon' => $pemohon,
-                'nomor_izin' => $nomor_izin,
-                'berkas' => $berkas,
-                'persyaratan' => $persyaratan,
-                'status_berkas' => $status_berkas,
-                'perizinan' => $perizinan,
-                'berkas' => $berkas,
-                'penelitian' => $penelitian,
-                'peneliti' => $peneliti,
-                'user' => $user,
+                'profile' => $profile,
+                'type_rpk' => $type_rpk,
             ]);
         }
     }
@@ -111,33 +84,18 @@ class DashboardController extends Controller
      */
     public function update(Request $request, Permohonan $pemohon)
     {
+        $currentMonthYear = Carbon::now()->format('Y-F');
+        $berkas = $request->file('surat_rekomendasi');
+        $storageDirectory = 'public/docs/' . $currentMonthYear;
+        $fileName = $berkas->hashName();
+        $berkas->storeAs($storageDirectory, $fileName);
+        $berkasRequest['surat_rekomendasi'] = $currentMonthYear . '/' . $fileName;
+
         // Custom Perizinan
-        if ($pemohon->perizinan->id == 1) {
+        if ($pemohon->perizinan->id == 4) {
             $pemohon->update([
                 'status_permohonan_id' => $request->status_permohonan_id,
                 'catatan' => $request->catatan,
-            ]);
-            $pemohon->penelitian()->update([
-                'nomor' => $request->nomor_izin,
-                'menimbang' => $request->penelitian['menimbang'],
-            ]);
-        } else if ($pemohon->perizinan->id == 2) {
-            $pemohon->update([
-                'status_permohonan_id' => $request->status_permohonan_id,
-                'catatan' => $request->catatan,
-            ]);
-            $pemohon->penelitian()->update([
-                'nomor' => $request->nomor_izin,
-                'menimbang' => $request->penelitian['menimbang'],
-            ]);
-        } else if($pemohon->perizinan->id == 3){
-            $pemohon->update([
-                'status_permohonan_id' => $request->status_permohonan_id,
-                'catatan' => $request->catatan,
-            ]);
-            $pemohon->penelitian()->update([
-                'nomor' => $request->nomor_izin,
-                'menimbang' => $request->penelitian['menimbang'],
             ]);
         }
 

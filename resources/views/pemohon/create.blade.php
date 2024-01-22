@@ -3,7 +3,7 @@
         {{ __('Pemohon') }}
     </x-slot>
 
-    // Alur Penelitian
+    <!-- Alur Penelitian -->
     @if($perizinan->id == 1 || $perizinan->id == 2 || $perizinan->id == 3)
     <x-splade-form :default="['perizinan' => $perizinan, 'user' => $user]" confirm="Konfirmasi Submit Permohonan" confirm-text="Apakah anda yakin sudah memastikan seluruh berkas sesuai?" confirm-button="Ya, Saya Yakin!" cancel-button="Tidak, Masih ada yang salah!" action="{{ route('pemohon.store') }}" method="post">
         <div v-if="{{$perizinan->id}} == 1">
@@ -33,7 +33,7 @@
             </div>
         </div>
     </x-splade-form>
-    // Alur Perizinan
+    <!-- Alur Perizinan -->
     @elseif($profile == null)
     <x-splade-form :default="['perizinan' => $perizinan, 'user' => $user]" action="{{ route('pemohon.profile.store') }}" method="post">
         @include('components.formulir.profile-usaha')

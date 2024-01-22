@@ -32,7 +32,7 @@ class PerizinanSeeder extends Seeder
             'status' => 'active',
         ]);
         \App\Models\Perizinan::create([
-            'nama_perizinan' => 'Persetujuan Rencana Pengoperasian Kapal',
+            'nama_perizinan' => 'Persetujuan Rencana Pengoperasian Kapal pada Trayek Tidak Tetap dan Tidak Teratur Angkutan Laut Dalam Negeri',
             'sektor_id' => '2',
             'jenis_izin_id' => '1',
             'status' => 'active',
