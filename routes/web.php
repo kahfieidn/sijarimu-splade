@@ -58,6 +58,11 @@ Route::middleware('splade')->group(function () {
                 'back-office-2' => 'pemohon'
             ]);
         });
+        Route::group(['middleware' => ['role:opd']], function () {
+            Route::resource('/opd', App\Http\Controllers\Opd\DashboardController::class)->parameters([
+                'opd' => 'pemohon'
+            ]);
+        });
         Route::group(['middleware' => ['role:verifikator_1']], function () {
             Route::resource('/verifikator-1', App\Http\Controllers\Verifikator_1\DashboardController::class)->parameters([
                 'verifikator-1' => 'pemohon'
