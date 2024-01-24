@@ -32,9 +32,6 @@ jobs:
     - name: Generate storage link
       run: php artisan storage:link
 
-    - name: Generate symlink
-      run: ln -s /var/www/vhosts/kepri.pro/beta-sijarimu.kepri.pro/storage/app/public /var/www/vhosts/kepri.pro/beta-sijarimu.kepri.pro/public/storage
-
     - name: Directory Permissions
       run: chmod -R 777 storage bootstrap/cache
 
