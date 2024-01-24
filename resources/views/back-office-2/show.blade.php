@@ -34,6 +34,7 @@
     <x-splade-data remember="some-key" local-storage>
         <x-splade-form :default="['user' => $user,'type_rpk' => $type_rpk, 'pemohon' => $pemohon]" action="{{ route('back-office-2.update', $pemohon->id) }}" confirm="Konfirmasi Submit Permohonan" confirm-text="Apakah anda yakin sudah memastikan seluruh berkas sesuai?" confirm-button="Ya, Saya Yakin!" cancel-button="Tidak, Masih ada yang salah!" method="PATCH">
             <x-splade-input readonly class="hidden" name="pemohon.id" />
+            @include('components/partials/profile')
             @include('components/back-office-2/formulir/type-rpk')
         </x-splade-form>
     </x-splade-data>
