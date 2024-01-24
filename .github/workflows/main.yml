@@ -1,7 +1,6 @@
-
 on:
   push:
-    branches: [ 'deployment' ]
+    branches: [ 'main' ]
 
 name: 🚀 Deployment
 jobs:
