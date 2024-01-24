@@ -14,11 +14,9 @@ jobs:
     - name: Install Dependencies
       run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
 
-    - name: Deploy ENV to Development
-        env:
-          DOT_ENV: ${{ secrets.DOT_ENV_PRODUCTION }}
-        run: php vendor/bin/dep deploy NAMA_REMOTE_HOST branch=master
-
+    - name: Create env file
+      run: echo "${{ secrets.DOT_ENV_PRODUCTION }}" > .env
+      
     - name: Config Clearing
       run: php artisan config:clear
 
