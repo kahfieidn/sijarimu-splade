@@ -29,12 +29,12 @@ jobs:
     - name: Generate App Key
       run: php artisan key:generate
 
+    - name: Get storage link
+      run: cd beta-sijarimu.kepri.pro
+
     - name: Generate storage link
       run: php artisan storage:link
       
-    - name: Directory Permissions
-      run: chmod -R 777 public/storage
-
     - name: Directory Permissions
       run: chmod -R 777 storage bootstrap/cache
 
