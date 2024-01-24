@@ -28,10 +28,7 @@ jobs:
 
     - name: Generate App Key
       run: php artisan key:generate
-
-    - name: Get storage link
-      run: cd beta-sijarimu.kepri.pro
-
+      
     - name: Generate storage link
       run: php artisan storage:link
       
