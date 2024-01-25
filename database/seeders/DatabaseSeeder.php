@@ -162,5 +162,6 @@ class DatabaseSeeder extends Seeder
         $this->call(PersyaratanSeeder::class);
         $this->call(StatusPermohonanSeeder::class);
         $this->call(PermohonanSeeder::class);
+        $this->call(OpdSeeder::class);
     }
 }

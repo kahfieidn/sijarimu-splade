@@ -107,7 +107,10 @@ class DashboardController extends Controller
             $pemohon->update([
                 'status_permohonan_id' => $request->status_permohonan_id,
                 'catatan' => $request->catatan,
-                'bap' => $bapRequest[$fieldName]
+                'bap' => $bapRequest[$fieldName],
+            ]);
+            $pemohon->type_rpk()->update([
+                'nomor_rpk_rekom_teknis' => $request->type_rpk['nomor_rpk_rekom_teknis'],
             ]);
         }
 

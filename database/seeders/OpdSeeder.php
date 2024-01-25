@@ -12,6 +12,10 @@ class OpdSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        \App\Models\Opd::create([
+            'user_id' => '4',
+            'sektor_id' => '2',
+            'role_id' => '4',
+        ]);
     }
 }
