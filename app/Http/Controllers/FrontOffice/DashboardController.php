@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers\FrontOffice;
 
+use App\Models\User;
+use App\Tables\Users;
 use App\Models\Profile;
 use App\Models\Perizinan;
 use App\Models\Permohonan;
 use App\Models\Persyaratan;
+use App\Tables\Persyaratans;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use ProtoneMedia\Splade\SpladeTable;
 use ProtoneMedia\Splade\Facades\Toast;
 use App\Tables\FrontOffice\Permohonans;
 
@@ -16,6 +20,7 @@ class DashboardController extends Controller
     /**
      * Display a listing of the resource.
      */
+
     public function index()
     {
         //
@@ -66,6 +71,7 @@ class DashboardController extends Controller
             ]);
         } else if ($pemohon->perizinan_id == 2) {
             $penelitian = $pemohon->penelitian()->first();
+            $users = User::all();
             return view('front-office.show', [
                 'pemohon' => $pemohon,
                 'berkas' => $berkas,
@@ -75,8 +81,17 @@ class DashboardController extends Controller
                 'berkas' => $berkas,
                 'penelitian' => $penelitian,
                 'user' => $user,
+                'users' => SpladeTable::for(Persyaratan::query()->where('perizinan_id', $pemohon->perizinan_id))
+                    ->column('nama_persyaratan', searchable: true)
+                    ->column('id')
+                    ->column('perizinan_id')
+                    ->column('status')
+                    ->column('created_at')
+                    ->column('updated_at'),
+                'persyaratans' => Persyaratans::class
+
             ]);
-        } else if($pemohon->perizinan_id == 3){
+        } else if ($pemohon->perizinan_id == 3) {
             $penelitian = $pemohon->penelitian()->first();
             $peneliti = $pemohon->peneliti()->get();
             return view('front-office.show', [
@@ -90,7 +105,7 @@ class DashboardController extends Controller
                 'peneliti' => $peneliti,
                 'user' => $user,
             ]);
-        } else if($pemohon->perizinan_id == 4){
+        } else if ($pemohon->perizinan_id == 4) {
             $profile = Profile::where('user_id', $pemohon->user_id)->first();
             $type_rpk = $pemohon->type_rpk()->first();
             return view('front-office.show', [

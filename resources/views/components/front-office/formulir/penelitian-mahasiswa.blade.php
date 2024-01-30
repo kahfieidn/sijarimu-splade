@@ -101,7 +101,6 @@
                                 <x-splade-radio required name="status_berkas.field_{{$key+1}}" value="terima" label="Terima" />
                                 <x-splade-radio name="status_berkas.field_{{$key+1}}" value="tolak" label="Tolak" />
                             </x-splade-group>
-
                         </td>
                         <?php $num_field++; ?>
                     </tr>
