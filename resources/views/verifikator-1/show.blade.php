@@ -7,6 +7,7 @@
     <x-splade-data remember="some-key" local-storage>
         <x-splade-form :default="['user' => $user,'status_permohonan_id' => '' ,'penelitian' => $penelitian, 'pemohon' => $pemohon]" action="{{ route('verifikator-1.update', $pemohon->id) }}" confirm="Konfirmasi Submit Permohonan" confirm-text="Apakah anda yakin sudah memastikan seluruh berkas sesuai?" confirm-button="Ya, Saya Yakin!" cancel-button="Tidak, Masih ada yang salah!" method="PATCH">
             <x-splade-input readonly class="hidden" name="pemohon.id" />
+            @include('components/partials/profile')
             @include('components/verifikator-1/formulir/penelitian-mahasiswa')
         </x-splade-form>
     </x-splade-data>
@@ -16,6 +17,7 @@
     <x-splade-data remember="some-key" local-storage>
         <x-splade-form :default="['user' => $user,'penelitian' => $penelitian,'pemohon' => $pemohon]" action="{{ route('verifikator-1.update', $pemohon->id) }}" confirm="Konfirmasi Submit Permohonan" confirm-text="Apakah anda yakin sudah memastikan seluruh berkas sesuai?" confirm-button="Ya, Saya Yakin!" cancel-button="Tidak, Masih ada yang salah!" method="PATCH">
             <x-splade-input readonly class="hidden" name="pemohon.id" />
+            @include('components/partials/profile')
             @include('components/verifikator-1/formulir/penelitian-perorangan')
         </x-splade-form>
     </x-splade-data>
@@ -25,6 +27,7 @@
     <x-splade-data remember="some-key" local-storage>
         <x-splade-form :default="['user' => $user,'penelitian' => $penelitian, 'pemohon' => $pemohon, 'peneliti' => $peneliti]" action="{{ route('verifikator-1.update', $pemohon->id) }}" confirm="Konfirmasi Submit Permohonan" confirm-text="Apakah anda yakin sudah memastikan seluruh berkas sesuai?" confirm-button="Ya, Saya Yakin!" cancel-button="Tidak, Masih ada yang salah!" method="PATCH">
             <x-splade-input readonly class="hidden" name="pemohon.id" />
+            @include('components/partials/profile')
             @include('components/verifikator-1/formulir/penelitian-lembaga')
         </x-splade-form>
     </x-splade-data>

@@ -25,9 +25,6 @@
     <div class="bg-white p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
         <h1 class="mb-8 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">Verifikasi <span class="underline underline-offset-3 decoration-8 decoration-blue-400 dark:decoration-blue-600">Berkas Permohonan</span></h1>
 
-
-
-
         <?php
         $num_field = 1;
         ?>
@@ -35,9 +32,9 @@
         <?php
         $vars = 'field_' . $num_field;
         ?>
-        <div class="grid mb-4 grid-cols-1 gap-6 sm:grid-cols-5">
+        <div class="grid p-2 mb-1 mt-1 grid-cols-1 gap-6 sm:grid-cols-5">
             <div class="col-span-1 sm:col-span-3">
-                <h6 class="mb-2 text-sm font-bold dark:text-white">{{ $key + 1 }}. {{$persyaratan->nama_persyaratan}}
+                <h6 class="text-sm font-bold dark:text-white">{{ $key + 1 }}. {{$persyaratan->nama_persyaratan}}
                     @if($status_berkas->$vars == 'terima')
                     <span class="bg-blue-100 text-blue-800 text-1xl font-semibold mb-1 mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-1">Terima</span>
                     @elseif($status_berkas->$vars == 'tolak')
@@ -80,6 +77,7 @@
                 </x-splade-group>
             </div>
         </div>
+        <hr class="h-px my-2 bg-gray-200 border-0 dark:bg-gray-500">
         <?php $num_field++; ?>
         @endforeach
 
