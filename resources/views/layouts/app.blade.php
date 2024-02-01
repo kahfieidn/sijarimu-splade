@@ -89,30 +89,21 @@
                                 </linearGradient>
                             </defs>
                         </svg>
-                        Flowbite
+                        Sijarimu
                     </a>
-                    <p class="my-6 text-gray-500 dark:text-gray-400">Open-source library of over 400+ web components and interactive elements built for better web.</p>
+                    <p class="my-6 text-gray-500 dark:text-gray-400">Aplikasi Perizinan Online Non OSS DPMPTSP Provinsi Kepulauan Riau.</p>
                     <ul class="flex flex-wrap justify-center items-center mb-6 text-gray-900 dark:text-white">
                         <li>
-                            <a href="#" class="mr-4 hover:underline md:mr-6 ">About</a>
+                            <Link away href="https://dpmptsp.kepriprov.go.id/" class="mr-4 hover:underline md:mr-6">Website</a>
                         </li>
                         <li>
-                            <a href="#" class="mr-4 hover:underline md:mr-6">Premium</a>
+                            <Link away href="https://www.instagram.com/dpmptspprovinsikepri/" class="mr-4 hover:underline md:mr-6 ">Instagram</Link>
                         </li>
                         <li>
-                            <a href="#" class="mr-4 hover:underline md:mr-6 ">Campaigns</a>
+                            <Link away href="https://www.facebook.com/people/Dpmptsp-Provinsi-Kepulauan-Riau/100091329853958/?refid=52" class="mr-4 hover:underline md:mr-6">Facebook</Link>
                         </li>
                         <li>
-                            <a href="#" class="mr-4 hover:underline md:mr-6">Blog</a>
-                        </li>
-                        <li>
-                            <a href="#" class="mr-4 hover:underline md:mr-6">Affiliate Program</a>
-                        </li>
-                        <li>
-                            <a href="#" class="mr-4 hover:underline md:mr-6">FAQs</a>
-                        </li>
-                        <li>
-                            <a href="#" class="mr-4 hover:underline md:mr-6">Contact</a>
+                            <Link away href="https://api.whatsapp.com/send?phone=628117772197&text=ini%20khusus%20layanan%20konsultasi%20DPMPTSP%20Kepri" class="mr-4 hover:underline md:mr-6 ">Pengaduan Layanan</Link>
                         </li>
                     </ul>
                     <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2021-2022 <a href="#" class="hover:underline">Sijarimu™</a>. All Rights Reserved.</span>
