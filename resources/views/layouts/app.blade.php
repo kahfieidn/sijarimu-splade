@@ -94,7 +94,7 @@
                     <p class="my-6 text-gray-500 dark:text-gray-400">Aplikasi Perizinan Online Non OSS DPMPTSP Provinsi Kepulauan Riau.</p>
                     <ul class="flex flex-wrap justify-center items-center mb-6 text-gray-900 dark:text-white">
                         <li>
-                            <Link away href="https://dpmptsp.kepriprov.go.id/" class="mr-4 hover:underline md:mr-6">Website</a>
+                            <Link away href="https://dpmptsp.kepriprov.go.id/" class="mr-4 hover:underline md:mr-6">Website</Link>
                         </li>
                         <li>
                             <Link away href="https://www.instagram.com/dpmptspprovinsikepri/" class="mr-4 hover:underline md:mr-6 ">Instagram</Link>
