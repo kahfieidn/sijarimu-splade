@@ -22,11 +22,9 @@ class TypeRpk extends Model
         'pelabuhan_pangkal',
         'trayek',
         'urgensi',
-        'nomor_rpk',
-        'nomor_rpk_surat_pemohon',
         'nomor_siualper',
+        'nomor_rpk_surat_pemohon',
         'nomor_rpk_sebelumnya',
-        'nomor_rpk_rekom_teknis',
     ];
 
     public function type_rpkable()

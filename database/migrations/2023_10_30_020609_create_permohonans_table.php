@@ -21,6 +21,8 @@ return new class extends Migration
             $table->string('surat_rekomendasi')->nullable();
             $table->string('bap')->nullable();
             $table->string('izin_terbit')->nullable();
+            $table->string('no_izin')->nullable();
+            $table->string('no_rekom')->nullable();
             $table->foreignId('front_office')->nullable()->references('id')->on('users');
             $table->foreignId('back_office')->nullable()->references('id')->on('users');
             $table->foreignId('opd_teknis')->nullable()->references('id')->on('users');

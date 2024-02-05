@@ -25,11 +25,9 @@ return new class extends Migration
             $table->string('pelabuhan_pangkal')->nullable();
             $table->string('trayek')->nullable();
             $table->string('urgensi')->nullable();
-            $table->string('nomor_rpk')->nullable();
-            $table->string('nomor_rpk_surat_pemohon')->nullable();
             $table->string('nomor_siualper')->nullable();
+            $table->string('nomor_rpk_surat_pemohon')->nullable();
             $table->string('nomor_rpk_sebelumnya')->nullable();
-            $table->string('nomor_rpk_rekom_teknis')->nullable();
             $table->timestamps();
         });
     }

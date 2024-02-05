@@ -35,12 +35,12 @@
     </x-splade-form>
     <!-- Alur Perizinan -->
     @elseif($profile == null)
-    <x-splade-form :default="['perizinan' => $perizinan, 'user' => $user]" action="{{ route('pemohon.profile.store') }}" method="post">
-        @include('components.formulir.profile-usaha')
+    <x-splade-form action="{{ route('pemohon.profile.store') }}" method="post">
+        @include('components.editFormulir.profile-usaha')
     </x-splade-form>
     @else
     <x-splade-form :default="['perizinan' => $perizinan, 'user' => $user, 'profile' => $profile]" confirm="Konfirmasi Submit Permohonan" confirm-text="Apakah anda yakin sudah memastikan seluruh berkas sesuai?" confirm-button="Ya, Saya Yakin!" cancel-button="Tidak, Masih ada yang salah!" action="{{ route('pemohon.store') }}" method="post">
-        <div v-if="{{$perizinan->id}} == 4">
+        <div v-if="{{ $perizinan->id }} == 4">
             @include('components.editFormulir.profile-usaha')
             @include('components.formulir.type-rpk')
         </div>

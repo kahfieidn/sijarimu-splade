@@ -38,14 +38,15 @@ class DashboardController extends Controller
     }
 
     public function profile(Request $request)
-    {
+    {  
+
         Profile::create([
             'user_id' => Auth::id(),
-            'npwp' => $request->npwp,
-            'perusahaan' => $request->perusahaan,
-            'alamat' => $request->alamat,
-            'domisili' => $request->domisili,
-            'provinsi_domisili' => $request->provinsi_domisili,
+            'npwp' => $request->profile['npwp'],
+            'perusahaan' => $request->profile['perusahaan'],
+            'alamat' => $request->profile['alamat'],
+            'domisili' => $request->profile['domisili'],
+            'provinsi_domisili' => $request->profile['provinsi_domisili'],
         ]);
 
         return redirect()->back();

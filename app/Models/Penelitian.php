@@ -13,7 +13,6 @@ class Penelitian extends Model
     protected $fillable = [
         'penelitianable_id',
         'penelitianable_type',
-        'nomor',
         'menimbang',
         'nim',
         'universitas',

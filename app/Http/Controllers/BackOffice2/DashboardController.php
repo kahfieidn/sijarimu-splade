@@ -53,9 +53,9 @@ class DashboardController extends Controller
         //Custom Perizinan
         if ($pemohon->perizinan_id == 1) {
             $penelitian = $pemohon->penelitian()->first();
-            $nomor_izin = '00' . $penelitian->id . '/2n.1' . '/DPMPTSP' . '/2024';
+            $no_izin = '00' . $penelitian->id . '/2n.1' . '/DPMPTSP' . '/2024';
             return view('back-office-2.show', [
-                'nomor_izin' => $nomor_izin,
+                'no_izin' => $no_izin,
                 'pemohon' => $pemohon,
                 'berkas' => $berkas,
                 'persyaratan' => $persyaratan,
@@ -67,9 +67,9 @@ class DashboardController extends Controller
             ]);
         } else if ($pemohon->perizinan_id == 2) {
             $penelitian = $pemohon->penelitian()->first();
-            $nomor_izin = '00' . $penelitian->id . '/2n.1' . '/DPMPTSP' . '/2024';
+            $no_izin = '00' . $penelitian->id . '/2n.1' . '/DPMPTSP' . '/2024';
             return view('back-office-2.show', [
-                'nomor_izin' => $nomor_izin,
+                'no_izin' => $no_izin,
                 'pemohon' => $pemohon,
                 'berkas' => $berkas,
                 'persyaratan' => $persyaratan,
@@ -81,11 +81,11 @@ class DashboardController extends Controller
             ]);
         } else if ($pemohon->perizinan_id == 3) {
             $penelitian = $pemohon->penelitian()->first();
-            $nomor_izin = '00' . $penelitian->id . '/2n.1' . '/DPMPTSP' . '/2024';
+            $no_izin = '00' . $penelitian->id . '/2n.1' . '/DPMPTSP' . '/2024';
             $peneliti = $pemohon->peneliti()->get();
             return view('back-office-2.show', [
                 'pemohon' => $pemohon,
-                'nomor_izin' => $nomor_izin,
+                'no_izin' => $no_izin,
                 'berkas' => $berkas,
                 'persyaratan' => $persyaratan,
                 'status_berkas' => $status_berkas,
@@ -130,27 +130,27 @@ class DashboardController extends Controller
             $pemohon->update([
                 'status_permohonan_id' => $request->status_permohonan_id,
                 'catatan' => $request->catatan,
+                'no_izin' => $request->no_izin
             ]);
             $pemohon->penelitian()->update([
-                'nomor' => $request->nomor_izin,
                 'menimbang' => $request->penelitian['menimbang'],
             ]);
         } else if ($pemohon->perizinan->id == 2) {
             $pemohon->update([
                 'status_permohonan_id' => $request->status_permohonan_id,
                 'catatan' => $request->catatan,
+                'no_izin' => $request->no_izin
             ]);
             $pemohon->penelitian()->update([
-                'nomor' => $request->nomor_izin,
                 'menimbang' => $request->penelitian['menimbang'],
             ]);
         } else if($pemohon->perizinan->id == 3){
             $pemohon->update([
                 'status_permohonan_id' => $request->status_permohonan_id,
                 'catatan' => $request->catatan,
+                'no_izin' => $request->no_izin
             ]);
             $pemohon->penelitian()->update([
-                'nomor' => $request->nomor_izin,
                 'menimbang' => $request->penelitian['menimbang'],
             ]);
         }

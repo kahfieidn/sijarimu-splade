@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->integer('penelitianable_id');
             $table->string('penelitianable_type');
-            $table->string('nomor')->nullable();
             $table->string('menimbang')->nullable();
             $table->string('nim')->nullable();
             $table->string('universitas')->nullable();

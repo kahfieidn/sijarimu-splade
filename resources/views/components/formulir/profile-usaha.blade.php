@@ -33,11 +33,9 @@
             </div>
         </div>
 
-        @if($profile == null)
         <x-splade-group>
             <x-splade-submit class="mt-3 py-2" label="Simpan & Lanjutkan" />
         </x-splade-group>
-        @endif
 
     </div>
 </div>

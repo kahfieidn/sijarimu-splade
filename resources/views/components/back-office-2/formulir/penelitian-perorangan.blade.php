@@ -86,7 +86,7 @@
         <h1 class="mb-8 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">Konfigurasi <span class="underline underline-offset-3 decoration-8 decoration-blue-400 dark:decoration-blue-600">Draft Izin</span></h1>
         <div class="grid md:grid-cols-2 md:gap-6">
             <div class="relative z-0 w-full mb-6 group">
-                <x-splade-input readonly required name="nomor_izin" type="text" placeholder="Nomor Izin" label="Nomor Izin" />
+                <x-splade-input readonly required name="no_izin" type="text" placeholder="Nomor Izin" label="Nomor Izin" />
             </div>
             <div class="relative z-0 w-full mb-6 group">
                 <x-splade-input v-if="form.status_permohonan_id == 7" name="penelitian.menimbang" type="text" placeholder="Kementerian Pendidikan, Kebudayaan, Riset dan Teknologi.." label="Menimbang" required />

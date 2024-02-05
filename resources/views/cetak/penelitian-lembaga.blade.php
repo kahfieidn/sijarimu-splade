@@ -36,7 +36,7 @@
             </tr>
         </table>
         <p class="c48"><span class="c58">SURAT KETERANGAN PENELITIAN</span></p>
-        <p class="c84"><span class="c1">Nomor : {{$penelitians->nomor}}</span></p>
+        <p class="c84"><span class="c1">Nomor : {{$pemohon->no_izin}}</span></p>
         <p class="c11"><span class="c13"></span></p>
         <a id="t.db85d138772f5d9d8f964e846b407e39005add28"></a><a id="t.1"></a>
         <table class="c39">

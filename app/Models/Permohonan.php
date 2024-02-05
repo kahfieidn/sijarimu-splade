@@ -20,6 +20,8 @@ class Permohonan extends Model
         'surat_rekomendasi',
         'bap',
         'izin_terbit',
+        'no_izin',
+        'no_rekom',
         'front_office',
         'back_office',
         'opd_teknis',
