@@ -28,7 +28,7 @@ Route::middleware('splade')->group(function () {
     Route::spladeUploads();
 
     Route::get('/', function () {
-        return redirect('/login');
+        return view('welcome');
     });
 
     Route::middleware('auth')->group(function () {
@@ -74,6 +74,11 @@ Route::middleware('splade')->group(function () {
         Route::group(['middleware' => ['role:kepala_dinas']], function () {
             Route::resource('/kepala-dinas', App\Http\Controllers\KepalaDinas\DashboardController::class)->parameters([
                 'kepala-dinas' => 'pemohon'
+            ]);
+        });
+        Route::group(['middleware' => ['role:admin']], function () {
+            Route::resource('/admin', App\Http\Controllers\Admin\DashboardController::class)->parameters([
+                'admin' => 'pemohon'
             ]);
         });
     });
