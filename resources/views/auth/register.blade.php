@@ -11,7 +11,7 @@
                     <x-splade-textarea name="alamat" autosize label="Alamat lengkap" required />
                 </div>
                 <div class="grid md:grid-cols-2 md:gap-6">
-                    <div class="relative z-0 w-full group">
+                    <div class="relative z-0 w-full mb-6 group">
                         <x-splade-input id="nik" name="nik" :label="__('NIK')" required />
                     </div>
                     <div class="relative z-0 w-full group">
