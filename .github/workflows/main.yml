@@ -11,6 +11,9 @@ jobs:
     - name: 🚚 Get latest code
       uses: actions/checkout@v2
 
+    - name: Composer update
+      uses: composer update
+
     - name: Install Dependencies
       run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
 
