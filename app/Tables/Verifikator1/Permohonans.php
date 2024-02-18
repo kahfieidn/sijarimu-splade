@@ -16,7 +16,7 @@ class Permohonans extends AbstractTable
      */
     public function __construct()
     {
-        //
+        
     }
 
     /**
