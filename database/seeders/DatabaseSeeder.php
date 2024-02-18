@@ -20,86 +20,97 @@ class DatabaseSeeder extends Seeder
             'nik' => 'Pemohon',
             'nomor_handphone' => 'Pemohon',
             'name' => 'Pemohon',
+            'alamat' => 'default',
             'email' => 'pemohon@gmail.com',
             'password' => bcrypt('jika12345'),
         ]);
-
+        
         \App\Models\User::create([
             'nik' => 'Front Office',
             'nomor_handphone' => 'Front Office',
             'name' => 'Front Office',
+            'alamat' => 'default',
             'email' => 'front@gmail.com',
             'password' => bcrypt('jika12345'),
         ]);
-
+        
         \App\Models\User::create([
             'nik' => 'Back Office',
             'nomor_handphone' => 'Back Office',
             'name' => 'Back Office',
+            'alamat' => 'default',
             'email' => 'back@gmail.com',
             'password' => bcrypt('jika12345'),
         ]);
-
+        
         \App\Models\User::create([
             'nik' => 'OPD',
             'nomor_handphone' => 'OPD',
             'name' => 'OPD',
+            'alamat' => 'default',
             'email' => 'opd@gmail.com',
             'password' => bcrypt('jika12345'),
         ]);
-
+        
         \App\Models\User::create([
             'nik' => 'Verifikator 1',
             'nomor_handphone' => 'Verifikator 1',
             'name' => 'Verifikator 1',
+            'alamat' => 'default',
             'email' => 'verifikator-1@gmail.com',
             'password' => bcrypt('jika12345'),
         ]);
-
+        
         \App\Models\User::create([
             'nik' => 'Verifikator 2',
             'nomor_handphone' => 'Verifikator 2',
             'name' => 'Verifikator 2',
+            'alamat' => 'default',
             'email' => 'verifikator-2@gmail.com',
             'password' => bcrypt('jika12345'),
         ]);
-
+        
         \App\Models\User::create([
             'nik' => 'Kepala Dinas',
             'nomor_handphone' => 'Kepala Dinas',
             'name' => 'Kepala Dinas',
+            'alamat' => 'default',
             'email' => 'kadis@gmail.com',
             'password' => bcrypt('jika12345'),
         ]);
-
+        
         \App\Models\User::create([
             'nik' => 'Admin',
             'nomor_handphone' => 'Admin',
             'name' => 'Admin',
+            'alamat' => 'default',
             'email' => 'admin@gmail.com',
             'password' => bcrypt('jika12345'),
         ]);
-
+        
         \App\Models\User::create([
             'nik' => 'Admin 1',
             'nomor_handphone' => 'Admin 1',
             'name' => 'Admin 1',
+            'alamat' => 'default',
             'email' => 'admin1@gmail.com',
             'password' => bcrypt('jika12345'),
         ]);
-
+        
         \App\Models\User::create([
             'nik' => 'Admin 2',
             'nomor_handphone' => 'Admin 2',
             'name' => 'Admin 2',
+            'alamat' => 'default',
             'email' => 'admin2@gmail.com',
             'password' => bcrypt('jika12345'),
         ]);
-
+        
         \App\Models\User::create([
             'nik' => 'Admin 3',
             'nomor_handphone' => 'Admin 3',
             'name' => 'Admin 3',
+            'alamat' => 'default',
             'email' => 'admin3@gmail.com',
             'password' => bcrypt('jika12345'),
         ]);
