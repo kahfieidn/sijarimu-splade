@@ -14,6 +14,7 @@ use App\Http\Controllers\Controller;
 use ProtoneMedia\Splade\SpladeTable;
 use ProtoneMedia\Splade\Facades\Toast;
 use App\Tables\FrontOffice\Permohonans;
+use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
@@ -138,6 +139,7 @@ class DashboardController extends Controller
         $pemohon->update([
             'status_permohonan_id' => $request->status_permohonan_id,
             'catatan' => $request->catatan,
+            'front_office' => Auth::id(),
         ]);
         $pemohon->status_berkas()->update($request->status_berkas);
 

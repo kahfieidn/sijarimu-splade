@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('status_kepemilikan_kapal')->nullable();
             $table->string('kapasitas_angkut')->nullable();
             $table->string('pelabuhan_pangkal')->nullable();
+            $table->string('pelabuhan_singgah')->nullable();
             $table->string('trayek')->nullable();
             $table->string('urgensi')->nullable();
             $table->string('nomor_siualper')->nullable();

@@ -29,10 +29,10 @@
                 </div>
                 <div class="flex items-center justify-end">
                     <Link class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
+                    {{ __('Sudah pernah mendaftar? Klik untuk login') }}
                     </Link>
 
-                    <x-splade-submit class="ml-4" :label="__('Register')" />
+                    <x-splade-submit class="ml-4" :label="__('Daftar Sekarang')" />
                 </div>
             </x-splade-form>
         </div>

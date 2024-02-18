@@ -9,6 +9,7 @@ use App\Models\Permohonan;
 use App\Models\Persyaratan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Tables\BackOffice\Permohonans;
 use ProtoneMedia\Splade\Facades\Toast;
 use Illuminate\Support\Facades\Storage;
@@ -100,6 +101,7 @@ class DashboardController extends Controller
         }else{
             $suratRekomendasiRequest[$fieldName] = $pemohon->surat_rekomendasi;
         }
+        $pemohon->update(['back_office' => Auth::id()]);
         $pemohon->status_berkas()->update($request->status_berkas);
 
         // Custom Perizinan
@@ -107,7 +109,7 @@ class DashboardController extends Controller
             $pemohon->update([
                 'status_permohonan_id' => $request->status_permohonan_id,
                 'catatan' => $request->catatan,
-                'surat_rekomendasi' => $suratRekomendasiRequest[$fieldName]
+                'surat_rekomendasi' => $suratRekomendasiRequest[$fieldName],
             ]);
         }
 

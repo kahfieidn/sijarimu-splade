@@ -21,15 +21,20 @@
                 <x-splade-input required disabled name="type_rpk.tenaga_penggerak" type="text" placeholder="Tenaga Penggerak" label="Tenaga Penggerak" />
             </div>
         </div>
-        <div class="grid md:grid-cols-3 md:gap-6">
+        <div class="grid md:grid-cols-2 md:gap-6">
             <div class="relative z-0 w-full mb-6 group">
                 <x-splade-input required disabled name="type_rpk.status_kepemilikan_kapal" type="text" placeholder="Status Kepemilikan Kapal" label="Status Kepemilikan Kapal" />
             </div>
             <div class="relative z-0 w-full mb-6 group">
                 <x-splade-input required disabled name="type_rpk.kapasitas_angkut" type="text" placeholder="Kapasitas Angkut" label="Kapasitas Angkut" />
             </div>
+        </div>
+        <div class="grid md:grid-cols-2 md:gap-6">
             <div class="relative z-0 w-full mb-6 group">
                 <x-splade-input required disabled name="type_rpk.pelabuhan_pangkal" type="text" placeholder="Pelabuhan Pangkal" label="Pelabuhan Pangkal" />
+            </div>
+            <div class="relative z-0 w-full mb-6 group">
+                <x-splade-input required disabled name="type_rpk.pelabuhan_singgah" type="text" placeholder="Pelabuhan Singgah" label="Pelabuhan Singgah" />
             </div>
         </div>
         <div class="grid md:grid-cols-2 md:gap-6">

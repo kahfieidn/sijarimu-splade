@@ -20,6 +20,7 @@ class TypeRpk extends Model
         'status_kepemilikan_kapal',
         'kapasitas_angkut',
         'pelabuhan_pangkal',
+        'pelabuhan_singgah',
         'trayek',
         'urgensi',
         'nomor_siualper',

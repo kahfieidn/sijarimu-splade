@@ -157,6 +157,7 @@ class DashboardController extends Controller
                 'status_kepemilikan_kapal' => ['required', 'string', 'max:255'],
                 'kapasitas_angkut' => ['required', 'string', 'max:255'],
                 'pelabuhan_pangkal' => ['required', 'string', 'max:255'],
+                'pelabuhan_singgah' => ['required', 'string', 'max:255'],
                 'trayek' => ['required', 'string', 'max:255'],
                 'urgensi' => ['required', 'string', 'max:255'],
             ]);

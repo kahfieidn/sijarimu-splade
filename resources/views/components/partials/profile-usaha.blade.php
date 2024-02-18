@@ -11,7 +11,7 @@
         </div>
         <div class="grid md:grid-cols-1 md:gap-6">
             <div class="relative z-0 w-full mb-6 group">
-                <x-splade-textarea required disabled name="profile.alamat" type="text" placeholder="Alamat" label="Alamat" autosize />
+                <x-splade-textarea required disabled name="profile.alamat" type="text" placeholder="Alamat perusahaan" label="Alamat perusahaan" autosize />
             </div>
         </div>
         <div class="grid md:grid-cols-2 md:gap-6">

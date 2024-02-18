@@ -6,12 +6,12 @@
                 <x-splade-input required name="profile.npwp" type="text" placeholder="NPWP" label="NPWP" />
             </div>
             <div class="relative z-0 w-full mb-6 group">
-                <x-splade-input required name="profile.perusahaan" type="text" placeholder="Perusahaan" label="Perusahaan" />
+                <x-splade-input required name="profile.perusahaan" type="text" placeholder="Nama perusahaan" label="Nama perusahaan" />
             </div>
         </div>
         <div class="grid md:grid-cols-1 md:gap-6">
             <div class="relative z-0 w-full mb-6 group">
-                <x-splade-textarea required name="profile.alamat" type="text" placeholder="Alamat" label="Alamat" autosize />
+                <x-splade-textarea required name="profile.alamat" type="text" placeholder="Alamat perusahaan" label="Alamat perusahaan" autosize />
             </div>
         </div>
         <div class="grid md:grid-cols-2 md:gap-6">

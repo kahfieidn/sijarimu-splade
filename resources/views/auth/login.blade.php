@@ -10,10 +10,14 @@
             <x-splade-checkbox id="remember_me" name="remember" :label="__('Remember me')" />
 
             <div class="flex items-center justify-end">
+                <Link class="underline mr-3 text-sm text-gray-600 hover:text-gray-900" href="{{ route('register') }}">
+                {{ __('Buat akun') }}
+                </Link>
+
                 @if (Route::has('password.request'))
-                    <Link class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
-                        {{ __('Forgot your password?') }}
-                    </Link>
+                <Link class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
+                {{ __('Lupa password') }}
+                </Link>
                 @endif
 
                 <x-splade-submit class="ml-3" :label="__('Log in')" />
