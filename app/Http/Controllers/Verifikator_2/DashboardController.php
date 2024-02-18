@@ -17,7 +17,6 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        //
         return view('verifikator-2.index', [
             'permohonans' => Permohonans::class
         ]);
