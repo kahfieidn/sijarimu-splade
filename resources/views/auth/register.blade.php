@@ -1,9 +1,11 @@
 <x-guest-layout>
     <div class="sm:ml-64 sm:mr-64 p-4">
         <div class="bg-white p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
-            <h1 class="mb-8 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">Isi <span class="underline underline-offset-3 decoration-8 decoration-blue-400 dark:decoration-blue-600">Formulir Pendaftaran</span></h1>
+            <h1 class="mb-8 text-3xl font-extrabold leading-none tracking-tight text-gray-900 md:text-2xl lg:text-3xl dark:text-white">Isi <span class="underline underline-offset-3 decoration-8 decoration-blue-400 dark:decoration-blue-600">Formulir Pendaftaran</span></h1>
 
             <x-splade-form action="{{ route('register') }}" class="space-y-4">
+            <h3 class="text-xl font-bold dark:text-white">Data diri</h3>
+
                 <div class="relative z-0 w-full mb-6 group">
                     <x-splade-input id="name" type="text" name="name" :label="__('Nama Lengkap')" required autofocus />
                 </div>
@@ -18,6 +20,7 @@
                         <x-splade-input id="nomor_handphone" name="nomor_handphone" :label="__('Nomor Handphone')" required autofocus />
                     </div>
                 </div>
+                <h3 class="text-xl font-bold dark:text-white">Akses login anda</h3>
                 <div class="grid md:grid-cols-2 md:gap-6">
                     <div class="relative z-0 w-full mb-6 group">
                         <x-splade-input id="email" type="email" name="email" :label="__('Email')" required />
