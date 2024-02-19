@@ -88,18 +88,18 @@ class DashboardController extends Controller
     public function update(Request $request, Permohonan $pemohon)
     {
         HandleSpladeFileUploads::forRequest($request);
-        $fieldName = 'bap';
+        $fieldName = 'surat_rekomendasi';
         $currentMonthYear = Carbon::now()->format('Y-F');
         if (!isset($request->fields[$fieldName . '_existing']) && $request->status_permohonan_id == 5) {
-            Storage::delete('/public/docs' . '/' . $pemohon->bap);
+            Storage::delete('/public/docs' . '/' . $pemohon->surat_rekomendasi);
 
             $berkas = $request->file($fieldName);
             $storageDirectory = 'public/docs/' . $currentMonthYear;
             $fileName = $berkas->hashName();
             $berkas->storeAs($storageDirectory, $fileName);
-            $bapRequest[$fieldName] = $currentMonthYear . '/' . $fileName;
+            $surat_rekomendasiRequest[$fieldName] = $currentMonthYear . '/' . $fileName;
         } else {
-            $bapRequest[$fieldName] = $pemohon->bap;
+            $surat_rekomendasiRequest[$fieldName] = $pemohon->surat_rekomendasi;
         }
 
         // Custom Perizinan
@@ -107,10 +107,8 @@ class DashboardController extends Controller
             $pemohon->update([
                 'status_permohonan_id' => $request->status_permohonan_id,
                 'catatan' => $request->catatan,
-                'bap' => $bapRequest[$fieldName],
-            ]);
-            $pemohon->type_rpk()->update([
-                'nomor_rpk_rekom_teknis' => $request->type_rpk['nomor_rpk_rekom_teknis'],
+                'no_surat_rekomendasi' => $request->no_surat_rekomendasi,
+                'surat_rekomendasi' => $surat_rekomendasiRequest[$fieldName],
             ]);
         }
 

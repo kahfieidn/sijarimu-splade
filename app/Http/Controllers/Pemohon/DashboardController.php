@@ -160,6 +160,8 @@ class DashboardController extends Controller
                 'pelabuhan_singgah' => ['required', 'string', 'max:255'],
                 'trayek' => ['required', 'string', 'max:255'],
                 'urgensi' => ['required', 'string', 'max:255'],
+                'nomor_siualper' => ['required', 'string', 'max:255'],
+                'nomor_rpk_sebelumnya' => ['required', 'string', 'max:255'],
             ]);
             $permohonan->type_rpk()->create($typeRpk);
         }

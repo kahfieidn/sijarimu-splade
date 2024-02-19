@@ -4,43 +4,55 @@
 
         <div class="grid md:grid-cols-2 md:gap-6">
             <div class="relative z-0 w-full mb-6 group">
-                <x-splade-input required disabled name="type_rpk.nama_kapal" type="text" placeholder="Nama Kapal" label="Nama Kapal" />
+                <x-splade-input disabled required name="typeRpk.nama_kapal" type="text" placeholder="Nama Kapal" label="Nama Kapal" />
             </div>
             <div class="relative z-0 w-full mb-6 group">
-                <x-splade-input required disabled name="type_rpk.jenis_kapal" type="text" placeholder="Jenis Kapal" label="Jenis Kapal" />
-            </div>
-        </div>
-        <div class="grid md:grid-cols-3 md:gap-6">
-            <div class="relative z-0 w-full mb-6 group">
-                <x-splade-input required disabled name="type_rpk.bendera" type="text" placeholder="Bendera Kapal" label="Bendera Kapal" />
-            </div>
-            <div class="relative z-0 w-full mb-6 group">
-                <x-splade-input required disabled name="type_rpk.isi_kotor" type="text" placeholder="Isi Kotor" label="Isi Kotor/Bobot Mati" />
-            </div>
-            <div class="relative z-0 w-full mb-6 group">
-                <x-splade-input required disabled name="type_rpk.tenaga_penggerak" type="text" placeholder="Tenaga Penggerak" label="Tenaga Penggerak" />
+                <x-splade-input disabled required name="typeRpk.jenis_kapal" type="text" placeholder="Jenis Kapal" label="Jenis Kapal" />
             </div>
         </div>
         <div class="grid md:grid-cols-3 md:gap-6">
             <div class="relative z-0 w-full mb-6 group">
-                <x-splade-input required disabled name="type_rpk.status_kepemilikan_kapal" type="text" placeholder="Status Kepemilikan Kapal" label="Status Kepemilikan Kapal" />
+                <x-splade-input disabled required name="typeRpk.bendera" type="text" placeholder="Bendera Kapal" label="Bendera Kapal" />
             </div>
             <div class="relative z-0 w-full mb-6 group">
-                <x-splade-input required disabled name="type_rpk.kapasitas_angkut" type="text" placeholder="Kapasitas Angkut" label="Kapasitas Angkut" />
+                <x-splade-input disabled required name="typeRpk.isi_kotor" type="text" placeholder="Isi Kotor" label="Isi Kotor/Bobot Mati" />
             </div>
             <div class="relative z-0 w-full mb-6 group">
-                <x-splade-input required disabled name="type_rpk.pelabuhan_pangkal" type="text" placeholder="Pelabuhan Pangkal" label="Pelabuhan Pangkal" />
+                <x-splade-input disabled required name="typeRpk.tenaga_penggerak" type="text" placeholder="Tenaga Penggerak" label="Tenaga Penggerak" />
             </div>
         </div>
         <div class="grid md:grid-cols-2 md:gap-6">
             <div class="relative z-0 w-full mb-6 group">
-                <x-splade-input required disabled name="type_rpk.urgensi" type="text" placeholder="Urgensi" label="Urgensi" />
+                <x-splade-input disabled required name="typeRpk.status_kepemilikan_kapal" type="text" placeholder="Status Kepemilikan Kapal" label="Status Kepemilikan Kapal" />
             </div>
             <div class="relative z-0 w-full mb-6 group">
-                <x-splade-input required disabled name="type_rpk.trayek" type="text" placeholder="Trayek" label="Trayek" />
+                <x-splade-input disabled required name="typeRpk.kapasitas_angkut" type="text" placeholder="Kapasitas Angkut" label="Kapasitas Angkut" />
             </div>
         </div>
-
+        <div class="grid md:grid-cols-2 md:gap-6">
+            <div class="relative z-0 w-full mb-6 group">
+                <x-splade-input disabled required name="typeRpk.pelabuhan_pangkal" type="text" placeholder="Pelabuhan Pangkal" label="Pelabuhan Pangkal" />
+            </div>
+            <div class="relative z-0 w-full mb-6 group">
+                <x-splade-input disabled required name="typeRpk.pelabuhan_singgah" type="text" placeholder="Pelabuhan Singgah" label="Pelabuhan Singgah" />
+            </div>
+        </div>
+        <div class="grid md:grid-cols-2 md:gap-6">
+            <div class="relative z-0 w-full mb-6 group">
+                <x-splade-input disabled required name="typeRpk.urgensi" type="text" placeholder="Urgensi" label="Urgensi" />
+            </div>
+            <div class="relative z-0 w-full mb-6 group">
+                <x-splade-input disabled required name="typeRpk.trayek" type="text" placeholder="Trayek" label="Trayek" />
+            </div>
+        </div>
+        <div class="grid md:grid-cols-2 md:gap-6">
+            <div class="relative z-0 w-full mb-6 group">
+                <x-splade-input disabled required name="typeRpk.nomor_siualper" type="text" placeholder="No. SIUALPER" label="No. SIUALPER" />
+            </div>
+            <div class="relative z-0 w-full mb-6 group">
+                <x-splade-input disabled required name="typeRpk.nomor_rpk_sebelumnya" type="text" placeholder="No. RPK Sebelumnya" label="No. RPK Sebelumnya" />
+            </div>
+        </div>
     </div>
 </div>
 
@@ -114,7 +126,7 @@
                                 <path fill-rule="evenodd" d="M3.6 4.5c.3-.3.8-.5 1.3-.5H19a1.9 1.9 0 0 1 2 1.9V15a1.9 1.9 0 0 1-1.9 1.9h-3.6l-2.7 3.6a1 1 0 0 1-1.6 0L8.5 17H4.9A1.9 1.9 0 0 1 3 15.1V6c0-.5.2-1 .6-1.4Zm4 3a1 1 0 1 0 0 2h8a1 1 0 0 0 0-2h-8Zm0 3.5a1 1 0 1 0 0 2H12a1 1 0 1 0 0-2H7.6Z" clip-rule="evenodd" />
                             </svg>
                             <div class="ml-4">
-                                <div class="text-lg font-semibold">Surat Rekomendasi</div>
+                                <div class="text-lg font-semibold">Permintaan Surat Rekomendasi</div>
                                 <div class="text-sm">Ketuk untuk melihat informasi selengkapnya.</div>
                             </div>
                         </div>
@@ -127,9 +139,9 @@
             </li>
         </ul>
         <x-splade-modal name="modal-surat-rekomendasi" max-width="7xl">
-            <h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">Surat <span class="underline underline-offset-3 decoration-8 decoration-blue-400 dark:decoration-blue-600">Rekomendasi</span></h1>
+            <h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">Permintaan Surat <span class="underline underline-offset-3 decoration-8 decoration-blue-400 dark:decoration-blue-600">Rekomendasi</span></h1>
             <div class="p-4">
-                <iframe src="{{ url('/storage/docs/' . $pemohon->surat_rekomendasi)}}" width="100%" height="500"></iframe>
+                <iframe src="{{ route('dashboard.cetak.permintaan-rekomendasi-request', [$pemohon->perizinan_id,$pemohon->id]) }}" width="100%" height="500"></iframe>
 
                 <div class="flex justify-between items-center ">
                     <div class="flex items-center space-x-3 sm:space-x-4">
@@ -163,14 +175,14 @@
             <x-splade-wysiwyg label="Tambahkan Catatan Ke Pemohon (Opsional)" class="mb-8" name="catatan" />
         </div>
         <div v-if="form.status_permohonan_id == 5" class="bg-white p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
-            <h1 class="mb-8 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">Berita <span class="underline underline-offset-3 decoration-8 decoration-blue-400 dark:decoration-blue-600">Acara</span></h1>
+            <h1 class="mb-8 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">Surat Rekomendasi <span class="underline underline-offset-3 decoration-8 decoration-blue-400 dark:decoration-blue-600">Teknis</span></h1>
 
             <div class="grid md:grid-cols-2 md:gap-6">
                 <div class="relative z-0 w-full mb-6 group">
-                    <x-splade-input name="type_rpk.nomor_rpk_rekom_teknis" type="text" placeholder="No. Surat" label="Nomor Surat" required />
+                    <x-splade-input name="no_surat_rekomendasi" type="text" placeholder="No. Surat Rekomendasi" label="Nomor Surat Rekomendasi" required />
                 </div>
                 <div class="relative z-0 w-full mb-6 group">
-                    <x-splade-file accept="application/pdf" filepond max-size="2MB" name="bap" :label="__('Lampiran')" filepond required />
+                    <x-splade-file accept="application/pdf" filepond max-size="2MB" name="surat_rekomendasi" :label="__('Lampiran')" filepond required />
                 </div>
             </div>
         </div>

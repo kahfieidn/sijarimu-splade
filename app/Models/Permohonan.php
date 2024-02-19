@@ -18,7 +18,6 @@ class Permohonan extends Model
         'catatan',
         'catatan_back_office',
         'no_surat_permohonan',
-        'permintaan_rekomendasi',
         'no_permintaan_rekomendasi',
         'surat_rekomendasi',
         'no_surat_rekomendasi',

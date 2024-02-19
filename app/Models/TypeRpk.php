@@ -24,7 +24,6 @@ class TypeRpk extends Model
         'trayek',
         'urgensi',
         'nomor_siualper',
-        'nomor_rpk_surat_pemohon',
         'nomor_rpk_sebelumnya',
     ];
 

@@ -86,21 +86,6 @@ class DashboardController extends Controller
      */
     public function update(Request $request, Permohonan $pemohon)
     {
-
-        HandleSpladeFileUploads::forRequest($request);
-        $fieldName = 'surat_rekomendasi';
-        $currentMonthYear = Carbon::now()->format('Y-F');
-        if (!isset($request->fields[$fieldName . '_existing']) && $request->status_permohonan_id == 6) {
-            Storage::delete('/public/docs' . '/' . $pemohon->surat_rekomendasi);
-
-            $berkas = $request->file($fieldName);
-            $storageDirectory = 'public/docs/' . $currentMonthYear;
-            $fileName = $berkas->hashName();
-            $berkas->storeAs($storageDirectory, $fileName);
-            $suratRekomendasiRequest[$fieldName] = $currentMonthYear . '/' . $fileName;
-        }else{
-            $suratRekomendasiRequest[$fieldName] = $pemohon->surat_rekomendasi;
-        }
         $pemohon->update(['back_office' => Auth::id()]);
         $pemohon->status_berkas()->update($request->status_berkas);
 
@@ -109,7 +94,8 @@ class DashboardController extends Controller
             $pemohon->update([
                 'status_permohonan_id' => $request->status_permohonan_id,
                 'catatan' => $request->catatan,
-                'surat_rekomendasi' => $suratRekomendasiRequest[$fieldName],
+                'no_permintaan_rekomendasi' => $request->no_permintaan_rekomendasi,
+                'no_surat_permohonan' => $request->no_surat_permohonan
             ]);
         }
 

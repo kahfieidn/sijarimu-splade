@@ -19,7 +19,6 @@ return new class extends Migration
             $table->text('catatan')->nullable();
             $table->text('catatan_back_office')->nullable();
             $table->string('no_surat_permohonan')->nullable();
-            $table->string('permintaan_rekomendasi')->nullable();
             $table->string('no_permintaan_rekomendasi')->nullable();
             $table->string('surat_rekomendasi')->nullable();
             $table->string('no_surat_rekomendasi')->nullable();

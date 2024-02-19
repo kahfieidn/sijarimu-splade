@@ -3,7 +3,7 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>file_1708331560567</title>
+    <title>Permintaan Rekomendasi {{$pemohon->user->name}}</title>
     <meta name="author" content="web turing" />
     <style type="text/css">
         * {
@@ -51,23 +51,18 @@
     <p style="padding-left: 6pt;text-indent: 0pt;text-align: left;"><span>
             <table border="0" cellspacing="0" cellpadding="0">
                 <tr>
-                    <img
-                    alt=""
-                    src="images/image1.png"
-                    style="
+                    <img alt="" src="images/image1.png" style="
                       width: 735.33px;
                       height: 150.67px;
                       margin-left: 0px;
                       margin-top: 0px;
                       transform: rotate(0rad) translateZ(0px);
                       -webkit-transform: rotate(0rad) translateZ(0px);
-                    "
-                    title=""
-                />
+                    " title="" />
                 </tr>
             </table>
         </span></p>
-    <p style="padding-top: 2pt;text-indent: 0pt;text-align: right;">Tanjungpinang, 08 April 2000</p>
+    <p style="padding-top: 2pt;text-indent: 0pt;text-align: right;">Tanjungpinang, {{$pemohon->created_at->isoFormat('D MMMM Y')}}</p>
     <p style="text-indent: 0pt;text-align: left;"><br /></p>
     <table style="border-collapse:collapse;margin-left:5.46pt" cellspacing="0">
         <tr style="height:73pt">
@@ -81,11 +76,11 @@
                 <p class="s1" style="text-indent: 0pt;text-align: center;">:</p>
             </td>
             <td style="width:232pt">
-                <p class="s1" style="padding-left: 5pt;text-indent: 0pt;line-height: 12pt;text-align: left;">000/XXX</p>
+                <p class="s1" style="padding-left: 5pt;text-indent: 0pt;line-height: 12pt;text-align: left;">{{$pemohon->no_permintaan_rekomendasi}}</p>
                 <p class="s1" style="padding-left: 5pt;text-indent: 0pt;line-height: 12pt;text-align: left;">-</p>
                 <p class="s1" style="padding-left: 5pt;text-indent: 0pt;text-align: left;">Penting</p>
                 <p class="s1" style="padding-left: 5pt;text-indent: 0pt;text-align: left;">Mohon Rekomendasi Teknis Perpanjangan Rencana Pengoperasian Kapal (RPK)</p>
-                <p class="s1" style="padding-left: 5pt;text-indent: 0pt;line-height: 11pt;text-align: left;">NAMA_KAPAL</p>
+                <p class="s1" style="padding-left: 5pt;text-indent: 0pt;line-height: 11pt;text-align: left;">{{$type_rpk->nama_kapal}}</p>
             </td>
             <td style="width:38pt">
                 <p style="text-indent: 0pt;text-align: left;"><br /></p>
@@ -103,7 +98,7 @@
     </table>
     <p style="text-indent: 0pt;text-align: left;"><br /></p>
     <p style="padding-left: 73pt;text-indent: 0pt;text-align: left;">Dengan hormat,</p>
-    <p style="padding-top: 7pt;padding-left: 73pt;text-indent: 37pt;line-height: 114%;text-align: justify;">Menindaklanjuti Surat Direktur NAMA_PT Nomor NO_SURAT tanggal TGL_SURAT perihal Permohonan Perpanjangan Persetujuan Pengoperasian Kapal pada Trayek Tetap dan Tidak Teratur Angkutan Laut Dalam Negeri Bersama ini kami sampaikan hal-hal berikut :</p>
+    <p style="padding-top: 7pt;padding-left: 73pt;text-indent: 37pt;line-height: 114%;text-align: justify;">Menindaklanjuti Surat Direktur {{$profile->perusahaan}} Nomor {{$pemohon->no_surat_permohonan}} @if($pemohon->no_surat_permohonan == null) [NO_SURAT] @endif tanggal {{ $pemohon->created_at->isoFormat('D MMMM Y') }} perihal Permohonan Perpanjangan Persetujuan Pengoperasian Kapal pada Trayek Tetap dan Tidak Teratur Angkutan Laut Dalam Negeri Bersama ini kami sampaikan hal-hal berikut :</p>
     <p style="text-indent: 0pt;text-align: left;"><br /></p>
     <table style="border-collapse:collapse;margin-left:89.36pt" cellspacing="0">
         <tr style="height:45pt">
@@ -128,7 +123,7 @@
                 <p class="s1" style="padding-top: 4pt;padding-right: 5pt;text-indent: 0pt;text-align: right;">:</p>
             </td>
             <td style="width:260pt">
-                <p class="s1" style="padding-top: 4pt;padding-left: 5pt;text-indent: 0pt;text-align: left;">NAMA_PT</p>
+                <p class="s1" style="padding-top: 4pt;padding-left: 5pt;text-indent: 0pt;text-align: justify;">{{$profile->perusahaan}}</p>
             </td>
         </tr>
         <tr style="height:15pt">
@@ -145,7 +140,7 @@
                 <p class="s1" style="padding-right: 5pt;text-indent: 0pt;text-align: right;">:</p>
             </td>
             <td style="width:260pt">
-                <p class="s1" style="padding-left: 5pt;text-indent: 0pt;text-align: left;">NAMA_KAPAL</p>
+                <p class="s1" style="padding-left: 5pt;text-indent: 0pt;text-align: left;">{{$type_rpk->nama_kapal}}</p>
             </td>
         </tr>
         <tr style="height:15pt">
@@ -162,7 +157,7 @@
                 <p class="s1" style="padding-top: 1pt;padding-right: 5pt;text-indent: 0pt;text-align: right;">:</p>
             </td>
             <td style="width:260pt">
-                <p class="s1" style="padding-top: 1pt;padding-left: 5pt;text-indent: 0pt;text-align: left;">Speed Boat (SB)</p>
+                <p class="s1" style="padding-top: 1pt;padding-left: 5pt;text-indent: 0pt;text-align: left;">{{$type_rpk->jenis_kapal}}</p>
             </td>
         </tr>
         <tr style="height:15pt">
@@ -179,7 +174,7 @@
                 <p class="s1" style="padding-top: 1pt;padding-right: 5pt;text-indent: 0pt;text-align: right;">:</p>
             </td>
             <td style="width:260pt">
-                <p class="s1" style="padding-top: 1pt;padding-left: 5pt;text-indent: 0pt;text-align: left;">Telaga Punggur</p>
+                <p class="s1" style="padding-top: 1pt;padding-left: 5pt;text-indent: 0pt;text-align: left;">{{$type_rpk->pelabuhan_pangkal}}</p>
             </td>
         </tr>
         <tr style="height:18pt">
@@ -196,7 +191,7 @@
                 <p class="s1" style="padding-top: 1pt;padding-right: 5pt;text-indent: 0pt;text-align: right;">:</p>
             </td>
             <td style="width:260pt">
-                <p class="s1" style="padding-top: 1pt;padding-left: 5pt;text-indent: 0pt;text-align: left;">Telaga Punggur (Batam) – Tanjung Uban</p>
+                <p class="s1" style="padding-top: 1pt;padding-left: 5pt;text-indent: 0pt;text-align: left;">{{$type_rpk->pelabuhan_singgah}}</p>
             </td>
         </tr>
         <tr style="height:58pt">
@@ -217,13 +212,26 @@
             <td style="width:244pt">
                 <p class="s2" style="padding-left: 29pt;text-indent: -26pt;line-height: 114%;text-align: left;">a.n. KEPALA DINAS PENANAMAN MODAL DAN PELAYANAN TERPADU SATU PINTU</p>
                 <p class="s2" style="padding-left: 48pt;text-indent: 0pt;text-align: left;">PROVINSI KEPULAUAN RIAU</p>
-                <p class="s1" style="padding-top: 1pt;padding-left: 2pt;margin-bottom:70pt;text-indent: 0pt;text-align: left;">Koordinator Penyelenggaraan Pelayanan Perizinan</p>
+                <p class="s1" style="padding-top: 1pt;padding-left: 2pt;margin-bottom:10pt;text-indent: 0pt;text-align: left;">Koordinator Penyelenggaraan Pelayanan Perizinan</p>
             </td>
         </tr>
+        @if(in_array($pemohon->status_permohonan_id, [5,6,7,8,9]))
+        <tr>
+            <img alt="" src="images/ttekadis.jpg" style="
+                  text-align: left;
+                  width: 236.79px;
+                  height: 84.78px;
+                  margin-left: 60px;
+                  margin-top: 0px;
+                  transform: rotate(0rad) translateZ(0px);
+                  -webkit-transform: rotate(0rad) translateZ(0px);
+                " title="" />
+        </tr>
+        @endif
         <tr style="height:90pt">
             <td style="width:244pt">
                 <p style="text-indent: 0pt;text-align: left;"><br /></p>
-                <p class="s2" style="padding-top: 8pt;padding-left: 69pt;text-indent: 0pt;text-align: left;">ALFIAN, S.Sos., M.Si</p>
+                <p class="s2" style="padding-top: 4pt;padding-left: 69pt;text-indent: 0pt;text-align: left;">ALFIAN, S.Sos., M.Si</p>
                 <p class="s1" style="padding-top: 1pt;padding-left: 69pt;text-indent: 0pt;text-align: left;">Pembina Tk. I (IV/b)</p>
                 <p class="s1" style="padding-top: 1pt;padding-left: 69pt;text-indent: 0pt;line-height: 11pt;text-align: left;">NIP. 19700713 199201 1 001</p>
             </td>

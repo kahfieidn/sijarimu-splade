@@ -45,6 +45,13 @@
                 <x-splade-input required name="trayek" type="text" placeholder="Trayek" label="Trayek" />
             </div>
         </div>
-
+        <div class="grid md:grid-cols-2 md:gap-6">
+            <div class="relative z-0 w-full mb-6 group">
+                <x-splade-input required name="nomor_siualper" type="text" placeholder="No. SIUALPER" label="No. SIUALPER" />
+            </div>
+            <div class="relative z-0 w-full mb-6 group">
+                <x-splade-input required name="nomor_rpk_sebelumnya" type="text" placeholder="No. RPK Sebelumnya" label="No. RPK Sebelumnya" />
+            </div>
+        </div>
     </div>
 </div>

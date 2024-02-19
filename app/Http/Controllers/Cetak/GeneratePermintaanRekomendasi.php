@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Cetak;
 
 use Carbon\Carbon;
+use App\Models\Profile;
 use App\Models\TypeRpk;
 use App\Models\Permohonan;
 use Illuminate\Http\Request;
@@ -26,6 +27,7 @@ class GeneratePermintaanRekomendasi extends Controller
         $get_id_users = $pemohon->user->id;
         $nama_user = $pemohon->user->name;
         $get_nama_izin = $pemohon->perizinan->nama_perizinan;
+        $profile = Profile::where('user_id', $pemohon->user_id)->first();
 
         if ($perizinan_id == 4) {
             $type_rpk = TypeRpk::where('type_rpkable_id', $pemohon->id)->first();
@@ -35,7 +37,8 @@ class GeneratePermintaanRekomendasi extends Controller
                 'type_rpk' => $type_rpk,
                 'users' => $users,
                 'date_ttd' => $date_ttd,
-                'get_id_users' => $get_id_users
+                'get_id_users' => $get_id_users,
+                'profile' => $profile
             ];
             $pdf = Pdf::loadView('cetak.permintaan-rekomendasi-request', $data);
             $customPaper = array(0, 0, 609.4488, 935.433);
