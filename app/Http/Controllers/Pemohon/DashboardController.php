@@ -32,7 +32,7 @@ class DashboardController extends Controller
     {
         //
         return view('pemohon.index', [
-            'perizinans' => Perizinan::all(),
+            'perizinans' => Perizinan::where('status', 'active')->get(),
             'permohonans' => Permohonans::class
         ]);
     }
