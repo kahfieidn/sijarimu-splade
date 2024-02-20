@@ -54,7 +54,7 @@ class Perizinans extends AbstractTable
         ->column(key: 'sektor.nama_sektor', sortable: true, label: 'Sektor')
         ->column(key: 'jenis_izin.nama_izin', sortable: true, label: 'Jenis Izin')
         ->column(key: 'status', sortable: true, label: 'Status')
-        ->rowSlideover(fn (Perizinan $perizinan) => route('admin-management-perizinan.show', $perizinan->id))
+        ->column(label: 'Actions')
         ->paginate(5)
         ->export();
             // ->searchInput()

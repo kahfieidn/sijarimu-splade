@@ -83,6 +83,9 @@ Route::middleware('splade')->group(function () {
             Route::resource('/admin-management-perizinan', App\Http\Controllers\Admin\ManagementPerizinan::class)->parameters([
                 'admin-management-perizinan' => 'perizinan_id'
             ]);
+            Route::resource('/admin-management-persyaratan', App\Http\Controllers\Admin\ManagementPersyaratan::class)->parameters([
+                'admin-management-persyaratan' => 'persyaratan_id'
+            ]);
         });
     });
 
