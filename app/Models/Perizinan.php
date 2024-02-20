@@ -26,7 +26,9 @@ class Perizinan extends Model
         return $this->belongsTo(Persyaratan::class, 'perizinan_id');
     }
 
-
+    public function jenis_izin(){
+        return $this->belongsTo(JenisIzin::class, 'jenis_izin_id');
+    }
 
 
 }
