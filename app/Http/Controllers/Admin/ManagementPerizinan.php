@@ -5,9 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Sektor;
 use App\Models\JenisIzin;
 use App\Models\Perizinan;
+use App\Models\Persyaratan;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Tables\Admin\Perizinans;
+use App\Http\Controllers\Controller;
 use ProtoneMedia\Splade\Facades\Toast;
 
 class ManagementPerizinan extends Controller
@@ -62,9 +63,13 @@ class ManagementPerizinan extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Perizinan $perizinan_id)
     {
         //
+        $persyaratan = Persyaratan::where('perizinan_id', $perizinan_id->id)->get();
+        return view('admin.management_perizinan.show', $perizinan_id, [
+            'persyaratan' => $persyaratan
+        ]);
     }
 
     /**

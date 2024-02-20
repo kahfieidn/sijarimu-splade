@@ -2,12 +2,12 @@
 
 namespace App\Tables\Admin;
 
-use App\Models\Perizinan;
+use App\Models\Persyaratan;
 use Illuminate\Http\Request;
 use ProtoneMedia\Splade\AbstractTable;
 use ProtoneMedia\Splade\SpladeTable;
 
-class Perizinans extends AbstractTable
+class Persyaratans extends AbstractTable
 {
     /**
      * Create a new instance.
@@ -36,7 +36,7 @@ class Perizinans extends AbstractTable
      */
     public function for()
     {
-        return Perizinan::query();
+        return Persyaratan::query();
     }
 
     /**
@@ -48,15 +48,9 @@ class Perizinans extends AbstractTable
     public function configure(SpladeTable $table)
     {
         $table
-        ->withGlobalSearch(columns: ['user.name', 'perizinan.nama_perizinan', 'status_permohonan.nama_status'])
-        ->column(key: 'id', sortable: true, label: 'ID')
-        ->column(key: 'nama_perizinan', sortable: true, label: 'Nama Perizinan')
-        ->column(key: 'sektor.nama_sektor', sortable: true, label: 'Sektor')
-        ->column(key: 'jenis_izin.nama_izin', sortable: true, label: 'Jenis Izin')
-        ->column(key: 'status', sortable: true, label: 'Status')
-        ->rowSlideover(fn (Perizinan $perizinan) => route('admin-management-perizinan.show', $perizinan->id))
-        ->paginate(5)
-        ->export();
+            ->withGlobalSearch(columns: ['id'])
+            ->column('id', sortable: true);
+
             // ->searchInput()
             // ->selectFilter()
             // ->withGlobalSearch()
