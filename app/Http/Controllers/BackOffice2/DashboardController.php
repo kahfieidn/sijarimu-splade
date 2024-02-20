@@ -153,6 +153,12 @@ class DashboardController extends Controller
             $pemohon->penelitian()->update([
                 'menimbang' => $request->penelitian['menimbang'],
             ]);
+        } else if($pemohon->perizinan->id == 4){
+            $pemohon->update([
+                'status_permohonan_id' => $request->status_permohonan_id,
+                'catatan' => $request->catatan,
+                'no_izin' => $request->no_izin
+            ]);
         }
 
         Toast::title('Permohonan berhasil di review!')

@@ -86,6 +86,7 @@ Route::middleware('splade')->group(function () {
     Route::group(['middleware' => ['role:pemohon|front_office|back_office|opd|verifikator_1|verifikator_2|kepala_dinas|admin|admin_1|admin_2|admin3']], function () {
         Route::get('/dashboard/generate/permintaan_rekomendasi/{perizinan_id}/{permohonan_id}', [App\Http\Controllers\Cetak\GeneratePermintaanRekomendasi::class, 'generatePermintaanRekomendasi'])->name('dashboard.cetak.permintaan-rekomendasi-request');
         Route::get('/dashboard/generate/penelitian/{perizinan_id}/{permohonan_id}', [App\Http\Controllers\Cetak\GeneratePenelitian::class, 'generatePenelitian'])->name('dashboard.cetak.request');
+        Route::get('/dashboard/generate/perizinan/{perizinan_id}/{permohonan_id}', [App\Http\Controllers\Cetak\GeneratePerizinan::class, 'generatePerizinan'])->name('dashboard.cetak.perizinan.request');
     });
 
 

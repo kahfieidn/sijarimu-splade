@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Verifikator_1;
 
+use App\Models\Profile;
 use App\Models\Perizinan;
 use App\Models\Permohonan;
 use App\Models\Persyaratan;
@@ -91,6 +92,20 @@ class DashboardController extends Controller
                 'peneliti' => $peneliti,
                 'user' => $user,
             ]);
+        }else if($pemohon->perizinan_id == 4) {
+            $profile = Profile::where('user_id', $pemohon->user_id)->first();
+            $type_rpk = $pemohon->type_rpk()->first();
+            return view('verifikator-1.show', [
+                'pemohon' => $pemohon,
+                'berkas' => $berkas,
+                'persyaratan' => $persyaratan,
+                'status_berkas' => $status_berkas,
+                'perizinan' => $perizinan,
+                'berkas' => $berkas,
+                'user' => $user,
+                'profile' => $profile,
+                'type_rpk' => $type_rpk,
+            ]);
         }
     }
 
@@ -119,6 +134,11 @@ class DashboardController extends Controller
                 'catatan' => $request->catatan,
             ]);
         }else if($pemohon->perizinan->id == 3){
+            $pemohon->update([
+                'status_permohonan_id' => $request->status_permohonan_id,
+                'catatan' => $request->catatan,
+            ]);
+        }else if($pemohon->perizinan->id == 4){
             $pemohon->update([
                 'status_permohonan_id' => $request->status_permohonan_id,
                 'catatan' => $request->catatan,

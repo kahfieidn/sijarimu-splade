@@ -51,9 +51,9 @@
     <p style="padding-left: 6pt;text-indent: 0pt;text-align: left;"><span>
             <table border="0" cellspacing="0" cellpadding="0">
                 <tr>
-                    <img alt="" src="images/image1.png" style="
+                    <img alt="" src="images/headercop.png" style="
                       width: 735.33px;
-                      height: 150.67px;
+                      height: 130.67px;
                       margin-left: 0px;
                       margin-top: 0px;
                       transform: rotate(0rad) translateZ(0px);
