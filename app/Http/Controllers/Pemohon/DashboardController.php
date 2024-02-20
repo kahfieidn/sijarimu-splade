@@ -250,10 +250,14 @@ class DashboardController extends Controller
         $jumlah_persyaratan = Persyaratan::where('perizinan_id', $pemohon->perizinan_id)->count();
         for ($i = 1; $i <= $jumlah_persyaratan; $i++) {
             $fieldName = 'field_' . $i;
-            if (!isset($request->fields[$fieldName . '_existing'])) {
+            $berkas = $request->file('fields' . '.' . $fieldName);
+
+            if($berkas == null){
+                $berkas = $pemohon->berkas->first()->$fieldName;
+            }
+            else if (!isset($request->fields[$fieldName . '_existing'])) {
                 Storage::delete('/public/docs' . '/' . $pemohon->berkas->first()->$fieldName);
 
-                $berkas = $request->file('fields' . '.' . $fieldName);
                 $storageDirectory = 'public/docs/' . $currentMonthYear;
                 $fileName = $berkas->hashName();
                 $berkas->storeAs($storageDirectory, $fileName);
