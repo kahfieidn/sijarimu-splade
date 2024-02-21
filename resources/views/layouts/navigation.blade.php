@@ -28,8 +28,7 @@
                         </svg>
                     </button>
                     <Link href="/" class="flex ml-2 md:mr-24">
-                        <img src="https://flowbite.com/docs/images/logo.svg" class="h-8 mr-3" alt="FlowBite Logo" />
-                        <span class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">Sijarimu</span>
+                        <img src="/images/logo_sijarimu.png" class="h-10 mr-3" alt="FlowBite Logo" />
                     </Link>
                 </div>
                 <div class="flex items-center">
