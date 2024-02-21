@@ -57,12 +57,15 @@
         $num_field = 1;
         ?>
         @foreach($persyaratan as $key=>$persyaratan)
+        @if($persyaratan->status == 'active')
+
         <?php
-        $vars = 'field_' . $num_field;
+        $vars = 'field_' . $key+1;
         ?>
+
         <div class="grid p-2 mb-1 mt-1 grid-cols-1 gap-6 sm:grid-cols-5">
             <div class="col-span-1 sm:col-span-3">
-                <h6 class="text-sm font-bold dark:text-white">{{ $key + 1 }}. {{$persyaratan->nama_persyaratan}}
+                <h6 class="text-sm font-bold dark:text-white">{{ $num_field }}. {{$persyaratan->nama_persyaratan}}
                     @if($status_berkas->$vars == 'terima')
                     <span class="bg-blue-100 text-blue-800 text-1xl font-semibold mb-1 mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-1">Terima</span>
                     @elseif($status_berkas->$vars == 'tolak')
@@ -80,7 +83,7 @@
                 </span>
                 </Link>
                 <x-splade-modal name="modal-berkas-{{$vars}}" max-width="7xl">
-                    <h4 class="mb-4 text-2xl font-extrabold leading-none tracking-tight text-gray-900 md:text-1xl lg:text-2xl dark:text-white">{{ $key + 1 }}. <span class="underline underline-offset-3 decoration-8 decoration-blue-400 dark:decoration-blue-600">{{$persyaratan->nama_persyaratan}}</span></h4>
+                    <h4 class="mb-4 text-2xl font-extrabold leading-none tracking-tight text-gray-900 md:text-1xl lg:text-2xl dark:text-white">{{ $num_field }}. <span class="underline underline-offset-3 decoration-8 decoration-blue-400 dark:decoration-blue-600">{{$persyaratan->nama_persyaratan}}</span></h4>
                     <div class="p-4">
                         <iframe src="{{url('/storage/docs/' . $berkas->$vars)}}" width="100%" height="500"></iframe>
 
@@ -107,6 +110,9 @@
         </div>
         <hr class="h-px my-2 bg-gray-200 border-0 dark:bg-gray-500">
         <?php $num_field++; ?>
+        @else
+        
+        @endif
         @endforeach
 
 
