@@ -8,8 +8,10 @@ use App\Models\Permohonan;
 use App\Models\Persyaratan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Notifications\PermohonanDone;
 use ProtoneMedia\Splade\Facades\Toast;
 use App\Tables\KepalaDinas\Permohonans;
+use App\Notifications\PermohonanRejected;
 
 class DashboardController extends Controller
 {
@@ -92,7 +94,7 @@ class DashboardController extends Controller
                 'peneliti' => $peneliti,
                 'user' => $user,
             ]);
-        }else if($pemohon->perizinan_id == 4) {
+        } else if ($pemohon->perizinan_id == 4) {
             $profile = Profile::where('user_id', $pemohon->user_id)->first();
             $type_rpk = $pemohon->type_rpk()->first();
             return view('kepala-dinas.show', [
@@ -144,6 +146,13 @@ class DashboardController extends Controller
                 'status_permohonan_id' => $request->status_permohonan_id,
                 'catatan' => $request->catatan,
             ]);
+        }
+
+        //Notify
+        if ($request->status_permohonan_id == 1 || $request->status_permohonan_id == 2) {
+            $pemohon->user->notify(new PermohonanRejected($pemohon));
+        } else if ($request->status_permohonan_id == 10) {
+            $pemohon->user->notify(new PermohonanDone($pemohon));
         }
 
         Toast::title('Permohonan berhasil di review!')

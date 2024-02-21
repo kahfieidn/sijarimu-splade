@@ -11,10 +11,12 @@ use App\Models\Persyaratan;
 use App\Tables\Persyaratans;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use ProtoneMedia\Splade\SpladeTable;
+use App\Notifications\PermohonanDone;
 use ProtoneMedia\Splade\Facades\Toast;
 use App\Tables\FrontOffice\Permohonans;
-use Illuminate\Support\Facades\Auth;
+use App\Notifications\PermohonanRejected;
 
 class DashboardController extends Controller
 {
@@ -143,6 +145,14 @@ class DashboardController extends Controller
         ]);
         $pemohon->status_berkas()->update($request->status_berkas);
 
+
+        //Notify
+        if ($request->status_permohonan_id == 1 || $request->status_permohonan_id == 2) {
+            $pemohon->user->notify(new PermohonanRejected($pemohon));
+        }else if ($request->status_permohonan_id == 10) {
+            $pemohon->user->notify(new PermohonanDone($pemohon));
+        }
+        
         Toast::title('Permohonan berhasil di review!')
             ->rightBottom()
             ->autoDismiss(10);

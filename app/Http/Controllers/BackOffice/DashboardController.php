@@ -10,9 +10,11 @@ use App\Models\Persyaratan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Notifications\PermohonanDone;
 use App\Tables\BackOffice\Permohonans;
 use ProtoneMedia\Splade\Facades\Toast;
 use Illuminate\Support\Facades\Storage;
+use App\Notifications\PermohonanRejected;
 use ProtoneMedia\Splade\FileUploads\HandleSpladeFileUploads;
 
 class DashboardController extends Controller
@@ -97,6 +99,14 @@ class DashboardController extends Controller
                 'no_permintaan_rekomendasi' => $request->no_permintaan_rekomendasi,
                 'no_surat_permohonan' => $request->no_surat_permohonan
             ]);
+        }
+
+
+        //Notify
+        if ($request->status_permohonan_id == 1 || $request->status_permohonan_id == 2) {
+            $pemohon->user->notify(new PermohonanRejected($pemohon));
+        } else if ($request->status_permohonan_id == 10) {
+            $pemohon->user->notify(new PermohonanDone($pemohon));
         }
 
         Toast::title('Permohonan berhasil di review!')
