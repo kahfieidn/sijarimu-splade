@@ -2,8 +2,8 @@
 
     <nav class="bg-white border-gray-200 dark:bg-gray-900">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-            <Link href="/" class="flex ml-2 md:mr-24">
-            <img src="/images/logo_sijarimu.png" class="h-12 mr-3" alt="FlowBite Logo" />
+            <Link href="/" class="flex md:mr-24">
+            <img src="/images/logo_sijarimu.png" class="h-14 mr-3" alt="FlowBite Logo" />
             </Link>
             <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
                 <span class="sr-only">Open main menu</span>

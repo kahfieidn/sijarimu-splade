@@ -28,7 +28,7 @@
                         </svg>
                     </button>
                     <Link href="/" class="flex ml-2 md:mr-24">
-                        <img src="/images/logo_sijarimu.png" class="h-10 mr-3" alt="FlowBite Logo" />
+                        <img src="/images/logo_sijarimu.png" class="h-12 mr-3" alt="FlowBite Logo" />
                     </Link>
                 </div>
                 <div class="flex items-center">
@@ -71,7 +71,7 @@
         </div>
     </nav>
 
-    <aside id="logo-sidebar" class="fixed top-0 left-0 z-40 w-256 h-full min-h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700" aria-label="Sidebar">
+    <aside id="logo-sidebar" class="fixed top-1 left-0 z-40 w-256 h-full min-h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700" aria-label="Sidebar">
         <div class="h-screen px-3 pb-20 overflow-y-auto bg-white dark:bg-gray-800">
             @include('layouts.menu-link')
         </div>
