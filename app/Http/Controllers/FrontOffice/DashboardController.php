@@ -144,7 +144,7 @@ class DashboardController extends Controller
             'front_office' => Auth::id(),
         ]);
         $pemohon->status_berkas()->update($request->status_berkas);
-
+        $pemohon->ket_berkas()->update($request->ket_berkas);
 
         //Notify
         if ($request->status_permohonan_id == 1 || $request->status_permohonan_id == 2) {

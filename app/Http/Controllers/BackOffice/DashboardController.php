@@ -55,6 +55,7 @@ class DashboardController extends Controller
         $perizinan = Perizinan::find($pemohon->perizinan_id);
         $persyaratan = Persyaratan::where('perizinan_id', $pemohon->perizinan->id)->get();
         $status_berkas = $pemohon->status_berkas->first();
+        $ket_berkas = $pemohon->ket_berkas->first();
         $user = $pemohon->user()->first();
 
         //Custom Perizinan
@@ -66,6 +67,7 @@ class DashboardController extends Controller
                 'berkas' => $berkas,
                 'persyaratan' => $persyaratan,
                 'status_berkas' => $status_berkas,
+                'ket_berkas' => $status_berkas,
                 'perizinan' => $perizinan,
                 'berkas' => $berkas,
                 'user' => $user,
@@ -90,6 +92,7 @@ class DashboardController extends Controller
     {
         $pemohon->update(['back_office' => Auth::id()]);
         $pemohon->status_berkas()->update($request->status_berkas);
+        $pemohon->ket_berkas()->update($request->ket_berkas);
 
         // Custom Perizinan
         if ($pemohon->perizinan->id == 4) {
@@ -100,7 +103,6 @@ class DashboardController extends Controller
                 'no_surat_permohonan' => $request->no_surat_permohonan
             ]);
         }
-
 
         //Notify
         if ($request->status_permohonan_id == 1 || $request->status_permohonan_id == 2) {

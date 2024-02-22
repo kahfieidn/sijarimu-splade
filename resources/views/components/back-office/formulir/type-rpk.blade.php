@@ -3,6 +3,22 @@
         <h1 class="mb-8 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">Isi <span class="underline underline-offset-3 decoration-8 decoration-blue-400 dark:decoration-blue-600">Formulir Permohonan</span></h1>
 
         <div class="grid md:grid-cols-2 md:gap-6">
+            <div class="relative z-999 w-full mb-6 group">
+                <x-splade-select disabled required choices name="type_rpk.type_rpk" label="Tipe Kepengurusan Izin">
+                    <option disabled value="">Pilih salah satu...</option>
+                    <option value="baru">Baru</option>
+                    <option value="perpanjangan">Perpanjangan</option>
+                </x-splade-select>
+            </div>
+            <div class="relative z-999 w-full mb-3 group">
+                <x-splade-select disabled required choices name="type_rpk.type_gt" label="Jenis Isi Kotor GT/Bobot Mati (DWT) ">
+                    <option disabled value="">Pilih salah satu...</option>
+                    <option value="dibawah 10 gt">Dibawah 10 GT</option>
+                    <option value="diatas 10 gt">Diatas 10 GT</option>
+                </x-splade-select>
+            </div>
+        </div>
+        <div class="grid md:grid-cols-2 md:gap-6">
             <div class="relative z-0 w-full mb-6 group">
                 <x-splade-input disabled required name="type_rpk.nama_kapal" type="text" placeholder="Nama Kapal" label="Nama Kapal" />
             </div>
@@ -50,7 +66,7 @@
                 <x-splade-input disabled required name="type_rpk.nomor_siualper" type="text" placeholder="No. SIUALPER" label="No. SIUALPER" />
             </div>
             <div class="relative z-0 w-full mb-6 group">
-                <x-splade-input disabled required name="type_rpk.nomor_rpk_sebelumnya" type="text" placeholder="No. RPK Sebelumnya" label="No. RPK Sebelumnya" />
+                <x-splade-input disabled v-show="form.type_rpk == 'baru'" name="nomor_rpk_sebelumnya" type="text" placeholder="No. RPK Sebelumnya" label="No. RPK Sebelumnya" />
             </div>
         </div>
     </div>
@@ -67,16 +83,16 @@
         @if($persyaratan->status == 'active')
 
         <?php
-        $vars = 'field_' . $key+1;
+        $vars = 'field_' . $key + 1;
         ?>
 
         <div class="grid p-2 mb-1 mt-1 grid-cols-1 gap-6 sm:grid-cols-5">
             <div class="col-span-1 sm:col-span-3">
                 <h6 class="text-sm font-bold dark:text-white">{{ $num_field }}. {{$persyaratan->nama_persyaratan}}
-                    @if($status_berkas->$vars == 'terima')
-                    <span class="bg-blue-100 text-blue-800 text-1xl font-semibold mb-1 mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-1">Terima</span>
-                    @elseif($status_berkas->$vars == 'tolak')
-                    <span class="bg-red-100 text-red-800 text-1xl font-semibold mb-1 mr-2 px-2.5 py-0.5 rounded dark:bg-dark-200 dark:text-dark-800 ml-1">Tolak</span>
+                    @if($status_berkas->$vars == 'ada')
+                    <span class="bg-blue-100 text-blue-800 text-1xl font-semibold mb-1 mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-1">Ada</span>
+                    @elseif($status_berkas->$vars == 'tidak ada')
+                    <span class="bg-red-100 text-red-800 text-1xl font-semibold mb-1 mr-2 px-2.5 py-0.5 rounded dark:bg-dark-200 dark:text-dark-800 ml-1">Tidak Ada</span>
                     @else
                     <span class="bg-yellow-100 text-yellow-800 text-1xl font-semibold mb-1 mr-2 px-2.5 py-0.5 rounded dark:bg-dark-200 dark:text-dark-800 ml-1">Menunggu Review</span>
                     @endif
@@ -110,17 +126,19 @@
 
             <div class="col-span-1 sm:col-span-1 text-center">
                 <x-splade-group name="status_berkas" inline>
-                    <x-splade-radio required name="status_berkas.field_{{$key+1}}" value="terima" label="Terima" />
-                    <x-splade-radio name="status_berkas.field_{{$key+1}}" value="tolak" label="Tolak" />
+                    <x-splade-radio required name="status_berkas.field_{{$key+1}}" value="ada" label="Ada" />
+                    <x-splade-radio name="status_berkas.field_{{$key+1}}" value="tidak ada" label="Tidak Ada" />
                 </x-splade-group>
             </div>
-        </div>
+            </div>
+
+            <x-splade-input v-show="form.status_berkas.field_{{$key+1}} == 'tidak ada'" name="ket_berkas.field_{{$key+1}}" type="text" placeholder="Keterangan" />
         <hr class="h-px my-2 bg-gray-200 border-0 dark:bg-gray-500">
         <?php $num_field++; ?>
+        @else
+
         @endif
         @endforeach
-
-
     </div>
 </div>
 

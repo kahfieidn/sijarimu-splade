@@ -3,6 +3,22 @@
         <h1 class="mb-8 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">Isi <span class="underline underline-offset-3 decoration-8 decoration-blue-400 dark:decoration-blue-600">Formulir Permohonan</span></h1>
 
         <div class="grid md:grid-cols-2 md:gap-6">
+            <div class="relative z-999 w-full mb-6 group">
+                <x-splade-select required choices name="type_rpk" label="Tipe Kepengurusan Izin">
+                    <option disabled value="">Pilih salah satu...</option>
+                    <option value="baru">Baru</option>
+                    <option value="perpanjangan">Perpanjangan</option>
+                </x-splade-select>
+            </div>
+            <div class="relative z-999 w-full mb-3 group">
+                <x-splade-select required choices name="type_gt" label="Jenis Isi Kotor GT/Bobot Mati (DWT) ">
+                    <option disabled value="">Pilih salah satu...</option>
+                    <option value="dibawah 10 gt">Dibawah 10 GT</option>
+                    <option value="diatas 10 gt">Diatas 10 GT</option>
+                </x-splade-select>
+            </div>
+        </div>
+        <div class="grid md:grid-cols-2 md:gap-6">
             <div class="relative z-0 w-full mb-6 group">
                 <x-splade-input required name="nama_kapal" type="text" placeholder="Nama Kapal" label="Nama Kapal" />
             </div>
@@ -50,7 +66,7 @@
                 <x-splade-input required name="nomor_siualper" type="text" placeholder="No. SIUALPER" label="No. SIUALPER" />
             </div>
             <div class="relative z-0 w-full mb-6 group">
-                <x-splade-input required name="nomor_rpk_sebelumnya" type="text" placeholder="No. RPK Sebelumnya" label="No. RPK Sebelumnya" />
+                <x-splade-input v-show="form.type_rpk == 'baru'" name="nomor_rpk_sebelumnya" type="text" placeholder="No. RPK Sebelumnya" label="No. RPK Sebelumnya" />
             </div>
         </div>
     </div>

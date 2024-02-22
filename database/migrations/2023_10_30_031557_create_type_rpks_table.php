@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->integer('type_rpkable_id');
             $table->string('type_rpkable_type');
+            $table->string('type_rpk');
+            $table->string('type_gt');
             $table->string('nama_kapal')->nullable();
             $table->string('jenis_kapal')->nullable();
             $table->string('bendera')->nullable();

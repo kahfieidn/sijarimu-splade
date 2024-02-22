@@ -12,6 +12,8 @@ class TypeRpk extends Model
     protected $fillable = [
         'type_rpkable_id',
         'type_rpkable_type',
+        'type_rpk',
+        'type_gt',
         'nama_kapal',
         'jenis_kapal',
         'bendera',

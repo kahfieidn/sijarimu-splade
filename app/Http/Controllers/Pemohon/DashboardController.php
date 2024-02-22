@@ -90,7 +90,6 @@ class DashboardController extends Controller
         $rules = [];
         $messages = [];
         for ($i = 1; $i <= 30; $i++) {
-            $rules["field_$i"] = 'file|max:2000';
             $messages["field_$i.file"] = "Perhatikan File $i harus format (.pdf) & tidak boleh lebih dari 2 MB!";
         }
         $berkasRequest = $request->validate($rules, $messages);
@@ -110,6 +109,7 @@ class DashboardController extends Controller
         $permohonan = Permohonan::create(['status_permohonan_id' => 3, 'user_id' => Auth::user()->id, 'perizinan_id' => $typeId]);
         $permohonan->berkas()->create($berkasRequest);
         $permohonan->status_berkas()->create([null]);
+        $permohonan->ket_berkas()->create([null]);
 
         //Custom Perizinan        
         if ($typeId == 1) {
@@ -149,6 +149,9 @@ class DashboardController extends Controller
             $profiles = Profile::where('user_id', Auth::id())->first();
             $profiles->update($request->profile);
             $typeRpk = $request->validate([
+                'type_rpk' => ['required', 'string', 'max:255'],
+                'type_gt' => ['required', 'string', 'max:255'],
+                'nama_kapal' => ['required', 'string', 'max:255'],
                 'nama_kapal' => ['required', 'string', 'max:255'],
                 'jenis_kapal' => ['required', 'string', 'max:255'],
                 'bendera' => ['required', 'string', 'max:255'],
@@ -161,7 +164,7 @@ class DashboardController extends Controller
                 'trayek' => ['required', 'string', 'max:255'],
                 'urgensi' => ['required', 'string', 'max:255'],
                 'nomor_siualper' => ['required', 'string', 'max:255'],
-                'nomor_rpk_sebelumnya' => ['required', 'string', 'max:255'],
+                'nomor_rpk_sebelumnya' => ['string', 'max:255'],
             ]);
             $permohonan->type_rpk()->create($typeRpk);
         }
