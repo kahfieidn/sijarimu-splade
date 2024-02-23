@@ -9,18 +9,18 @@
         </a>
         <div class="grid md:grid-cols-2 md:gap-6">
             <div class="relative z-0 w-full mb-6 group">
-                <x-splade-input disabled required name="user.name" type="text" placeholder="Nama Pemohon" label="Nama Pemohon" />
+                <x-splade-input readonly required name="user.name" type="text" placeholder="Nama Pemohon" label="Nama Pemohon" />
             </div>
             <div class="relative z-0 w-full mb-6 group">
-                <x-splade-input disabled required name="user.email" type="text" placeholder="Email" label="Email" />
+                <x-splade-input readonly required name="user.email" type="text" placeholder="Email" label="Email" />
             </div>
         </div>
         <div class="grid md:grid-cols-2 md:gap-6">
             <div class="relative z-999 w-full mb-6 group">
-                <x-splade-input disabled required name="user.nik" type="text" label="NIK" />
+                <x-splade-input readonly required name="user.nik" type="text" label="NIK" />
             </div>
             <div class="relative z-999 w-full mb-6 group">
-                <x-splade-input disabled required name="user.nomor_handphone" label="Nomor Handphone" />
+                <x-splade-input readonly required name="user.nomor_handphone" label="Nomor Handphone" />
             </div>
         </div>
     </div>
