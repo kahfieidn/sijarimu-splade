@@ -52,7 +52,9 @@ class DashboardController extends Controller
         $perizinan = Perizinan::find($pemohon->perizinan_id);
         $persyaratan = Persyaratan::where('perizinan_id', $pemohon->perizinan->id)->get();
         $status_berkas = $pemohon->status_berkas->first();
+        $ket_berkas = $pemohon->ket_berkas->first();
         $user = $pemohon->user()->first();
+
         //Custom Perizinan
         if ($pemohon->perizinan_id == 1) {
             $penelitian = $pemohon->penelitian()->first();
@@ -102,6 +104,7 @@ class DashboardController extends Controller
                 'berkas' => $berkas,
                 'persyaratan' => $persyaratan,
                 'status_berkas' => $status_berkas,
+                'ket_berkas' => $ket_berkas,
                 'perizinan' => $perizinan,
                 'berkas' => $berkas,
                 'user' => $user,

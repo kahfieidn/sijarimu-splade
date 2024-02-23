@@ -42,9 +42,12 @@ class KetBerkas extends Model
         'field_28',
         'field_29',
         'field_30',
+        'created_at',
+        'updated_at',
     ];
 
-    public function keterangan_berkas() {
-        return $this->morphMany(KetBerkas::class, 'ket_berkasable');
+    public function ket_berkasable()
+    {
+        return $this->morphTo();
     }
 }

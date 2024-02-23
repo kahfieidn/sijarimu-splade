@@ -67,7 +67,7 @@ class DashboardController extends Controller
                 'berkas' => $berkas,
                 'persyaratan' => $persyaratan,
                 'status_berkas' => $status_berkas,
-                'ket_berkas' => $status_berkas,
+                'ket_berkas' => $ket_berkas,
                 'perizinan' => $perizinan,
                 'berkas' => $berkas,
                 'user' => $user,
@@ -90,9 +90,6 @@ class DashboardController extends Controller
      */
     public function update(Request $request, Permohonan $pemohon)
     {
-        $pemohon->update(['back_office' => Auth::id()]);
-        $pemohon->status_berkas()->update($request->status_berkas);
-        $pemohon->ket_berkas()->update($request->ket_berkas);
 
         // Custom Perizinan
         if ($pemohon->perizinan->id == 4) {
@@ -100,9 +97,15 @@ class DashboardController extends Controller
                 'status_permohonan_id' => $request->status_permohonan_id,
                 'catatan' => $request->catatan,
                 'no_permintaan_rekomendasi' => $request->no_permintaan_rekomendasi,
-                'no_surat_permohonan' => $request->no_surat_permohonan
+                'no_surat_permohonan' => $request->no_surat_permohonan,
+                'back_office' => Auth::id()
             ]);
         }
+        $ket_berkas_request = array_slice($request->ket_berkas, 0, 30);
+        $pemohon->ket_berkas()->update($ket_berkas_request);
+        $status_berkas_request = array_slice($request->status_berkas, 0, 30);
+        $pemohon->status_berkas()->update($status_berkas_request);
+
 
         //Notify
         if ($request->status_permohonan_id == 1 || $request->status_permohonan_id == 2) {

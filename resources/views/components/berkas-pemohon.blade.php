@@ -13,10 +13,10 @@
             ?>
             <div class="py-2">
                 <h6 class="mb-2 text-lg font-bold dark:text-white">{{ $num_field }}. {{$persyaratan->nama_persyaratan}}
-                    @if($status_berkas->$vars == 'terima')
-                    <span class="bg-blue-100 text-blue-800 text-1xl font-semibold mb-1 mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-1">Terima</span>
+                    @if($status_berkas->$vars == 'ada')
+                    <span class="bg-blue-100 text-blue-800 text-1xl font-semibold mb-1 mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-1">Ada</span>
                     @else
-                    <span class="bg-red-100 text-red-800 text-1xl font-semibold mb-1 mr-2 px-2.5 py-0.5 rounded dark:bg-dark-200 dark:text-dark-800 ml-1">Tolak</span>
+                    <span class="bg-red-100 text-red-800 text-1xl font-semibold mb-1 mr-2 px-2.5 py-0.5 rounded dark:bg-dark-200 dark:text-dark-800 ml-1">Tidak Ada</span>
                     @endif
                     <Link href="#modal-berkas-{{$vars}}" class="relative sm inline-flex items-center justify-center p-0.5 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
                     <span class="relative px-2 py-1 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
@@ -41,8 +41,13 @@
                         </div>
                     </x-splade-modal>
                 </h6>
-                <x-splade-file required accept="application/pdf" filepond max-size="2MB" class="block mb-2 text-lg font-medium text-gray-900 dark:text-white" name="fields.field_{{$key+1}}" filepond preview />
+                
                 <p class="text-sm text-gray-500 dark:text-gray-300" id="file_input_help">Unggah berkas yang perlu diperbaiki saja, yang sudah benar tidak perlu di upload kembali karena sudah tersimpan di sistem.</p>
+                <x-splade-file accept="application/pdf" filepond max-size="2MB" class="block mb-2 text-lg font-medium text-gray-900 dark:text-white" name="fields.field_{{$key+1}}" filepond preview />
+                @if($status_berkas->$vars == 'tidak ada')
+                <x-splade-textarea label="Keterangan :" readonly name="ket_berkas.field_{{$key+1}}" type="text" placeholder="Keterangan" />
+                @endif
+
             </div>
             <?php $num_field++; ?>
             @endif

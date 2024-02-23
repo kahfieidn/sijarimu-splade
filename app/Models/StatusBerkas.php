@@ -44,7 +44,9 @@ class StatusBerkas extends Model
         'field_30',
     ];
 
-    public function status() {
-        return $this->morphMany(StatusBerkas::class, 'statusable');
+    public function status_berkasable()
+    {
+        return $this->morphTo();
     }
+
 }

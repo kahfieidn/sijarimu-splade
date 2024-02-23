@@ -56,6 +56,7 @@ class DashboardController extends Controller
         $perizinan = Perizinan::find($pemohon->perizinan_id);
         $persyaratan = Persyaratan::where('perizinan_id', $pemohon->perizinan->id)->get();
         $status_berkas = $pemohon->status_berkas->first();
+        $ket_berkas = $pemohon->ket_berkas->first();
         $user = $pemohon->user()->first();
 
         //Custom Perizinan
@@ -67,6 +68,7 @@ class DashboardController extends Controller
                 'berkas' => $berkas,
                 'persyaratan' => $persyaratan,
                 'status_berkas' => $status_berkas,
+                'ket_berkas' => $ket_berkas,
                 'perizinan' => $perizinan,
                 'berkas' => $berkas,
                 'user' => $user,
@@ -111,6 +113,7 @@ class DashboardController extends Controller
                 'catatan' => $request->catatan,
                 'no_surat_rekomendasi' => $request->no_surat_rekomendasi,
                 'surat_rekomendasi' => $surat_rekomendasiRequest[$fieldName],
+                'tgl_surat_rekomendasi' => Carbon::now()->format('d-m-Y'),
             ]);
         }
 

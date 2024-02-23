@@ -38,7 +38,7 @@ class DashboardController extends Controller
     }
 
     public function profile(Request $request)
-    {  
+    {
 
         Profile::create([
             'user_id' => Auth::id(),
@@ -149,12 +149,12 @@ class DashboardController extends Controller
             $profiles = Profile::where('user_id', Auth::id())->first();
             $profiles->update($request->profile);
             $typeRpk = $request->validate([
+                'type_trayek' => ['required', 'string', 'max:255'],
                 'type_rpk' => ['required', 'string', 'max:255'],
                 'type_gt' => ['required', 'string', 'max:255'],
                 'nama_kapal' => ['required', 'string', 'max:255'],
                 'nama_kapal' => ['required', 'string', 'max:255'],
                 'jenis_kapal' => ['required', 'string', 'max:255'],
-                'bendera' => ['required', 'string', 'max:255'],
                 'isi_kotor' => ['required', 'string', 'max:255'],
                 'tenaga_penggerak' => ['required', 'string', 'max:255'],
                 'status_kepemilikan_kapal' => ['required', 'string', 'max:255'],
@@ -204,27 +204,33 @@ class DashboardController extends Controller
         $jumlah_persyaratan = Persyaratan::where('perizinan_id', $pemohon->perizinan_id)->count();
         $fields = [];
         for ($i = 1; $i <= $jumlah_persyaratan; $i++) {
-            $fields['field_' . $i] = ExistingFile::fromDisk('public')->get('/docs' . '/' . $berkas->{'field_' . $i});
+            if ($berkas->{'field_' . $i} == null) {
+                $berkas->{'field_' . $i} == null;
+            } else {
+                $fields['field_' . $i] = ExistingFile::fromDisk('public')->get('/docs' . '/' . $berkas->{'field_' . $i});
+            }
         }
 
         $perizinan = Perizinan::find($pemohon->perizinan_id);
         $persyaratan = Persyaratan::where('perizinan_id', $pemohon->perizinan_id)->get();
         $status_berkas = StatusBerkas::where('status_berkasable_id', $pemohon->id)->first();
+        $ket_berkas = $pemohon->ket_berkas->first();
         $penelitian = $pemohon->penelitian()->first();
         $peneliti = $pemohon->peneliti()->get();
         $profile = Profile::where('user_id', $pemohon->user_id)->first();
-        $typeRpk = $pemohon->type_rpk()->first();
+        $type_rpk = $pemohon->type_rpk()->first();
         return view('pemohon.edit', [
             'pemohon' => $pemohon,
             'perizinan' => $perizinan,
             'persyaratan' => $persyaratan,
             'berkas' => $berkas,
             'status_berkas' => $status_berkas,
+            'ket_berkas' => $ket_berkas,
             'penelitian' => $penelitian,
             'peneliti' => $peneliti,
             'fields' => $fields,
             'profile' => $profile,
-            'typeRpk' => $typeRpk,
+            'type_rpk' => $type_rpk,
         ]);
     }
 
@@ -255,10 +261,9 @@ class DashboardController extends Controller
             $fieldName = 'field_' . $i;
             $berkas = $request->file('fields' . '.' . $fieldName);
 
-            if($berkas == null){
+            if ($berkas == null) {
                 $berkas = $pemohon->berkas->first()->$fieldName;
-            }
-            else if (!isset($request->fields[$fieldName . '_existing'])) {
+            } else if (!isset($request->fields[$fieldName . '_existing'])) {
                 Storage::delete('/public/docs' . '/' . $pemohon->berkas->first()->$fieldName);
 
                 $storageDirectory = 'public/docs/' . $currentMonthYear;
@@ -268,7 +273,6 @@ class DashboardController extends Controller
             }
         };
 
-        // Create Permohonan
         $permohonan = Permohonan::find($pemohon->id);
         $permohonan->update([
             'status_permohonan_id' => 3,
@@ -277,7 +281,22 @@ class DashboardController extends Controller
             'catatan' => null,
             'catatan_back_office' => null,
         ]);
+
         $permohonan->berkas()->update($berkasRequest);
+
+        for ($i = 1; $i <= 30; $i++) {
+            if (!isset($ket_berkas_request[$i])) {
+                $ket_berkas_request['field_'.$i] = null;
+            }
+
+            if (!isset($status_berkas_request[$i])) {
+                $status_berkas_request['field_'.$i] = null;
+            }
+        }
+
+        $pemohon->ket_berkas()->update($ket_berkas_request);
+        $pemohon->status_berkas()->update($status_berkas_request);
+
 
         //Custom Perizinan        
         if ($typeId == 1) {
@@ -293,7 +312,7 @@ class DashboardController extends Controller
         } else if ($typeId == 4) {
             $profile = Profile::where('user_id', Auth::id())->first();
             $profile->update($request->profile);
-            $pemohon->type_rpk()->first()->update($request->typeRpk);
+            $pemohon->type_rpk()->first()->update($request->type_rpk);
         }
         Toast::title('Permohonan anda berhasil di ajukan kembali!')
             ->rightBottom()

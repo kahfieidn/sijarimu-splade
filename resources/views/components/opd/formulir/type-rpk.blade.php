@@ -2,55 +2,79 @@
     <div class="bg-white p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
         <h1 class="mb-8 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">Isi <span class="underline underline-offset-3 decoration-8 decoration-blue-400 dark:decoration-blue-600">Formulir Permohonan</span></h1>
 
-        <div class="grid md:grid-cols-2 md:gap-6">
-            <div class="relative z-0 w-full mb-6 group">
-                <x-splade-input disabled required name="type_rpk.nama_kapal" type="text" placeholder="Nama Kapal" label="Nama Kapal" />
-            </div>
-            <div class="relative z-0 w-full mb-6 group">
-                <x-splade-input disabled required name="type_rpk.jenis_kapal" type="text" placeholder="Jenis Kapal" label="Jenis Kapal" />
-            </div>
-        </div>
-        <div class="grid md:grid-cols-3 md:gap-6">
-            <div class="relative z-0 w-full mb-6 group">
-                <x-splade-input disabled required name="type_rpk.bendera" type="text" placeholder="Bendera Kapal" label="Bendera Kapal" />
-            </div>
-            <div class="relative z-0 w-full mb-6 group">
-                <x-splade-input disabled required name="type_rpk.isi_kotor" type="text" placeholder="Isi Kotor" label="Isi Kotor/Bobot Mati" />
-            </div>
-            <div class="relative z-0 w-full mb-6 group">
-                <x-splade-input disabled required name="type_rpk.tenaga_penggerak" type="text" placeholder="Tenaga Penggerak" label="Tenaga Penggerak" />
+        <div class="grid md:grid-cols-1 md:gap-6">
+            <div class="relative z-999 w-full mb-6 group">
+                <x-splade-select disabled required choices name="type_rpk.type_trayek" label="Tipe Trayek">
+                    <option disabled value="">Pilih salah satu...</option>
+                    <option value="Trayek Tetap Dan Teratur Angkutan Laut Dalam Negeri">Trayek Tetap Dan Teratur Angkutan Laut Dalam Negeri</option>
+                    <option value="Trayek Tidak Tetap Dan Teratur Angkutan Laut Dallas Negeri">Trayek Tidak Tetap Dan Teratur Angkutan Laut Dalam Negeri</option>
+                    <option value="Trayek Tidak Tetap Dan Tidak Teratur Angkutan Laut Dalam Negeri">Trayek Tidak Tetap Dan Tidak Teratur Angkutan Laut Dalam Negeri</option>
+                    <option value="Trayek Tidak Tetap Dan Tidak Teratur Angkutan Laut Dalam Negeri Dan Lintas Batas">Trayek Tidak Tetap Dan Tidak Teratur Angkutan Laut Dalam Negeri Dan Lintas Batas</option>
+                </x-splade-select>
             </div>
         </div>
         <div class="grid md:grid-cols-2 md:gap-6">
-            <div class="relative z-0 w-full mb-6 group">
-                <x-splade-input disabled required name="type_rpk.status_kepemilikan_kapal" type="text" placeholder="Status Kepemilikan Kapal" label="Status Kepemilikan Kapal" />
+            <div class="relative z-999 w-full mb-6 group">
+                <x-splade-select disabled required choices name="type_rpk.type_rpk" label="Tipe Kepengurusan Izin">
+                    <option disabled value="">Pilih salah satu...</option>
+                    <option value="baru">Baru</option>
+                    <option value="perpanjangan">Perpanjangan</option>
+                </x-splade-select>
             </div>
-            <div class="relative z-0 w-full mb-6 group">
-                <x-splade-input disabled required name="type_rpk.kapasitas_angkut" type="text" placeholder="Kapasitas Angkut" label="Kapasitas Angkut" />
-            </div>
-        </div>
-        <div class="grid md:grid-cols-2 md:gap-6">
-            <div class="relative z-0 w-full mb-6 group">
-                <x-splade-input disabled required name="type_rpk.pelabuhan_pangkal" type="text" placeholder="Pelabuhan Pangkal" label="Pelabuhan Pangkal" />
-            </div>
-            <div class="relative z-0 w-full mb-6 group">
-                <x-splade-input disabled required name="type_rpk.pelabuhan_singgah" type="text" placeholder="Pelabuhan Singgah" label="Pelabuhan Singgah" />
+            <div class="relative z-999 w-full mb-3 group">
+                <x-splade-select disabled required choices name="type_rpk.type_gt" label="Jenis Isi Kotor GT/Bobot Mati (DWT) ">
+                    <option disabled value="">Pilih salah satu...</option>
+                    <option value="dibawah gt 10">Dibawah GT 10</option>
+                    <option value="diatas gt 10">Diatas GT 10</option>
+                </x-splade-select>
             </div>
         </div>
         <div class="grid md:grid-cols-2 md:gap-6">
             <div class="relative z-0 w-full mb-6 group">
-                <x-splade-input disabled required name="type_rpk.urgensi" type="text" placeholder="Urgensi" label="Urgensi" />
+                <x-splade-input readonly required name="type_rpk.nama_kapal" type="text" placeholder="Nama Kapal" label="Nama Kapal" />
             </div>
             <div class="relative z-0 w-full mb-6 group">
-                <x-splade-input disabled required name="type_rpk.trayek" type="text" placeholder="Trayek" label="Trayek" />
+                <x-splade-input readonly required name="type_rpk.jenis_kapal" type="text" placeholder="Cth : Kapal Penumpang / Kapal Barang / dll" label="Jenis Kapal" />
             </div>
         </div>
         <div class="grid md:grid-cols-2 md:gap-6">
             <div class="relative z-0 w-full mb-6 group">
-                <x-splade-input disabled required name="type_rpk.nomor_siualper" type="text" placeholder="No. SIUALPER" label="No. SIUALPER" />
+                <x-splade-input readonly required name="type_rpk.isi_kotor" type="text" placeholder="Cth : GT. 20 No. 124/GGg" label="Isi Kotor/Bobot Mati" />
             </div>
             <div class="relative z-0 w-full mb-6 group">
-                <x-splade-input disabled required name="type_rpk.nomor_rpk_sebelumnya" type="text" placeholder="No. RPK Sebelumnya" label="No. RPK Sebelumnya" />
+                <x-splade-input readonly required name="type_rpk.tenaga_penggerak" type="text" placeholder="Cth : YAMAHA 6 x 200 PK" label="Tenaga Penggerak" />
+            </div>
+        </div>
+        <div class="grid md:grid-cols-2 md:gap-6">
+            <div class="relative z-0 w-full mb-6 group">
+                <x-splade-input readonly required name="type_rpk.status_kepemilikan_kapal" type="text" placeholder="Cth : Keagenan Dioperasikan" label="Status Kepemilikan Kapal" />
+            </div>
+            <div class="relative z-0 w-full mb-6 group">
+                <x-splade-input readonly required name="type_rpk.kapasitas_angkut" type="text" placeholder="Cth : 14 (empat belas) orang" label="Kapasitas Angkut" />
+            </div>
+        </div>
+        <div class="grid md:grid-cols-2 md:gap-6">
+            <div class="relative z-0 w-full mb-6 group">
+                <x-splade-input readonly required name="type_rpk.pelabuhan_pangkal" type="text" placeholder="Cth : Tanjung Uban" label="Pelabuhan Pangkal" />
+            </div>
+            <div class="relative z-0 w-full mb-6 group">
+                <x-splade-input readonly required name="type_rpk.pelabuhan_singgah" type="text" placeholder="Cth : Telaga Punggur" label="Pelabuhan Singgah" />
+            </div>
+        </div>
+        <div class="grid md:grid-cols-2 md:gap-6">
+            <div class="relative z-0 w-full mb-6 group">
+                <x-splade-input readonly required name="type_rpk.urgensi" type="text" placeholder="Cth : Menunjang kegiatan angkutan laut dalam negeri" label="Urgensi" />
+            </div>
+            <div class="relative z-0 w-full mb-6 group">
+                <x-splade-input readonly required name="type_rpk.trayek" type="text" placeholder="Cth : Telaga Punggur, Lagoi Bintan" label="Route Trayek" />
+            </div>
+        </div>
+        <div class="grid md:grid-cols-2 md:gap-6">
+            <div class="relative z-0 w-full mb-6 group">
+                <x-splade-input readonly required name="type_rpk.nomor_siualper" type="text" placeholder="No. SIUALPER" label="No. SIUALPER" />
+            </div>
+            <div class="relative z-0 w-full mb-6 group">
+            <x-splade-input readonly required v-if="form.type_rpk.type_rpk == 'perpanjangan'" name="type_rpk.nomor_rpk_sebelumnya" type="text" placeholder="No. RPK Sebelumnya" label="No. RPK Sebelumnya" />
             </div>
         </div>
     </div>
@@ -73,14 +97,16 @@
         <div class="grid mb-2 mt-2 grid-cols-1 gap-6 sm:grid-cols-5">
             <div class="ml-2 col-span-1 sm:col-span-4">
                 <h6 class="text-sm font-bold dark:text-white">{{ $num_field }}. {{$persyaratan->nama_persyaratan}}
-                    @if($status_berkas->$vars == 'terima')
-                    <span class="bg-blue-100 text-blue-800 text-1xl font-semibold mb-1 mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-1">Terima</span>
-                    @elseif($status_berkas->$vars == 'tolak')
-                    <span class="bg-red-100 text-red-800 text-1xl font-semibold mb-1 mr-2 px-2.5 py-0.5 rounded dark:bg-dark-200 dark:text-dark-800 ml-1">Tolak</span>
+                    @if($status_berkas->$vars == 'ada')
+                    <span class="bg-blue-100 text-blue-800 text-1xl font-semibold mb-1 mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-1">Ada</span>
+                    @elseif($status_berkas->$vars == 'tidak ada')
+                    <span class="bg-red-100 text-red-800 text-1xl font-semibold mb-1 mr-2 px-2.5 py-0.5 rounded dark:bg-dark-200 dark:text-dark-800 ml-1">Tidak Ada</span>
                     @else
                     <span class="bg-yellow-100 text-yellow-800 text-1xl font-semibold mb-1 mr-2 px-2.5 py-0.5 rounded dark:bg-dark-200 dark:text-dark-800 ml-1">Menunggu Review</span>
                     @endif
                 </h6>
+                <h6 v-show="{{$ket_berkas->$vars != null}}" class="text-sm dark:text-white">Keterangan : {{$ket_berkas->$vars}}
+
             </div>
             <div class="col-span-1 sm:text-right sm:col-span-1">
                 <Link href="#modal-berkas-{{$vars}}" class="relative sm inline-flex items-center justify-center p-0.5 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">

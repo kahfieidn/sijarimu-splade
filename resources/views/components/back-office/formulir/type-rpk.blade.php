@@ -66,7 +66,7 @@
                 <x-splade-input disabled required name="type_rpk.nomor_siualper" type="text" placeholder="No. SIUALPER" label="No. SIUALPER" />
             </div>
             <div class="relative z-0 w-full mb-6 group">
-                <x-splade-input disabled v-show="form.type_rpk == 'baru'" name="nomor_rpk_sebelumnya" type="text" placeholder="No. RPK Sebelumnya" label="No. RPK Sebelumnya" />
+                <x-splade-input disabled v-if="form.type_rpk.type_rpk == 'perpanjangan'" name="type_rpk.nomor_rpk_sebelumnya" type="text" placeholder="No. RPK Sebelumnya" label="No. RPK Sebelumnya" />
             </div>
         </div>
     </div>
@@ -130,9 +130,9 @@
                     <x-splade-radio name="status_berkas.field_{{$key+1}}" value="tidak ada" label="Tidak Ada" />
                 </x-splade-group>
             </div>
-            </div>
+        </div>
 
-            <x-splade-input v-show="form.status_berkas.field_{{$key+1}} == 'tidak ada'" name="ket_berkas.field_{{$key+1}}" type="text" placeholder="Keterangan" />
+        <x-splade-textarea autosize label="Keterangan:" v-show="form.status_berkas.field_{{$key+1}} == 'tidak ada'" name="ket_berkas.field_{{$key+1}}" type="text" placeholder="Keterangan" />
         <hr class="h-px my-2 bg-gray-200 border-0 dark:bg-gray-500">
         <?php $num_field++; ?>
         @else

@@ -21,6 +21,7 @@ class Permohonan extends Model
         'no_permintaan_rekomendasi',
         'surat_rekomendasi',
         'no_surat_rekomendasi',
+        'tgl_surat_rekomendasi',
         'izin_terbit',
         'no_izin',
         'front_office',
@@ -79,6 +80,17 @@ class Permohonan extends Model
     public function kepala_dinas(){
         return $this->belongsTo(User::class, 'kepala_dinas');
     }    
+
+
+    public function getTglSuratRekomendasiAttribute(){
+        return Carbon::createFromFormat('Y-m-d', $this->attributes['tgl_surat_rekomendasi'])->format('d-m-Y');
+    }
+
+    public function setTglSuratRekomendasiAttribute($value)
+    {
+        $this->attributes['tgl_surat_rekomendasi'] = Carbon::createFromFormat('d-m-Y', $value)->format('Y-m-d');
+    }
+    
 
 }
 

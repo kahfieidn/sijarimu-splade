@@ -100,7 +100,7 @@ class PersyaratanSeeder extends Seeder
 
         //Persyaratan Rencana Pengoperasian Kapal
         \App\Models\Persyaratan::create([
-            'nama_persyaratan' => 'Surat Permohonan Perusahaan Bermatrai di Tujukan Ke Dinas Penanaman Modal dan Pelayanan Terpadu Satu Pintu Provinsi Kepri',
+            'nama_persyaratan' => 'Surat Permohonan Perusahaan Bermaterai di Tujukan Ke Dinas Penanaman Modal dan Pelayanan Terpadu Satu Pintu Prov Kepri',
             'perizinan_id' => '4',
             'status' => 'active',
         ]);
@@ -135,7 +135,7 @@ class PersyaratanSeeder extends Seeder
             'status' => 'active',
         ]);
         \App\Models\Persyaratan::create([
-            'nama_persyaratan' => 'RPK Sebelumnya',
+            'nama_persyaratan' => 'RPK Sebelumnya (Kepri)',
             'perizinan_id' => '4',
             'status' => 'active',
         ]);
@@ -146,6 +146,16 @@ class PersyaratanSeeder extends Seeder
         ]);
         \App\Models\Persyaratan::create([
             'nama_persyaratan' => 'Laporan Realisasi Perjalanan Kapal (Voyage Report) Per Triwulan',
+            'perizinan_id' => '4',
+            'status' => 'active',
+        ]);
+        \App\Models\Persyaratan::create([
+            'nama_persyaratan' => 'Kesepakatan antar agen / organisasi (Baru)',
+            'perizinan_id' => '4',
+            'status' => 'active',
+        ]);
+        \App\Models\Persyaratan::create([
+            'nama_persyaratan' => 'Rekomendasi dari instansi terkait (Baru)',
             'perizinan_id' => '4',
             'status' => 'active',
         ]);
