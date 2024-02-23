@@ -82,9 +82,6 @@ class Permohonan extends Model
     }    
 
 
-    public function getTglSuratRekomendasiAttribute(){
-        return Carbon::createFromFormat('Y-m-d', $this->attributes['tgl_surat_rekomendasi'])->format('d-m-Y');
-    }
 
     public function setTglSuratRekomendasiAttribute($value)
     {
