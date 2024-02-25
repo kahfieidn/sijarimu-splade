@@ -7,7 +7,7 @@
                 <x-splade-select required choices name="type_trayek" label="Tipe Trayek">
                     <option disabled value="">Pilih salah satu...</option>
                     <option value="Trayek Tetap Dan Teratur Angkutan Laut Dalam Negeri">Trayek Tetap Dan Teratur Angkutan Laut Dalam Negeri</option>
-                    <option value="Trayek Tidak Tetap Dan Teratur Angkutan Laut Dallas Negeri">Trayek Tidak Tetap Dan Teratur Angkutan Laut Dalam Negeri</option>
+                    <option value="Trayek Tidak Tetap Dan Teratur Angkutan Laut Dalam Negeri">Trayek Tidak Tetap Dan Teratur Angkutan Laut Dalam Negeri</option>
                     <option value="Trayek Tidak Tetap Dan Tidak Teratur Angkutan Laut Dalam Negeri">Trayek Tidak Tetap Dan Tidak Teratur Angkutan Laut Dalam Negeri</option>
                     <option value="Trayek Tidak Tetap Dan Tidak Teratur Angkutan Laut Dalam Negeri Dan Lintas Batas">Trayek Tidak Tetap Dan Tidak Teratur Angkutan Laut Dalam Negeri Dan Lintas Batas</option>
                 </x-splade-select>
