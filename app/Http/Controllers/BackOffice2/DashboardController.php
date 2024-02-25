@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\BackOffice2;
 
+use Carbon\Carbon;
 use App\Models\Profile;
 use App\Models\Perizinan;
 use App\Models\Permohonan;
@@ -63,6 +64,7 @@ class DashboardController extends Controller
                 'berkas' => $berkas,
                 'persyaratan' => $persyaratan,
                 'status_berkas' => $status_berkas,
+                'ket_berkas' => $ket_berkas,
                 'perizinan' => $perizinan,
                 'berkas' => $berkas,
                 'penelitian' => $penelitian,
@@ -77,6 +79,7 @@ class DashboardController extends Controller
                 'berkas' => $berkas,
                 'persyaratan' => $persyaratan,
                 'status_berkas' => $status_berkas,
+                'ket_berkas' => $ket_berkas,
                 'perizinan' => $perizinan,
                 'berkas' => $berkas,
                 'penelitian' => $penelitian,
@@ -92,6 +95,7 @@ class DashboardController extends Controller
                 'berkas' => $berkas,
                 'persyaratan' => $persyaratan,
                 'status_berkas' => $status_berkas,
+                'ket_berkas' => $ket_berkas,
                 'perizinan' => $perizinan,
                 'berkas' => $berkas,
                 'penelitian' => $penelitian,
@@ -101,6 +105,14 @@ class DashboardController extends Controller
         } else if ($pemohon->perizinan_id == 4) {
             $profile = Profile::where('user_id', $pemohon->user_id)->first();
             $type_rpk = $pemohon->type_rpk()->first();
+            $bulan_type_rpk = Carbon::now()->format('n'); // Mengambil nomor bulan (1-12)
+            function intToRoman($number)
+            {
+                $map = array('I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII');
+                return $map[$number - 1];
+            }
+            $bulan_type_rpk_romawi = intToRoman($bulan_type_rpk);
+            $no_izin = '00' . $type_rpk->id . '/C2.a' . '/DPMPTSP' . '/' .$bulan_type_rpk_romawi . '/2024';
             return view('back-office-2.show', [
                 'pemohon' => $pemohon,
                 'berkas' => $berkas,
@@ -112,6 +124,7 @@ class DashboardController extends Controller
                 'user' => $user,
                 'profile' => $profile,
                 'type_rpk' => $type_rpk,
+                'no_izin' => $no_izin
             ]);
         }
     }
