@@ -13,13 +13,13 @@
 	{font-family:"Cambria Math";
 	panose-1:2 4 5 3 5 4 6 3 2 4;}
 @font-face
-	{font-family:"Arial MT";}
-@font-face
 	{font-family:Cambria;
 	panose-1:2 4 5 3 5 4 6 3 2 4;}
 @font-face
 	{font-family:Georgia;
 	panose-1:2 4 5 2 5 4 5 2 3 3;}
+@font-face
+	{font-family:"Arial MT";}
  /* Style Definitions */
  p.MsoNormal, li.MsoNormal, div.MsoNormal
 	{margin:0in;
@@ -66,7 +66,7 @@ src="images/headercop.png"></span></p>
   </td>
   <td width="47%" valign=top style='width:47.06%;padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal align=right style='text-align:right'><span lang=id
-  style='font-family:"Arial",sans-serif'>Tanjungpinang, {{$pemohon->created_at->isoFormat('D MMMM Y')}}</span></p>
+  style='font-family:"Arial",sans-serif'>Tanjungpinang, 08 April 2000</span></p>
   </td>
  </tr>
 </table>
@@ -94,8 +94,9 @@ src="images/headercop.png"></span></p>
   (satu) Berkas</span></p>
   <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>Penting</span></p>
   <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>Mohon
-  Rekomendasi Teknis Perpanjangan Rencana Pengoperasian Kapal (RPK) </span></p>
-  <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>{{ $pemohon->profile->perusahaan }}</span></p>
+  Rekomendasi Teknis Rencana Pengoperasian Kapal (RPK) </span></p>
+  <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>SB.
+  Admin</span></p>
   </td>
   <td width="15%" valign=top style='width:15.88%;padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal align=right style='text-align:right'><b><span lang=id
@@ -128,7 +129,8 @@ src="images/headercop.png"></span></p>
   <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>Dengan
   Hormat,</span></p>
   <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>Menindaklanjuti
-  Surat Direktur {{$pemohon->profile->perusahaan}} Nomor {{$pemohon->no_surat_permohonan}} tanggal {{$pemohon->created_at->isoFormat('D MMMM Y')}} perihal Permohonan Persetujuan Perpanjangan Trayek Tidak Tetap dan Tidak
+  Surat Direktur PT. FLORA PERKASA Nomor 40/FP/TUB/BU/I/2024 tanggal 30 Januari
+  2024 perihal Penerbitan Persetujuan Perpanjangan Trayek Tidak Tetap dan Tidak
   Teratur Angkutan Laut Dalam Negeri, bersama ini kami sampaikan hal-hal
   sebagai berikut:</span></p>
   </td>
@@ -149,8 +151,11 @@ src="images/headercop.png"></span></p>
   <td width="84%" valign=top style='width:84.16%;padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal style='text-align:justify'><span lang=id style='font-family:
   "Arial",sans-serif'>Persetujuan Pengoperasian Kapal Pelra Perusahaan yang
-  bersangkutan akan habis masa berlakunya dan bermaksud untuk melakukan
-  perpanjangan persetujuan, dengan data permohonan sebagai berikut :</span></p>
+  bersangkutan </span><span style='font-family:"Arial",sans-serif'>mengajukan
+  permohonan baru </span><span lang=id style='font-family:"Arial",sans-serif'>untuk
+  </span><span style='font-family:"Arial",sans-serif'>izin Rencana
+  Pengoperasian Kapal (RPK), dengan data permohonan sebagai berikut</span><span
+  lang=id style='font-family:"Arial",sans-serif'> :</span></p>
   </td>
  </tr>
 </table>
@@ -173,7 +178,7 @@ src="images/headercop.png"></span></p>
   <p class=MsoNormal><span style='font-family:"Arial",sans-serif'>:</span></p>
   </td>
   <td width="44%" valign=top style='width:44.4%;padding:0in 5.4pt 0in 5.4pt'>
-  <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>{{$pemohon->profile->perusahaan}}</span></p>
+  <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>zxhh</span></p>
   </td>
  </tr>
  <tr>
@@ -190,7 +195,7 @@ src="images/headercop.png"></span></p>
   <p class=MsoNormal><span style='font-family:"Arial",sans-serif'>:</span></p>
   </td>
   <td width="44%" valign=top style='width:44.4%;padding:0in 5.4pt 0in 5.4pt'>
-  <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>{{$type_rpk->nama_kapal}}</span></p>
+  <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>Sxsx</span></p>
   </td>
  </tr>
  <tr>
@@ -207,7 +212,7 @@ src="images/headercop.png"></span></p>
   <p class=MsoNormal><span style='font-family:"Arial",sans-serif'>:</span></p>
   </td>
   <td width="44%" valign=top style='width:44.4%;padding:0in 5.4pt 0in 5.4pt'>
-  <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>{{$type_rpk->jenis_kapal}}</span></p>
+  <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>Isi_kotor</span></p>
   </td>
  </tr>
  <tr>
@@ -225,7 +230,7 @@ src="images/headercop.png"></span></p>
   <p class=MsoNormal><span style='font-family:"Arial",sans-serif'>:</span></p>
   </td>
   <td width="44%" valign=top style='width:44.4%;padding:0in 5.4pt 0in 5.4pt'>
-  <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>{{$type_rpk->pelabuhan_pangkal}}</span></p>
+  <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>Tenaga_penggera</span></p>
   </td>
  </tr>
  <tr>
@@ -243,7 +248,8 @@ src="images/headercop.png"></span></p>
   <p class=MsoNormal><span style='font-family:"Arial",sans-serif'>:</span></p>
   </td>
   <td width="44%" valign=top style='width:44.4%;padding:0in 5.4pt 0in 5.4pt'>
-  <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>{{$type_rpk->pelabuhan_singgah}}</span></p>
+  <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>15
+  (lima belas) orang jjb</span></p>
   </td>
  </tr>
 </table>
@@ -302,7 +308,7 @@ src="images/headercop.png"></span></p>
   <p class=MsoNormal align=center style='text-align:center'><span
   style='position:absolute;z-index:251659264;left:0px;margin-left:486px;
   margin-top:12px;width:91px;height:124px'>
-  @if(in_array($pemohon->status_permohonan_id, [5,6,7,8,9,10]))
+  @if(in_array($pemohon->status_permohonan_id, [6,7,8,9,10]))
   <img width=91 height=124
   src="images/ttdalfian.png">
   @endif

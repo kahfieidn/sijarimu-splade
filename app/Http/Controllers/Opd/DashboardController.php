@@ -94,7 +94,7 @@ class DashboardController extends Controller
         HandleSpladeFileUploads::forRequest($request);
         $fieldName = 'surat_rekomendasi';
         $currentMonthYear = Carbon::now()->format('Y-F');
-        if (!isset($request->fields[$fieldName . '_existing']) && $request->status_permohonan_id == 5) {
+        if (!isset($request->fields[$fieldName . '_existing']) && $request->status_permohonan_id == 7) {
             Storage::delete('/public/docs' . '/' . $pemohon->surat_rekomendasi);
 
             $berkas = $request->file($fieldName);
@@ -105,6 +105,7 @@ class DashboardController extends Controller
         } else {
             $surat_rekomendasiRequest[$fieldName] = $pemohon->surat_rekomendasi;
         }
+
 
         // Custom Perizinan
         if ($pemohon->perizinan->id == 4) {

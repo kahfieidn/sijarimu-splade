@@ -49,11 +49,8 @@ Route::middleware('splade')->group(function () {
             ]);
         });
         Route::group(['middleware' => ['role:back_office']], function () {
-            Route::resource('/back-office', App\Http\Controllers\BackOffice\DashboardController::class)->parameters([
-                'back-office' => 'pemohon'
-            ]);
-            Route::resource('/back-office-2', App\Http\Controllers\BackOffice2\DashboardController::class)->parameters([
-                'back-office-2' => 'pemohon'
+            Route::resource('/back-office-1', App\Http\Controllers\BackOffice_1\DashboardController::class)->parameters([
+                'back-office-1' => 'pemohon'
             ]);
         });
         Route::group(['middleware' => ['role:opd']], function () {
@@ -62,13 +59,16 @@ Route::middleware('splade')->group(function () {
             ]);
         });
         Route::group(['middleware' => ['role:verifikator_1']], function () {
-            Route::resource('/verifikator-1', App\Http\Controllers\Verifikator_1\DashboardController::class)->parameters([
-                'verifikator-1' => 'pemohon'
+            Route::resource('/back-office-2', App\Http\Controllers\BackOffice_2\DashboardController::class)->parameters([
+                'back-office-2' => 'pemohon'
+            ]);
+            Route::resource('/back-office-3', App\Http\Controllers\BackOffice_3\DashboardController::class)->parameters([
+                'back-office-3' => 'pemohon'
             ]);
         });
         Route::group(['middleware' => ['role:verifikator_2']], function () {
-            Route::resource('/verifikator-2', App\Http\Controllers\Verifikator_2\DashboardController::class)->parameters([
-                'verifikator-2' => 'pemohon'
+            Route::resource('/back-office-4', App\Http\Controllers\Verifikator_2\DashboardController::class)->parameters([
+                'back-office-4' => 'pemohon'
             ]);
         });
         Route::group(['middleware' => ['role:kepala_dinas']], function () {

@@ -32,10 +32,10 @@ class StatusPermohonanSeeder extends Seeder
             'nama_status' => 'Menunggu Tinjauan OPD Teknis',
         ]);
         \App\Models\StatusPermohonan::create([
-            'nama_status' => 'Menunggu Tinjauan Verifikator 1',
+            'nama_status' => 'Menunggu Tinjauan Back Office (3)',
         ]);
         \App\Models\StatusPermohonan::create([
-            'nama_status' => 'Menunggu Tinjauan Verifikator 2',
+            'nama_status' => 'Menunggu Tinjauan Back Office (4)',
         ]);
         \App\Models\StatusPermohonan::create([
             'nama_status' => 'Menunggu Tinjauan Kepala Dinas',

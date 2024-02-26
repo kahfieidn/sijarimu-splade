@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Http\Controllers\BackOffice;
+namespace App\Http\Controllers\BackOffice_1;
 
-use Carbon\Carbon;
 use App\Models\Profile;
 use App\Models\Perizinan;
 use App\Models\Permohonan;
@@ -11,11 +10,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Notifications\PermohonanDone;
-use App\Tables\BackOffice\Permohonans;
 use ProtoneMedia\Splade\Facades\Toast;
-use Illuminate\Support\Facades\Storage;
+use App\Tables\BackOffice1\Permohonans;
 use App\Notifications\PermohonanRejected;
-use ProtoneMedia\Splade\FileUploads\HandleSpladeFileUploads;
 
 class DashboardController extends Controller
 {
@@ -25,7 +22,7 @@ class DashboardController extends Controller
     public function index()
     {
         //
-        return view('back-office.index', [
+        return view('back-office-1.index', [
             'permohonans' => Permohonans::class
         ]);
     }
@@ -62,7 +59,7 @@ class DashboardController extends Controller
         if ($pemohon->perizinan_id == 4) {
             $profile = Profile::where('user_id', $pemohon->user_id)->first();
             $type_rpk = $pemohon->type_rpk()->first();
-            return view('back-office.show', [
+            return view('back-office-1.show', [
                 'pemohon' => $pemohon,
                 'berkas' => $berkas,
                 'persyaratan' => $persyaratan,
@@ -117,7 +114,7 @@ class DashboardController extends Controller
         Toast::title('Permohonan berhasil di review!')
             ->rightBottom()
             ->autoDismiss(10);
-        return to_route('back-office.index');
+        return to_route('back-office-1.index');
     }
 
     /**

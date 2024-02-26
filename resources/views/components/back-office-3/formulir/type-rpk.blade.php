@@ -103,6 +103,9 @@
         <div v-show="form.status_permohonan_id == 1 || form.status_permohonan_id == 2" class="relative z-0 w-full mb-6 group">
             <x-splade-wysiwyg label="Tambahkan Catatan Ke Pemohon (Opsional)" class="mb-8" name="catatan" />
         </div>
+        <div v-show="form.status_permohonan_id == 9" class="relative z-0 w-full mb-6 group">
+        <x-splade-input readonly required name="no_izin" type="text" placeholder="Nomor Izin" label="Nomor Izin" />
+        </div>
 
         <x-splade-group>
             <x-splade-submit class="mt-3 py-2" label="Simpan Data" />
