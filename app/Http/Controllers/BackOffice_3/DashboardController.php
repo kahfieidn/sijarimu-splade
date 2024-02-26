@@ -160,6 +160,7 @@ class DashboardController extends Controller
             $pemohon->update([
                 'status_permohonan_id' => $request->status_permohonan_id,
                 'catatan' => $request->catatan,
+                'no_izin' => $request->no_izin
             ]);
         }
 

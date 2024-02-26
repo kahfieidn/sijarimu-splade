@@ -3,6 +3,7 @@
         {{ __('Pemohon') }}
     </x-slot>
 
+    
     @if($pemohon->perizinan_id == 1)
     <x-splade-data remember="some-key" local-storage>
         <x-splade-form :default="['status_berkas' => $status_berkas, 'ket_berkas' => $ket_berkas,'user' => $user,'status_permohonan_id' => '' ,'penelitian' => $penelitian, 'pemohon' => $pemohon]" action="{{ route('back-office-3.update', $pemohon->id) }}" confirm="Konfirmasi Submit Permohonan" confirm-text="Apakah anda yakin sudah memastikan seluruh berkas sesuai?" confirm-button="Ya, Saya Yakin!" cancel-button="Tidak, Masih ada yang salah!" method="PATCH">
@@ -38,6 +39,7 @@
         </x-splade-form>
     </x-splade-data>
     @endif
+
 
     @if($pemohon->perizinan_id == 4)
     <x-splade-data remember="some-key" local-storage>

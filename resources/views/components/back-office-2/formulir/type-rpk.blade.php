@@ -9,7 +9,7 @@
                 <option value="" disabled>Pilih salah satu...</option>
                 <option value="1">Ditolak</option>
                 <option value="2">Revisi</option>
-                <option value="6">Sudah Lengkap (Teruskan Ke OPD Teknis {{$pemohon->sektor_nama_sektor}})</option>
+                <option value="6">Sudah Lengkap (Teruskan Ke OPD Teknis {{$pemohon->perizinan->sektor->nama_sektor}})</option>
             </x-splade-select>
 
         </div>

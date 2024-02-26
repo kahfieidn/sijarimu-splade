@@ -6,7 +6,7 @@
                 <option value="" disabled>Pilih salah satu...</option>
                 <option value="1">Ditolak</option>
                 <option value="2">Revisi</option>
-                <option value="5">Sudah Lengkap (Teruskan Ke Back Office (2))</option>
+                <option value="4">Sudah Lengkap (Teruskan Ke Back Office (1))</option>
             </x-splade-select>
         </div>
         <div v-show="form.status_permohonan_id == 1 || form.status_permohonan_id == 2" class="relative z-0 w-full mb-6 group">

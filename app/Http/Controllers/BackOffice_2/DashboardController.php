@@ -55,54 +55,7 @@ class DashboardController extends Controller
         $ket_berkas = $pemohon->ket_berkas->first();
         $user = $pemohon->user()->first();
         //Custom Perizinan
-        if ($pemohon->perizinan_id == 1) {
-            $penelitian = $pemohon->penelitian()->first();
-            $no_izin = '00' . $penelitian->id . '/2n.1' . '/DPMPTSP' . '/2024';
-            return view('back-office-2.show', [
-                'no_izin' => $no_izin,
-                'pemohon' => $pemohon,
-                'berkas' => $berkas,
-                'persyaratan' => $persyaratan,
-                'status_berkas' => $status_berkas,
-                'ket_berkas' => $ket_berkas,
-                'perizinan' => $perizinan,
-                'berkas' => $berkas,
-                'penelitian' => $penelitian,
-                'user' => $user,
-            ]);
-        } else if ($pemohon->perizinan_id == 2) {
-            $penelitian = $pemohon->penelitian()->first();
-            $no_izin = '00' . $penelitian->id . '/2n.1' . '/DPMPTSP' . '/2024';
-            return view('back-office-2.show', [
-                'no_izin' => $no_izin,
-                'pemohon' => $pemohon,
-                'berkas' => $berkas,
-                'persyaratan' => $persyaratan,
-                'status_berkas' => $status_berkas,
-                'ket_berkas' => $ket_berkas,
-                'perizinan' => $perizinan,
-                'berkas' => $berkas,
-                'penelitian' => $penelitian,
-                'user' => $user,
-            ]);
-        } else if ($pemohon->perizinan_id == 3) {
-            $penelitian = $pemohon->penelitian()->first();
-            $no_izin = '00' . $penelitian->id . '/2n.1' . '/DPMPTSP' . '/2024';
-            $peneliti = $pemohon->peneliti()->get();
-            return view('back-office-2.show', [
-                'pemohon' => $pemohon,
-                'no_izin' => $no_izin,
-                'berkas' => $berkas,
-                'persyaratan' => $persyaratan,
-                'status_berkas' => $status_berkas,
-                'ket_berkas' => $ket_berkas,
-                'perizinan' => $perizinan,
-                'berkas' => $berkas,
-                'penelitian' => $penelitian,
-                'peneliti' => $peneliti,
-                'user' => $user,
-            ]);
-        } else if ($pemohon->perizinan_id == 4) {
+        if ($pemohon->perizinan_id == 4) {
             $profile = Profile::where('user_id', $pemohon->user_id)->first();
             $type_rpk = $pemohon->type_rpk()->first();
             return view('back-office-2.show', [
@@ -134,38 +87,10 @@ class DashboardController extends Controller
     public function update(Request $request, Permohonan $pemohon)
     {
         // Custom Perizinan
-        if ($pemohon->perizinan->id == 1) {
+        if ($pemohon->perizinan->id == 4) {
             $pemohon->update([
                 'status_permohonan_id' => $request->status_permohonan_id,
                 'catatan' => $request->catatan,
-                'no_izin' => $request->no_izin
-            ]);
-            $pemohon->penelitian()->update([
-                'menimbang' => $request->penelitian['menimbang'],
-            ]);
-        } else if ($pemohon->perizinan->id == 2) {
-            $pemohon->update([
-                'status_permohonan_id' => $request->status_permohonan_id,
-                'catatan' => $request->catatan,
-                'no_izin' => $request->no_izin
-            ]);
-            $pemohon->penelitian()->update([
-                'menimbang' => $request->penelitian['menimbang'],
-            ]);
-        } else if ($pemohon->perizinan->id == 3) {
-            $pemohon->update([
-                'status_permohonan_id' => $request->status_permohonan_id,
-                'catatan' => $request->catatan,
-                'no_izin' => $request->no_izin
-            ]);
-            $pemohon->penelitian()->update([
-                'menimbang' => $request->penelitian['menimbang'],
-            ]);
-        } else if ($pemohon->perizinan->id == 4) {
-            $pemohon->update([
-                'status_permohonan_id' => $request->status_permohonan_id,
-                'catatan' => $request->catatan,
-                'no_izin' => $request->no_izin
             ]);
         }
 

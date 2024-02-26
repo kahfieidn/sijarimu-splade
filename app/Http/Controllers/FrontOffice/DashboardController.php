@@ -57,6 +57,7 @@ class DashboardController extends Controller
         $perizinan = Perizinan::find($pemohon->perizinan_id);
         $persyaratan = Persyaratan::where('perizinan_id', $pemohon->perizinan->id)->get();
         $status_berkas = $pemohon->status_berkas->first();
+        $ket_berkas = $pemohon->ket_berkas->first();
         $user = $pemohon->user()->first();
 
         //Custom Perizinan
@@ -67,6 +68,7 @@ class DashboardController extends Controller
                 'berkas' => $berkas,
                 'persyaratan' => $persyaratan,
                 'status_berkas' => $status_berkas,
+                'ket_berkas' => $ket_berkas,
                 'perizinan' => $perizinan,
                 'berkas' => $berkas,
                 'penelitian' => $penelitian,
@@ -80,6 +82,7 @@ class DashboardController extends Controller
                 'berkas' => $berkas,
                 'persyaratan' => $persyaratan,
                 'status_berkas' => $status_berkas,
+                'ket_berkas' => $ket_berkas,
                 'perizinan' => $perizinan,
                 'berkas' => $berkas,
                 'penelitian' => $penelitian,
@@ -102,6 +105,7 @@ class DashboardController extends Controller
                 'berkas' => $berkas,
                 'persyaratan' => $persyaratan,
                 'status_berkas' => $status_berkas,
+                'ket_berkas' => $ket_berkas,
                 'perizinan' => $perizinan,
                 'berkas' => $berkas,
                 'penelitian' => $penelitian,
@@ -116,6 +120,7 @@ class DashboardController extends Controller
                 'berkas' => $berkas,
                 'persyaratan' => $persyaratan,
                 'status_berkas' => $status_berkas,
+                'ket_berkas' => $ket_berkas,
                 'perizinan' => $perizinan,
                 'berkas' => $berkas,
                 'user' => $user,
@@ -143,8 +148,10 @@ class DashboardController extends Controller
             'catatan' => $request->catatan,
             'front_office' => Auth::id(),
         ]);
-        $pemohon->status_berkas()->update($request->status_berkas);
-        $pemohon->ket_berkas()->update($request->ket_berkas);
+        $ket_berkas_request = array_slice($request->ket_berkas, 0, 30);
+        $pemohon->ket_berkas()->update($ket_berkas_request);
+        $status_berkas_request = array_slice($request->status_berkas, 0, 30);
+        $pemohon->status_berkas()->update($status_berkas_request);
 
         //Notify
         if ($request->status_permohonan_id == 1 || $request->status_permohonan_id == 2) {

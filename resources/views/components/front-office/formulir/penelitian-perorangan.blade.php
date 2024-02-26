@@ -7,7 +7,7 @@
                 <option value="" disabled>Pilih salah satu...</option>
                 <option value="1">Ditolak</option>
                 <option value="2">Revisi</option>
-                <option value="5">Sudah Lengkap (Teruskan Ke Back Office (2))</option>
+                <option value="4">Sudah Lengkap (Teruskan Ke Back Office (1))</option>
             </x-splade-select>
 
         </div>

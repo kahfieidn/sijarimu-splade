@@ -89,7 +89,7 @@ src="images/headercop.png"></span></p>
   <p class=MsoNormal><span style='font-family:"Arial",sans-serif'>:</span></p>
   </td>
   <td width="41%" valign=top style='width:41.08%;padding:0in 5.4pt 0in 5.4pt'>
-  <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>@if($pemohon->no_permintaan_rekomendasi != null){{$pemohon->permintaan_rekomendasi}}@else [DRAFT] @endif</span></p>
+  <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>@if($pemohon->no_permintaan_rekomendasi != null){{$pemohon->no_permintaan_rekomendasi}}@else [DRAFT] @endif</span></p>
   <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>1
   (satu) Berkas</span></p>
   <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>Penting</span></p>
@@ -302,7 +302,7 @@ src="images/headercop.png"></span></p>
   <p class=MsoNormal align=center style='text-align:center'><span
   style='position:absolute;z-index:251659264;left:0px;margin-left:486px;
   margin-top:12px;width:91px;height:124px'>
-  @if(in_array($pemohon->status_permohonan_id, [5,6,7,8,9,10]))
+  @if(in_array($pemohon->status_permohonan_id, [6,7,8,9,10]))
   <img width=91 height=124
   src="images/ttdalfian.png">
   @endif

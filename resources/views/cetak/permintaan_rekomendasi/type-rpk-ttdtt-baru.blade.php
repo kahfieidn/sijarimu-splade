@@ -66,7 +66,7 @@ src="images/headercop.png"></span></p>
   </td>
   <td width="47%" valign=top style='width:47.06%;padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal align=right style='text-align:right'><span lang=id
-  style='font-family:"Arial",sans-serif'>Tanjungpinang, 08 April 2000</span></p>
+  style='font-family:"Arial",sans-serif'>Tanjungpinang, {{$pemohon->created_at->isoFormat('D MMMM Y')}}</span></p>
   </td>
  </tr>
 </table>
@@ -89,14 +89,13 @@ src="images/headercop.png"></span></p>
   <p class=MsoNormal><span style='font-family:"Arial",sans-serif'>:</span></p>
   </td>
   <td width="41%" valign=top style='width:41.08%;padding:0in 5.4pt 0in 5.4pt'>
-  <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>@if($pemohon->no_permintaan_rekomendasi != null){{$pemohon->permintaan_rekomendasi}}@else [DRAFT] @endif</span></p>
+  <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>@if($pemohon->no_permintaan_rekomendasi != null){{$pemohon->no_permintaan_rekomendasi}}@else [DRAFT] @endif</span></p>
   <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>1
   (satu) Berkas</span></p>
   <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>Penting</span></p>
   <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>Mohon
   Rekomendasi Teknis Rencana Pengoperasian Kapal (RPK) </span></p>
-  <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>SB.
-  Admin</span></p>
+  <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>{{$pemohon->profile->perusahaan}}</span></p>
   </td>
   <td width="15%" valign=top style='width:15.88%;padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal align=right style='text-align:right'><b><span lang=id
@@ -129,8 +128,7 @@ src="images/headercop.png"></span></p>
   <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>Dengan
   Hormat,</span></p>
   <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>Menindaklanjuti
-  Surat Direktur PT. FLORA PERKASA Nomor 40/FP/TUB/BU/I/2024 tanggal 30 Januari
-  2024 perihal Penerbitan Persetujuan Perpanjangan Trayek Tidak Tetap dan Tidak
+  Surat Direktur {{$pemohon->profile->perusahaan}} Nomor {{$pemohon->no_surat_permohonan}} tanggal {{$pemohon->created_at->isoFormat('D MMMM Y')}} perihal Penerbitan Persetujuan Perpanjangan Trayek Tidak Tetap dan Tidak
   Teratur Angkutan Laut Dalam Negeri, bersama ini kami sampaikan hal-hal
   sebagai berikut:</span></p>
   </td>
@@ -178,7 +176,7 @@ src="images/headercop.png"></span></p>
   <p class=MsoNormal><span style='font-family:"Arial",sans-serif'>:</span></p>
   </td>
   <td width="44%" valign=top style='width:44.4%;padding:0in 5.4pt 0in 5.4pt'>
-  <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>zxhh</span></p>
+  <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>{{$pemohon->profile->perusahaan}}</span></p>
   </td>
  </tr>
  <tr>
@@ -195,7 +193,7 @@ src="images/headercop.png"></span></p>
   <p class=MsoNormal><span style='font-family:"Arial",sans-serif'>:</span></p>
   </td>
   <td width="44%" valign=top style='width:44.4%;padding:0in 5.4pt 0in 5.4pt'>
-  <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>Sxsx</span></p>
+  <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>{{$type_rpk->nama_kapal}}</span></p>
   </td>
  </tr>
  <tr>
@@ -212,7 +210,7 @@ src="images/headercop.png"></span></p>
   <p class=MsoNormal><span style='font-family:"Arial",sans-serif'>:</span></p>
   </td>
   <td width="44%" valign=top style='width:44.4%;padding:0in 5.4pt 0in 5.4pt'>
-  <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>Isi_kotor</span></p>
+  <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>{{$type_rpk->jenis_kapal}}</span></p>
   </td>
  </tr>
  <tr>
@@ -230,7 +228,7 @@ src="images/headercop.png"></span></p>
   <p class=MsoNormal><span style='font-family:"Arial",sans-serif'>:</span></p>
   </td>
   <td width="44%" valign=top style='width:44.4%;padding:0in 5.4pt 0in 5.4pt'>
-  <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>Tenaga_penggera</span></p>
+  <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>{{$type_rpk->pelabuhan_pangkal}}</span></p>
   </td>
  </tr>
  <tr>
@@ -248,8 +246,7 @@ src="images/headercop.png"></span></p>
   <p class=MsoNormal><span style='font-family:"Arial",sans-serif'>:</span></p>
   </td>
   <td width="44%" valign=top style='width:44.4%;padding:0in 5.4pt 0in 5.4pt'>
-  <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>15
-  (lima belas) orang jjb</span></p>
+  <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>{{$type_rpk->pelabuhan_singgah}}</span></p>
   </td>
  </tr>
 </table>

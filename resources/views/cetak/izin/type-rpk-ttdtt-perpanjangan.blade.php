@@ -78,7 +78,7 @@ src="images/headercop.png"></span></p>
   <p class=MsoNormal><span style='font-size:9.5pt;font-family:"Arial",sans-serif'>:</span></p>
   </td>
   <td width="38%" valign=top style='width:38.36%;padding:0in 5.4pt 0in 5.4pt'>
-  <p class=MsoNormal><span style='font-size:9.5pt;font-family:"Arial",sans-serif'>-</span></p>
+  <p class=MsoNormal><span style='font-size:9.5pt;font-family:"Arial",sans-serif'>@if($pemohon->no_izin != null){{$pemohon->no_izin}}@else [DRAFT] @endif</span></p>
   <p class=MsoNormal><span style='font-size:9.5pt;font-family:"Arial",sans-serif'>-</span></p>
   <p class=MsoNormal><span style='font-size:9.5pt;font-family:"Arial",sans-serif'>-</span></p>
   <p class=MsoNormal><span lang=id style='font-size:9.5pt;font-family:"Arial",sans-serif'>Persetujuan
