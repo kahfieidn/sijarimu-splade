@@ -202,7 +202,7 @@
         <table class="c74">
             <tr class="c22">
                 <td class="c0" colspan="1" rowspan="1">
-                    <p class="c28"><span class="c1">Tanjungpinang, {{$date_ttd}}</span></p>
+                    <p class="c28"><span class="c1">Tanjungpinang, @if($pemohon->tgl_izin_terbit != null){{ \Carbon\Carbon::parse($pemohon->tgl_izin_terbit)->isoFormat('D MMMM Y') }}@else[DRAFT]@endif</span></p>
                 </td>
             </tr>
             <tr class="c22">

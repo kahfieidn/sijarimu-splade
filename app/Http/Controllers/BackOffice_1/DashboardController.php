@@ -164,6 +164,13 @@ class DashboardController extends Controller
                 'menimbang' => $request->penelitian['menimbang'],
             ]);
         }else if ($pemohon->perizinan->id == 4) {
+            $request->validate([
+                'status_permohonan_id' => ['required', 'string', 'max:255'],
+                'catatan' => ['nullable'],
+                'no_permintaan_rekomendasi' => ['required', 'string', 'max:255'],
+                'no_surat_permohonan' => ['required'],
+                'tgl_surat_permohonan' => ['date', 'required'],
+            ]);
             $pemohon->update([
                 'status_permohonan_id' => $request->status_permohonan_id,
                 'catatan' => $request->catatan,
