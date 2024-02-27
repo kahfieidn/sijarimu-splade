@@ -63,9 +63,12 @@
         <div v-if="form.status_permohonan_id == 7" class="bg-white p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
             <h1 class="mb-8 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">Surat Rekomendasi <span class="underline underline-offset-3 decoration-8 decoration-blue-400 dark:decoration-blue-600">Teknis</span></h1>
 
-            <div class="grid md:grid-cols-2 md:gap-6">
+            <div class="grid md:grid-cols-3 md:gap-6">
                 <div class="relative z-0 w-full mb-6 group">
                     <x-splade-input name="no_surat_rekomendasi" type="text" placeholder="No. Surat Rekomendasi" label="Nomor Surat Rekomendasi" required />
+                </div>
+                <div class="relative z-0 w-full mb-6 group">
+                    <x-splade-input required date name="tgl_surat_rekomendasi" type="text" placeholder="Pilih tanggal.." label="Tgl. Surat Rekomendasi" />
                 </div>
                 <div class="relative z-0 w-full mb-6 group">
                     <x-splade-file accept="application/pdf" filepond max-size="2MB" name="surat_rekomendasi" :label="__('Lampiran')" filepond required />

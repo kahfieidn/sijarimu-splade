@@ -16,12 +16,15 @@
         <div v-if="form.status_permohonan_id == 5" class="bg-white p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
             <h1 class="mb-8 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">Surat Permintaan <span class="underline underline-offset-3 decoration-8 decoration-blue-400 dark:decoration-blue-600">Rekomendasi</span></h1>
 
-            <div class="grid md:grid-cols-2 md:gap-6">
+            <div class="grid md:grid-cols-3 md:gap-6">
                 <div class="relative z-0 w-full mb-6 group">
                     <x-splade-input required name="no_permintaan_rekomendasi" type="text" placeholder="No. Surat Permintaan Rekomendasi" label="No. Surat Permintaan Rekomendasi" />
                 </div>
                 <div class="relative z-0 w-full mb-6 group">
-                    <x-splade-input required name="no_surat_permohonan" type="text" placeholder="No. Surat Pemohon" label="No. Surat Pemohon" />
+                    <x-splade-input required name="no_surat_permohonan" type="text" placeholder="No. Surat Pemohon" label="No. Surat Permohonan" />
+                </div>
+                <div class="relative z-0 w-full mb-6 group">
+                    <x-splade-input date required name="tgl_surat_permohonan" type="text" placeholder="Pilih tanggal..." label="Tgl. Surat Permohonan" />
                 </div>
             </div>
             <iframe src="{{ route('dashboard.cetak.permintaan-rekomendasi-request', [$pemohon->perizinan_id, $pemohon->id]) }}" width="100%" height="500"></iframe>

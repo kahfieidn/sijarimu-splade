@@ -127,11 +127,12 @@ src="images/headercop.png"></span></p>
   Nomor PM. 74 Tahun 2016 Tentang Perubahan Atas Peraturan Menteri Perhubungan
   Nomor PM.93 Tahun 2013 tentang Penyelenggaraan dan Pengusahaan Angkutan Laut
   dan menunjuk surat {{$profile->perusahaan}} Nomor {{$pemohon->no_surat_permohonan}}
-  tanggal @if($pemohon->no_surat_permohonan != null){{ \Carbon\Carbon::parse($pemohon->tgl_surat_permohonan)->isoFormat('D MMMM Y') }}@else [DRAFT_NO_SURAT] @endif, berdasarkan rekomendasi teknis dari</span><span
+  tanggal {{$pemohon->created_at->isoFormat('D MMMM Y')}}, berdasarkan rekomendasi teknis dari</span><span
   lang=id style='font-size:9.5pt;font-family:"Arial",sans-serif'> </span><span
   lang=id style='font-size:9.5pt;font-family:"Arial",sans-serif'>Dinas
   Perhubungan Provinsi Kepulauan Riau sesuai surat Nomor {{$pemohon->no_surat_rekomendasi}}
-  Tanggal {{ \Carbon\Carbon::parse($pemohon->tgl_surat_rekomendasi)->isoFormat('D MMMM Y') }}, dengan ini disampaikan bahwa kapal Saudara telah dicatat sebagai armada
+  Tanggal {{ \Carbon\Carbon::parse($pemohon->tgl_surat_rekomendasi)->isoFormat('D MMMM Y') }}
+, dengan ini disampaikan bahwa kapal Saudara telah dicatat sebagai armada
   pelayaran rakyat dan</span><span lang=id style='font-size:9.5pt;font-family:
   "Arial",sans-serif'> </span><span lang=id style='font-size:9.5pt;font-family:
   "Arial",sans-serif'>dioperasikan pada trayek tidak tetap dan tidak teratur
@@ -329,26 +330,7 @@ src="images/headercop.png"></span></p>
   </td>
   <td width="50%" valign=top style='width:50.0%;padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal style='text-align:justify'><span style='font-size:9.5pt;
-  font-family:"Arial",sans-serif'>@if($type_rpk->nomor_siupper != null){{ $type_rpk->nomor_siupper }}@else [DRAFT_Nomor_SIUPPER] @endif, Tgl. @if($type_rpk->tgl_siupper != null){{ \Carbon\Carbon::parse($type_rpk->tgl_siupper)->isoFormat('D MMMM Y') }}@else [DRAFT_Tgl_SIUPPER] @endif</span></p>
-  </td>
- </tr>
- <tr>
-  <td width="11%" valign=top style='width:11.88%;padding:0in 5.4pt 0in 5.4pt'>
-  <p class=MsoNormal><span lang=id style='font-size:9.5pt;font-family:"Arial",sans-serif'>&nbsp;</span></p>
-  </td>
-  <td width="2%" valign=top style='width:2.66%;padding:0in 5.4pt 0in 5.4pt'>
-  <p class=MsoNormal><span style='font-size:9.5pt;font-family:"Arial",sans-serif'>k.</span></p>
-  </td>
-  <td width="32%" valign=top style='width:32.34%;padding:0in 5.4pt 0in 5.4pt'>
-  <p class=MsoNormal><span style='font-size:9.5pt;font-family:"Arial",sans-serif'>Nomor
-  dan Tanggal RPK Sebelumnya</span></p>
-  </td>
-  <td width="3%" valign=top style='width:3.12%;padding:0in 5.4pt 0in 5.4pt'>
-  <p class=MsoNormal><span style='font-size:9.5pt;font-family:"Arial",sans-serif'>:</span></p>
-  </td>
-  <td width="50%" valign=top style='width:50.0%;padding:0in 5.4pt 0in 5.4pt'>
-  <p class=MsoNormal style='text-align:justify'><span style='font-size:9.5pt;
-  font-family:"Arial",sans-serif'>@if($type_rpk->nomor_rpk_sebelumnya != null){{ $type_rpk->nomor_rpk_sebelumnya }}@else [DRAFT_Nomor_RPK_Sebelumnya] @endif, Tgl. @if($type_rpk->tgl_rpk_sebelumnya != null){{ \Carbon\Carbon::parse($type_rpk->tgl_rpk_sebelumnya)->isoFormat('D MMMM Y') }}@else [DRAFT_Tgl_Rpk_Sebelumnya] @endif</span></p>
+  font-family:"Arial",sans-serif'>{{$type_rpk->nomor_siualper}}</span></p>
   </td>
  </tr>
 </table>

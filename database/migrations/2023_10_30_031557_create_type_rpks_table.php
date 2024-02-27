@@ -28,8 +28,10 @@ return new class extends Migration
             $table->string('pelabuhan_singgah')->nullable();
             $table->string('trayek')->nullable();
             $table->string('urgensi')->nullable();
-            $table->string('nomor_siualper')->nullable();
+            $table->string('nomor_siupper')->nullable();
+            $table->date('tgl_siupper')->nullable();
             $table->string('nomor_rpk_sebelumnya')->nullable();
+            $table->date('tgl_rpk_sebelumnya')->nullable();
             $table->timestamps();
         });
     }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\KepalaDinas;
 
+use Carbon\Carbon;
 use App\Models\Profile;
 use App\Models\Perizinan;
 use App\Models\Permohonan;
@@ -135,21 +136,25 @@ class DashboardController extends Controller
             $pemohon->update([
                 'status_permohonan_id' => $request->status_permohonan_id,
                 'catatan' => $request->catatan,
+                'tgl_izin_terbit' => Carbon::now()
             ]);
         } else if ($pemohon->perizinan->id == 2) {
             $pemohon->update([
                 'status_permohonan_id' => $request->status_permohonan_id,
                 'catatan' => $request->catatan,
+                'tgl_izin_terbit' => Carbon::now()
             ]);
         } else if ($pemohon->perizinan->id == 3) {
             $pemohon->update([
                 'status_permohonan_id' => $request->status_permohonan_id,
                 'catatan' => $request->catatan,
+                'tgl_izin_terbit' => Carbon::now()
             ]);
         } else if ($pemohon->perizinan->id == 4) {
             $pemohon->update([
                 'status_permohonan_id' => $request->status_permohonan_id,
                 'catatan' => $request->catatan,
+                'tgl_izin_terbit' => Carbon::now()
             ]);
         }
 

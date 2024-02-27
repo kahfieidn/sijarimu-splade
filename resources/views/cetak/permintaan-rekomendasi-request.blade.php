@@ -7,6 +7,8 @@
     @include('cetak.permintaan_rekomendasi.type-rpk-tdtt-baru')
     @elseif($type_rpk->type_rpk == 'perpanjangan' && $type_rpk->type_trayek == 'Trayek Tidak Tetap Dan Teratur Angkutan Laut Dalam Negeri')
     @include('cetak.permintaan_rekomendasi.type-rpk-tdtt-perpanjangan')
+    @elseif($type_rpk->type_rpk == 'baru' && $type_rpk->type_trayek == 'Trayek Tetap Dan Teratur Angkutan Laut Dalam Negeri')
+    @include('cetak.permintaan_rekomendasi.type-rpk-tdt-baru')
     @endif
 @else
 Not Found!

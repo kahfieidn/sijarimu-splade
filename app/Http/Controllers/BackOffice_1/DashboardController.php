@@ -169,6 +169,7 @@ class DashboardController extends Controller
                 'catatan' => $request->catatan,
                 'no_permintaan_rekomendasi' => $request->no_permintaan_rekomendasi,
                 'no_surat_permohonan' => $request->no_surat_permohonan,
+                'tgl_surat_permohonan' => $request->tgl_surat_permohonan,
                 'back_office' => Auth::id()
             ]);
         }

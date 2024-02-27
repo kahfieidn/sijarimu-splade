@@ -109,12 +109,17 @@ class DashboardController extends Controller
 
         // Custom Perizinan
         if ($pemohon->perizinan->id == 4) {
+            $request->validate([
+                'status_permohonan_id' => ['required', 'string', 'max:255'],
+                'no_surat_rekomendasi' => ['required', 'string', 'max:255'],
+                'tgl_surat_rekomendasi' => ['date', 'required'],
+            ]);
             $pemohon->update([
                 'status_permohonan_id' => $request->status_permohonan_id,
                 'catatan' => $request->catatan,
                 'no_surat_rekomendasi' => $request->no_surat_rekomendasi,
                 'surat_rekomendasi' => $surat_rekomendasiRequest[$fieldName],
-                'tgl_surat_rekomendasi' => Carbon::now()->format('d-m-Y'),
+                'tgl_surat_rekomendasi' => $request->tgl_surat_rekomendasi,
             ]);
         }
 

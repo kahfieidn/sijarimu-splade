@@ -330,7 +330,7 @@ src="images/headercop.png"></span></p>
   </td>
   <td width="50%" valign=top style='width:50.0%;padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal style='text-align:justify'><span style='font-size:9.5pt;
-  font-family:"Arial",sans-serif'>{{$type_rpk->nomor_siualper}}</span></p>
+  font-family:"Arial",sans-serif'>{{$type_rpk->nomor_siupper}}, Tgl. @if($pemohon->tgl_siupper != null){{ \Carbon\Carbon::parse($pemohon->tgl_siupper)->isoFormat('D MMMM Y') }}@else [DRAFT_No_Siupper] @endif</span></p>
   </td>
  </tr>
 </table>

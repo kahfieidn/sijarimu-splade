@@ -94,8 +94,9 @@ src="images/headercop.png"></span></p>
   (satu) Berkas</span></p>
   <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>Penting</span></p>
   <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>Mohon
-  Rekomendasi Teknis Rencana Pengoperasian Kapal (RPK) </span></p>
-  <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>{{$pemohon->profile->perusahaan}}</span></p>
+  Rekomendasi Teknis </span></p>
+  <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>Rencana Pengoperasian Kapal (RPK) </span></p>
+  <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>{{$type_rpk->nama_kapal}}</span></p>
   </td>
   <td width="15%" valign=top style='width:15.88%;padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal align=right style='text-align:right'><b><span lang=id
@@ -128,7 +129,7 @@ src="images/headercop.png"></span></p>
   <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>Dengan
   Hormat,</span></p>
   <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>Menindaklanjuti
-  Surat Direktur {{$pemohon->profile->perusahaan}} Nomor {{$pemohon->no_surat_permohonan}} tanggal {{$pemohon->created_at->isoFormat('D MMMM Y')}} perihal Penerbitan Persetujuan Perpanjangan Trayek Tidak Tetap dan Tidak
+  Surat Direktur {{$pemohon->profile->perusahaan}} Nomor @if($pemohon->no_surat_permohonan != null){{ $pemohon->no_surat_permohonan }}@else [DRAFT_NO_SURAT] @endif tanggal @if($pemohon->tgl_surat_permohonan != null){{ \Carbon\Carbon::parse($pemohon->tgl_surat_permohonan)->isoFormat('D MMMM Y') }}@else [DRAFT_TGL_Surat] @endif perihal Penerbitan Rencana Pengoperasian Kapal Pelra pada Trayek Tidak Tetap dan Tidak
   Teratur Angkutan Laut Dalam Negeri, bersama ini kami sampaikan hal-hal
   sebagai berikut:</span></p>
   </td>

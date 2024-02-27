@@ -69,12 +69,18 @@
                 <x-splade-input required name="trayek" type="text" placeholder="Cth : Telaga Punggur, Lagoi Bintan" label="Route Trayek" />
             </div>
         </div>
-        <div class="grid md:grid-cols-2 md:gap-6">
+        <div class="grid md:grid-cols-4 md:gap-6">
             <div class="relative z-0 w-full mb-6 group">
-                <x-splade-input required name="nomor_siualper" type="text" placeholder="No. SIUALPER" label="No. SIUALPER" />
+                <x-splade-input required name="nomor_siupper" type="text" placeholder="Cth: 234134234234" label="Nomor SIUPPER" />
+            </div>
+            <div class="relative z-999 w-full mb-6 group">
+                <x-splade-input date required name="tgl_siupper" placeholder="Pilih tanggal..." type="text" label="Tanggal SIUPPER" />
             </div>
             <div class="relative z-0 w-full mb-6 group">
-                <x-splade-input v-if="form.type_rpk == 'perpanjangan'" required name="nomor_rpk_sebelumnya" type="text" placeholder="No. RPK Sebelumnya" label="No. RPK Sebelumnya" />
+                <x-splade-input v-if="form.type_rpk == 'perpanjangan'" required name="nomor_rpk_sebelumnya" type="text" placeholder="Cth: 231/1D.b/DPMPTSP/X/2023" label="Nomor RPK Sebelumnya" />
+            </div>
+            <div class="relative z-999 w-full mb-6 group">
+                <x-splade-input date v-if="form.type_rpk == 'perpanjangan'" required name="tgl_rpk_sebelumnya" type="text" placeholder="Pilih tanggal..." label="Tanggal RPK Sebelumnya" />
             </div>
         </div>
     </div>

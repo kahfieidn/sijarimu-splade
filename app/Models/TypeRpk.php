@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class TypeRpk extends Model
 {
@@ -26,8 +27,11 @@ class TypeRpk extends Model
         'pelabuhan_singgah',
         'trayek',
         'urgensi',
-        'nomor_siualper',
+        'nomor_siupper',
+        'tgl_siupper',
         'nomor_rpk_sebelumnya',
+        'tgl_rpk_sebelumnya'
+
     ];
 
     public function type_rpkable()
@@ -35,6 +39,33 @@ class TypeRpk extends Model
         return $this->morphTo();
     }
 
+    
+    public function setTglSiupperAttribute($value)
+    {
+        $this->attributes['tgl_siupper'] = Carbon::createFromFormat('d-m-Y', $value)->format('Y-m-d');
+    }
+    public function getTglSiupperAttribute()
+    {
+        if (isset($this->attributes['tgl_siupper']) && !empty($this->attributes['tgl_siupper'])) {
+            return Carbon::createFromFormat('Y-m-d', $this->attributes['tgl_siupper'])->format('d-m-Y');
+        } else {
+            return null;
+        }
+    }
+
+    public function setTglRpkSebelumnyaAttribute($value)
+    {
+        $this->attributes['tgl_rpk_sebelumnya'] = Carbon::createFromFormat('d-m-Y', $value)->format('Y-m-d');
+    }
+    public function getTglRpkSebelumnyaAttribute()
+    {
+        if (isset($this->attributes['tgl_rpk_sebelumnya']) && !empty($this->attributes['tgl_rpk_sebelumnya'])) {
+            return Carbon::createFromFormat('Y-m-d', $this->attributes['tgl_rpk_sebelumnya'])->format('d-m-Y');
+        } else {
+            return null;
+        }
+    }
+    
     
 
 }

@@ -19,11 +19,13 @@ return new class extends Migration
             $table->text('catatan')->nullable();
             $table->text('catatan_back_office')->nullable();
             $table->string('no_surat_permohonan')->nullable();
+            $table->date('tgl_surat_permohonan')->nullable();
             $table->string('no_permintaan_rekomendasi')->nullable();
             $table->string('surat_rekomendasi')->nullable();
             $table->string('no_surat_rekomendasi')->nullable();
             $table->date('tgl_surat_rekomendasi')->nullable();
             $table->string('izin_terbit')->nullable();
+            $table->date('tgl_izin_terbit')->nullable();
             $table->string('no_izin')->nullable();
             $table->foreignId('front_office')->nullable()->references('id')->on('users');
             $table->foreignId('back_office')->nullable()->references('id')->on('users');

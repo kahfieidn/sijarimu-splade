@@ -18,11 +18,13 @@ class Permohonan extends Model
         'catatan',
         'catatan_back_office',
         'no_surat_permohonan',
+        'tgl_surat_permohonan',
         'no_permintaan_rekomendasi',
         'surat_rekomendasi',
         'no_surat_rekomendasi',
         'tgl_surat_rekomendasi',
         'izin_terbit',
+        'tgl_izin_terbit',
         'no_izin',
         'front_office',
         'back_office',
@@ -81,12 +83,42 @@ class Permohonan extends Model
         return $this->belongsTo(User::class, 'kepala_dinas');
     }    
 
+    
+    public function getTglIzinTerbitAttribute()
+    {
+        if (isset($this->attributes['tgl_izin_terbit']) && !empty($this->attributes['tgl_izin_terbit'])) {
+            return Carbon::createFromFormat('Y-m-d', $this->attributes['tgl_izin_terbit'])->format('d-m-Y');
+        } else {
+            return null;
+        }
+    }
+
+    public function setTglSuratPermohonanAttribute($value)
+    {
+        $this->attributes['tgl_surat_permohonan'] = Carbon::createFromFormat('d-m-Y', $value)->format('Y-m-d');
+    }
+    public function getTglSuratPermohonanAttribute()
+    {
+        if (isset($this->attributes['tgl_surat_permohonan']) && !empty($this->attributes['tgl_surat_permohonan'])) {
+            return Carbon::createFromFormat('Y-m-d', $this->attributes['tgl_surat_permohonan'])->format('d-m-Y');
+        } else {
+            return null;
+        }
+    }
+
 
     public function setTglSuratRekomendasiAttribute($value)
     {
         $this->attributes['tgl_surat_rekomendasi'] = Carbon::createFromFormat('d-m-Y', $value)->format('Y-m-d');
     }
-    
+    public function getTglSuratRekomendasiAttribute()
+    {
+        if (isset($this->attributes['tgl_surat_rekomendasi']) && !empty($this->attributes['tgl_surat_rekomendasi'])) {
+            return Carbon::createFromFormat('Y-m-d', $this->attributes['tgl_surat_rekomendasi'])->format('d-m-Y');
+        } else {
+            return null;
+        }
+    }
 
 }
 

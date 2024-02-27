@@ -153,7 +153,6 @@ class DashboardController extends Controller
                 'type_rpk' => ['required', 'string', 'max:255'],
                 'type_gt' => ['required', 'string', 'max:255'],
                 'nama_kapal' => ['required', 'string', 'max:255'],
-                'nama_kapal' => ['required', 'string', 'max:255'],
                 'jenis_kapal' => ['required', 'string', 'max:255'],
                 'isi_kotor' => ['required', 'string', 'max:255'],
                 'tenaga_penggerak' => ['required', 'string', 'max:255'],
@@ -163,8 +162,10 @@ class DashboardController extends Controller
                 'pelabuhan_singgah' => ['required', 'string', 'max:255'],
                 'trayek' => ['required', 'string', 'max:255'],
                 'urgensi' => ['required', 'string', 'max:255'],
-                'nomor_siualper' => ['required', 'string', 'max:255'],
-                'nomor_rpk_sebelumnya' => ['string', 'max:255'],
+                'nomor_siupper' => ['required', 'string', 'max:255'],
+                'tgl_siupper' => ['required', 'date'],
+                'nomor_rpk_sebelumnya' => 'nullable',
+                'tgl_rpk_sebelumnya' => 'nullable|date',
             ]);
             $permohonan->type_rpk()->create($typeRpk);
         }

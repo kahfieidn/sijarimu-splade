@@ -69,12 +69,18 @@
                 <x-splade-input readonly required name="type_rpk.trayek" type="text" placeholder="Cth : Telaga Punggur, Lagoi Bintan" label="Route Trayek" />
             </div>
         </div>
-        <div class="grid md:grid-cols-2 md:gap-6">
+        <div class="grid md:grid-cols-4 md:gap-6">
             <div class="relative z-0 w-full mb-6 group">
-                <x-splade-input readonly required name="type_rpk.nomor_siualper" type="text" placeholder="No. SIUALPER" label="No. SIUALPER" />
+                <x-splade-input readonly required name="type_rpk.nomor_siupper" type="text" placeholder="234134234234" label="Nomor SIUPPER" />
+            </div>
+            <div class="relative z-999 w-full mb-6 group">
+                <x-splade-input date disabled required name="type_rpk.tgl_siupper" type="text" placeholder="Pilih tanggal..." label="Tanggal SIUPPER" />
             </div>
             <div class="relative z-0 w-full mb-6 group">
-                <x-splade-input readonly v-if="form.type_rpk.type_rpk == 'perpanjangan'" required name="type_rpk.nomor_rpk_sebelumnya" type="text" placeholder="No. RPK Sebelumnya" label="No. RPK Sebelumnya" />
+                <x-splade-input readonly v-if="form.type_rpk.type_rpk == 'perpanjangan'" required name="type_rpk.nomor_rpk_sebelumnya" type="text" placeholder="Cth: 231/1D.b/DPMPTSP/X/2023" label="Nomor RPK Sebelumnya" />
+            </div>
+            <div class="relative z-999 w-full mb-6 group">
+                <x-splade-input date disabled v-if="form.type_rpk.type_rpk == 'perpanjangan'" required name="type_rpk.tgl_rpk_sebelumnya" type="text" placeholder="Pilih tanggal..." label="Tanggal RPK Sebelumnya" />
             </div>
         </div>
     </div>
