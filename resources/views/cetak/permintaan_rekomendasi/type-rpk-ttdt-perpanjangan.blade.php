@@ -13,13 +13,13 @@
 	{font-family:"Cambria Math";
 	panose-1:2 4 5 3 5 4 6 3 2 4;}
 @font-face
+	{font-family:"Arial MT";}
+@font-face
 	{font-family:Cambria;
 	panose-1:2 4 5 3 5 4 6 3 2 4;}
 @font-face
 	{font-family:Georgia;
 	panose-1:2 4 5 2 5 4 5 2 3 3;}
-@font-face
-	{font-family:"Arial MT";}
  /* Style Definitions */
  p.MsoNormal, li.MsoNormal, div.MsoNormal
 	{margin:0in;
@@ -56,62 +56,54 @@ ul
 
 <p class=MsoNormal><span lang=id style='font-size:9.5pt;font-family:"Arial",sans-serif'><img
 width=717 height=131 id=image2.png
-src="permintaan_rekomendasi_teknis_rpk_tdtt_perpanjangan_template_files/image001.png"></span></p>
+src="images/headercop.png"></span></p>
 
-<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0 width="100%"
+<table class=MsoTableGrid border=0 cellspacing=0 cellpadding=0 width="100%"
  style='width:100.0%;border-collapse:collapse;border:none'>
  <tr>
-  <td width="52%" valign=top style='width:52.94%;border:solid windowtext 1.0pt;
-  padding:0in 5.4pt 0in 5.4pt'>
+  <td width="52%" valign=top style='width:52.94%;padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal><span lang=id style='font-family:"Arial",sans-serif'>&nbsp;</span></p>
   </td>
-  <td width="47%" valign=top style='width:47.06%;border:solid windowtext 1.0pt;
-  border-left:none;padding:0in 5.4pt 0in 5.4pt'>
+  <td width="47%" valign=top style='width:47.06%;padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal align=right style='text-align:right'><span lang=id
-  style='font-family:"Arial",sans-serif'>Tanjungpinang, 08 April 2000</span></p>
+  style='font-family:"Arial",sans-serif'>Tanjungpinang, {{$pemohon->created_at->isoFormat('D MMMM Y')}}</span></p>
   </td>
  </tr>
 </table>
 
 <p class=MsoNormal><span lang=id style='font-size:5.5pt;font-family:"Arial",sans-serif'>&nbsp;</span></p>
 
-<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0 width="100%"
+<table class=MsoTableGrid border=0 cellspacing=0 cellpadding=0 width="100%"
  style='width:100.0%;border-collapse:collapse;border:none'>
  <tr>
-  <td width="10%" valign=top style='width:10.6%;border:solid windowtext 1.0pt;
-  padding:0in 5.4pt 0in 5.4pt'>
+  <td width="10%" valign=top style='width:10.6%;padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal><span lang=id style='font-family:"Arial",sans-serif'>Nomor</span></p>
   <p class=MsoNormal><span style='font-family:"Arial",sans-serif'>Lampiran</span></p>
   <p class=MsoNormal><span style='font-family:"Arial",sans-serif'>Sifat</span></p>
   <p class=MsoNormal><span lang=id style='font-family:"Arial",sans-serif'>Hal</span></p>
   </td>
-  <td width="2%" valign=top style='width:2.6%;border:solid windowtext 1.0pt;
-  border-left:none;padding:0in 5.4pt 0in 5.4pt'>
+  <td width="2%" valign=top style='width:2.6%;padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal><span style='font-family:"Arial",sans-serif'>:</span></p>
   <p class=MsoNormal><span style='font-family:"Arial",sans-serif'>:</span></p>
   <p class=MsoNormal><span style='font-family:"Arial",sans-serif'>:</span></p>
   <p class=MsoNormal><span style='font-family:"Arial",sans-serif'>:</span></p>
   </td>
-  <td width="41%" valign=top style='width:41.08%;border:solid windowtext 1.0pt;
-  border-left:none;padding:0in 5.4pt 0in 5.4pt'>
-  <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>-</span></p>
+  <td width="41%" valign=top style='width:41.08%;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>@if($pemohon->no_permintaan_rekomendasi != null){{$pemohon->no_permintaan_rekomendasi}}@else [DRAFT] @endif</span></p>
   <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>1
   (satu) Berkas</span></p>
   <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>Penting</span></p>
   <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>Mohon
   Rekomendasi Teknis Perpanjangan Rencana Pengoperasian Kapal (RPK) </span></p>
-  <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>SB.
-  Admin</span></p>
+  <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>{{ $type_rpk->nama_kapal }}</span></p>
   </td>
-  <td width="15%" valign=top style='width:15.88%;border:solid windowtext 1.0pt;
-  border-left:none;padding:0in 5.4pt 0in 5.4pt'>
+  <td width="15%" valign=top style='width:15.88%;padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal align=right style='text-align:right'><b><span lang=id
   style='font-family:"Arial",sans-serif'>&nbsp;</span></b></p>
   <p class=MsoNormal align=right style='text-align:right'><b><span
   style='font-family:"Arial",sans-serif'>Yth.</span></b></p>
   </td>
-  <td width="29%" valign=top style='width:29.84%;border:solid windowtext 1.0pt;
-  border-left:none;padding:0in 5.4pt 0in 5.4pt'>
+  <td width="29%" valign=top style='width:29.84%;padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal style='text-align:justify'><span lang=id style='font-family:
   "Arial",sans-serif'>Kepada</span></p>
   <p class=MsoNormal style='text-align:justify'><b><span style='font-family:
@@ -126,21 +118,17 @@ src="permintaan_rekomendasi_teknis_rpk_tdtt_perpanjangan_template_files/image001
 
 <p class=MsoNormal><span lang=id style='font-size:9.5pt;font-family:"Arial",sans-serif'>&nbsp;</span></p>
 
-<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0 width="100%"
+<table class=MsoTableGrid border=0 cellspacing=0 cellpadding=0 width="100%"
  style='width:100.0%;border-collapse:collapse;border:none'>
  <tr>
-  <td width="11%" valign=top style='width:11.88%;border:solid windowtext 1.0pt;
-  padding:0in 5.4pt 0in 5.4pt'>
+  <td width="11%" valign=top style='width:11.88%;padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal><span lang=id style='font-family:"Arial",sans-serif'>&nbsp;</span></p>
   </td>
-  <td width="88%" valign=top style='width:88.12%;border:solid windowtext 1.0pt;
-  border-left:none;padding:0in 5.4pt 0in 5.4pt'>
+  <td width="88%" valign=top style='width:88.12%;padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>Dengan
   Hormat,</span></p>
   <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>Menindaklanjuti
-  Surat Direktur PT. FLORA PERKASA Nomor 40/FP/TUB/BU/I/2024 tanggal 30 Januari
-  2024 perihal Permohonan Persetujuan Perpanjangan Trayek Tidak Tetap dan Tidak
-  Teratur Angkutan Laut Dalam Negeri, bersama ini kami sampaikan hal-hal
+  Surat Direktur {{$pemohon->profile->perusahaan}} Nomor @if($pemohon->no_surat_permohonan != null){{$pemohon->no_surat_permohonan}}@else [DRAFT_NO_SURAT]@endif tanggal @if($pemohon->tgl_surat_permohonan != null){{ \Carbon\Carbon::parse($pemohon->tgl_surat_permohonan)->isoFormat('D MMMM Y') }}@else[DRAFT_TGL_SURAT]@endif perihal Permohonan Persetujuan Perpanjangan Trayek Tidak Tetap dan Teratur Angkutan Laut Dalam Negeri, bersama ini kami sampaikan hal-hal
   sebagai berikut:</span></p>
   </td>
  </tr>
@@ -148,19 +136,16 @@ src="permintaan_rekomendasi_teknis_rpk_tdtt_perpanjangan_template_files/image001
 
 <p class=MsoNormal><span lang=id style='font-size:10.5pt;font-family:"Arial",sans-serif'>&nbsp;</span></p>
 
-<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0 width="100%"
+<table class=MsoTableGrid border=0 cellspacing=0 cellpadding=0 width="100%"
  style='width:100.0%;border-collapse:collapse;border:none'>
  <tr>
-  <td width="11%" valign=top style='width:11.88%;border:solid windowtext 1.0pt;
-  padding:0in 5.4pt 0in 5.4pt'>
+  <td width="11%" valign=top style='width:11.88%;padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal><span lang=id style='font-family:"Arial",sans-serif'>&nbsp;</span></p>
   </td>
-  <td width="3%" valign=top style='width:3.96%;border:solid windowtext 1.0pt;
-  border-left:none;padding:0in 5.4pt 0in 5.4pt'>
+  <td width="3%" valign=top style='width:3.96%;padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal><span style='font-family:"Arial",sans-serif'>1.</span></p>
   </td>
-  <td width="84%" valign=top style='width:84.16%;border:solid windowtext 1.0pt;
-  border-left:none;padding:0in 5.4pt 0in 5.4pt'>
+  <td width="84%" valign=top style='width:84.16%;padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal style='text-align:justify'><span lang=id style='font-family:
   "Arial",sans-serif'>Persetujuan Pengoperasian Kapal Pelra Perusahaan yang
   bersangkutan akan habis masa berlakunya dan bermaksud untuk melakukan
@@ -171,155 +156,110 @@ src="permintaan_rekomendasi_teknis_rpk_tdtt_perpanjangan_template_files/image001
 
 <p class=MsoNormal><span lang=id style='font-size:7.5pt;font-family:"Arial",sans-serif'>&nbsp;</span></p>
 
-<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0 width="100%"
+<table class=MsoTableGrid border=0 cellspacing=0 cellpadding=0 width="100%"
  style='width:100.0%;border-collapse:collapse;border:none'>
  <tr>
-  <td width="15%" valign=top style='width:15.84%;border:solid windowtext 1.0pt;
-  padding:0in 5.4pt 0in 5.4pt'>
+  <td width="15%" valign=top style='width:15.84%;padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal><span lang=id style='font-family:"Arial",sans-serif'>&nbsp;</span></p>
   </td>
-  <td width="4%" valign=top style='width:4.0%;border:solid windowtext 1.0pt;
-  border-left:none;padding:0in 5.4pt 0in 5.4pt'>
+  <td width="4%" valign=top style='width:4.0%;padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal><span style='font-family:"Arial",sans-serif'>a.</span></p>
   </td>
-  <td width="32%" valign=top style='width:32.66%;border:solid windowtext 1.0pt;
-  border-left:none;padding:0in 5.4pt 0in 5.4pt'>
+  <td width="32%" valign=top style='width:32.66%;padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal><span style='font-family:"Arial",sans-serif'>Nama Perusahaan</span></p>
   </td>
-  <td width="4%" valign=top style='width:4.9%;border:solid windowtext 1.0pt;
-  border-left:none;padding:0in 5.4pt 0in 5.4pt'>
+  <td width="3%" valign=top style='width:3.1%;padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal><span style='font-family:"Arial",sans-serif'>:</span></p>
   </td>
-  <td width="42%" valign=top style='width:42.6%;border:solid windowtext 1.0pt;
-  border-left:none;padding:0in 5.4pt 0in 5.4pt'>
-  <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>zx</span></p>
+  <td width="44%" valign=top style='width:44.4%;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>{{$pemohon->profile->perusahaan}}</span></p>
   </td>
  </tr>
  <tr>
-  <td width="15%" valign=top style='width:15.84%;border:solid windowtext 1.0pt;
-  border-top:none;padding:0in 5.4pt 0in 5.4pt'>
+  <td width="15%" valign=top style='width:15.84%;padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal><span lang=id style='font-family:"Arial",sans-serif'>&nbsp;</span></p>
   </td>
-  <td width="4%" valign=top style='width:4.0%;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  padding:0in 5.4pt 0in 5.4pt'>
+  <td width="4%" valign=top style='width:4.0%;padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal><span style='font-family:"Arial",sans-serif'>b.</span></p>
   </td>
-  <td width="32%" valign=top style='width:32.66%;border-top:none;border-left:
-  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  padding:0in 5.4pt 0in 5.4pt'>
+  <td width="32%" valign=top style='width:32.66%;padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal><span style='font-family:"Arial",sans-serif'>Nama Kapal</span></p>
   </td>
-  <td width="4%" valign=top style='width:4.9%;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  padding:0in 5.4pt 0in 5.4pt'>
+  <td width="3%" valign=top style='width:3.1%;padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal><span style='font-family:"Arial",sans-serif'>:</span></p>
   </td>
-  <td width="42%" valign=top style='width:42.6%;border-top:none;border-left:
-  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  padding:0in 5.4pt 0in 5.4pt'>
-  <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>Sxsx</span></p>
+  <td width="44%" valign=top style='width:44.4%;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>{{$type_rpk->nama_kapal}}</span></p>
   </td>
  </tr>
  <tr>
-  <td width="15%" valign=top style='width:15.84%;border:solid windowtext 1.0pt;
-  border-top:none;padding:0in 5.4pt 0in 5.4pt'>
+  <td width="15%" valign=top style='width:15.84%;padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal><span lang=id style='font-family:"Arial",sans-serif'>&nbsp;</span></p>
   </td>
-  <td width="4%" valign=top style='width:4.0%;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  padding:0in 5.4pt 0in 5.4pt'>
+  <td width="4%" valign=top style='width:4.0%;padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal><span style='font-family:"Arial",sans-serif'>c.</span></p>
   </td>
-  <td width="32%" valign=top style='width:32.66%;border-top:none;border-left:
-  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  padding:0in 5.4pt 0in 5.4pt'>
+  <td width="32%" valign=top style='width:32.66%;padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal><span style='font-family:"Arial",sans-serif'>Type Kapal</span></p>
   </td>
-  <td width="4%" valign=top style='width:4.9%;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  padding:0in 5.4pt 0in 5.4pt'>
+  <td width="3%" valign=top style='width:3.1%;padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal><span style='font-family:"Arial",sans-serif'>:</span></p>
   </td>
-  <td width="42%" valign=top style='width:42.6%;border-top:none;border-left:
-  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  padding:0in 5.4pt 0in 5.4pt'>
-  <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>Isi_kotor</span></p>
+  <td width="44%" valign=top style='width:44.4%;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>{{$type_rpk->jenis_kapal}}</span></p>
   </td>
  </tr>
  <tr>
-  <td width="15%" valign=top style='width:15.84%;border:solid windowtext 1.0pt;
-  border-top:none;padding:0in 5.4pt 0in 5.4pt'>
+  <td width="15%" valign=top style='width:15.84%;padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal><span lang=id style='font-family:"Arial",sans-serif'>&nbsp;</span></p>
   </td>
-  <td width="4%" valign=top style='width:4.0%;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  padding:0in 5.4pt 0in 5.4pt'>
+  <td width="4%" valign=top style='width:4.0%;padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal><span style='font-family:"Arial",sans-serif'>d.</span></p>
   </td>
-  <td width="32%" valign=top style='width:32.66%;border-top:none;border-left:
-  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  padding:0in 5.4pt 0in 5.4pt'>
+  <td width="32%" valign=top style='width:32.66%;padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal><span style='font-family:"Arial",sans-serif'>Pelabuhan
   Pangkal</span></p>
   </td>
-  <td width="4%" valign=top style='width:4.9%;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  padding:0in 5.4pt 0in 5.4pt'>
+  <td width="3%" valign=top style='width:3.1%;padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal><span style='font-family:"Arial",sans-serif'>:</span></p>
   </td>
-  <td width="42%" valign=top style='width:42.6%;border-top:none;border-left:
-  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  padding:0in 5.4pt 0in 5.4pt'>
-  <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>Tenaga_penggera</span></p>
+  <td width="44%" valign=top style='width:44.4%;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>{{$type_rpk->pelabuhan_pangkal}}</span></p>
   </td>
  </tr>
  <tr>
-  <td width="15%" valign=top style='width:15.84%;border:solid windowtext 1.0pt;
-  border-top:none;padding:0in 5.4pt 0in 5.4pt'>
+  <td width="15%" valign=top style='width:15.84%;padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal><span lang=id style='font-family:"Arial",sans-serif'>&nbsp;</span></p>
   </td>
-  <td width="4%" valign=top style='width:4.0%;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  padding:0in 5.4pt 0in 5.4pt'>
+  <td width="4%" valign=top style='width:4.0%;padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal><span style='font-family:"Arial",sans-serif'>e.</span></p>
   </td>
-  <td width="32%" valign=top style='width:32.66%;border-top:none;border-left:
-  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  padding:0in 5.4pt 0in 5.4pt'>
+  <td width="32%" valign=top style='width:32.66%;padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal><span style='font-family:"Arial",sans-serif'>Pelabuhan
   Singgah</span></p>
   </td>
-  <td width="4%" valign=top style='width:4.9%;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  padding:0in 5.4pt 0in 5.4pt'>
+  <td width="3%" valign=top style='width:3.1%;padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal><span style='font-family:"Arial",sans-serif'>:</span></p>
   </td>
-  <td width="42%" valign=top style='width:42.6%;border-top:none;border-left:
-  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  padding:0in 5.4pt 0in 5.4pt'>
-  <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>15
-  (lima belas) orang</span></p>
+  <td width="44%" valign=top style='width:44.4%;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>{{$type_rpk->pelabuhan_singgah}}</span></p>
   </td>
  </tr>
 </table>
 
 <p class=MsoNormal><span lang=id style='font-size:9.5pt;font-family:"Arial",sans-serif'>&nbsp;</span></p>
 
-<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0 width="100%"
+<table class=MsoTableGrid border=0 cellspacing=0 cellpadding=0 width="100%"
  style='width:100.0%;border-collapse:collapse;border:none'>
  <tr>
-  <td width="11%" valign=top style='width:11.88%;border:solid windowtext 1.0pt;
-  padding:0in 5.4pt 0in 5.4pt'>
+  <td width="11%" valign=top style='width:11.88%;padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal><span lang=id style='font-family:"Arial",sans-serif'>&nbsp;</span></p>
   </td>
-  <td width="3%" valign=top style='width:3.96%;border:solid windowtext 1.0pt;
-  border-left:none;padding:0in 5.4pt 0in 5.4pt'>
+  <td width="3%" valign=top style='width:3.96%;padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal align=center style='text-align:center'><span
   style='font-family:"Arial",sans-serif'>2.</span></p>
   </td>
-  <td width="84%" valign=top style='width:84.16%;border:solid windowtext 1.0pt;
-  border-left:none;padding:0in 5.4pt 0in 5.4pt'>
+  <td width="84%" valign=top style='width:84.16%;padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal style='text-align:justify'><span lang=id style='font-family:
   "Arial",sans-serif'>Mengingat rencana kegiatan termasuk dalam sektor
   Perhubungan, kiranya dapat ditindaklanjuti dengan Rekomendasi Teknis guna
@@ -332,15 +272,13 @@ src="permintaan_rekomendasi_teknis_rpk_tdtt_perpanjangan_template_files/image001
 
 <p class=MsoNormal><span lang=id style='font-size:9.5pt;font-family:"Arial",sans-serif'>&nbsp;</span></p>
 
-<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0 width="100%"
+<table class=MsoTableGrid border=0 cellspacing=0 cellpadding=0 width="100%"
  style='width:100.0%;border-collapse:collapse;border:none'>
  <tr>
-  <td width="15%" valign=top style='width:15.84%;border:solid windowtext 1.0pt;
-  padding:0in 5.4pt 0in 5.4pt'>
+  <td width="15%" valign=top style='width:15.84%;padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal><span lang=id style='font-family:"Arial",sans-serif'>&nbsp;</span></p>
   </td>
-  <td width="84%" valign=top style='width:84.16%;border:solid windowtext 1.0pt;
-  border-left:none;padding:0in 5.4pt 0in 5.4pt'>
+  <td width="84%" valign=top style='width:84.16%;padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal style='text-align:justify'><span lang=id style='font-family:
   "Arial",sans-serif'>Demikian disampaikan untuk dimaklumi, atas perhatian dan
   kerjasamanya diucapkan </span><span style='font-family:"Arial",sans-serif'>   </span><span
@@ -353,17 +291,22 @@ src="permintaan_rekomendasi_teknis_rpk_tdtt_perpanjangan_template_files/image001
 
 <p class=MsoNormal><span lang=id style='font-size:10.0pt;font-family:"Arial",sans-serif'>&nbsp;</span></p>
 
-<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0 width="100%"
+<table class=MsoTableGrid border=0 cellspacing=0 cellpadding=0 width="100%"
  style='width:100.0%;border-collapse:collapse;border:none'>
  <tr>
-  <td width="47%" valign=top style='width:47.64%;border:solid windowtext 1.0pt;
-  padding:0in 5.4pt 0in 5.4pt'>
+  <td width="47%" valign=top style='width:47.64%;padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal><span lang=id style='font-size:9.5pt;font-family:"Arial",sans-serif'>&nbsp;</span></p>
   </td>
-  <td width="52%" valign=top style='width:52.36%;border:solid windowtext 1.0pt;
-  border-left:none;padding:0in 5.4pt 0in 5.4pt'>
-  <p class=MsoNormal align=center style='text-align:center'><b><span lang=IN
-  style='font-family:"Arial",sans-serif'>a.n. KEPALA DINAS</span></b><b><span
+  <td width="52%" valign=top style='width:52.36%;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='position:absolute;z-index:251659264;left:0px;margin-left:486px;
+  margin-top:12px;width:91px;height:124px'>
+  @if(in_array($pemohon->status_permohonan_id, [6,7,8,9,10]))
+  <img width=91 height=124
+  src="images/ttdalfian.png">
+  @endif
+  </span><b><span
+  lang=IN style='font-family:"Arial",sans-serif'>a.n. KEPALA DINAS</span></b><b><span
   lang=FI style='font-family:"Arial",sans-serif'> PENANAMAN MODAL DAN</span></b></p>
   <p class=MsoNormal align=center style='text-align:center'><b><span lang=FI
   style='font-family:"Arial",sans-serif'>PELAYANAN TERPADU SATU PINTU</span></b></p>
@@ -377,16 +320,18 @@ src="permintaan_rekomendasi_teknis_rpk_tdtt_perpanjangan_template_files/image001
   <p class=MsoNormal align=center style='text-align:center'><span lang=IN
   style='font-family:"Arial",sans-serif'>&nbsp;</span></p>
   <p class=MsoNormal align=center style='text-align:center'><span lang=id
-  style='font-family:"Arial",sans-serif'><img width=276 height=99 id="Picture 1"
-  src="permintaan_rekomendasi_teknis_rpk_tdtt_perpanjangan_template_files/image002.jpg"></span></p>
+  style='font-family:"Arial",sans-serif'>&nbsp;</span></p>
   <p class=MsoNormal align=center style='text-align:center'><span lang=id
   style='font-family:"Arial",sans-serif'>&nbsp;</span></p>
-  <p class=MsoNormal align=center style='text-align:center'><b><span lang=IN
-  style='font-family:"Arial",sans-serif'>ALFIAN, S.Sos., M.Si</span></b></p>
-  <p class=MsoNormal align=center style='text-align:center'><span lang=IN
-  style='font-family:"Arial",sans-serif'>Pembina Tk. I (IV/b)</span></p>
-  <p class=MsoNormal align=center style='text-align:center'><span lang=IN
-  style='font-family:"Arial",sans-serif'>NIP. 19700713 199201 1 001</span></p>
+  <p class=MsoNormal><b><span style='font-family:"Arial",sans-serif'>                       
+  </span></b><b><span lang=IN style='font-family:"Arial",sans-serif'>ALFIAN,
+  S.Sos., M.Si</span></b></p>
+  <p class=MsoNormal><span style='font-family:"Arial",sans-serif'>                       
+  </span><span lang=IN style='font-family:"Arial",sans-serif'>Pembina Tk. I
+  (IV/b)</span></p>
+  <p class=MsoNormal><span style='font-family:"Arial",sans-serif'>                       
+  </span><span lang=IN style='font-family:"Arial",sans-serif'>NIP. 19700713
+  199201 1 001</span></p>
   <p class=MsoNormal align=right style='text-align:right'><span lang=id
   style='font-size:9.5pt;font-family:"Arial",sans-serif'>&nbsp;</span></p>
   </td>
