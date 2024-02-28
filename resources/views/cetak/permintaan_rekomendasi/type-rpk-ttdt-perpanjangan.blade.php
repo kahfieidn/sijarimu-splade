@@ -66,7 +66,7 @@ src="images/headercop.png"></span></p>
   </td>
   <td width="47%" valign=top style='width:47.06%;padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal align=right style='text-align:right'><span lang=id
-  style='font-family:"Arial",sans-serif'>Tanjungpinang, {{$pemohon->created_at->isoFormat('D MMMM Y')}}</span></p>
+  style='font-family:"Arial",sans-serif'>Tanjungpinang, @if($pemohon->tgl_permintaan_rekomendasi != null){{ \Carbon\Carbon::parse($pemohon->tgl_permintaan_rekomendasi)->isoFormat('D MMMM Y') }}@else[DRAFT_TGL_PERMINTAAN REKOMENDASI]@endif</span></p>
   </td>
  </tr>
 </table>

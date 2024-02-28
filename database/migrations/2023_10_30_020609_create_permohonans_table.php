@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('no_surat_permohonan')->nullable();
             $table->date('tgl_surat_permohonan')->nullable();
             $table->string('no_permintaan_rekomendasi')->nullable();
+            $table->date('tgl_permintaan_rekomendasi')->nullable();
             $table->string('surat_rekomendasi')->nullable();
             $table->string('no_surat_rekomendasi')->nullable();
             $table->date('tgl_surat_rekomendasi')->nullable();

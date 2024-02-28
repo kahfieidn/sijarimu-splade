@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\BackOffice_1;
 
+use Carbon\Carbon;
 use App\Models\Profile;
 use App\Models\Perizinan;
 use App\Models\Permohonan;
@@ -175,6 +176,7 @@ class DashboardController extends Controller
                 'status_permohonan_id' => $request->status_permohonan_id,
                 'catatan' => $request->catatan,
                 'no_permintaan_rekomendasi' => $request->no_permintaan_rekomendasi,
+                'tgl_permintaan_rekomendasi' => Carbon::now(),
                 'no_surat_permohonan' => $request->no_surat_permohonan,
                 'tgl_surat_permohonan' => $request->tgl_surat_permohonan,
                 'back_office' => Auth::id()

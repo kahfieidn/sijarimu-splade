@@ -20,6 +20,7 @@ class Permohonan extends Model
         'no_surat_permohonan',
         'tgl_surat_permohonan',
         'no_permintaan_rekomendasi',
+        'tgl_permintaan_rekomendasi',
         'surat_rekomendasi',
         'no_surat_rekomendasi',
         'tgl_surat_rekomendasi',
@@ -106,6 +107,15 @@ class Permohonan extends Model
         }
     }
 
+
+    public function getTglPermintaanRekomendasiAttribute()
+    {
+        if (isset($this->attributes['tgl_permintaan_rekomendasi']) && !empty($this->attributes['tgl_permintaan_rekomendasi'])) {
+            return Carbon::createFromFormat('Y-m-d', $this->attributes['tgl_permintaan_rekomendasi'])->format('d-m-Y');
+        } else {
+            return null;
+        }
+    }
 
     public function setTglSuratRekomendasiAttribute($value)
     {
