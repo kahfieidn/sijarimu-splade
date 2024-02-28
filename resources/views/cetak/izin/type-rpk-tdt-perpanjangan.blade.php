@@ -81,8 +81,8 @@ src="images/headercop.png"></span></p>
   <p class=MsoNormal><span style='font-size:9.5pt;font-family:"Arial",sans-serif'>@if($pemohon->no_izin != null){{$pemohon->no_izin}}@else [DRAFT] @endif</span></p>
   <p class=MsoNormal><span style='font-size:9.5pt;font-family:"Arial",sans-serif'>-</span></p>
   <p class=MsoNormal><span style='font-size:9.5pt;font-family:"Arial",sans-serif'>-</span></p>
-  <p class=MsoNormal><span lang=id style='font-size:9.5pt;font-family:"Arial",sans-serif'>Persetujuan
-  Rencana Pengoperasian Kapal pada Trayek Tidak Tetap dan Tidak Teratur Angkutan Laut Dalam Negeri</span></p>
+  <p class=MsoNormal style='text-align: justify;'><span lang=id style='font-size:9.5pt;font-family:"Arial",sans-serif'>Persetujuan
+  Rencana Pengoperasian Kapal pada Trayek Tetap dan Teratur Angkutan Laut Dalam Negeri</span></p>
   </td>
   <td width="13%" valign=top style='width:13.24%;padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal align=right style='text-align:right'><span lang=id
@@ -130,7 +130,7 @@ src="images/headercop.png"></span></p>
   Tanggal {{ \Carbon\Carbon::parse($pemohon->tgl_surat_rekomendasi)->isoFormat('D MMMM Y') }}, dengan ini disampaikan bahwa kapal Saudara telah dicatat sebagai armada
   pelayaran rakyat dan</span><span lang=id style='font-size:9.5pt;font-family:
   "Arial",sans-serif'> </span><span lang=id style='font-size:9.5pt;font-family:
-  "Arial",sans-serif'>dioperasikan pada trayek tidak tetap dan tidak teratur
+  "Arial",sans-serif'>dioperasikan pada trayek tetap dan teratur
   dengan data kapal sebagai berikut :</span></p>
   </td>
  </tr>
@@ -359,7 +359,7 @@ src="images/headercop.png"></span></p>
   </td>
   <td width="88%" valign=top style='width:88.12%;padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal style='text-align:justify'><span lang=id style='text-align:justify;font-size:9.5pt;font-family:"Arial",sans-serif'>Pengoperasian
-  Kapal Pelra pada Trayek Tidak Tetap dan Tidak Teratur ini berlaku pada tanggal @if($pemohon->tgl_izin_terbit == null){{ \Carbon\Carbon::parse(\Carbon\Carbon::now())->isoFormat('D MMMM Y') }}@else {{ \Carbon\Carbon::parse($pemohon->tgl_izin_terbit)->isoFormat('D MMMM Y') }} @endif sampai dengan @if($pemohon->tgl_izin_terbit == null){{ \Carbon\Carbon::parse(\Carbon\Carbon::now())->isoFormat('D MMMM Y') }}@else {{ \Carbon\Carbon::parse($pemohon->tgl_izin_terbit)->addMonths(3)->isoFormat('D MMMM Y') }} @endif, selain itu Saudara wajib
+  Kapal Pelra pada Trayek Tetap dan Teratur ini berlaku pada tanggal @if($pemohon->tgl_izin_terbit == null){{ \Carbon\Carbon::parse(\Carbon\Carbon::now())->isoFormat('D MMMM Y') }}@else {{ \Carbon\Carbon::parse($pemohon->tgl_izin_terbit)->isoFormat('D MMMM Y') }} @endif sampai dengan @if($pemohon->tgl_izin_terbit == null){{ \Carbon\Carbon::parse(\Carbon\Carbon::now())->isoFormat('D MMMM Y') }}@else {{ \Carbon\Carbon::parse($pemohon->tgl_izin_terbit)->addMonths(6)->isoFormat('D MMMM Y') }} @endif, selain itu Saudara wajib
   memperhatikan :</span></p>
   </td>
  </tr>

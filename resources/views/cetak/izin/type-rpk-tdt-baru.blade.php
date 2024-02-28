@@ -55,7 +55,7 @@ src="images/headercop.png"></span></p>
   </td>
   <td width="47%" valign=top style='width:47.06%;padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal align=right style='text-align:right'><span lang=id
-  style='font-size:9.5pt;font-family:"Arial",sans-serif'>Tanjungpinang, {{$pemohon->updated_at->isoFormat('D MMMM Y')}}</span></p>
+  style='font-size:9.5pt;font-family:"Arial",sans-serif'>Tanjungpinang, @if($pemohon->tgl_izin_terbit != null){{ \Carbon\Carbon::parse($pemohon->tgl_izin_terbit)->isoFormat('D MMMM Y') }}@else [DRAFT_TGL_IZIN_TERBIT] @endif</span></p>
   </td>
  </tr>
 </table>
@@ -81,12 +81,8 @@ src="images/headercop.png"></span></p>
   <p class=MsoNormal><span style='font-size:9.5pt;font-family:"Arial",sans-serif'>@if($pemohon->no_izin != null){{$pemohon->no_izin}}@else [DRAFT] @endif</span></p>
   <p class=MsoNormal><span style='font-size:9.5pt;font-family:"Arial",sans-serif'>-</span></p>
   <p class=MsoNormal><span style='font-size:9.5pt;font-family:"Arial",sans-serif'>-</span></p>
-  <p class=MsoNormal><span lang=id style='font-size:9.5pt;font-family:"Arial",sans-serif'>Persetujuan
-  Rencana Pengoperasian Kapal</span></p>
-  <p class=MsoNormal><span lang=id style='font-size:9.5pt;font-family:"Arial",sans-serif'>pada
-  Trayek Tidak Tetap dan Tidak Teratur</span></p>
-  <p class=MsoNormal><span lang=id style='font-size:9.5pt;font-family:"Arial",sans-serif'>Angkutan
-  Laut Dalam Negeri</span></p>
+  <p class=MsoNormal style='text-align:justify;'><span lang=id style='font-size:9.5pt;font-family:"Arial",sans-serif'>Persetujuan
+  Rencana Pengoperasian Kapal pada Trayek Tetap dan Teratur Angkutan Laut Dalam Negeri</span></p>
   </td>
   <td width="13%" valign=top style='width:13.24%;padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal align=right style='text-align:right'><span lang=id
@@ -127,15 +123,14 @@ src="images/headercop.png"></span></p>
   Nomor PM. 74 Tahun 2016 Tentang Perubahan Atas Peraturan Menteri Perhubungan
   Nomor PM.93 Tahun 2013 tentang Penyelenggaraan dan Pengusahaan Angkutan Laut
   dan menunjuk surat {{$profile->perusahaan}} Nomor {{$pemohon->no_surat_permohonan}}
-  tanggal {{$pemohon->created_at->isoFormat('D MMMM Y')}}, berdasarkan rekomendasi teknis dari</span><span
+  tanggal @if($pemohon->tgl_surat_permohonan != null){{ \Carbon\Carbon::parse($pemohon->tgl_surat_permohonan)->isoFormat('D MMMM Y') }}@else[DRAFT_SURAT_PERMOHONAN]@endif, berdasarkan rekomendasi teknis dari</span><span
   lang=id style='font-size:9.5pt;font-family:"Arial",sans-serif'> </span><span
   lang=id style='font-size:9.5pt;font-family:"Arial",sans-serif'>Dinas
   Perhubungan Provinsi Kepulauan Riau sesuai surat Nomor {{$pemohon->no_surat_rekomendasi}}
-  Tanggal {{ \Carbon\Carbon::parse($pemohon->tgl_surat_rekomendasi)->isoFormat('D MMMM Y') }}
-, dengan ini disampaikan bahwa kapal Saudara telah dicatat sebagai armada
+  Tanggal {{ \Carbon\Carbon::parse($pemohon->tgl_surat_rekomendasi)->isoFormat('D MMMM Y') }}, dengan ini disampaikan bahwa kapal Saudara telah dicatat sebagai armada
   pelayaran rakyat dan</span><span lang=id style='font-size:9.5pt;font-family:
   "Arial",sans-serif'> </span><span lang=id style='font-size:9.5pt;font-family:
-  "Arial",sans-serif'>dioperasikan pada trayek tidak tetap dan tidak teratur
+  "Arial",sans-serif'>dioperasikan pada trayek tetap dan teratur
   dengan data kapal sebagai berikut :</span></p>
   </td>
  </tr>
@@ -330,7 +325,7 @@ src="images/headercop.png"></span></p>
   </td>
   <td width="50%" valign=top style='width:50.0%;padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal style='text-align:justify'><span style='font-size:9.5pt;
-  font-family:"Arial",sans-serif'>{{$type_rpk->nomor_siualper}}</span></p>
+  font-family:"Arial",sans-serif'>{{$type_rpk->nomor_siupper}}, Tgl. @if($type_rpk->tgl_siupper != null){{ \Carbon\Carbon::parse($type_rpk->tgl_siupper)->isoFormat('D MMMM Y') }}@else [DRAFT_No_Siupper] @endif</span></p>
   </td>
  </tr>
 </table>
@@ -345,7 +340,7 @@ src="images/headercop.png"></span></p>
   </td>
   <td width="88%" valign=top style='width:88.12%;padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal style='text-align:justify'><span lang=id style='text-align:justify;font-size:9.5pt;font-family:"Arial",sans-serif'>Pengoperasian
-  Kapal Pelra pada Trayek Tidak Tetap dan Tidak Teratur ini berlaku pada tanggal {{$pemohon->updated_at->isoFormat('D MMMM Y')}} sampai dengan {{$pemohon->updated_at->addMonths(3)->isoFormat('D MMMM Y')}}, selain itu Saudara wajib
+  Kapal Pelra pada Trayek Tetap dan Teratur ini berlaku pada tanggal {{$pemohon->updated_at->isoFormat('D MMMM Y')}} sampai dengan {{$pemohon->updated_at->addMonths(6)->isoFormat('D MMMM Y')}}, selain itu Saudara wajib
   memperhatikan :</span></p>
   </td>
  </tr>
