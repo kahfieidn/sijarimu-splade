@@ -17,6 +17,10 @@
     @include('cetak.izin.type-rpk-ttdt-baru')
     @elseif($type_rpk->type_rpk == 'perpanjangan' && $type_rpk->type_trayek == 'Trayek Tidak Tetap Dan Teratur Angkutan Laut Dalam Negeri')
     @include('cetak.izin.type-rpk-ttdt-perpanjangan')
+    @elseif($type_rpk->type_rpk == 'baru' && $type_rpk->type_trayek == 'Trayek Tidak Tetap Dan Tidak Teratur Angkutan Laut Dalam Negeri Dan Lintas Batas')
+    @include('cetak.izin.type-rpk-ttdtt-lb-baru')
+    @elseif($type_rpk->type_rpk == 'perpanjangan' && $type_rpk->type_trayek == 'Trayek Tidak Tetap Dan Tidak Teratur Angkutan Laut Dalam Negeri Dan Lintas Batas')
+    @include('cetak.izin.type-rpk-ttdtt-lb-perpanjangan')
     @endif
 @else
 Not Found!

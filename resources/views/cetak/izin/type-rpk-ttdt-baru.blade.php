@@ -340,7 +340,7 @@ src="images/headercop.png"></span></p>
   </td>
   <td width="88%" valign=top style='width:88.12%;padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal style='text-align:justify'><span lang=id style='text-align:justify;font-size:9.5pt;font-family:"Arial",sans-serif'>Pengoperasian
-  Kapal Pelra pada Trayek Tidak Tetap dan Teratur ini berlaku pada tanggal {{$pemohon->updated_at->isoFormat('D MMMM Y')}} sampai dengan {{$pemohon->updated_at->addMonths(3)->isoFormat('D MMMM Y')}}, selain itu Saudara wajib
+  Kapal Pelra pada Trayek Tidak Tetap dan Teratur ini berlaku pada tanggal @if($pemohon->tgl_izin_terbit == null){{ \Carbon\Carbon::parse(\Carbon\Carbon::now())->isoFormat('D MMMM Y') }}@else {{ \Carbon\Carbon::parse($pemohon->tgl_izin_terbit)->isoFormat('D MMMM Y') }} @endif sampai dengan @if($pemohon->tgl_izin_terbit == null){{ \Carbon\Carbon::parse(\Carbon\Carbon::now())->addMonths(3)->isoFormat('D MMMM Y') }}@else {{ \Carbon\Carbon::parse($pemohon->tgl_izin_terbit)->addMonths(3)->isoFormat('D MMMM Y') }} @endif, selain itu Saudara wajib
   memperhatikan :</span></p>
   </td>
  </tr>
