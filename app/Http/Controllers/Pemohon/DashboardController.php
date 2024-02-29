@@ -168,6 +168,17 @@ class DashboardController extends Controller
                 'tgl_rpk_sebelumnya' => 'nullable|date',
             ]);
             $permohonan->type_rpk()->create($typeRpk);
+        } else if ($typeId == 5) {
+            $profiles = Profile::where('user_id', Auth::id())->first();
+            $profiles->update($request->profile);
+            $typeRpkRoro = $request->validate([
+                'type_rpk_roro' => ['required', 'string', 'max:255'],
+                'nama_kapal' => ['required', 'string', 'max:255'],
+                'lintas' => ['required', 'string', 'max:255'],
+                'pemilik_kapal' => ['required', 'string', 'max:255'],
+                'nomor_siuap' => ['required', 'string', 'max:255'],
+            ]);
+            $permohonan->type_rpk_roro()->create($typeRpkRoro);
         }
 
         $permohonan->user->notify(new PermohonanCreated($permohonan));

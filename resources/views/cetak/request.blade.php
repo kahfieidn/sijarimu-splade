@@ -22,6 +22,8 @@
     @elseif($type_rpk->type_rpk == 'perpanjangan' && $type_rpk->type_trayek == 'Trayek Tidak Tetap Dan Tidak Teratur Angkutan Laut Dalam Negeri Dan Lintas Batas')
     @include('cetak.izin.type-rpk-ttdtt-lb-perpanjangan')
     @endif
+@elseif($pemohon->perizinan_id == 5)
+    @include('cetak.izin.type-rpk-roro-sementara')
 @else
 Not Found!
 @endif

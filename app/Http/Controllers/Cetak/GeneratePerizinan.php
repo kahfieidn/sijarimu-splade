@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use App\Models\Profile;
 use App\Models\TypeRpk;
 use App\Models\Permohonan;
+use App\Models\TypeRpkRoro;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Http\Controllers\Controller;
@@ -31,17 +32,28 @@ class GeneratePerizinan extends Controller
         $profile = Profile::where('user_id', $pemohon->user_id)->first();
 
         if ($perizinan_id == 4) {
-            $penelitians = TypeRpk::where('type_rpkable_id', $pemohon->id)->first();
             $type_rpk = $pemohon->type_rpk->first();
             $date_ttd = Carbon::parse($pemohon->updated_at)->translatedFormat('d F Y');;
             $data = [
                 'pemohon' => $pemohon,
-                'penelitians' => $penelitians,
                 'users' => $users,
                 'date_ttd' => $date_ttd,
                 'get_id_users' => $get_id_users,
                 'profile' => $profile,
                 'type_rpk' => $type_rpk
+            ];
+            $pdf = Pdf::loadView('cetak.request', $data);
+            $customPaper = array(0, 0, 609.4488, 935.433);
+            $pdf->set_paper($customPaper);
+            $pdf->render();
+        } else if ($perizinan_id == 5) {
+            $type_rpk_roro = $pemohon->type_rpk_roro->first();
+            $data = [
+                'pemohon' => $pemohon,
+                'users' => $users,
+                'get_id_users' => $get_id_users,
+                'profile' => $profile,
+                'type_rpk_roro' => $type_rpk_roro
             ];
             $pdf = Pdf::loadView('cetak.request', $data);
             $customPaper = array(0, 0, 609.4488, 935.433);
