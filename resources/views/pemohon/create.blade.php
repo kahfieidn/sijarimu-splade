@@ -44,6 +44,10 @@
             @include('components.editFormulir.profile-usaha')
             @include('components.formulir.type-rpk')
         </div>
+        <div v-if="{{ $perizinan->id }} == 5">
+            @include('components.editFormulir.profile-usaha')
+            @include('components.formulir.type-rpk-roro')
+        </div>
         <div class="p-4 sm:ml-64">
             <div class="bg-white p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
                 <h1 class="mb-8 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">Lengkapi <span class="underline underline-offset-3 decoration-8 decoration-blue-400 dark:decoration-blue-600">Berkas Permohonan</span></h1>
@@ -51,6 +55,20 @@
                     @foreach($persyaratan as $key=>$persyaratan)
                     <div class="py-2">
                         <h6 class="text-lg font-bold dark:text-white">{{ $key + 1 }}. {{$persyaratan->nama_persyaratan}}</h6>
+
+                        @if(is_iterable($persyaratan->deskripsi))
+                        <ol class="ml-7 mb-1 space-y-2 text-gray-500 list-decimal list-inside dark:text-gray-400">
+                            @foreach($persyaratan->deskripsi as $deskripsi)
+                            <li>{{ $deskripsi }}</li>
+                            @endforeach
+                        </ol>
+                        @elseif(!empty($persyaratan->deskripsi))
+                        <ol class="ml-7 mb-1 space-y-2 text-gray-500 list-decimal list-inside dark:text-gray-400">
+                            {!! $persyaratan->deskripsi !!}
+                        </ol>
+                        @endif
+
+
                         <x-splade-file accept="application/pdf" filepond max-size="2MB" class="block mb-2 text-lg font-medium text-gray-900 dark:text-white" name="field_{{ $key + 1 }}" filepond preview />
                         <p class="text-sm text-gray-500 dark:text-gray-300" id="file_input_help">Berkas yang di izinkan (.pdf), maksimal file size. 2MB</p>
                     </div>

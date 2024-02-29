@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Carbon\Carbon;
+use App\Models\TypeRpkRoro;
 use Kirschbaum\PowerJoins\PowerJoins;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -37,6 +38,9 @@ class Permohonan extends Model
 
     public function type_rpk() {
         return $this->morphMany(TypeRpk::class, 'type_rpkable');
+    }
+    public function type_rpk_roro() {
+        return $this->morphMany(TypeRpkRoro::class, 'type_rpk_roroable');
     }
     public function penelitian() {
         return $this->morphMany(Penelitian::class, 'penelitianable');

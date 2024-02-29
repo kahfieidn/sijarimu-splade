@@ -37,5 +37,11 @@ class PerizinanSeeder extends Seeder
             'jenis_izin_id' => '1',
             'status' => 'active',
         ]);
+        \App\Models\Perizinan::create([
+            'nama_perizinan' => 'Persetujuan Rencana Pengoperasian Kapal Angkutan Penyeberangan (Roro)',
+            'sektor_id' => '2',
+            'jenis_izin_id' => '1',
+            'status' => 'active',
+        ]);
     }
 }

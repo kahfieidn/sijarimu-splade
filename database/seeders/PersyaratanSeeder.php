@@ -174,5 +174,63 @@ class PersyaratanSeeder extends Seeder
             'perizinan_id' => '4',
             'status' => 'active',
         ]);
+
+        //Persyaratan Rencana Pengoperasian Kapal
+        \App\Models\Persyaratan::create([
+            'nama_persyaratan' => 'Surat Permohonan Perusahaan Bermaterai di Tujukan Ke Dinas Penanaman Modal dan Pelayanan Terpadu Satu Pintu Provinsi Kepulauan Riau',
+            'perizinan_id' => '5',
+            'status' => 'active',
+        ]);
+        \App\Models\Persyaratan::create([
+            'nama_persyaratan' => 'Akta Pendirian Perusahaan dan Pengesahan dari Kemenkumham',
+            'perizinan_id' => '5',
+            'status' => 'active',
+        ]);
+        \App\Models\Persyaratan::create([
+            'nama_persyaratan' => 'KTP Penanggungjawab / Pemohon',
+            'perizinan_id' => '5',
+            'status' => 'active',
+        ]);
+        \App\Models\Persyaratan::create([
+            'nama_persyaratan' => 'NPWP Perusahaan',
+            'perizinan_id' => '5',
+            'status' => 'active',
+        ]);
+        \App\Models\Persyaratan::create([
+            'nama_persyaratan' => 'Grosse Akte / Bukti Kepemilikan Kapal',
+            'perizinan_id' => '5',
+            'status' => 'active',
+        ]);
+        \App\Models\Persyaratan::create([
+            'nama_persyaratan' => 'Memiliki Surat Izin Usaha Angkutan Penyeberangan',
+            'perizinan_id' => '5',
+            'status' => 'active',
+        ]);
+        \App\Models\Persyaratan::create([
+            'nama_persyaratan' => 'NIB Perusahaan',
+            'perizinan_id' => '5',
+            'status' => 'active',
+        ]);
+        \App\Models\Persyaratan::create([
+            'nama_persyaratan' => 'Foto Papan Nama Perusahaan',
+            'perizinan_id' => '5',
+            'status' => 'active',
+        ]);
+        \App\Models\Persyaratan::create([
+            'nama_persyaratan' => 'Kesesuaian Lintas yang dilayani',
+            'perizinan_id' => '5',
+            'status' => 'active',
+        ]);
+        \App\Models\Persyaratan::create([
+            'nama_persyaratan' => 'Pemenuhan standar pelayanan minimal angkutan penyeberangan',
+            'perizinan_id' => '5',
+            'status' => 'active',
+        ]);
+        \App\Models\Persyaratan::create([
+            'nama_persyaratan' => 'Kesesuaian spesifikasi teknis kapal yang akan dioperasikan permanen / sementara',
+            'deskripsi' => '<li>Sertifikat Kapal dimiliki (FC)</li><li>Spesifikasi Teknis Kapal</li><li>Dokumentasi / Foto Kapal</li>',
+            'perizinan_id' => '5',
+            'status' => 'active',
+        ]);
     }
 }
