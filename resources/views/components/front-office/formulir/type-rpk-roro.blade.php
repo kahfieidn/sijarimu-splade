@@ -1,10 +1,3 @@
-<div class="p-4 sm:ml-64">
-    <div class="bg-white p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
-        <h1 class="mb-8 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">Draft <span class="underline underline-offset-3 decoration-8 decoration-blue-400 dark:decoration-blue-600">Izin</span></h1>
-        <iframe src="{{ route('dashboard.cetak.request', [$pemohon->perizinan_id, $pemohon->id ]) }}" width="100%" height="500"></iframe>
-    </div>
-</div>
-
 
 <div class="p-4 sm:ml-64">
     <div class="bg-white p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
@@ -15,9 +8,9 @@
                 <option value="" disabled>Pilih salah satu...</option>
                 <option value="1">Ditolak</option>
                 <option value="2">Revisi</option>
-                <option value="5">Kembalikan Ke Back Office</option>
-                <option value="10">Setujui (Terbitkan Izin)</option>
+                <option value="4">Sudah Lengkap (Teruskan Ke Back Office (1))</option>
             </x-splade-select>
+
         </div>
         <div v-show="form.status_permohonan_id == 1 || form.status_permohonan_id == 2" class="relative z-0 w-full mb-6 group">
             <x-splade-wysiwyg label="Tambahkan Catatan Ke Pemohon (Opsional)" class="mb-8" name="catatan" />

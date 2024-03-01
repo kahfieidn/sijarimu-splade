@@ -94,8 +94,7 @@ src="images/headercop.png"></span></p>
   (satu) Berkas</span></p>
   <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>Penting</span></p>
   <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>Mohon
-  Rekomendasi Teknis Perpanjangan Rencana Pengoperasian Kapal (RPK) </span></p>
-  <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>{{ $type_rpk->nama_kapal }}</span></p>
+  Rekomendasi Teknis Perpanjangan Rencana Pengoperasian Kapal Angkutan Penyeberangan Sementara {{ $type_rpk_roro->nama_kapal }}</span></p>
   </td>
   <td width="15%" valign=top style='width:15.88%;padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal align=right style='text-align:right'><b><span lang=id
@@ -128,7 +127,7 @@ src="images/headercop.png"></span></p>
   <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>Dengan
   Hormat,</span></p>
   <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>Menindaklanjuti
-  Surat Direktur {{$pemohon->profile->perusahaan}} Nomor @if($pemohon->no_surat_permohonan != null){{$pemohon->no_surat_permohonan}}@else [DRAFT_NO_SURAT]@endif tanggal @if($pemohon->tgl_surat_permohonan != null){{ \Carbon\Carbon::parse($pemohon->tgl_surat_permohonan)->isoFormat('D MMMM Y') }}@else[DRAFT_TGL_SURAT]@endif perihal Permohonan Persetujuan Perpanjangan Trayek Tidak Tetap dan Teratur Angkutan Laut Dalam Negeri, bersama ini kami sampaikan hal-hal
+  Surat Direktur {{$pemohon->profile->perusahaan}} Nomor @if($pemohon->no_surat_permohonan != null){{$pemohon->no_surat_permohonan}}@else [DRAFT_NO_SURAT]@endif tanggal @if($pemohon->tgl_surat_permohonan != null){{ \Carbon\Carbon::parse($pemohon->tgl_surat_permohonan)->isoFormat('D MMMM Y') }}@else[DRAFT_TGL_SURAT]@endif perihal Permohonan Persetujuan Perpanjangan Pengoperasian Kapal Angkutan Penyeberangan Sementara, bersama ini kami sampaikan hal-hal
   sebagai berikut:</span></p>
   </td>
  </tr>
@@ -147,7 +146,7 @@ src="images/headercop.png"></span></p>
   </td>
   <td width="84%" valign=top style='width:84.16%;padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal style='text-align:justify'><span lang=id style='font-family:
-  "Arial",sans-serif'>Persetujuan Pengoperasian Kapal Pelra Perusahaan yang
+  "Arial",sans-serif'>Persetujuan Pengoperasian Kapal Angkutan Perusahaan yang
   bersangkutan akan habis masa berlakunya dan bermaksud untuk melakukan
   perpanjangan persetujuan, dengan data permohonan sebagai berikut :</span></p>
   </td>
@@ -189,7 +188,7 @@ src="images/headercop.png"></span></p>
   <p class=MsoNormal><span style='font-family:"Arial",sans-serif'>:</span></p>
   </td>
   <td width="44%" valign=top style='width:44.4%;padding:0in 5.4pt 0in 5.4pt'>
-  <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>{{$type_rpk->nama_kapal}}</span></p>
+  <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>{{$type_rpk_roro->nama_kapal}}</span></p>
   </td>
  </tr>
  <tr>
@@ -200,13 +199,13 @@ src="images/headercop.png"></span></p>
   <p class=MsoNormal><span style='font-family:"Arial",sans-serif'>c.</span></p>
   </td>
   <td width="32%" valign=top style='width:32.66%;padding:0in 5.4pt 0in 5.4pt'>
-  <p class=MsoNormal><span style='font-family:"Arial",sans-serif'>Type Kapal</span></p>
+  <p class=MsoNormal><span style='font-family:"Arial",sans-serif'>Nama Pemilik Kapal</span></p>
   </td>
   <td width="3%" valign=top style='width:3.1%;padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal><span style='font-family:"Arial",sans-serif'>:</span></p>
   </td>
   <td width="44%" valign=top style='width:44.4%;padding:0in 5.4pt 0in 5.4pt'>
-  <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>{{$type_rpk->jenis_kapal}}</span></p>
+  <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>{{$type_rpk_roro->pemilik_kapal}}</span></p>
   </td>
  </tr>
  <tr>
@@ -217,14 +216,13 @@ src="images/headercop.png"></span></p>
   <p class=MsoNormal><span style='font-family:"Arial",sans-serif'>d.</span></p>
   </td>
   <td width="32%" valign=top style='width:32.66%;padding:0in 5.4pt 0in 5.4pt'>
-  <p class=MsoNormal><span style='font-family:"Arial",sans-serif'>Pelabuhan
-  Pangkal</span></p>
+  <p class=MsoNormal><span style='font-family:"Arial",sans-serif'>Pada Lintas</span></p>
   </td>
   <td width="3%" valign=top style='width:3.1%;padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal><span style='font-family:"Arial",sans-serif'>:</span></p>
   </td>
   <td width="44%" valign=top style='width:44.4%;padding:0in 5.4pt 0in 5.4pt'>
-  <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>{{$type_rpk->pelabuhan_pangkal}}</span></p>
+  <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>{{$type_rpk_roro->lintas}}</span></p>
   </td>
  </tr>
  <tr>
@@ -235,14 +233,13 @@ src="images/headercop.png"></span></p>
   <p class=MsoNormal><span style='font-family:"Arial",sans-serif'>e.</span></p>
   </td>
   <td width="32%" valign=top style='width:32.66%;padding:0in 5.4pt 0in 5.4pt'>
-  <p class=MsoNormal><span style='font-family:"Arial",sans-serif'>Pelabuhan
-  Singgah</span></p>
+  <p class=MsoNormal><span style='font-family:"Arial",sans-serif'>Nomor SIUAP</span></p>
   </td>
   <td width="3%" valign=top style='width:3.1%;padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal><span style='font-family:"Arial",sans-serif'>:</span></p>
   </td>
   <td width="44%" valign=top style='width:44.4%;padding:0in 5.4pt 0in 5.4pt'>
-  <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>{{$type_rpk->pelabuhan_singgah}}</span></p>
+  <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>{{$type_rpk_roro->nomor_siuap}}</span></p>
   </td>
  </tr>
 </table>

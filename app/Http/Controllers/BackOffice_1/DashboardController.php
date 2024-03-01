@@ -119,6 +119,21 @@ class DashboardController extends Controller
                 'profile' => $profile,
                 'type_rpk' => $type_rpk,
             ]);
+        }else if ($pemohon->perizinan_id == 5) {
+            $profile = Profile::where('user_id', $pemohon->user_id)->first();
+            $type_rpk_roro = $pemohon->type_rpk_roro()->first();
+            return view('back-office-1.show', [
+                'pemohon' => $pemohon,
+                'berkas' => $berkas,
+                'persyaratan' => $persyaratan,
+                'status_berkas' => $status_berkas,
+                'ket_berkas' => $ket_berkas,
+                'perizinan' => $perizinan,
+                'berkas' => $berkas,
+                'user' => $user,
+                'profile' => $profile,
+                'type_rpk_roro' => $type_rpk_roro,
+            ]);
         }
     }
 
@@ -165,6 +180,23 @@ class DashboardController extends Controller
                 'menimbang' => $request->penelitian['menimbang'],
             ]);
         }else if ($pemohon->perizinan->id == 4) {
+            $request->validate([
+                'status_permohonan_id' => ['required', 'string', 'max:255'],
+                'catatan' => ['nullable'],
+                'no_permintaan_rekomendasi' => ['required', 'string', 'max:255'],
+                'no_surat_permohonan' => ['required'],
+                'tgl_surat_permohonan' => ['date', 'required'],
+            ]);
+            $pemohon->update([
+                'status_permohonan_id' => $request->status_permohonan_id,
+                'catatan' => $request->catatan,
+                'no_permintaan_rekomendasi' => $request->no_permintaan_rekomendasi,
+                'tgl_permintaan_rekomendasi' => Carbon::now(),
+                'no_surat_permohonan' => $request->no_surat_permohonan,
+                'tgl_surat_permohonan' => $request->tgl_surat_permohonan,
+                'back_office' => Auth::id()
+            ]);
+        }else if ($pemohon->perizinan->id == 5) {
             $request->validate([
                 'status_permohonan_id' => ['required', 'string', 'max:255'],
                 'catatan' => ['nullable'],

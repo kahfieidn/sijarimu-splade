@@ -124,7 +124,7 @@ src="images/headercop.png"></span></p>
   <td width="11%" valign=top style='width:11.88%;padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal><span lang=id style='font-family:"Arial",sans-serif'>&nbsp;</span></p>
   </td>
-  <td width="88%" valign=top style='width:88.12%;padding:0in 5.4pt 0in 5.4pt'>
+  <td width="88%" valign=top style='width:80.12%;padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>Dengan
   Hormat,</span></p>
   <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>Menindaklanjuti

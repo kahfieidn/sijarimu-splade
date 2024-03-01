@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use App\Models\Profile;
 use App\Models\TypeRpk;
 use App\Models\Permohonan;
+use App\Models\TypeRpkRoro;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Http\Controllers\Controller;
@@ -21,7 +22,8 @@ class GeneratePermintaanRekomendasi extends Controller
         //
     }
 
-    public function generatePermintaanRekomendasi(Request $request, $perizinan_id, $permohonan_id){
+    public function generatePermintaanRekomendasi(Request $request, $perizinan_id, $permohonan_id)
+    {
         $pemohon = Permohonan::find($permohonan_id);
         $users = $pemohon->user;
         $get_id_users = $pemohon->user->id;
@@ -44,6 +46,19 @@ class GeneratePermintaanRekomendasi extends Controller
             $customPaper = array(0, 0, 609.4488, 935.433);
             $pdf->set_paper($customPaper);
             $pdf->render();
+        } else if ($perizinan_id == 5) {
+            $type_rpk_roro = $pemohon->type_rpk_roro()->first();
+            $data = [
+                'pemohon' => $pemohon,
+                'type_rpk_roro' => $type_rpk_roro,
+                'users' => $users,
+                'get_id_users' => $get_id_users,
+                'profile' => $profile
+            ];
+            $pdf = Pdf::loadView('cetak.permintaan-rekomendasi-request', $data);
+            $customPaper = array(0, 0, 609.4488, 935.433);
+            $pdf->set_paper($customPaper);
+            $pdf->render();
         }
 
         if ($get_id_users == Auth::id()) {
@@ -51,7 +66,6 @@ class GeneratePermintaanRekomendasi extends Controller
         } else if ($this->middleware(['role: admin|front_office|back_office|opd|sekretariat'])) {
             return $pdf->stream($get_nama_izin . ' ' . $nama_user . '.pdf');
         }
-    
     }
 
     /**

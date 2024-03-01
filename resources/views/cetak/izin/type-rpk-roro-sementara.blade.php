@@ -96,7 +96,7 @@ height=103 id="Picture 8" src="images/logo-portal-kepriprov.png"></span></p>
  <tr>
   <td width="100%" valign=top style='width:100.0%;padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal align=center style='text-align:center'><b><span
-  style='font-family:"Times New Roman",serif'>NOMOR 017/1D.b5/DPMPTSP/I/2023</span></b></p>
+  style='font-family:"Times New Roman",serif'>NOMOR @if($pemohon->no_izin != null) {{$pemohon->no_izin}} @else [DRAFT] @endif</span></b></p>
   </td>
  </tr>
 </table>
@@ -108,10 +108,9 @@ height=103 id="Picture 8" src="images/logo-portal-kepriprov.png"></span></p>
  <tr>
   <td width="100%" valign=top style='width:100.0%;padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal style='text-align:justify'><span lang=id style='font-family:
-  "Times New Roman",serif'>Berdasarkan surat permohonan PT. ASDP Indonesia
-  Ferry (Persero) Nomor : OP.003/8/I/ASDP-BTM tanggal 4 Januari 2023,
-  berdasarkan rekomendasi rekomendasi teknis dari Dinas Perhubungan Provinsi
-  Kepulauan Riau sesuai surat Nomor 552.1/67/BAP/2023 Tanggal 10 Januari 2023,
+  "Times New Roman",serif'>Berdasarkan surat permohonan {{$profile->perusahaan}} Nomor : {{$pemohon->no_surat_permohonan}} tanggal {{ \Carbon\Carbon::parse($pemohon->tgl_surat_permohonan)->isoFormat('D MMMM Y') }},
+  berdasarkan rekomendasi teknis dari Dinas Perhubungan Provinsi
+  Kepulauan Riau sesuai surat Nomor {{$pemohon->no_surat_rekomendasi}} Tanggal {{ \Carbon\Carbon::parse($pemohon->tgl_surat_rekomendasi)->isoFormat('D MMMM Y') }},
   bersama ini di berikan persetujuan pengoperasian kapal :</span></p>
   </td>
  </tr>
@@ -134,7 +133,7 @@ height=103 id="Picture 8" src="images/logo-portal-kepriprov.png"></span></p>
   <td width="49%" valign=top style='width:49.7%;border:solid windowtext 1.0pt;
   border-left:none;padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal style='text-align:justify'><span style='font-size:10.5pt;
-  font-family:"Times New Roman",serif'>NAMA_KAPAL</span></p>
+  font-family:"Times New Roman",serif'>{{$type_rpk_roro->nama_kapal}}</span></p>
   </td>
  </tr>
  <tr>
@@ -152,7 +151,7 @@ height=103 id="Picture 8" src="images/logo-portal-kepriprov.png"></span></p>
   none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal style='text-align:justify'><span style='font-size:10.5pt;
-  font-family:"Times New Roman",serif'>LINTASAN</span></p>
+  font-family:"Times New Roman",serif'>{{$type_rpk_roro->lintas}}</span></p>
   </td>
  </tr>
  <tr>
@@ -170,7 +169,7 @@ height=103 id="Picture 8" src="images/logo-portal-kepriprov.png"></span></p>
   none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal style='text-align:justify'><span style='font-size:10.5pt;
-  font-family:"Times New Roman",serif'>PT. KAHFI</span></p>
+  font-family:"Times New Roman",serif'>{{$profile->perusahaan}}</span></p>
   </td>
  </tr>
  <tr>
@@ -188,7 +187,7 @@ height=103 id="Picture 8" src="images/logo-portal-kepriprov.png"></span></p>
   none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal style='text-align:justify'><span style='font-size:10.5pt;
-  font-family:"Times New Roman",serif'>Lorem</span></p>
+  font-family:"Times New Roman",serif'>{{$profile->alamat}}</span></p>
   </td>
  </tr>
  <tr>
@@ -206,7 +205,7 @@ height=103 id="Picture 8" src="images/logo-portal-kepriprov.png"></span></p>
   none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal style='text-align:justify'><span style='font-size:10.5pt;
-  font-family:"Times New Roman",serif'>LOREM</span></p>
+  font-family:"Times New Roman",serif'>{{$type_rpk_roro->pemilik_kapal}}</span></p>
   </td>
  </tr>
  <tr>
@@ -224,7 +223,7 @@ height=103 id="Picture 8" src="images/logo-portal-kepriprov.png"></span></p>
   none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal style='text-align:justify'><span style='font-size:10.5pt;
-  font-family:"Times New Roman",serif'>0101010101010</span></p>
+  font-family:"Times New Roman",serif'>{{$profile->npwp}}</span></p>
   </td>
  </tr>
  <tr>
@@ -242,9 +241,7 @@ height=103 id="Picture 8" src="images/logo-portal-kepriprov.png"></span></p>
   none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal style='text-align:justify'><span style='font-size:10.5pt;
-  font-family:"Times New Roman",serif'>U2384234892374982374283974 s sjsjsn
-  snkksnc ksncsknc mksmxksmx onconec necoecnoe sdksdjksd ksdjc kjsdc skdcsdj
-  sdkjdskjsdj</span></p>
+  font-family:"Times New Roman",serif'>{{$type_rpk_roro->nomor_siuap}}</span></p>
   </td>
  </tr>
 </table>
@@ -431,13 +428,20 @@ height=103 id="Picture 8" src="images/logo-portal-kepriprov.png"></span></p>
   <p class=MsoNormal align=center style='text-align:center'><b><span
   style='font-size:10.5pt;font-family:"Times New Roman",serif'>PROVINSI
   KEPULAUAN RIAU,</span></b></p>
+  @if($pemohon->status_permohonan_id == 10)
   <p class=MsoNormal align=center style='text-align:center'><span
-  style='font-size:10.5pt;font-family:"Times New Roman",serif'><img width=58
-  height=58 id="Picture 6" src="images/qrcodette.png"></span></p>
+  style='font-size:10.5pt;font-family:"Times New Roman",serif'>
+  <img width=58
+  height=58 id="Picture 6" src="images/qrcodette.png">
+  </span></p>
+  @else
+  <p class=MsoNormal align=center style='text-align:center;padding:20px;'><span
+  style='font-size:10.5pt;font-family:"Times New Roman",serif'>[DRAFT]</span></p>
+  @endif
   <p class=MsoNormal><b><span style='font-size:10.5pt;font-family:"Times New Roman",serif'>                        
   HASFARIZAL HANDRA, S.Sos</span></b></p>
   <p class=MsoNormal><span style='font-size:10.5pt;font-family:"Times New Roman",serif'>                        
-  Pembina Utama Muda</span></p>
+  Pembina Utama Madya</span></p>
   <p class=MsoNormal><span style='font-size:10.5pt;font-family:"Times New Roman",serif'>                        
   NIP. 19690329 199003 1 009</span></p>
   </td>

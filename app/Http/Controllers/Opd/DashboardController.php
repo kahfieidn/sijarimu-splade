@@ -75,6 +75,21 @@ class DashboardController extends Controller
                 'profile' => $profile,
                 'type_rpk' => $type_rpk,
             ]);
+        }else if ($pemohon->perizinan_id == 5) {
+            $profile = Profile::where('user_id', $pemohon->user_id)->first();
+            $type_rpk_roro = $pemohon->type_rpk_roro()->first();
+            return view('opd.show', [
+                'pemohon' => $pemohon,
+                'berkas' => $berkas,
+                'persyaratan' => $persyaratan,
+                'status_berkas' => $status_berkas,
+                'ket_berkas' => $ket_berkas,
+                'perizinan' => $perizinan,
+                'berkas' => $berkas,
+                'user' => $user,
+                'profile' => $profile,
+                'type_rpk_roro' => $type_rpk_roro,
+            ]);
         }
     }
 
@@ -109,6 +124,19 @@ class DashboardController extends Controller
 
         // Custom Perizinan
         if ($pemohon->perizinan->id == 4) {
+            $request->validate([
+                'status_permohonan_id' => ['required', 'string', 'max:255'],
+                'no_surat_rekomendasi' => ['required', 'string', 'max:255'],
+                'tgl_surat_rekomendasi' => ['date', 'required'],
+            ]);
+            $pemohon->update([
+                'status_permohonan_id' => $request->status_permohonan_id,
+                'catatan' => $request->catatan,
+                'no_surat_rekomendasi' => $request->no_surat_rekomendasi,
+                'surat_rekomendasi' => $surat_rekomendasiRequest[$fieldName],
+                'tgl_surat_rekomendasi' => $request->tgl_surat_rekomendasi,
+            ]);
+        }else if ($pemohon->perizinan->id == 5) {
             $request->validate([
                 'status_permohonan_id' => ['required', 'string', 'max:255'],
                 'no_surat_rekomendasi' => ['required', 'string', 'max:255'],

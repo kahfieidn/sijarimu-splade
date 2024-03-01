@@ -124,6 +124,30 @@ class DashboardController extends Controller
                 'type_rpk' => $type_rpk,
                 'no_izin' => $no_izin
             ]);
+        }else if($pemohon->perizinan_id == 5) {
+            $profile = Profile::where('user_id', $pemohon->user_id)->first();
+            $type_rpk_roro = $pemohon->type_rpk_roro()->first();
+            $bulan_type_rpk = Carbon::now()->format('n');
+            function intToRoman($number)
+            {
+                $map = array('I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII');
+                return $map[$number - 1];
+            }
+            $bulan_type_rpk_romawi = intToRoman($bulan_type_rpk);
+            $no_izin = '00' . $type_rpk_roro->id . '/1D.b5' . '/DPMPTSP' . '/' .$bulan_type_rpk_romawi . '/2024';
+            return view('back-office-3.show', [
+                'pemohon' => $pemohon,
+                'berkas' => $berkas,
+                'persyaratan' => $persyaratan,
+                'status_berkas' => $status_berkas,
+                'ket_berkas' => $ket_berkas,
+                'perizinan' => $perizinan,
+                'berkas' => $berkas,
+                'user' => $user,
+                'profile' => $profile,
+                'type_rpk_roro' => $type_rpk_roro,
+                'no_izin' => $no_izin
+            ]);
         }
     }
 
@@ -160,6 +184,12 @@ class DashboardController extends Controller
                 'tgl_izin_terbit' => Carbon::now()
             ]);
         }else if($pemohon->perizinan->id == 4){
+            $pemohon->update([
+                'status_permohonan_id' => $request->status_permohonan_id,
+                'catatan' => $request->catatan,
+                'no_izin' => $request->no_izin,
+            ]);
+        }else if($pemohon->perizinan->id == 5){
             $pemohon->update([
                 'status_permohonan_id' => $request->status_permohonan_id,
                 'catatan' => $request->catatan,
