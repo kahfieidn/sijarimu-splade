@@ -65,8 +65,8 @@ class Permohonans extends AbstractTable
         });
 
         return QueryBuilder::for(Permohonan::class)
-        ->defaultSort('id')
-        ->allowedFilters(['user.id','izin.jenis_izin.id', 'izin.sektor.nama_sektor', $yearFilter, $monthFilter, $globalSearch]);
+            ->defaultSort('id')
+            ->allowedFilters(['user.id', 'izin.jenis_izin.id', 'izin.sektor.nama_sektor', $yearFilter, $monthFilter, $globalSearch]);
     }
 
     /**
@@ -82,7 +82,8 @@ class Permohonans extends AbstractTable
             ->column(key: 'id', sortable: true, label: 'ID')
             ->column(key: 'user.name', sortable: true, label: 'Nama Pemohon')
             ->column(key: 'user.nik', sortable: true, label: 'NIK')
-            ->column(key: 'perizinan.nama_perizinan', sortable: true, label: 'Jenis Izin')
+            ->column(key: 'perizinan.nama_perizinan', sortable: true, label: 'Jenis Izin');
+        $table
             ->column(key: 'perizinan.sektor.nama_sektor', sortable: true, label: 'Sektor')
             ->column(key: 'created_at', sortable: true, label: 'Tanggal Pengajuan', as: fn ($created_at) => $created_at->isoFormat('D MMMM Y'))
             ->column(key: 'updated_at', sortable: true, label: 'Tanggal Selesai', as: fn ($created_at) => $created_at->isoFormat('D MMMM Y'))

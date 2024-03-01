@@ -404,8 +404,8 @@ height=103 id="Picture 8" src="images/logo-portal-kepriprov.png"></span></p>
   <p class=MsoNormal><span style='font-size:10.5pt;font-family:"Times New Roman",serif'>:</span></p>
   </td>
   <td width="29%" valign=top style='width:29.84%;padding:0in 5.4pt 0in 5.4pt'>
-  <p class=MsoNormal><span style='font-size:10.5pt;font-family:"Times New Roman",serif'>13
-  Januari 2023</span></p>
+  <p class=MsoNormal><span style='font-size:10.5pt;font-family:"Times New Roman",serif'>@if($pemohon->tgl_izin_terbit != null){{ \Carbon\Carbon::parse($pemohon->tgl_izin_terbit)->isoFormat('D MMMM Y') }}@else[DRAFT_TGL_IZIN_TERBIT]@endif
+</span></p>
   </td>
  </tr>
 </table>

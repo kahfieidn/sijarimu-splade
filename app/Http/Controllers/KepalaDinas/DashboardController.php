@@ -114,6 +114,21 @@ class DashboardController extends Controller
                 'profile' => $profile,
                 'type_rpk' => $type_rpk,
             ]);
+        } else if ($pemohon->perizinan_id == 5) {
+            $profile = Profile::where('user_id', $pemohon->user_id)->first();
+            $type_rpk_roro = $pemohon->type_rpk_roro()->first();
+            return view('kepala-dinas.show', [
+                'pemohon' => $pemohon,
+                'berkas' => $berkas,
+                'persyaratan' => $persyaratan,
+                'status_berkas' => $status_berkas,
+                'ket_berkas' => $ket_berkas,
+                'perizinan' => $perizinan,
+                'berkas' => $berkas,
+                'user' => $user,
+                'profile' => $profile,
+                'type_rpk_roro' => $type_rpk_roro,
+            ]);
         }
     }
 
@@ -151,6 +166,12 @@ class DashboardController extends Controller
                 'tgl_izin_terbit' => Carbon::now()
             ]);
         } else if ($pemohon->perizinan->id == 4) {
+            $pemohon->update([
+                'status_permohonan_id' => $request->status_permohonan_id,
+                'catatan' => $request->catatan,
+                'tgl_izin_terbit' => Carbon::now()
+            ]);
+        }else if ($pemohon->perizinan->id == 5) {
             $pemohon->update([
                 'status_permohonan_id' => $request->status_permohonan_id,
                 'catatan' => $request->catatan,
