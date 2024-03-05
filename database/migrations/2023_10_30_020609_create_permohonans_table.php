@@ -26,7 +26,6 @@ return new class extends Migration
             $table->string('surat_rekomendasi')->nullable();
             $table->string('no_surat_rekomendasi')->nullable();
             $table->date('tgl_surat_rekomendasi')->nullable();
-            $table->string('izin_terbit')->nullable();
             $table->date('tgl_izin_terbit')->nullable();
             $table->string('file_izin_terbit')->nullable();
             $table->string('no_izin')->nullable();

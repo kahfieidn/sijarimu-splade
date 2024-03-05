@@ -26,7 +26,6 @@ class Permohonan extends Model
         'surat_rekomendasi',
         'no_surat_rekomendasi',
         'tgl_surat_rekomendasi',
-        'izin_terbit',
         'tgl_izin_terbit',
         'file_izin_terbit',
         'no_izin',
