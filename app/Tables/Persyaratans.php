@@ -51,9 +51,6 @@ class Persyaratans extends AbstractTable
             ->withGlobalSearch(columns: ['id'])
             ->column('id', sortable: true)
             ->column('nama_persyaratan', sortable: true)
-            ->column('nama_persyaratan', sortable: true)
-            ->column('nama_persyaratan', sortable: true);
-
 
 
         // ->searchInput()
