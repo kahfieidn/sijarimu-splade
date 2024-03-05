@@ -28,6 +28,7 @@ return new class extends Migration
             $table->date('tgl_surat_rekomendasi')->nullable();
             $table->string('izin_terbit')->nullable();
             $table->date('tgl_izin_terbit')->nullable();
+            $table->string('file_izin_terbit')->nullable();
             $table->string('no_izin')->nullable();
             $table->foreignId('front_office')->nullable()->references('id')->on('users');
             $table->foreignId('back_office')->nullable()->references('id')->on('users');

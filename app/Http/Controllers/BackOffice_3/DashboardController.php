@@ -8,10 +8,12 @@ use App\Models\Perizinan;
 use App\Models\Permohonan;
 use App\Models\Persyaratan;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\PDF;
 use App\Http\Controllers\Controller;
 use App\Notifications\PermohonanDone;
 use ProtoneMedia\Splade\Facades\Toast;
 use App\Tables\BackOffice3\Permohonans;
+use Illuminate\Support\Facades\Storage;
 use App\Notifications\PermohonanRejected;
 
 class DashboardController extends Controller
@@ -164,6 +166,7 @@ class DashboardController extends Controller
      */
     public function update(Request $request, Permohonan $pemohon)
     {
+        $currentMonthYear = Carbon::now()->format('Y-F');
         // Custom Perizinan
         if ($pemohon->perizinan->id == 1) {
             $pemohon->update([
@@ -197,6 +200,29 @@ class DashboardController extends Controller
             ]);
         }
 
+        if (in_array($pemohon->id, [1, 2, 3]) && $pemohon->status_permohonan_id == 10) {
+            $penelitians = $pemohon->penelitian->first();
+            $penelitis = $pemohon->peneliti->first();
+            $users = $pemohon->user;
+            $data = [
+                'pemohon' => $pemohon,
+                'penelitians' => $penelitians,
+                'penelitis' => $penelitis,
+                'users' => $users,
+            ];
+            $storageDirectory = 'izin_terbit/' . $currentMonthYear . '/' . $pemohon->id . '.pdf';
+            $pdf = PDF::loadView('cetak.request', $data);
+            $customPaper = array(0, 0, 609.4488, 935.433);
+            $pdf->set_paper($customPaper);
+
+            $fileContent = $pdf->output();
+            $hashedFileName = hash('sha256', $storageDirectory) . '.' . pathinfo($storageDirectory, PATHINFO_EXTENSION);
+
+            Storage::put('public/izin/' . $currentMonthYear . '/' . $hashedFileName, $fileContent);
+            $pemohon->update([
+                'file_izin_terbit' => $currentMonthYear . '/' . $hashedFileName,
+            ]);
+        }
 
         //Notify
         if ($request->status_permohonan_id == 1 || $request->status_permohonan_id == 2) {

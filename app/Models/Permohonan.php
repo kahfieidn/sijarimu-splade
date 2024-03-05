@@ -28,6 +28,7 @@ class Permohonan extends Model
         'tgl_surat_rekomendasi',
         'izin_terbit',
         'tgl_izin_terbit',
+        'file_izin_terbit',
         'no_izin',
         'front_office',
         'back_office',
@@ -89,15 +90,7 @@ class Permohonan extends Model
         return $this->belongsTo(User::class, 'kepala_dinas');
     }    
 
-    
-    public function getTglIzinTerbitAttribute()
-    {
-        if (isset($this->attributes['tgl_izin_terbit']) && !empty($this->attributes['tgl_izin_terbit'])) {
-            return Carbon::createFromFormat('Y-m-d', $this->attributes['tgl_izin_terbit'])->format('d-m-Y');
-        } else {
-            return null;
-        }
-    }
+   
 
     public function setTglSuratPermohonanAttribute($value)
     {

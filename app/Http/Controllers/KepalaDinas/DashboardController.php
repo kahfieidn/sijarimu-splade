@@ -4,14 +4,18 @@ namespace App\Http\Controllers\KepalaDinas;
 
 use Carbon\Carbon;
 use App\Models\Profile;
+use App\Models\TypeRpk;
 use App\Models\Perizinan;
+use App\Models\Penelitian;
 use App\Models\Permohonan;
 use App\Models\Persyaratan;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 use App\Http\Controllers\Controller;
 use App\Notifications\PermohonanDone;
 use ProtoneMedia\Splade\Facades\Toast;
 use App\Tables\KepalaDinas\Permohonans;
+use Illuminate\Support\Facades\Storage;
 use App\Notifications\PermohonanRejected;
 
 class DashboardController extends Controller
@@ -146,6 +150,7 @@ class DashboardController extends Controller
     public function update(Request $request, Permohonan $pemohon)
     {
         //
+        $currentMonthYear = Carbon::now()->format('Y-F');
         // Custom Perizinan
         if ($pemohon->perizinan->id == 1) {
             $pemohon->update([
@@ -171,13 +176,38 @@ class DashboardController extends Controller
                 'catatan' => $request->catatan,
                 'tgl_izin_terbit' => Carbon::now()
             ]);
-        }else if ($pemohon->perizinan->id == 5) {
+        } else if ($pemohon->perizinan->id == 5) {
             $pemohon->update([
                 'status_permohonan_id' => $request->status_permohonan_id,
                 'catatan' => $request->catatan,
                 'tgl_izin_terbit' => Carbon::now()
             ]);
         }
+
+        if (!in_array($pemohon->id, [1, 2, 3]) && $pemohon->status_permohonan_id == 10) {
+            $type_rpk = TypeRpk::where('type_rpkable_id', $pemohon->id)->first();
+            $users = $pemohon->user;
+            $profile = Profile::where('user_id', $pemohon->user_id)->first();
+            $data = [
+                'pemohon' => $pemohon,
+                'type_rpk' => $type_rpk,
+                'users' => $users,
+                'profile' => $profile
+            ];
+            $storageDirectory = 'izin_terbit/' . $currentMonthYear . '/' . $pemohon->id . '.pdf';
+            $pdf = PDF::loadView('cetak.request', $data);
+            $customPaper = array(0, 0, 609.4488, 935.433);
+            $pdf->set_paper($customPaper);
+
+            $fileContent = $pdf->output();
+            $hashedFileName = hash('sha256', $storageDirectory) . '.' . pathinfo($storageDirectory, PATHINFO_EXTENSION);
+
+            Storage::put('public/izin/' . $currentMonthYear . '/' . $hashedFileName, $fileContent);
+            $pemohon->update([
+                'file_izin_terbit' => $currentMonthYear . '/' . $hashedFileName,
+            ]);
+        }
+
 
         //Notify
         if ($request->status_permohonan_id == 1 || $request->status_permohonan_id == 2) {
