@@ -23,8 +23,7 @@
                     <span class="bg-yellow-100 text-yellow-800 text-1xl font-semibold mb-1 mr-2 px-2.5 py-0.5 rounded dark:bg-dark-200 dark:text-dark-800 ml-1">Menunggu Review</span>
                     @endif
                 </h6>
-                <h6 v-show="{{$ket_berkas->$vars != null}}" class="text-sm dark:text-white">Keterangan : {{$ket_berkas->$vars}}
-
+                <h6 v-show="{{ $ket_berkas->$vars != null }}" class="text-sm dark:text-white">Keterangan : {{$ket_berkas->$vars}}</h6>
             </div>
             <div class="col-span-1 sm:text-right sm:col-span-1">
                 <Link href="#modal-berkas-{{$vars}}" class="relative sm inline-flex items-center justify-center p-0.5 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
