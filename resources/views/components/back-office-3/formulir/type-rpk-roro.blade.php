@@ -49,7 +49,7 @@
         <x-splade-modal name="modal-permintaan-surat-rekomendasi" max-width="7xl">
             <h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">Permintaan Surat <span class="underline underline-offset-3 decoration-8 decoration-blue-400 dark:decoration-blue-600">Rekomendasi</span></h1>
             <div class="p-4">
-            <iframe src="{{ url('/storage/permintaan_rekomendasi/', $pemohon->file_permintaan_rekomendasi) }}" width="100%" height="500"></iframe>
+            <iframe src="{{ urldecode(url('/storage/permintaan_rekomendasi/' . $pemohon->file_permintaan_rekomendasi)) }}" width="100%" height="500"></iframe>
 
                 <div class="flex justify-between items-center ">
                     <div class="flex items-center space-x-3 sm:space-x-4">
