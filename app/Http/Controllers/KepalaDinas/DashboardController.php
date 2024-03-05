@@ -150,7 +150,6 @@ class DashboardController extends Controller
     public function update(Request $request, Permohonan $pemohon)
     {
         //
-        $currentMonthYear = Carbon::now()->format('Y-F');
         // Custom Perizinan
         if ($pemohon->perizinan->id == 1) {
             $pemohon->update([
@@ -184,17 +183,30 @@ class DashboardController extends Controller
             ]);
         }
 
-        if (!in_array($pemohon->id, [1, 2, 3]) && $pemohon->status_permohonan_id == 10) {
-            $type_rpk = TypeRpk::where('type_rpkable_id', $pemohon->id)->first();
-            $users = $pemohon->user;
-            $profile = Profile::where('user_id', $pemohon->user_id)->first();
-            $data = [
-                'pemohon' => $pemohon,
-                'type_rpk' => $type_rpk,
-                'users' => $users,
-                'profile' => $profile
-            ];
-            $storageDirectory = 'izin_terbit/' . $currentMonthYear . '/' . $pemohon->id . '.pdf';
+        $currentMonthYear = Carbon::now()->format('Y-F');
+        $users = $pemohon->user;
+        $profile = Profile::where('user_id', $pemohon->user_id)->first();
+
+        //save izin
+        if (!in_array($pemohon->perizinan_id, [1, 2, 3]) && $pemohon->status_permohonan_id == 10) {
+            if($pemohon->perizinan_id == 4){
+                $type_rpk = TypeRpk::where('type_rpkable_id', $pemohon->id)->first();
+                $data = [
+                    'pemohon' => $pemohon,
+                    'type_rpk' => $type_rpk,
+                    'users' => $users,
+                    'profile' => $profile
+                ];
+            }else if($pemohon->perizinan_id == 5){
+                $type_rpk_roro = $pemohon->type_rpk_roro->first();
+                $data = [
+                    'pemohon' => $pemohon,
+                    'type_rpk_roro' => $type_rpk_roro,
+                    'users' => $users,
+                    'profile' => $profile
+                ];
+            }
+            $storageDirectory = 'izin/' . $currentMonthYear . '/' . $pemohon->id . '.pdf';
             $pdf = PDF::loadView('cetak.request', $data);
             $customPaper = array(0, 0, 609.4488, 935.433);
             $pdf->set_paper($customPaper);
@@ -207,7 +219,6 @@ class DashboardController extends Controller
                 'file_izin_terbit' => $currentMonthYear . '/' . $hashedFileName,
             ]);
         }
-
 
         //Notify
         if ($request->status_permohonan_id == 1 || $request->status_permohonan_id == 2) {
