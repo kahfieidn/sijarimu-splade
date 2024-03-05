@@ -22,6 +22,7 @@ class Permohonan extends Model
         'tgl_surat_permohonan',
         'no_permintaan_rekomendasi',
         'tgl_permintaan_rekomendasi',
+        'file_permintaan_rekomendasi',
         'surat_rekomendasi',
         'no_surat_rekomendasi',
         'tgl_surat_rekomendasi',
