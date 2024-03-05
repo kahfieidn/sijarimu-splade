@@ -36,7 +36,7 @@ class Persyaratans extends AbstractTable
      */
     public function for()
     {
-        return Persyaratan::query();
+        return Persyaratan::class();
     }
 
     /**
