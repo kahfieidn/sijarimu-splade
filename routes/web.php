@@ -52,6 +52,9 @@ Route::middleware('splade')->group(function () {
             Route::resource('/back-office-1', App\Http\Controllers\BackOffice_1\DashboardController::class)->parameters([
                 'back-office-1' => 'pemohon'
             ]);
+            Route::resource('/back-office-4', App\Http\Controllers\BackOffice_4\DashboardController::class)->parameters([
+                'back-office-4' => 'pemohon'
+            ]);
         });
         Route::group(['middleware' => ['role:opd']], function () {
             Route::resource('/opd', App\Http\Controllers\Opd\DashboardController::class)->parameters([
@@ -62,8 +65,16 @@ Route::middleware('splade')->group(function () {
             Route::resource('/back-office-2', App\Http\Controllers\BackOffice_2\DashboardController::class)->parameters([
                 'back-office-2' => 'pemohon'
             ]);
+            Route::resource('/back-office-5', App\Http\Controllers\BackOffice_5\DashboardController::class)->parameters([
+                'back-office-5' => 'pemohon'
+            ]);
+        });
+        Route::group(['middleware' => ['role:verifikator_2']], function () {
             Route::resource('/back-office-3', App\Http\Controllers\BackOffice_3\DashboardController::class)->parameters([
                 'back-office-3' => 'pemohon'
+            ]);
+            Route::resource('/back-office-6', App\Http\Controllers\BackOffice_6\DashboardController::class)->parameters([
+                'back-office-6' => 'pemohon'
             ]);
         });
         Route::group(['middleware' => ['role:kepala_dinas']], function () {

@@ -127,7 +127,11 @@ class DashboardController extends Controller
         };
 
         // Create Permohonan
-        $permohonan = Permohonan::create(['status_permohonan_id' => 3, 'user_id' => Auth::user()->id, 'perizinan_id' => $typeId]);
+        if (in_array($typeId, [1, 2, 3])) {
+            $permohonan = Permohonan::create(['status_permohonan_id' => 3, 'user_id' => Auth::user()->id, 'perizinan_id' => $typeId]);
+        } else {
+            $permohonan = Permohonan::create(['status_permohonan_id' => 4, 'user_id' => Auth::user()->id, 'perizinan_id' => $typeId]);
+        }
         $permohonan->berkas()->create($berkasRequest);
         $permohonan->status_berkas()->create([null]);
         $permohonan->ket_berkas()->create([null]);
