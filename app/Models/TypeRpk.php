@@ -31,7 +31,6 @@ class TypeRpk extends Model
         'tgl_siupper',
         'nomor_rpk_sebelumnya',
         'tgl_rpk_sebelumnya'
-
     ];
 
     public function type_rpkable()

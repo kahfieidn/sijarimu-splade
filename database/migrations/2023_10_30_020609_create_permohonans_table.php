@@ -29,12 +29,6 @@ return new class extends Migration
             $table->date('tgl_izin_terbit')->nullable();
             $table->string('file_izin_terbit')->nullable();
             $table->string('no_izin')->nullable();
-            $table->foreignId('front_office')->nullable()->references('id')->on('users');
-            $table->foreignId('back_office')->nullable()->references('id')->on('users');
-            $table->foreignId('opd_teknis')->nullable()->references('id')->on('users');
-            $table->foreignId('verifikator_1')->nullable()->references('id')->on('users');
-            $table->foreignId('verifikator_2')->nullable()->references('id')->on('users');
-            $table->foreignId('kepala_dinas')->nullable()->references('id')->on('users');
             $table->timestamps();
         });
     }

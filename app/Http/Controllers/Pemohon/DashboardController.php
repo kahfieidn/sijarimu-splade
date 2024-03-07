@@ -40,14 +40,29 @@ class DashboardController extends Controller
     public function profile(Request $request)
     {
 
+        $currentMonthYear = Carbon::now()->format('Y-F');
+        $npwp_file = $request->file('profile.npwp_file');
+        $nib_file = $request->file('profile.nib_file');
+        $storageDirectory = 'public/docs/' . $currentMonthYear;
+        $hash_nib_file = $nib_file->hashName();
+        $hash_npwp_file = $npwp_file->hashName();
+        $nib_file->storeAs($storageDirectory, $hash_nib_file);
+        $npwp_file->storeAs($storageDirectory, $hash_npwp_file);
+        $set_db_hash_nib_file = $currentMonthYear . '/' . $hash_nib_file;
+        $set_db_hash_npwp_file = $currentMonthYear . '/' . $hash_npwp_file;
+
         Profile::create([
             'user_id' => Auth::id(),
             'npwp' => $request->profile['npwp'],
+            'npwp_file' => $set_db_hash_npwp_file,
             'perusahaan' => $request->profile['perusahaan'],
             'alamat' => $request->profile['alamat'],
+            'nib' => $request->profile['nib'],
+            'nib_file' => $set_db_hash_nib_file,
             'domisili' => $request->profile['domisili'],
             'provinsi_domisili' => $request->profile['provinsi_domisili'],
         ]);
+
 
         return redirect()->back();
     }
@@ -72,6 +87,12 @@ class DashboardController extends Controller
 
         $user = User::find(Auth::id());
         $profile = Profile::where('user_id', Auth::id())->first();
+        if ($profile != null) {
+            $profile['npwp_file'] = ExistingFile::fromDisk('public')->get('/docs' . '/' . $profile->{'npwp_file'});
+            $profile['nib_file'] = ExistingFile::fromDisk('public')->get('/docs' . '/' . $profile->{'nib_file'});
+        }
+
+
         return view('pemohon.create', [
             'perizinan' => $perizinan,
             'persyaratan' => $persyaratan,
@@ -110,6 +131,40 @@ class DashboardController extends Controller
         $permohonan->berkas()->create($berkasRequest);
         $permohonan->status_berkas()->create([null]);
         $permohonan->ket_berkas()->create([null]);
+        $permohonan->review_permohonan()->create([null]);
+
+        //update profile pemohon ngubah
+        HandleSpladeFileUploads::forRequest($request);
+        if (!in_array($typeId, [1, 2, 3])) {
+            $profiles = Profile::where('user_id', Auth::id())->first();
+            if (!isset($request->profile['nib_file_existing'])) {
+                Storage::delete('/public/docs' . '/' . $profiles->nib_file);
+                $nib_file = $request->file('profile.nib_file');
+                $hash_nib_file = $nib_file->hashName();
+                $storageDirectory = 'public/docs/' . $currentMonthYear;
+                $berkas->storeAs($storageDirectory, $hash_nib_file);
+                $profiles->update([
+                    'nib_file' => $currentMonthYear . '/' . $hash_nib_file,
+                ]);
+            }
+            if (!isset($request->profile['npwp_file_existing'])) {
+                Storage::delete('/public/docs' . '/' . $profiles->npwp_file);
+                $npwp_file = $request->file('profile.npwp_file');
+                $hash_npwp_file = $npwp_file->hashName();
+                $storageDirectory = 'public/docs/' . $currentMonthYear;
+                $berkas->storeAs($storageDirectory, $hash_npwp_file);
+                $profiles->update([
+                    'npwp_file' => $currentMonthYear . '/' . $hash_npwp_file,
+                ]);
+            }
+            $profiles->update([
+                'npwp' => $request->profile['npwp'],
+                'perusahaan' => $request->profile['perusahaan'],
+                'alamat' => $request->profile['alamat'],
+                'domisili' => $request->profile['domisili'],
+                'nib' => $request->profile['nib'],
+            ]);
+        }
 
         //Custom Perizinan        
         if ($typeId == 1) {
@@ -146,8 +201,6 @@ class DashboardController extends Controller
                 $permohonan->peneliti()->createMany($request->peneliti);
             }
         } else if ($typeId == 4) {
-            $profiles = Profile::where('user_id', Auth::id())->first();
-            $profiles->update($request->profile);
             $typeRpk = $request->validate([
                 'type_trayek' => ['required', 'string', 'max:255'],
                 'type_rpk' => ['required', 'string', 'max:255'],
@@ -169,8 +222,6 @@ class DashboardController extends Controller
             ]);
             $permohonan->type_rpk()->create($typeRpk);
         } else if ($typeId == 5) {
-            $profiles = Profile::where('user_id', Auth::id())->first();
-            $profiles->update($request->profile);
             $typeRpkRoro = $request->validate([
                 'type_rpk_roro' => ['required', 'string', 'max:255'],
                 'nama_kapal' => ['required', 'string', 'max:255'],
@@ -197,6 +248,8 @@ class DashboardController extends Controller
         if ($pemohon->user_id != Auth::user()->id) {
             abort(403);
         }
+
+
         return view('pemohon.show', [
             'status_permohonan' => StatusPermohonan::all(),
             'permohonan' => $pemohon,
@@ -266,6 +319,7 @@ class DashboardController extends Controller
             $messages["field_$i.file"] = "Perhatikan File $i harus format (.pdf) & tidak boleh lebih dari 2 MB!";
         }
 
+        //berkas store
         $berkasRequest = $request->validate($rules);
         $currentMonthYear = Carbon::now()->format('Y-F');
         $jumlah_persyaratan = Persyaratan::where('perizinan_id', $pemohon->perizinan_id)->count();
@@ -298,11 +352,11 @@ class DashboardController extends Controller
 
         for ($i = 1; $i <= 30; $i++) {
             if (!isset($ket_berkas_request[$i])) {
-                $ket_berkas_request['field_'.$i] = null;
+                $ket_berkas_request['field_' . $i] = null;
             }
 
             if (!isset($status_berkas_request[$i])) {
-                $status_berkas_request['field_'.$i] = null;
+                $status_berkas_request['field_' . $i] = null;
             }
         }
 

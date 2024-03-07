@@ -11,10 +11,13 @@ class Profile extends Model
 
     protected $fillable = [
         'npwp',
+        'npwp_file',
         'perusahaan',
         'alamat',
         'domisili',
         'provinsi_domisili',
+        'nib',
+        'nib_file',
         'user_id',
     ];
 }

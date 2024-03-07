@@ -30,10 +30,13 @@ class Permohonan extends Model
         'file_izin_terbit',
         'no_izin',
         'front_office',
-        'back_office',
-        'opd_teknis',
-        'verifikator_1',
-        'verifikator_2',
+        'back_office_1',
+        'back_office_2',
+        'back_office_3',
+        'opd',
+        'back_office_4',
+        'back_office_5',
+        'back_office_6',
         'kepala_dinas',
     ];
 
@@ -57,6 +60,9 @@ class Permohonan extends Model
     }
     public function ket_berkas() {
         return $this->morphMany(KetBerkas::class, 'ket_berkasable');
+    }
+    public function review_permohonan() {
+        return $this->morphMany(ReviewPermohonan::class, 'review_permohonanable');
     }
     public function profile() {
         return $this->belongsTo(Profile::class, 'user_id');
@@ -88,8 +94,6 @@ class Permohonan extends Model
     public function kepala_dinas(){
         return $this->belongsTo(User::class, 'kepala_dinas');
     }    
-
-   
 
     public function setTglSuratPermohonanAttribute($value)
     {
