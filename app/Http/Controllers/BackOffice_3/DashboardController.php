@@ -57,6 +57,7 @@ class DashboardController extends Controller
         $status_berkas = $pemohon->status_berkas->first();
         $ket_berkas = $pemohon->ket_berkas->first();
         $user = $pemohon->user()->first();
+        $review_permohonan = $pemohon->review_permohonan->first();
 
         //Custom Perizinan
         if ($pemohon->perizinan_id == 1) {
@@ -124,7 +125,8 @@ class DashboardController extends Controller
                 'user' => $user,
                 'profile' => $profile,
                 'type_rpk' => $type_rpk,
-                'no_izin' => $no_izin
+                'no_izin' => $no_izin,
+                'review_permohonan' => $review_permohonan
             ]);
         }else if($pemohon->perizinan_id == 5) {
             $profile = Profile::where('user_id', $pemohon->user_id)->first();
@@ -148,7 +150,8 @@ class DashboardController extends Controller
                 'user' => $user,
                 'profile' => $profile,
                 'type_rpk_roro' => $type_rpk_roro,
-                'no_izin' => $no_izin
+                'no_izin' => $no_izin,
+                'review_permohonan' => $review_permohonan
             ]);
         }
     }

@@ -127,7 +127,7 @@ src="images/headercop.png"></span></p>
   <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>Dengan
   Hormat,</span></p>
   <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>Menindaklanjuti
-  Surat Direktur {{$pemohon->profile->perusahaan}} Nomor @if($pemohon->no_surat_permohonan != null){{$pemohon->no_surat_permohonan}}@else [DRAFT_NO_SURAT]@endif tanggal @if($pemohon->tgl_surat_permohonan != null){{ \Carbon\Carbon::parse($pemohon->tgl_surat_permohonan)->isoFormat('D MMMM Y') }}@else[DRAFT_TGL_SURAT]@endif perihal Permohonan Persetujuan Perpanjangan Pengoperasian Kapal Angkutan Penyeberangan Sementara, bersama ini kami sampaikan hal-hal
+  Surat Direktur {{$profile->perusahaan}} Nomor @if($pemohon->no_surat_permohonan != null){{$pemohon->no_surat_permohonan}}@else [DRAFT_NO_SURAT]@endif tanggal @if($pemohon->tgl_surat_permohonan != null){{ \Carbon\Carbon::parse($pemohon->tgl_surat_permohonan)->isoFormat('D MMMM Y') }}@else[DRAFT_TGL_SURAT]@endif perihal Permohonan Persetujuan Perpanjangan Pengoperasian Kapal Angkutan Penyeberangan Sementara, bersama ini kami sampaikan hal-hal
   sebagai berikut:</span></p>
   </td>
  </tr>
@@ -171,7 +171,7 @@ src="images/headercop.png"></span></p>
   <p class=MsoNormal><span style='font-family:"Arial",sans-serif'>:</span></p>
   </td>
   <td width="44%" valign=top style='width:44.4%;padding:0in 5.4pt 0in 5.4pt'>
-  <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>{{$pemohon->profile->perusahaan}}</span></p>
+  <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>{{$profile->perusahaan}}</span></p>
   </td>
  </tr>
  <tr>

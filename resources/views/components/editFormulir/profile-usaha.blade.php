@@ -21,7 +21,7 @@
                 <x-splade-modal name="modal-npwp" max-width="7xl">
                     <h4 class="mb-4 text-2xl font-extrabold leading-none tracking-tight text-gray-900 md:text-1xl lg:text-2xl dark:text-white"><span class="underline underline-offset-3 decoration-8 decoration-blue-400 dark:decoration-blue-600">File NPWP</span></h4>
                     <div class="p-4">
-                        <iframe src="{{url('/storage/docs/' . $profile->first()->npwp_file)}}" width="100%" height="500"></iframe>
+                        <iframe src="{{url('/storage/profile_usaha/' . $profile->first()->npwp_file)}}" width="100%" height="500"></iframe>
 
                         <div class="flex justify-between items-center ">
                             <div class="flex items-center space-x-3 sm:space-x-4">
@@ -53,7 +53,7 @@
                 <x-splade-modal name="modal-nib" max-width="7xl">
                     <h4 class="mb-4 text-2xl font-extrabold leading-none tracking-tight text-gray-900 md:text-1xl lg:text-2xl dark:text-white"><span class="underline underline-offset-3 decoration-8 decoration-blue-400 dark:decoration-blue-600">File NIB</span></h4>
                     <div class="p-4">
-                        <iframe src="{{url('/storage/docs/' . $profile->first()->nib_file)}}" width="100%" height="500"></iframe>
+                        <iframe src="{{url('/storage/profile_usaha/' . $profile->first()->nib_file)}}" width="100%" height="500"></iframe>
 
                         <div class="flex justify-between items-center ">
                             <div class="flex items-center space-x-3 sm:space-x-4">

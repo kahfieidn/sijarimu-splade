@@ -94,9 +94,9 @@ src="images/headercop.png"></span></p>
   <p class=MsoNormal style='text-align:justify'><span lang=id style='font-size:
   9.5pt;font-family:"Arial",sans-serif'>Kepada</span></p>
   <p class=MsoNormal style='text-align:justify'><b><span lang=id
-  style='font-size:9.5pt;font-family:"Arial",sans-serif'>Pimpinan {{$pemohon->profile->perusahaan}} </span></b></p>
+  style='font-size:9.5pt;font-family:"Arial",sans-serif'>Pimpinan {{$profile->perusahaan}} </span></b></p>
   <p class=MsoNormal style='text-align:justify'><span lang=id style='font-size:
-  9.5pt;font-family:"Arial",sans-serif'>{{$pemohon->profile->alamat}}, {{ $profile->domisili }}, Kepulauan Riau</span></p>
+  9.5pt;font-family:"Arial",sans-serif'>{{$profile->alamat}}, {{ $profile->domisili }}, Kepulauan Riau</span></p>
   <p class=MsoNormal><span lang=id style='font-size:9.5pt;font-family:"Arial",sans-serif'>di
   – </span></p>
   <p class=MsoNormal><span style='font-size:9.5pt;font-family:"Arial",sans-serif'>      

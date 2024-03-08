@@ -43,7 +43,7 @@ class DashboardController extends Controller
         $currentMonthYear = Carbon::now()->format('Y-F');
         $npwp_file = $request->file('profile.npwp_file');
         $nib_file = $request->file('profile.nib_file');
-        $storageDirectory = 'public/docs/' . $currentMonthYear;
+        $storageDirectory = 'public/profile_usaha/' . $currentMonthYear;
         $hash_nib_file = $nib_file->hashName();
         $hash_npwp_file = $npwp_file->hashName();
         $nib_file->storeAs($storageDirectory, $hash_nib_file);
@@ -88,8 +88,8 @@ class DashboardController extends Controller
         $user = User::find(Auth::id());
         $profile = Profile::where('user_id', Auth::id())->first();
         if ($profile != null) {
-            $profile['npwp_file'] = ExistingFile::fromDisk('public')->get('/docs' . '/' . $profile->{'npwp_file'});
-            $profile['nib_file'] = ExistingFile::fromDisk('public')->get('/docs' . '/' . $profile->{'nib_file'});
+            $profile['npwp_file'] = ExistingFile::fromDisk('public')->get('/profile_usaha' . '/' . $profile->{'npwp_file'});
+            $profile['nib_file'] = ExistingFile::fromDisk('public')->get('/profile_usaha' . '/' . $profile->{'nib_file'});
         }
 
 
@@ -142,20 +142,20 @@ class DashboardController extends Controller
         if (!in_array($typeId, [1, 2, 3])) {
             $profiles = Profile::where('user_id', Auth::id())->first();
             if (!isset($request->profile['nib_file_existing'])) {
-                Storage::delete('/public/docs' . '/' . $profiles->nib_file);
+                Storage::delete('/public/profile_usaha' . '/' . $profiles->nib_file);
                 $nib_file = $request->file('profile.nib_file');
                 $hash_nib_file = $nib_file->hashName();
-                $storageDirectory = 'public/docs/' . $currentMonthYear;
+                $storageDirectory = 'public/profile_usaha/' . $currentMonthYear;
                 $berkas->storeAs($storageDirectory, $hash_nib_file);
                 $profiles->update([
                     'nib_file' => $currentMonthYear . '/' . $hash_nib_file,
                 ]);
             }
             if (!isset($request->profile['npwp_file_existing'])) {
-                Storage::delete('/public/docs' . '/' . $profiles->npwp_file);
+                Storage::delete('/public/profile_usaha' . '/' . $profiles->npwp_file);
                 $npwp_file = $request->file('profile.npwp_file');
                 $hash_npwp_file = $npwp_file->hashName();
-                $storageDirectory = 'public/docs/' . $currentMonthYear;
+                $storageDirectory = 'public/profile_usaha/' . $currentMonthYear;
                 $berkas->storeAs($storageDirectory, $hash_npwp_file);
                 $profiles->update([
                     'npwp_file' => $currentMonthYear . '/' . $hash_npwp_file,
