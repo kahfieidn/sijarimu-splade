@@ -45,7 +45,7 @@
             <x-splade-input readonly class="hidden" name="pemohon.id" />
             @include('components/partials/profile')
             @include('components/partials/profile-usaha')
-            @include('components/viewFormulir/type-rpk')
+            @include('components/editFormulir/type-rpk')
             @include('components/review-berkas/edit-review-berkas-pemohon')
             @include('components/back-office-1/formulir/type-rpk')
         </x-splade-form>
@@ -58,7 +58,7 @@
             <x-splade-input readonly class="hidden" name="pemohon.id" />
             @include('components/partials/profile')
             @include('components/partials/profile-usaha')
-            @include('components/viewFormulir/type-rpk-roro')
+            @include('components/editFormulir/type-rpk-roro')
             @include('components/review-berkas/edit-review-berkas-pemohon')
             @include('components/back-office-1/formulir/type-rpk-roro')
         </x-splade-form>

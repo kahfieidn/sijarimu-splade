@@ -27,6 +27,7 @@ class Permohonan extends Model
         'no_surat_rekomendasi',
         'tgl_surat_rekomendasi',
         'tgl_izin_terbit',
+        'tgl_izin_terbit_exp',
         'file_izin_terbit',
         'no_izin',
         'front_office',
@@ -95,6 +96,43 @@ class Permohonan extends Model
         return $this->belongsTo(User::class, 'kepala_dinas');
     }    
 
+
+    public function setTglIzinTerbitAttribute($value)
+    {
+        if ($value === null) {
+            $this->attributes['tgl_izin_terbit'] = null;
+        } else {
+            $this->attributes['tgl_izin_terbit'] = Carbon::createFromFormat('d-m-Y', $value)->format('Y-m-d');
+        }
+    }
+    public function getTglIzinTerbitAttribute()
+    {
+        if (isset($this->attributes['tgl_izin_terbit']) && !empty($this->attributes['tgl_izin_terbit'])) {
+            return Carbon::createFromFormat('Y-m-d', $this->attributes['tgl_izin_terbit'])->format('d-m-Y');
+        } else {
+            return null;
+        }
+    }
+    
+    public function setTglIzinTerbitExpAttribute($value)
+    {
+        if ($value === null) {
+            $this->attributes['tgl_izin_terbit_exp'] = null;
+        } else {
+            $this->attributes['tgl_izin_terbit_exp'] = Carbon::createFromFormat('d-m-Y', $value)->format('Y-m-d');
+        }
+    }
+    public function getTglIzinTerbitExpAttribute()
+    {
+        if (isset($this->attributes['tgl_izin_terbit_exp']) && !empty($this->attributes['tgl_izin_terbit_exp'])) {
+            return Carbon::createFromFormat('Y-m-d', $this->attributes['tgl_izin_terbit_exp'])->format('d-m-Y');
+        } else {
+            return null;
+        }
+    }
+
+
+
     public function setTglSuratPermohonanAttribute($value)
     {
         $this->attributes['tgl_surat_permohonan'] = Carbon::createFromFormat('d-m-Y', $value)->format('Y-m-d');
@@ -107,7 +145,6 @@ class Permohonan extends Model
             return null;
         }
     }
-
 
     public function getTglPermintaanRekomendasiAttribute()
     {

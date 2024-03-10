@@ -9,6 +9,7 @@ use App\Models\Permohonan;
 use App\Models\Persyaratan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use ProtoneMedia\Splade\Facades\Toast;
 use App\Tables\BackOffice4\Permohonans;
 
@@ -121,15 +122,19 @@ class DashboardController extends Controller
      */
     public function update(Request $request, Permohonan $pemohon)
     {
-        //
-        $currentMonthYear = Carbon::now()->format('Y-F');
+        //tracking review permohonan subt
+        $pemohon->review_permohonan->first()->update(['back_office_4' => Auth::id()]);
 
+        $currentMonthYear = Carbon::now()->format('Y-F');
         if ($pemohon->perizinan->id == 4) {
             $pemohon->update([
                 'status_permohonan_id' => $request->status_permohonan_id,
                 'catatan' => $request->catatan,
                 'no_izin' => $request->no_izin,
+                'tgl_izin_terbit' => $request->tgl_izin_terbit,
+                'tgl_izin_terbit_exp' => $request->tgl_izin_terbit_exp
             ]);
+            $pemohon->type_rpk->first()->update($request->type_rpk);
         } else if ($pemohon->perizinan->id == 5) {
             $pemohon->update([
                 'status_permohonan_id' => $request->status_permohonan_id,

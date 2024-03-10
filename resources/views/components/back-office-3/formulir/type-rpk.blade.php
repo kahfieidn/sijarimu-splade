@@ -1,99 +1,66 @@
 <div class="p-4 sm:ml-64">
     <div class="bg-white p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
-        <h1 class="mb-8 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">Status <span class="underline underline-offset-3 decoration-8 decoration-blue-400 dark:decoration-blue-600">Review</span></h1>
+        <h1 class="text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">Status <span class="underline underline-offset-3 decoration-8 decoration-blue-400 dark:decoration-blue-600">Review</span></h1>
 
 
+        <div class="h-full">
 
+            <div class="bg-white p-8 border-dashed rounded-lg dark:border-gray-700">
+                <ol class="relative text-gray-500 border-l border-gray-200 dark:border-gray-700 dark:text-gray-400">
+                    <li class="mb-8 ml-6">
+                        <span class="absolute flex items-center  justify-center w-8 h-8 bg-blue-600 rounded-full -left-4 ring-4 ring-white dark:ring-gray-900 dark:bg-blue-900">
+                            <svg class="w-2.5 h-2.5 text-blue-100 dark:text-blue-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5" />
+                            </svg>
+                        </span>
+                        <h3 class="font-medium leading-tight">Pemohon Mengajukan permohonan</h3>
+                        <span>Permohonan telah berhasil diajukan</span>
+                    </li>
+                    <li class="mb-8 ml-6">
+                        @if($review_permohonan->back_office_1 != null)
+                        <span class="absolute flex items-center  justify-center w-8 h-8 bg-blue-600 rounded-full -left-4 ring-4 ring-white dark:ring-gray-900 dark:bg-blue-900">
+                            <svg class="w-2.5 h-2.5 text-blue-100 dark:text-blue-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5" />
+                            </svg>
+                        </span>
+                        <h3 class="font-medium leading-tight">Back Office (1)</h3>
+                        <span>Permohonan telah di review oleh {{$review_permohonan->back_office_1_user->name}}</span>
+                        @else
+                        <span class="absolute flex items-center justify-center w-8 h-8 bg-red-600 rounded-full -left-4 ring-4 ring-white dark:ring-white-900 dark:bg-white-900">
+                            <svg class="w-6 h-6 text-white dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                <path stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18 18 6m0 12L6 6" />
+                            </svg>
+                        </span>
+                        <span>Permohonan belum di review oleh Back Office (1)</span>
+                        @endif
+                    </li>
+                    <li class="mb-8 ml-6">
+                        @if($review_permohonan->back_office_2 != null)
+                        <span class="absolute flex items-center  justify-center w-8 h-8 bg-blue-600 rounded-full -left-4 ring-4 ring-white dark:ring-gray-900 dark:bg-blue-900">
+                            <svg class="w-2.5 h-2.5 text-blue-100 dark:text-blue-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5" />
+                            </svg>
+                        </span>
+                        <h3 class="font-medium leading-tight">Back Office (2)</h3>
+                        <span>Permohonan telah di review oleh {{$review_permohonan->back_office_2_user->name}}</span>
+                        @else
+                        <span class="absolute flex items-center justify-center w-8 h-8 bg-red-600 rounded-full -left-4 ring-4 ring-white dark:ring-white-900 dark:bg-white-900">
+                            <svg class="w-6 h-6 text-white dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                <path stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18 18 6m0 12L6 6" />
+                            </svg>
+                        </span>
+                        <span>Permohonan belum di review oleh Back Office (2)</span>
+                        @endif
+                    </li>
+                    <li class=" ml-6">
+                        <span class="absolute flex items-center justify-center w-8 h-8 bg-gray-200 rounded-full -left-4 ring-4 ring-white dark:ring-gray-900 dark:bg-blue-900">
+                        </span>
+                        <h3 class="font-medium leading-tight">Menunggu Tinjauan Verifikator</h3>
+                    </li>
+                </ol>
 
-        <ol class="flex items-center">
-            <li class="relative w-full mb-6">
-                <div class="flex items-center">
-                    <div class="z-10 flex items-center justify-center w-6 h-6 bg-blue-600 rounded-full ring-0 ring-white dark:bg-blue-900 sm:ring-8 dark:ring-gray-900 shrink-0">
-                        <svg class="w-2.5 h-2.5 text-blue-100 dark:text-blue-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5" />
-                        </svg>
-                    </div>
-                    <div class="flex w-full bg-gray-200 h-0.5 dark:bg-gray-700"></div>
-                </div>
-                <div class="mt-3">
-                    <h3 class="font-medium text-gray-900 dark:text-white">Step 1</h3>
-                </div>
-            </li>
-            <li class="relative w-full mb-6">
-                <div class="flex items-center">
-                    <div class="z-10 flex items-center justify-center w-6 h-6 bg-blue-600 rounded-full ring-0 ring-white dark:bg-blue-900 sm:ring-8 dark:ring-gray-900 shrink-0">
-                        <svg class="w-2.5 h-2.5 text-blue-100 dark:text-blue-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5" />
-                        </svg>
-                    </div>
-                    <div class="flex w-full bg-gray-200 h-0.5 dark:bg-gray-700"></div>
-                </div>
-                <div class="mt-3">
-                    <h3 class="font-medium text-gray-900 dark:text-white">Step 2</h3>
-                </div>
-            </li>
-            <li class="relative w-full mb-6">
-                <div class="flex items-center">
-                    <div class="z-10 flex items-center justify-center w-6 h-6 bg-blue-600 rounded-full ring-0 ring-white dark:bg-blue-900 sm:ring-8 dark:ring-gray-900 shrink-0">
-                        <svg class="w-2.5 h-2.5 text-blue-100 dark:text-blue-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5" />
-                        </svg>
-                    </div>
-                    <div class="flex w-full bg-gray-200 h-0.5 dark:bg-gray-700"></div>
-                </div>
-                <div class="mt-3">
-                    <h3 class="font-medium text-gray-900 dark:text-white">Step 2</h3>
-                </div>
-            </li>
-            <li class="relative w-full mb-6">
-                <div class="flex items-center">
-                    <div class="z-10 flex items-center justify-center w-6 h-6 bg-gray-200 rounded-full ring-0 ring-white dark:bg-gray-700 sm:ring-8 dark:ring-gray-900 shrink-0">
-                        <svg class="w-2.5 h-2.5 text-gray-900 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5" />
-                        </svg>
-                    </div>
-                </div>
-                <div class="mt-3">
-                    <h3 class="font-medium text-gray-900 dark:text-white">Step 3</h3>
-                </div>
-            </li>
-            <li class="relative w-full mb-6">
-                <div class="flex items-center">
-                    <div class="z-10 flex items-center justify-center w-6 h-6 bg-gray-200 rounded-full ring-0 ring-white dark:bg-gray-700 sm:ring-8 dark:ring-gray-900 shrink-0">
-                        <svg class="w-2.5 h-2.5 text-gray-900 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5" />
-                        </svg>
-                    </div>
-                </div>
-                <div class="mt-3">
-                    <h3 class="font-medium text-gray-900 dark:text-white">Step 3</h3>
-                </div>
-            </li>
-            <li class="relative w-full mb-6">
-                <div class="flex items-center">
-                    <div class="z-10 flex items-center justify-center w-6 h-6 bg-gray-200 rounded-full ring-0 ring-white dark:bg-gray-700 sm:ring-8 dark:ring-gray-900 shrink-0">
-                        <svg class="w-2.5 h-2.5 text-gray-900 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5" />
-                        </svg>
-                    </div>
-                </div>
-                <div class="mt-3">
-                    <h3 class="font-medium text-gray-900 dark:text-white">Step 3</h3>
-                </div>
-            </li>
-            <li class="relative w-full mb-6">
-                <div class="flex items-center">
-                    <div class="z-10 flex items-center justify-center w-6 h-6 bg-gray-200 rounded-full ring-0 ring-white dark:bg-gray-700 sm:ring-8 dark:ring-gray-900 shrink-0">
-                        <svg class="w-2.5 h-2.5 text-gray-900 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5" />
-                        </svg>
-                    </div>
-                </div>
-                <div class="mt-3">
-                    <h3 class="font-medium text-gray-900 dark:text-white">Step 3</h3>
-                </div>
-            </li>
-        </ol>
+            </div>
+        </div>
 
 
     </div>

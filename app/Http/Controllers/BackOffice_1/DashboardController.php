@@ -151,6 +151,9 @@ class DashboardController extends Controller
     public function update(Request $request, Permohonan $pemohon)
     {
 
+        //tracking review permohonan subt
+        $pemohon->review_permohonan->first()->update(['back_office_1' => Auth::id()]);
+
         // Custom Perizinan
         if ($pemohon->perizinan->id == 1) {
             $pemohon->update([
@@ -204,6 +207,7 @@ class DashboardController extends Controller
                     'tgl_surat_permohonan' => $request->tgl_surat_permohonan,
                     'back_office' => Auth::id()
                 ]);
+                $pemohon->type_rpk->first()->update($request->type_rpk);
             } else if ($pemohon->perizinan->id == 5) {
                 $request->validate([
                     'status_permohonan_id' => ['required', 'string', 'max:255'],

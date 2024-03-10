@@ -9,6 +9,7 @@ use App\Models\Permohonan;
 use App\Models\Persyaratan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Notifications\PermohonanDone;
 use ProtoneMedia\Splade\Facades\Toast;
 use App\Tables\BackOffice6\Permohonans;
@@ -25,7 +26,6 @@ class DashboardController extends Controller
         return view('back-office-6.index', [
             'permohonans' => Permohonans::class
         ]);
-
     }
 
     /**
@@ -72,6 +72,7 @@ class DashboardController extends Controller
                 'berkas' => $berkas,
                 'user' => $user,
                 'profile' => $profile,
+                'review_permohonan' => $review_permohonan,
                 'type_rpk' => $type_rpk,
             ]);
         } else if ($pemohon->perizinan_id == 5) {
@@ -87,6 +88,7 @@ class DashboardController extends Controller
                 'berkas' => $berkas,
                 'user' => $user,
                 'profile' => $profile,
+                'review_permohonan' => $review_permohonan,
                 'type_rpk_roro' => $type_rpk_roro,
             ]);
         }
@@ -105,6 +107,9 @@ class DashboardController extends Controller
      */
     public function update(Request $request, Permohonan $pemohon)
     {
+        //tracking review permohonan subt
+        $pemohon->review_permohonan->first()->update(['back_office_6' => Auth::id()]);
+
         $currentMonthYear = Carbon::now()->format('Y-F');
         // Custom Perizinan
         if ($pemohon->perizinan->id == 1) {
@@ -113,29 +118,27 @@ class DashboardController extends Controller
                 'catatan' => $request->catatan,
                 'tgl_izin_terbit' => Carbon::now()
             ]);
-        }else if($pemohon->perizinan->id == 2){
+        } else if ($pemohon->perizinan->id == 2) {
             $pemohon->update([
                 'status_permohonan_id' => $request->status_permohonan_id,
                 'catatan' => $request->catatan,
                 'tgl_izin_terbit' => Carbon::now()
             ]);
-        }else if($pemohon->perizinan->id == 3){
+        } else if ($pemohon->perizinan->id == 3) {
             $pemohon->update([
                 'status_permohonan_id' => $request->status_permohonan_id,
                 'catatan' => $request->catatan,
                 'tgl_izin_terbit' => Carbon::now()
             ]);
-        }else if($pemohon->perizinan->id == 4){
+        } else if ($pemohon->perizinan->id == 4) {
             $pemohon->update([
                 'status_permohonan_id' => $request->status_permohonan_id,
                 'catatan' => $request->catatan,
-                'no_izin' => $request->no_izin,
             ]);
-        }else if($pemohon->perizinan->id == 5){
+        } else if ($pemohon->perizinan->id == 5) {
             $pemohon->update([
                 'status_permohonan_id' => $request->status_permohonan_id,
                 'catatan' => $request->catatan,
-                'no_izin' => $request->no_izin,
             ]);
         }
 

@@ -10,6 +10,7 @@ use App\Models\Permohonan;
 use App\Models\Persyaratan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use ProtoneMedia\Splade\Facades\Toast;
 use App\Tables\BackOffice5\Permohonans;
 
@@ -101,6 +102,9 @@ class DashboardController extends Controller
      */
     public function update(Request $request, Permohonan $pemohon)
     {
+        //tracking review permohonan subt
+        $pemohon->review_permohonan->first()->update(['back_office_5' => Auth::id()]);
+
         // Custom Perizinan
         if ($pemohon->perizinan->id == 4) {
             $pemohon->update([

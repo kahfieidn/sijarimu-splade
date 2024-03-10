@@ -4,12 +4,14 @@ namespace App\Http\Controllers\BackOffice_3;
 
 use Carbon\Carbon;
 use App\Models\Profile;
+use App\Models\TypeRpk;
 use App\Models\Perizinan;
 use App\Models\Permohonan;
 use App\Models\Persyaratan;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\PDF;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Notifications\PermohonanDone;
 use ProtoneMedia\Splade\Facades\Toast;
 use App\Tables\BackOffice3\Permohonans;
@@ -86,7 +88,7 @@ class DashboardController extends Controller
                 'penelitian' => $penelitian,
                 'user' => $user,
             ]);
-        }else if ($pemohon->perizinan_id == 3) {
+        } else if ($pemohon->perizinan_id == 3) {
             $penelitian = $pemohon->penelitian()->first();
             $nomor_izin = '00' . $penelitian->id . '/2n.1' . '/DPMPTSP' . '/2024';
             $peneliti = $pemohon->peneliti()->get();
@@ -103,7 +105,7 @@ class DashboardController extends Controller
                 'peneliti' => $peneliti,
                 'user' => $user,
             ]);
-        }else if ($pemohon->perizinan_id == 4) {
+        } else if ($pemohon->perizinan_id == 4) {
             $profile = Profile::where('user_id', $pemohon->user_id)->first();
             $type_rpk = $pemohon->type_rpk()->first();
             return view('back-office-3.show', [
@@ -116,6 +118,7 @@ class DashboardController extends Controller
                 'berkas' => $berkas,
                 'user' => $user,
                 'profile' => $profile,
+                'review_permohonan' => $review_permohonan,
                 'type_rpk' => $type_rpk,
             ]);
         } else if ($pemohon->perizinan_id == 5) {
@@ -131,6 +134,7 @@ class DashboardController extends Controller
                 'berkas' => $berkas,
                 'user' => $user,
                 'profile' => $profile,
+                'review_permohonan' => $review_permohonan,
                 'type_rpk_roro' => $type_rpk_roro,
             ]);
         }
@@ -149,6 +153,9 @@ class DashboardController extends Controller
      */
     public function update(Request $request, Permohonan $pemohon)
     {
+        //tracking review permohonan subt
+        $pemohon->review_permohonan->first()->update(['back_office_3' => Auth::id()]);
+
         $currentMonthYear = Carbon::now()->format('Y-F');
         // Custom Perizinan
         if ($pemohon->perizinan->id == 1) {
@@ -157,25 +164,25 @@ class DashboardController extends Controller
                 'catatan' => $request->catatan,
                 'tgl_izin_terbit' => Carbon::now()
             ]);
-        }else if($pemohon->perizinan->id == 2){
+        } else if ($pemohon->perizinan->id == 2) {
             $pemohon->update([
                 'status_permohonan_id' => $request->status_permohonan_id,
                 'catatan' => $request->catatan,
                 'tgl_izin_terbit' => Carbon::now()
             ]);
-        }else if($pemohon->perizinan->id == 3){
+        } else if ($pemohon->perizinan->id == 3) {
             $pemohon->update([
                 'status_permohonan_id' => $request->status_permohonan_id,
                 'catatan' => $request->catatan,
                 'tgl_izin_terbit' => Carbon::now()
             ]);
-        }else if($pemohon->perizinan->id == 4){
+        } else if ($pemohon->perizinan->id == 4) {
             $pemohon->update([
                 'status_permohonan_id' => $request->status_permohonan_id,
                 'catatan' => $request->catatan,
                 'no_izin' => $request->no_izin,
             ]);
-        }else if($pemohon->perizinan->id == 5){
+        } else if ($pemohon->perizinan->id == 5) {
             $pemohon->update([
                 'status_permohonan_id' => $request->status_permohonan_id,
                 'catatan' => $request->catatan,
@@ -204,6 +211,38 @@ class DashboardController extends Controller
             Storage::put('public/izin/' . $currentMonthYear . '/' . $hashedFileName, $fileContent);
             $pemohon->update([
                 'file_izin_terbit' => $currentMonthYear . '/' . $hashedFileName,
+            ]);
+        }
+
+        $profile = Profile::where('user_id', $pemohon->user_id)->first();
+        // save file rekomendasi
+        if (in_array($pemohon->status_permohonan_id, [6, 7, 8, 9, 10])) {
+            if ($pemohon->perizinan_id == 4) {
+                $type_rpk = TypeRpk::where('type_rpkable_id', $pemohon->id)->first();
+                $data = [
+                    'pemohon' => $pemohon,
+                    'type_rpk' => $type_rpk,
+                    'users' => $users,
+                    'profile' => $profile
+                ];
+            } else if ($pemohon->perizinan_id == 5) {
+                $type_rpk_roro = $pemohon->type_rpk_roro->first();
+                $data = [
+                    'pemohon' => $pemohon,
+                    'type_rpk_roro' => $type_rpk_roro,
+                    'users' => $users,
+                    'profile' => $profile
+                ];
+            }
+            $storageDirectory = 'permintaan_rekomendasi/' . $currentMonthYear . '/' . $pemohon->id . '.pdf';
+            $pdf = PDF::loadView('cetak.permintaan-rekomendasi-request', $data);
+            $customPaper = array(0, 0, 609.4488, 935.433);
+            $pdf->set_paper($customPaper);
+            $fileContent = $pdf->output();
+            $hashedFileName = hash('sha256', $storageDirectory) . '.' . pathinfo($storageDirectory, PATHINFO_EXTENSION);
+            Storage::put('public/permintaan_rekomendasi/' . $currentMonthYear . '/' . $hashedFileName, $fileContent);
+            $pemohon->update([
+                'file_permintaan_rekomendasi' => $currentMonthYear . '/' . $hashedFileName,
             ]);
         }
 

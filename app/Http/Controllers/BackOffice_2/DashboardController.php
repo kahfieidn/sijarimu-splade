@@ -11,6 +11,7 @@ use App\Models\Persyaratan;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Notifications\PermohonanDone;
 use ProtoneMedia\Splade\Facades\Toast;
 use App\Tables\BackOffice2\Permohonans;
@@ -104,6 +105,9 @@ class DashboardController extends Controller
      */
     public function update(Request $request, Permohonan $pemohon)
     {
+        //tracking review permohonan subt
+        $pemohon->review_permohonan->first()->update(['back_office_2' => Auth::id()]);
+
         // Custom Perizinan
         if ($pemohon->perizinan->id == 4) {
             $pemohon->update([
@@ -114,41 +118,6 @@ class DashboardController extends Controller
             $pemohon->update([
                 'status_permohonan_id' => $request->status_permohonan_id,
                 'catatan' => $request->catatan,
-            ]);
-        }
-
-        $currentMonthYear = Carbon::now()->format('Y-F');
-        $users = $pemohon->user;
-        $profile = Profile::where('user_id', $pemohon->user_id)->first();
-
-        // save file rekomendasi
-        if (in_array($pemohon->status_permohonan_id, [6, 7, 8, 9, 10])) {
-            if($pemohon->perizinan_id == 4){
-                $type_rpk = TypeRpk::where('type_rpkable_id', $pemohon->id)->first();
-                $data = [
-                    'pemohon' => $pemohon,
-                    'type_rpk' => $type_rpk,
-                    'users' => $users,
-                    'profile' => $profile
-                ];
-            }else if($pemohon->perizinan_id == 5){
-                $type_rpk_roro = $pemohon->type_rpk_roro->first();
-                $data = [
-                    'pemohon' => $pemohon,
-                    'type_rpk_roro' => $type_rpk_roro,
-                    'users' => $users,
-                    'profile' => $profile
-                ];
-            }
-            $storageDirectory = 'permintaan_rekomendasi/' . $currentMonthYear . '/' . $pemohon->id . '.pdf';
-            $pdf = PDF::loadView('cetak.permintaan-rekomendasi-request', $data);
-            $customPaper = array(0, 0, 609.4488, 935.433);
-            $pdf->set_paper($customPaper);
-            $fileContent = $pdf->output();
-            $hashedFileName = hash('sha256', $storageDirectory) . '.' . pathinfo($storageDirectory, PATHINFO_EXTENSION);
-            Storage::put('public/permintaan_rekomendasi/' . $currentMonthYear . '/' . $hashedFileName, $fileContent);
-            $pemohon->update([
-                'file_permintaan_rekomendasi' => $currentMonthYear . '/' . $hashedFileName,
             ]);
         }
 
