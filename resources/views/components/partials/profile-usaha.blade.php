@@ -3,12 +3,12 @@
         <h1 class="mb-8 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">Informasi <span class="underline underline-offset-3 decoration-8 decoration-blue-400 dark:decoration-blue-600">Profile Usaha</span></h1>
         <div class="grid md:grid-cols-1 md:gap-6">
             <div class="relative z-0 w-full mb-6 group">
-                <x-splade-input required name="profile.perusahaan" type="text" placeholder="Nama perusahaan" label="Nama perusahaan" />
+                <x-splade-input readonly required name="profile.perusahaan" type="text" placeholder="Nama perusahaan" label="Nama perusahaan" />
             </div>
         </div>
         <div class="grid md:grid-cols-2 md:gap-6">
             <div class="relative z-0 w-full mb-6 group">
-                <x-splade-input required name="profile.npwp" type="text" placeholder="NPWP" label="NPWP" />
+                <x-splade-input readonly required name="profile.npwp" type="text" placeholder="NPWP" label="NPWP" />
             </div>
             <div class="relative z-0 w-full mb-6 group">
             <h4 class="text-2l font-bold dark:text-white">File NPWP</h4>
@@ -41,7 +41,7 @@
         </div>
         <div class="grid md:grid-cols-2 md:gap-6">
             <div class="relative z-0 w-full mb-6 group">
-                <x-splade-input label="NIB" required name="profile.nib" type="text" placeholder="NIB" label="Nomor Induk Berusaha" />
+                <x-splade-input readonly label="NIB" required name="profile.nib" type="text" placeholder="NIB" label="Nomor Induk Berusaha" />
             </div>
             <div class="relative z-0 w-full mb-6 group">
             <h4 class="text-2l font-bold dark:text-white">File NIB</h4>
@@ -74,16 +74,16 @@
         </div>
         <div class="grid md:grid-cols-1 md:gap-6">
             <div class="relative z-0 w-full mb-6 group">
-                <x-splade-textarea required name="profile.alamat" type="text" placeholder="Alamat perusahaan" label="Alamat perusahaan" autosize />
+                <x-splade-textarea readonly required name="profile.alamat" type="text" placeholder="Alamat perusahaan" label="Alamat perusahaan" autosize />
             </div>
         </div>
         <div class="grid md:grid-cols-2 md:gap-6">
             <div class="relative z-0 w-full mb-6 group">
-                <x-splade-input name="profile.domisili" type="text" placeholder="Domisili" label="Domisili" required>
+                <x-splade-input readonly name="profile.domisili" type="text" placeholder="Domisili" label="Domisili" required>
                 </x-splade-input>
             </div>
             <div class="relative z-0 w-full mb-6 group">
-                <x-splade-input name="profile.provinsi_domisili" type="text" placeholder="Provinsi" label="Provinsi" required>
+                <x-splade-input readonly name="profile.provinsi_domisili" type="text" placeholder="Provinsi" label="Provinsi" required>
                 </x-splade-input>
             </div>
         </div>

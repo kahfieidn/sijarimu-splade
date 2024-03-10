@@ -235,14 +235,13 @@ src="images/headercop.png"></span></p>
   <p class=MsoNormal><span style='font-family:"Arial",sans-serif'>e.</span></p>
   </td>
   <td width="32%" valign=top style='width:32.66%;padding:0in 5.4pt 0in 5.4pt'>
-  <p class=MsoNormal><span style='font-family:"Arial",sans-serif'>Pelabuhan
-  Singgah</span></p>
+  <p class=MsoNormal><span style='font-family:"Arial",sans-serif'>Route Trayek</span></p>
   </td>
   <td width="3%" valign=top style='width:3.1%;padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal><span style='font-family:"Arial",sans-serif'>:</span></p>
   </td>
   <td width="44%" valign=top style='width:44.4%;padding:0in 5.4pt 0in 5.4pt'>
-  <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>{{$type_rpk->pelabuhan_singgah}}</span></p>
+  <p class=MsoNormal style='text-align:justify'><span style='font-family:"Arial",sans-serif'>{{$type_rpk->trayek}}</span></p>
   </td>
  </tr>
 </table>

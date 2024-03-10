@@ -24,7 +24,6 @@ class TypeRpk extends Model
         'status_kepemilikan_kapal',
         'kapasitas_angkut',
         'pelabuhan_pangkal',
-        'pelabuhan_singgah',
         'trayek',
         'urgensi',
         'nomor_siupper',
@@ -41,7 +40,11 @@ class TypeRpk extends Model
     
     public function setTglSiupperAttribute($value)
     {
-        $this->attributes['tgl_siupper'] = Carbon::createFromFormat('d-m-Y', $value)->format('Y-m-d');
+        if ($value === null) {
+            $this->attributes['tgl_siupper'] = null;
+        } else {
+            $this->attributes['tgl_siupper'] = Carbon::createFromFormat('d-m-Y', $value)->format('Y-m-d');
+        }
     }
     public function getTglSiupperAttribute()
     {
@@ -54,8 +57,13 @@ class TypeRpk extends Model
 
     public function setTglRpkSebelumnyaAttribute($value)
     {
-        $this->attributes['tgl_rpk_sebelumnya'] = Carbon::createFromFormat('d-m-Y', $value)->format('Y-m-d');
+        if ($value === null) {
+            $this->attributes['tgl_rpk_sebelumnya'] = null;
+        } else {
+            $this->attributes['tgl_rpk_sebelumnya'] = Carbon::createFromFormat('d-m-Y', $value)->format('Y-m-d');
+        }
     }
+    
     public function getTglRpkSebelumnyaAttribute()
     {
         if (isset($this->attributes['tgl_rpk_sebelumnya']) && !empty($this->attributes['tgl_rpk_sebelumnya'])) {

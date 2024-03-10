@@ -146,7 +146,7 @@ class DashboardController extends Controller
                 $nib_file = $request->file('profile.nib_file');
                 $hash_nib_file = $nib_file->hashName();
                 $storageDirectory = 'public/profile_usaha/' . $currentMonthYear;
-                $berkas->storeAs($storageDirectory, $hash_nib_file);
+                $nib_file->storeAs($storageDirectory, $hash_nib_file);
                 $profiles->update([
                     'nib_file' => $currentMonthYear . '/' . $hash_nib_file,
                 ]);
@@ -156,7 +156,7 @@ class DashboardController extends Controller
                 $npwp_file = $request->file('profile.npwp_file');
                 $hash_npwp_file = $npwp_file->hashName();
                 $storageDirectory = 'public/profile_usaha/' . $currentMonthYear;
-                $berkas->storeAs($storageDirectory, $hash_npwp_file);
+                $npwp_file->storeAs($storageDirectory, $hash_npwp_file);
                 $profiles->update([
                     'npwp_file' => $currentMonthYear . '/' . $hash_npwp_file,
                 ]);
@@ -216,7 +216,6 @@ class DashboardController extends Controller
                 'status_kepemilikan_kapal' => ['required', 'string', 'max:255'],
                 'kapasitas_angkut' => ['required', 'string', 'max:255'],
                 'pelabuhan_pangkal' => ['required', 'string', 'max:255'],
-                'pelabuhan_singgah' => ['required', 'string', 'max:255'],
                 'trayek' => ['required', 'string', 'max:255'],
                 'urgensi' => ['required', 'string', 'max:255'],
                 'nomor_siupper' => ['required', 'string', 'max:255'],
@@ -252,8 +251,6 @@ class DashboardController extends Controller
         if ($pemohon->user_id != Auth::user()->id) {
             abort(403);
         }
-
-
         return view('pemohon.show', [
             'status_permohonan' => StatusPermohonan::all(),
             'permohonan' => $pemohon,
@@ -286,7 +283,13 @@ class DashboardController extends Controller
         $ket_berkas = $pemohon->ket_berkas->first();
         $penelitian = $pemohon->penelitian()->first();
         $peneliti = $pemohon->peneliti()->get();
-        $profile = Profile::where('user_id', $pemohon->user_id)->first();
+
+        $profile = Profile::where('user_id', Auth::id())->first();
+        if ($profile != null) {
+            $profile['npwp_file'] = ExistingFile::fromDisk('public')->get('/profile_usaha' . '/' . $profile->{'npwp_file'});
+            $profile['nib_file'] = ExistingFile::fromDisk('public')->get('/profile_usaha' . '/' . $profile->{'nib_file'});
+        }
+
         $type_rpk = $pemohon->type_rpk()->first();
         return view('pemohon.edit', [
             'pemohon' => $pemohon,
@@ -344,16 +347,8 @@ class DashboardController extends Controller
         };
 
         $permohonan = Permohonan::find($pemohon->id);
-        $permohonan->update([
-            'status_permohonan_id' => 3,
-            'user_id' => Auth::user()->id,
-            'perizinan_id' => $typeId,
-            'catatan' => null,
-            'catatan_back_office' => null,
-        ]);
 
         $permohonan->berkas()->update($berkasRequest);
-
         for ($i = 1; $i <= 30; $i++) {
             if (!isset($ket_berkas_request[$i])) {
                 $ket_berkas_request['field_' . $i] = null;
@@ -366,6 +361,54 @@ class DashboardController extends Controller
 
         $pemohon->ket_berkas()->update($ket_berkas_request);
         $pemohon->status_berkas()->update($status_berkas_request);
+
+        if (in_array($typeId, [1, 2, 3])) {
+            $permohonan = $permohonan->update([
+                'status_permohonan_id' => 3,
+                'user_id' => Auth::user()->id,
+                'perizinan_id' => $typeId,
+                'catatan' => null,
+                'catatan_back_office' => null,
+            ]);
+        } else {
+            $permohonan = $permohonan->update([
+                'status_permohonan_id' => 4,
+                'user_id' => Auth::user()->id,
+                'perizinan_id' => $typeId,
+                'catatan' => null,
+                'catatan_back_office' => null,
+            ]);
+            $profiles = Profile::where('user_id', Auth::id())->first();
+            //handle perubahan file nib dan npwp
+            if (!isset($request->profile['nib_file_existing'])) {
+                Storage::delete('/public/profile_usaha' . '/' . $profiles->nib_file);
+                $nib_file = $request->file('profile.nib_file');
+                $hash_nib_file = $nib_file->hashName();
+                $storageDirectory = 'public/profile_usaha/' . $currentMonthYear;
+                
+                $nib_file->storeAs($storageDirectory, $hash_nib_file);
+                $profiles->update([
+                    'nib_file' => $currentMonthYear . '/' . $hash_nib_file,
+                ]);
+            }
+            if (!isset($request->profile['npwp_file_existing'])) {
+                Storage::delete('/public/profile_usaha' . '/' . $profiles->npwp_file);
+                $npwp_file = $request->file('profile.npwp_file');
+                $hash_npwp_file = $npwp_file->hashName();
+                $storageDirectory = 'public/profile_usaha/' . $currentMonthYear;
+                $npwp_file->storeAs($storageDirectory, $hash_npwp_file);
+                $profiles->update([
+                    'npwp_file' => $currentMonthYear . '/' . $hash_npwp_file,
+                ]);
+            }
+            $profiles->update([
+                'npwp' => $request->profile['npwp'],
+                'perusahaan' => $request->profile['perusahaan'],
+                'alamat' => $request->profile['alamat'],
+                'domisili' => $request->profile['domisili'],
+                'nib' => $request->profile['nib'],
+            ]);
+        }
 
 
         //Custom Perizinan        
@@ -380,8 +423,6 @@ class DashboardController extends Controller
                 $pemohon->peneliti()->where('id', $penelitiId)->first()->update($penelitiData);
             }
         } else if ($typeId == 4) {
-            $profile = Profile::where('user_id', Auth::id())->first();
-            $profile->update($request->profile);
             $pemohon->type_rpk()->first()->update($request->type_rpk);
         }
         Toast::title('Permohonan anda berhasil di ajukan kembali!')

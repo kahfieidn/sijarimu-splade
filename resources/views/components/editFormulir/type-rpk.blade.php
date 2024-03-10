@@ -7,7 +7,6 @@
                 <x-splade-select required choices name="type_rpk.type_trayek" label="Tipe Trayek">
                     <option disabled value="">Pilih salah satu...</option>
                     <option value="Trayek Tetap Dan Teratur Angkutan Laut Dalam Negeri">Trayek Tetap Dan Teratur Angkutan Laut Dalam Negeri</option>
-                    <option value="Trayek Tidak Tetap Dan Teratur Angkutan Laut Dallas Negeri">Trayek Tidak Tetap Dan Teratur Angkutan Laut Dalam Negeri</option>
                     <option value="Trayek Tidak Tetap Dan Tidak Teratur Angkutan Laut Dalam Negeri">Trayek Tidak Tetap Dan Tidak Teratur Angkutan Laut Dalam Negeri</option>
                     <option value="Trayek Tidak Tetap Dan Tidak Teratur Angkutan Laut Dalam Negeri Dan Lintas Batas">Trayek Tidak Tetap Dan Tidak Teratur Angkutan Laut Dalam Negeri Dan Lintas Batas</option>
                 </x-splade-select>
@@ -57,30 +56,31 @@
             <div class="relative z-0 w-full mb-6 group">
                 <x-splade-input required name="type_rpk.pelabuhan_pangkal" type="text" placeholder="Cth : Tanjung Uban" label="Pelabuhan Pangkal" />
             </div>
-            <div class="relative z-0 w-full mb-6 group">
-                <x-splade-input required name="type_rpk.pelabuhan_singgah" type="text" placeholder="Cth : Telaga Punggur" label="Pelabuhan Singgah" />
+            <div class="relative z-999 w-full mb-6 group">
+                <x-splade-select required choices name="type_rpk.urgensi" label="Urgensi">
+                    <option disabled value="">Pilih salah satu...</option>
+                    <option value="Menunjang kegiatan angkutan laut dalam negeri">Menunjang kegiatan angkutan laut dalam negeri</option>
+                    <option value="Menunjang kegiatan angkutan laut dalam negeri dan lintas batas">Menunjang kegiatan angkutan laut dalam negeri dan lintas batas</option>
+                </x-splade-select>
             </div>
         </div>
-        <div class="grid md:grid-cols-2 md:gap-6">
+        <div class="grid md:grid-cols-1 md:gap-6">
             <div class="relative z-0 w-full mb-6 group">
-                <x-splade-input required name="type_rpk.urgensi" type="text" placeholder="Cth : Menunjang kegiatan angkutan laut dalam negeri" label="Urgensi" />
-            </div>
-            <div class="relative z-0 w-full mb-6 group">
-                <x-splade-input required name="type_rpk.trayek" type="text" placeholder="Cth : Telaga Punggur, Lagoi Bintan" label="Route Trayek" />
+                <x-splade-textarea autosize required name="type_rpk.trayek" type="text" placeholder="Cth : Telaga Punggur, Lagoi Bintan" label="Route Trayek" />
             </div>
         </div>
         <div class="grid md:grid-cols-4 md:gap-6">
             <div class="relative z-0 w-full mb-6 group">
-                <x-splade-input required name="type_rpk.nomor_siupper" type="text" placeholder="234134234234" label="Nomor SIUPPER" />
+                <x-splade-input required name="type_rpk.nomor_siupper" type="text" placeholder="Cth: 234134234234" label="Nomor SIUPPER" />
             </div>
             <div class="relative z-999 w-full mb-6 group">
-                <x-splade-input date required name="type_rpk.tgl_siupper" type="text" placeholder="Pilih tanggal" label="Tgl. SIUPPER" />
+                <x-splade-input date required name="type_rpk.tgl_siupper" placeholder="Pilih tanggal..." type="text" label="Tanggal SIUPPER" />
             </div>
             <div class="relative z-0 w-full mb-6 group">
-                <x-splade-input v-if="form.type_rpk.type_rpk == 'perpanjangan'" required name="type_rpk.nomor_rpk_sebelumnya" type="text" placeholder="231/1D.b/DPMPTSP/X/2023" label="Nomor RPK Sebelumnya" />
+                <x-splade-input v-if="form.type_rpk == 'perpanjangan'" required name="nomor_rpk_sebelumnya" type="text" placeholder="Cth: 231/1D.b/DPMPTSP/X/2023" label="Nomor RPK Sebelumnya" />
             </div>
             <div class="relative z-999 w-full mb-6 group">
-                <x-splade-input date v-if="form.type_rpk.type_rpk == 'perpanjangan'" required name="type_rpk.tgl_rpk_sebelumnya" type="text" placeholder="Pilih tanggal.." label="Tanggal RPK Sebelumnya" />
+                <x-splade-input date v-if="form.type_rpk == 'perpanjangan'" required name="tgl_rpk_sebelumnya" type="text" placeholder="Pilih tanggal..." label="Tanggal RPK Sebelumnya" />
             </div>
         </div>
     </div>

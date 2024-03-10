@@ -7,7 +7,6 @@
                 <x-splade-select required choices name="type_trayek" label="Tipe Trayek">
                     <option disabled value="">Pilih salah satu...</option>
                     <option value="Trayek Tetap Dan Teratur Angkutan Laut Dalam Negeri">Trayek Tetap Dan Teratur Angkutan Laut Dalam Negeri</option>
-                    <option value="Trayek Tidak Tetap Dan Teratur Angkutan Laut Dalam Negeri">Trayek Tidak Tetap Dan Teratur Angkutan Laut Dalam Negeri</option>
                     <option value="Trayek Tidak Tetap Dan Tidak Teratur Angkutan Laut Dalam Negeri">Trayek Tidak Tetap Dan Tidak Teratur Angkutan Laut Dalam Negeri</option>
                     <option value="Trayek Tidak Tetap Dan Tidak Teratur Angkutan Laut Dalam Negeri Dan Lintas Batas">Trayek Tidak Tetap Dan Tidak Teratur Angkutan Laut Dalam Negeri Dan Lintas Batas</option>
                 </x-splade-select>
@@ -57,16 +56,17 @@
             <div class="relative z-0 w-full mb-6 group">
                 <x-splade-input required name="pelabuhan_pangkal" type="text" placeholder="Cth : Tanjung Uban" label="Pelabuhan Pangkal" />
             </div>
-            <div class="relative z-0 w-full mb-6 group">
-                <x-splade-input required name="pelabuhan_singgah" type="text" placeholder="Cth : Telaga Punggur" label="Pelabuhan Singgah" />
+            <div class="relative z-999 w-full mb-6 group">
+                <x-splade-select required choices name="urgensi" label="Urgensi">
+                    <option disabled value="">Pilih salah satu...</option>
+                    <option value="Menunjang kegiatan angkutan laut dalam negeri">Menunjang kegiatan angkutan laut dalam negeri</option>
+                    <option value="Menunjang kegiatan angkutan laut dalam negeri dan lintas batas">Menunjang kegiatan angkutan laut dalam negeri dan lintas batas</option>
+                </x-splade-select>
             </div>
         </div>
-        <div class="grid md:grid-cols-2 md:gap-6">
+        <div class="grid md:grid-cols-1 md:gap-6">
             <div class="relative z-0 w-full mb-6 group">
-                <x-splade-input required name="urgensi" type="text" placeholder="Cth : Menunjang kegiatan angkutan laut dalam negeri" label="Urgensi" />
-            </div>
-            <div class="relative z-0 w-full mb-6 group">
-                <x-splade-input required name="trayek" type="text" placeholder="Cth : Telaga Punggur, Lagoi Bintan" label="Route Trayek" />
+                <x-splade-textarea autosize required name="trayek" type="text" placeholder="Cth : Telaga Punggur, Lagoi Bintan" label="Route Trayek" />
             </div>
         </div>
         <div class="grid md:grid-cols-4 md:gap-6">
