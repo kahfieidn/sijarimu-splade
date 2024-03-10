@@ -96,12 +96,15 @@
                 <option value="" disabled>Pilih salah satu...</option>
                 <option value="1">Ditolak</option>
                 <option value="2">Revisi</option>
-                <option value="12">Setujui (Terbitkan Izin)</option>
+                <option value="9">Sudah Lengkap (Teruskan Ke Kepala Dinas)</option>
             </x-splade-select>
 
         </div>
         <div v-show="form.status_permohonan_id == 1 || form.status_permohonan_id == 2" class="relative z-0 w-full mb-6 group">
             <x-splade-wysiwyg label="Tambahkan Catatan Ke Pemohon (Opsional)" class="mb-8" name="catatan" />
+        </div>
+        <div v-show="form.status_permohonan_id == 9" class="relative z-0 w-full mb-6 group">
+        <x-splade-input readonly required name="no_izin" type="text" placeholder="Nomor Izin" label="Nomor Izin" />
         </div>
 
         <x-splade-group>

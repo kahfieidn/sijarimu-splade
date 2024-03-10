@@ -44,7 +44,7 @@ class Permohonans extends AbstractTable
 
         return Permohonan::query()
             ->where(function ($query) use ($perizinan) {
-                $query->where('status_permohonan_id', 6)
+                $query->where('status_permohonan_id', 7)
                     ->where(function ($subquery) use ($perizinan) {
                         $subquery->whereIn('perizinan_id', $perizinan);
                     });

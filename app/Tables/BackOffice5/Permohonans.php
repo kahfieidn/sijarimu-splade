@@ -36,7 +36,7 @@ class Permohonans extends AbstractTable
      */
     public function for()
     {
-        return Permohonan::query();
+        return Permohonan::query()->where('status_permohonan_id', 9);
     }
 
     /**
@@ -48,8 +48,15 @@ class Permohonans extends AbstractTable
     public function configure(SpladeTable $table)
     {
         $table
-            ->withGlobalSearch(columns: ['id'])
-            ->column('id', sortable: true);
+            ->withGlobalSearch(columns: ['user.name', 'perizinan.nama_perizinan', 'status_permohonan.nama_status'])
+            ->column(key: 'id', sortable: true, label: 'ID')
+            ->column(key: 'user.name', sortable: true, label: 'Nama Pemohon')
+            ->column(key: 'perizinan.nama_perizinan', sortable: true, label: 'Jenis Izin')
+            ->column(key: 'perizinan.sektor.nama_sektor', sortable: true, label: 'Sektor')
+            ->column(key: 'created_at', sortable: true, label: 'Tanggal Pengajuan', as: fn ($created_at) => $created_at->isoFormat('D MMMM Y'))
+            ->column(key: 'status_permohonan.nama_status', sortable: true, label: 'Status Permohonan')
+            ->rowLink(fn (Permohonan $pemohon) => route('back-office-5.show', $pemohon->id))
+            ->paginate(5);
 
             // ->searchInput()
             // ->selectFilter()

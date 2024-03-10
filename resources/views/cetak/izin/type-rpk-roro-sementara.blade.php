@@ -428,7 +428,7 @@ height=103 id="Picture 8" src="images/logo-portal-kepriprov.png"></span></p>
   <p class=MsoNormal align=center style='text-align:center'><b><span
   style='font-size:10.5pt;font-family:"Times New Roman",serif'>PROVINSI
   KEPULAUAN RIAU,</span></b></p>
-  @if($pemohon->status_permohonan_id == 10)
+  @if($pemohon->status_permohonan_id == 12)
   <p class=MsoNormal align=center style='text-align:center'><span
   style='font-size:10.5pt;font-family:"Times New Roman",serif'>
   <img width=58

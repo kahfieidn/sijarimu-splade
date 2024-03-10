@@ -109,7 +109,7 @@ class DashboardController extends Controller
         HandleSpladeFileUploads::forRequest($request);
         $fieldName = 'surat_rekomendasi';
         $currentMonthYear = Carbon::now()->format('Y-F');
-        if (!isset($request->fields[$fieldName . '_existing']) && $request->status_permohonan_id == 7) {
+        if (!isset($request->fields[$fieldName . '_existing']) && $request->status_permohonan_id == 8) {
             Storage::delete('/public/docs' . '/' . $pemohon->surat_rekomendasi);
 
             $berkas = $request->file($fieldName);

@@ -516,7 +516,7 @@ lainnya yang berlaku;</p>
   </td>
 
   <td width="33%" valign=top style='width:33.8%;padding:0in 5.4pt 0in 5.4pt'>
-  @if($pemohon->status_permohonan_id == 10)
+  @if($pemohon->status_permohonan_id == 12)
   <p class=MsoNormal align=right style='text-align:right'><span lang=id
   style='font-size:9.5pt;font-family:"Arial",sans-serif'><img width=223
   height=80 id="Picture 2"

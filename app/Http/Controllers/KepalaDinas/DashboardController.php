@@ -188,7 +188,7 @@ class DashboardController extends Controller
         $profile = Profile::where('user_id', $pemohon->user_id)->first();
 
         //save izin
-        if (!in_array($pemohon->perizinan_id, [1, 2, 3]) && $pemohon->status_permohonan_id == 10) {
+        if (!in_array($pemohon->perizinan_id, [1, 2, 3]) && $pemohon->status_permohonan_id == 12) {
             if($pemohon->perizinan_id == 4){
                 $type_rpk = TypeRpk::where('type_rpkable_id', $pemohon->id)->first();
                 $data = [

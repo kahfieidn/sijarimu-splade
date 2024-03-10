@@ -13,7 +13,7 @@
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
             </svg>
             </Link>
-            @elseif($permohonan->status_permohonan_id == 10 && ($permohonan->perizinan_id == 1 || $permohonan->perizinan_id == 2 || $permohonan->perizinan_id == 3))
+            @elseif($permohonan->status_permohonan_id == 12 && ($permohonan->perizinan_id == 1 || $permohonan->perizinan_id == 2 || $permohonan->perizinan_id == 3))
             <blockquote class="p-2 my-4 border-l-4 border-gray-300 bg-gray-50 dark:border-gray-500 dark:bg-gray-800">
                 <p class="text-xl italic font-medium leading-relaxed text-gray-900 dark:text-white">"Izin anda telah terbit, silahkan di unduh melalui tombol berikut:"</p>
             </blockquote>
@@ -24,7 +24,7 @@
                     <path d="M18 12h-2.55l-2.975 2.975a3.5 3.5 0 0 1-4.95 0L4.55 12H2a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2Zm-3 5a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z" />
                 </svg>
             </a>
-            @elseif($permohonan->status_permohonan_id == 10 && ($permohonan->perizinan_id == 4 or $permohonan->perizinan_id == 5))
+            @elseif($permohonan->status_permohonan_id == 12 && ($permohonan->perizinan_id == 4 or $permohonan->perizinan_id == 5))
             <blockquote class="p-2 my-4 border-l-4 border-gray-300 bg-gray-50 dark:border-gray-500 dark:bg-gray-800">
                 <p class="text-xl italic font-medium leading-relaxed text-gray-900 dark:text-white">"Izin anda telah terbit, silahkan di unduh melalui tombol berikut:"</p>
             </blockquote>

@@ -66,6 +66,7 @@
         <x-splade-modal name="modal-surat-rekomendasi" max-width="7xl">
             <h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">Surat <span class="underline underline-offset-3 decoration-8 decoration-blue-400 dark:decoration-blue-600">Rekomendasi</span></h1>
             <div class="p-4">
+                
                 <iframe src="{{ url('/storage/docs/' . $pemohon->surat_rekomendasi)}}" width="100%" height="500"></iframe>
 
                 <div class="flex justify-between items-center ">
@@ -96,12 +97,15 @@
                 <option value="" disabled>Pilih salah satu...</option>
                 <option value="1">Ditolak</option>
                 <option value="2">Revisi</option>
-                <option value="12">Setujui (Terbitkan Izin)</option>
+                <option value="9">Sudah Lengkap (Teruskan Ke Back Office (5))</option>
             </x-splade-select>
 
         </div>
         <div v-show="form.status_permohonan_id == 1 || form.status_permohonan_id == 2" class="relative z-0 w-full mb-6 group">
             <x-splade-wysiwyg label="Tambahkan Catatan Ke Pemohon (Opsional)" class="mb-8" name="catatan" />
+        </div>
+        <div v-show="form.status_permohonan_id == 9" class="relative z-0 w-full mb-6 group">
+        <x-splade-input readonly required name="no_izin" type="text" placeholder="Nomor Izin" label="Nomor Izin" />
         </div>
 
         <x-splade-group>

@@ -38,11 +38,11 @@ class Permohonans extends AbstractTable
     {
         return Permohonan::query()
             ->where(function ($query) {
-                $query->where('status_permohonan_id', 7)
+                $query->where('status_permohonan_id', 6)
                     ->where(function ($subquery) {
                         $subquery->whereIn('perizinan_id', [1, 2, 3]);
                     })
-                    ->orWhere('status_permohonan_id', 9); // Additional condition;
+                    ->orWhere('status_permohonan_id', 11); // Additional condition;
             });
     }
 

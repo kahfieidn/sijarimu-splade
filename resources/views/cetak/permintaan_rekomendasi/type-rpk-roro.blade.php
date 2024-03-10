@@ -298,7 +298,7 @@ src="images/headercop.png"></span></p>
   <p class=MsoNormal align=center style='text-align:center'><span
   style='position:absolute;z-index:251659264;left:0px;margin-left:486px;
   margin-top:12px;width:91px;height:124px'>
-  @if(in_array($pemohon->status_permohonan_id, [6,7,8,9,10]))
+  @if(in_array($pemohon->status_permohonan_id, [8,9,10,11,12]))
   <img width=91 height=124
   src="images/ttdalfian.png">
   @endif
