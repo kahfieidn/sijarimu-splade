@@ -180,12 +180,14 @@ class DashboardController extends Controller
             $pemohon->update([
                 'status_permohonan_id' => $request->status_permohonan_id,
                 'catatan' => $request->catatan,
+                'catatan_back_office' => $request->catatan_back_office,
                 'no_izin' => $request->no_izin,
             ]);
         } else if ($pemohon->perizinan->id == 5) {
             $pemohon->update([
                 'status_permohonan_id' => $request->status_permohonan_id,
                 'catatan' => $request->catatan,
+                'catatan_back_office' => $request->catatan_back_office,
                 'no_izin' => $request->no_izin,
             ]);
         }
@@ -222,7 +224,7 @@ class DashboardController extends Controller
                 $data = [
                     'pemohon' => $pemohon,
                     'type_rpk' => $type_rpk,
-                    'users' => $users,
+                    'users' => $pemohon->user,
                     'profile' => $profile
                 ];
             } else if ($pemohon->perizinan_id == 5) {
@@ -230,7 +232,7 @@ class DashboardController extends Controller
                 $data = [
                     'pemohon' => $pemohon,
                     'type_rpk_roro' => $type_rpk_roro,
-                    'users' => $users,
+                    'users' => $pemohon->user,
                     'profile' => $profile
                 ];
             }

@@ -12,6 +12,7 @@ use App\Models\Persyaratan;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Notifications\PermohonanDone;
 use ProtoneMedia\Splade\Facades\Toast;
 use App\Tables\KepalaDinas\Permohonans;
@@ -150,6 +151,10 @@ class DashboardController extends Controller
     public function update(Request $request, Permohonan $pemohon)
     {
         //
+
+        //tracking review permohonan subt
+        $pemohon->review_permohonan->first()->update(['kepala_dinas' => Auth::id()]);
+
         // Custom Perizinan
         if ($pemohon->perizinan->id == 1) {
             $pemohon->update([
@@ -187,7 +192,7 @@ class DashboardController extends Controller
 
         //save izin
         if (!in_array($pemohon->perizinan_id, [1, 2, 3]) && $pemohon->status_permohonan_id == 12) {
-            if($pemohon->perizinan_id == 4){
+            if ($pemohon->perizinan_id == 4) {
                 $type_rpk = TypeRpk::where('type_rpkable_id', $pemohon->id)->first();
                 $data = [
                     'pemohon' => $pemohon,
@@ -195,7 +200,7 @@ class DashboardController extends Controller
                     'users' => $users,
                     'profile' => $profile
                 ];
-            }else if($pemohon->perizinan_id == 5){
+            } else if ($pemohon->perizinan_id == 5) {
                 $type_rpk_roro = $pemohon->type_rpk_roro->first();
                 $data = [
                     'pemohon' => $pemohon,

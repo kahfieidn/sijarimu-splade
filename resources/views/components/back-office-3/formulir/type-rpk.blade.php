@@ -1,10 +1,7 @@
 <div class="p-4 sm:ml-64">
     <div class="bg-white p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
         <h1 class="text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">Status <span class="underline underline-offset-3 decoration-8 decoration-blue-400 dark:decoration-blue-600">Review</span></h1>
-
-
         <div class="h-full">
-
             <div class="bg-white p-8 border-dashed rounded-lg dark:border-gray-700">
                 <ol class="relative text-gray-500 border-l border-gray-200 dark:border-gray-700 dark:text-gray-400">
                     <li class="mb-8 ml-6">
@@ -24,14 +21,15 @@
                             </svg>
                         </span>
                         <h3 class="font-medium leading-tight">Back Office (1)</h3>
-                        <span>Permohonan telah di review oleh {{$review_permohonan->back_office_1_user->name}}</span>
+                        <span>Kelengkapan berkas telah di verifikasi oleh {{$review_permohonan->back_office_1_user->name}} dan membuat draft permintaan rekomendasi</span>
                         @else
                         <span class="absolute flex items-center justify-center w-8 h-8 bg-red-600 rounded-full -left-4 ring-4 ring-white dark:ring-white-900 dark:bg-white-900">
                             <svg class="w-6 h-6 text-white dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                                 <path stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18 18 6m0 12L6 6" />
                             </svg>
                         </span>
-                        <span>Permohonan belum di review oleh Back Office (1)</span>
+                        <h3 class="font-medium leading-tight">Back Office (1)</h3>
+                        <span>Kelengkapan berkas belum di review oleh Back Office (1)</span>
                         @endif
                     </li>
                     <li class="mb-8 ml-6">
@@ -42,27 +40,26 @@
                             </svg>
                         </span>
                         <h3 class="font-medium leading-tight">Back Office (2)</h3>
-                        <span>Permohonan telah di review oleh {{$review_permohonan->back_office_2_user->name}}</span>
+                        <span>Permintaan rekomendasi telah di cross check oleh {{$review_permohonan->back_office_2_user->name}}</span>
                         @else
                         <span class="absolute flex items-center justify-center w-8 h-8 bg-red-600 rounded-full -left-4 ring-4 ring-white dark:ring-white-900 dark:bg-white-900">
                             <svg class="w-6 h-6 text-white dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                                 <path stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18 18 6m0 12L6 6" />
                             </svg>
                         </span>
-                        <span>Permohonan belum di review oleh Back Office (2)</span>
+                        <h3 class="font-medium leading-tight">Back Office (2)</h3>
+                        <span>Permohonan belum di cross check oleh Back Office (2)</span>
                         @endif
                     </li>
-                    <li class=" ml-6">
+                    
+                    <li class="mb-8 ml-6">
                         <span class="absolute flex items-center justify-center w-8 h-8 bg-gray-200 rounded-full -left-4 ring-4 ring-white dark:ring-gray-900 dark:bg-blue-900">
                         </span>
-                        <h3 class="font-medium leading-tight">Menunggu Tinjauan Verifikator</h3>
+                        <h3 class="font-medium leading-tight">Menunggu Tinjauan Verifikator Ke OPD Teknis</h3>
                     </li>
                 </ol>
-
             </div>
         </div>
-
-
     </div>
 </div>
 
@@ -78,12 +75,16 @@
                 <option value="" disabled>Pilih salah satu...</option>
                 <option value="1">Ditolak</option>
                 <option value="2">Revisi</option>
+                <option value="4">Kembalikan Ke Back Office (1)</option>
                 <option value="7">Sudah Lengkap (Teruskan Ke OPD Teknis)</option>
             </x-splade-select>
 
         </div>
         <div v-show="form.status_permohonan_id == 1 || form.status_permohonan_id == 2" class="relative z-0 w-full mb-6 group">
             <x-splade-wysiwyg label="Tambahkan Catatan Ke Pemohon (Opsional)" class="mb-8" name="catatan" />
+        </div>
+        <div v-show="form.status_permohonan_id == 4" class="relative z-0 w-full mb-6 group">
+            <x-splade-wysiwyg label="Tambahkan Catatan Ke Back Office (1) (Opsional)" class="mb-8" name="catatan_back_office" />
         </div>
         <div v-show="form.status_permohonan_id == 9" class="relative z-0 w-full mb-6 group">
             <x-splade-input readonly required name="no_izin" type="text" placeholder="Nomor Izin" label="Nomor Izin" />

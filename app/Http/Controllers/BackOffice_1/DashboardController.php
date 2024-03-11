@@ -201,6 +201,7 @@ class DashboardController extends Controller
                 $pemohon->update([
                     'status_permohonan_id' => $request->status_permohonan_id,
                     'catatan' => $request->catatan,
+                    'catatan_back_office' => null,
                     'no_permintaan_rekomendasi' => $request->no_permintaan_rekomendasi,
                     'tgl_permintaan_rekomendasi' => Carbon::now(),
                     'no_surat_permohonan' => $request->no_surat_permohonan,
@@ -219,6 +220,7 @@ class DashboardController extends Controller
                 $pemohon->update([
                     'status_permohonan_id' => $request->status_permohonan_id,
                     'catatan' => $request->catatan,
+                    'catatan_back_office' => null,
                     'no_permintaan_rekomendasi' => $request->no_permintaan_rekomendasi,
                     'tgl_permintaan_rekomendasi' => Carbon::now(),
                     'no_surat_permohonan' => $request->no_surat_permohonan,

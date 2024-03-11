@@ -134,11 +134,13 @@ class DashboardController extends Controller
             $pemohon->update([
                 'status_permohonan_id' => $request->status_permohonan_id,
                 'catatan' => $request->catatan,
+                'catatan_back_office' => $request->catatan_back_office,
             ]);
         } else if ($pemohon->perizinan->id == 5) {
             $pemohon->update([
                 'status_permohonan_id' => $request->status_permohonan_id,
                 'catatan' => $request->catatan,
+                'catatan_back_office' => $request->catatan_back_office,
             ]);
         }
 

@@ -130,6 +130,7 @@ class DashboardController extends Controller
             $pemohon->update([
                 'status_permohonan_id' => $request->status_permohonan_id,
                 'catatan' => $request->catatan,
+                'catatan_back_office' => null,
                 'no_izin' => $request->no_izin,
                 'tgl_izin_terbit' => $request->tgl_izin_terbit,
                 'tgl_izin_terbit_exp' => $request->tgl_izin_terbit_exp
@@ -139,6 +140,7 @@ class DashboardController extends Controller
             $pemohon->update([
                 'status_permohonan_id' => $request->status_permohonan_id,
                 'catatan' => $request->catatan,
+                'catatan_back_office' => null,
                 'no_izin' => $request->no_izin,
             ]);
         }

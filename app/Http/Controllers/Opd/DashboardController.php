@@ -10,6 +10,7 @@ use App\Models\Persyaratan;
 use Illuminate\Http\Request;
 use App\Tables\Opd\Permohonans;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Notifications\PermohonanDone;
 use ProtoneMedia\Splade\Facades\Toast;
 use Illuminate\Support\Facades\Storage;
@@ -75,7 +76,7 @@ class DashboardController extends Controller
                 'profile' => $profile,
                 'type_rpk' => $type_rpk,
             ]);
-        }else if ($pemohon->perizinan_id == 5) {
+        } else if ($pemohon->perizinan_id == 5) {
             $profile = Profile::where('user_id', $pemohon->user_id)->first();
             $type_rpk_roro = $pemohon->type_rpk_roro()->first();
             return view('opd.show', [
@@ -106,6 +107,9 @@ class DashboardController extends Controller
      */
     public function update(Request $request, Permohonan $pemohon)
     {
+        //tracking review permohonan subt
+        $pemohon->review_permohonan->first()->update(['opd' => Auth::id()]);
+
         HandleSpladeFileUploads::forRequest($request);
         $fieldName = 'surat_rekomendasi';
         $currentMonthYear = Carbon::now()->format('Y-F');
@@ -136,7 +140,7 @@ class DashboardController extends Controller
                 'surat_rekomendasi' => $surat_rekomendasiRequest[$fieldName],
                 'tgl_surat_rekomendasi' => $request->tgl_surat_rekomendasi,
             ]);
-        }else if ($pemohon->perizinan->id == 5) {
+        } else if ($pemohon->perizinan->id == 5) {
             $request->validate([
                 'status_permohonan_id' => ['required', 'string', 'max:255'],
                 'no_surat_rekomendasi' => ['required', 'string', 'max:255'],
