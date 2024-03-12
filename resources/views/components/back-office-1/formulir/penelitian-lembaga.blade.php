@@ -25,7 +25,7 @@
                 <option value="" disabled>Pilih salah satu...</option>
                 <option value="1">Ditolak</option>
                 <option value="2">Revisi</option>
-                <option value="7">Sudah Lengkap (Teruskan Ke Verifikator (1))</option>
+                <option value="10">Sudah Lengkap (Teruskan Ke Verifikator Final)</option>
             </x-splade-select>
         </div>
         <div class="relative z-0 w-full mb-6 group" v-show="form.status_permohonan_id == 1 || form.status_permohonan_id == 2">

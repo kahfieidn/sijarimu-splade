@@ -99,12 +99,13 @@ class Permohonan extends Model
 
     public function setTglIzinTerbitAttribute($value)
     {
-        if ($value === null) {
+        if ($value == null) {
             $this->attributes['tgl_izin_terbit'] = null;
-        } else {
+        } else if($value != null){
             $this->attributes['tgl_izin_terbit'] = Carbon::createFromFormat('d-m-Y', $value)->format('Y-m-d');
         }
     }
+
     public function getTglIzinTerbitAttribute()
     {
         if (isset($this->attributes['tgl_izin_terbit']) && !empty($this->attributes['tgl_izin_terbit'])) {

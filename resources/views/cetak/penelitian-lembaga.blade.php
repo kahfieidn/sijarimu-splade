@@ -249,7 +249,7 @@
                                 height: 42.07px;
                             "
                         >
-                            @if($pemohon->status_permohonan_id == 10)
+                            @if($pemohon->status_permohonan_id == 12)
                             <img
                                 alt=""
                                 src="images/image2.jpg"

@@ -161,7 +161,6 @@ class DashboardController extends Controller
         $pemohon->update([
             'status_permohonan_id' => $request->status_permohonan_id,
             'catatan' => $request->catatan,
-            'front_office' => Auth::id(),
         ]);
         $ket_berkas_request = array_slice($request->ket_berkas, 0, 30);
         $pemohon->ket_berkas()->update($ket_berkas_request);

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\BackOffice_6;
 
 use Carbon\Carbon;
 use App\Models\Profile;
+use Barryvdh\DomPDF\Facade\PDF;
 use App\Models\Perizinan;
 use App\Models\Permohonan;
 use App\Models\Persyaratan;
@@ -13,6 +14,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Notifications\PermohonanDone;
 use ProtoneMedia\Splade\Facades\Toast;
 use App\Tables\BackOffice6\Permohonans;
+use Illuminate\Support\Facades\Storage;
 use App\Notifications\PermohonanRejected;
 
 class DashboardController extends Controller
@@ -59,7 +61,49 @@ class DashboardController extends Controller
         $review_permohonan = $pemohon->review_permohonan->first();
 
         //Custom Perizinan
-        if ($pemohon->perizinan_id == 4) {
+        //Custom Perizinan
+        if ($pemohon->perizinan_id == 1) {
+            $penelitian = $pemohon->penelitian()->first();
+            return view('back-office-6.show', [
+                'pemohon' => $pemohon,
+                'berkas' => $berkas,
+                'persyaratan' => $persyaratan,
+                'status_berkas' => $status_berkas,
+                'ket_berkas' => $ket_berkas,
+                'perizinan' => $perizinan,
+                'berkas' => $berkas,
+                'penelitian' => $penelitian,
+                'user' => $user,
+            ]);
+        } else if ($pemohon->perizinan_id == 2) {
+            $penelitian = $pemohon->penelitian()->first();
+            return view('back-office-6.show', [
+                'pemohon' => $pemohon,
+                'berkas' => $berkas,
+                'persyaratan' => $persyaratan,
+                'status_berkas' => $status_berkas,
+                'ket_berkas' => $ket_berkas,
+                'perizinan' => $perizinan,
+                'berkas' => $berkas,
+                'penelitian' => $penelitian,
+                'user' => $user,
+            ]);
+        } else if ($pemohon->perizinan_id == 3) {
+            $penelitian = $pemohon->penelitian()->first();
+            $peneliti = $pemohon->peneliti()->get();
+            return view('back-office-6.show', [
+                'pemohon' => $pemohon,
+                'berkas' => $berkas,
+                'persyaratan' => $persyaratan,
+                'status_berkas' => $status_berkas,
+                'ket_berkas' => $ket_berkas,
+                'perizinan' => $perizinan,
+                'berkas' => $berkas,
+                'penelitian' => $penelitian,
+                'peneliti' => $peneliti,
+                'user' => $user,
+            ]);
+        } else if ($pemohon->perizinan_id == 4) {
             $profile = Profile::where('user_id', $pemohon->user_id)->first();
             $type_rpk = $pemohon->type_rpk()->first();
             return view('back-office-6.show', [
@@ -109,26 +153,26 @@ class DashboardController extends Controller
     {
         //tracking review permohonan subt
         $pemohon->review_permohonan->first()->update(['back_office_6' => Auth::id()]);
-
         $currentMonthYear = Carbon::now()->format('Y-F');
+
         // Custom Perizinan
         if ($pemohon->perizinan->id == 1) {
             $pemohon->update([
                 'status_permohonan_id' => $request->status_permohonan_id,
                 'catatan' => $request->catatan,
-                'tgl_izin_terbit' => Carbon::now()
+                'tgl_izin_terbit' => Carbon::now()->format('d-m-Y')
             ]);
         } else if ($pemohon->perizinan->id == 2) {
             $pemohon->update([
                 'status_permohonan_id' => $request->status_permohonan_id,
                 'catatan' => $request->catatan,
-                'tgl_izin_terbit' => Carbon::now()
+                'tgl_izin_terbit' => Carbon::now()->format('d-m-Y')
             ]);
         } else if ($pemohon->perizinan->id == 3) {
             $pemohon->update([
                 'status_permohonan_id' => $request->status_permohonan_id,
                 'catatan' => $request->catatan,
-                'tgl_izin_terbit' => Carbon::now()
+                'tgl_izin_terbit' => Carbon::now()->format('d-m-Y')
             ]);
         } else if ($pemohon->perizinan->id == 4) {
             $pemohon->update([
@@ -141,6 +185,30 @@ class DashboardController extends Controller
                 'status_permohonan_id' => $request->status_permohonan_id,
                 'catatan' => $request->catatan,
                 'catatan_back_office' => $request->catatan_back_office,
+            ]);
+        }
+
+
+         //save izin penelitian
+         if (in_array($pemohon->perizinan_id, [1, 2, 3]) && $pemohon->status_permohonan_id == 12) {
+            $data = [
+                'pemohon' => $pemohon,
+                'penelitians' => $pemohon->penelitian->first(),
+                'penelitis' => $pemohon->peneliti->first(),
+                'users' => $pemohon->user->first(),
+            ];
+
+            $storageDirectory = 'izin/' . $currentMonthYear . '/' . $pemohon->id . '.pdf';
+            $pdf = PDF::loadView('cetak.request', $data);
+            $customPaper = array(0, 0, 609.4488, 935.433);
+            $pdf->set_paper($customPaper);
+
+            $fileContent = $pdf->output();
+            $hashedFileName = hash('sha256', $storageDirectory) . '.' . pathinfo($storageDirectory, PATHINFO_EXTENSION);
+
+            Storage::put('public/izin/' . $currentMonthYear . '/' . $hashedFileName, $fileContent);
+            $pemohon->update([
+                'file_izin_terbit' => $currentMonthYear . '/' . $hashedFileName,
             ]);
         }
 

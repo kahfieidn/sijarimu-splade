@@ -61,51 +61,7 @@ class DashboardController extends Controller
         $user = $pemohon->user()->first();
         $review_permohonan = $pemohon->review_permohonan->first();
 
-        //Custom Perizinan
-        if ($pemohon->perizinan_id == 1) {
-            $penelitian = $pemohon->penelitian()->first();
-            return view('back-office-3.show', [
-                'pemohon' => $pemohon,
-                'berkas' => $berkas,
-                'persyaratan' => $persyaratan,
-                'status_berkas' => $status_berkas,
-                'ket_berkas' => $ket_berkas,
-                'perizinan' => $perizinan,
-                'berkas' => $berkas,
-                'penelitian' => $penelitian,
-                'user' => $user,
-            ]);
-        } else if ($pemohon->perizinan_id == 2) {
-            $penelitian = $pemohon->penelitian()->first();
-            return view('back-office-3.show', [
-                'pemohon' => $pemohon,
-                'berkas' => $berkas,
-                'persyaratan' => $persyaratan,
-                'status_berkas' => $status_berkas,
-                'ket_berkas' => $ket_berkas,
-                'perizinan' => $perizinan,
-                'berkas' => $berkas,
-                'penelitian' => $penelitian,
-                'user' => $user,
-            ]);
-        } else if ($pemohon->perizinan_id == 3) {
-            $penelitian = $pemohon->penelitian()->first();
-            $nomor_izin = '00' . $penelitian->id . '/2n.1' . '/DPMPTSP' . '/2024';
-            $peneliti = $pemohon->peneliti()->get();
-            return view('back-office-3.show', [
-                'pemohon' => $pemohon,
-                'nomor_izin' => $nomor_izin,
-                'berkas' => $berkas,
-                'persyaratan' => $persyaratan,
-                'status_berkas' => $status_berkas,
-                'ket_berkas' => $ket_berkas,
-                'perizinan' => $perizinan,
-                'berkas' => $berkas,
-                'penelitian' => $penelitian,
-                'peneliti' => $peneliti,
-                'user' => $user,
-            ]);
-        } else if ($pemohon->perizinan_id == 4) {
+        if ($pemohon->perizinan_id == 4) {
             $profile = Profile::where('user_id', $pemohon->user_id)->first();
             $type_rpk = $pemohon->type_rpk()->first();
             return view('back-office-3.show', [
@@ -247,6 +203,7 @@ class DashboardController extends Controller
                 'file_permintaan_rekomendasi' => $currentMonthYear . '/' . $hashedFileName,
             ]);
         }
+
 
         //Notify
         if ($request->status_permohonan_id == 1 || $request->status_permohonan_id == 2) {
