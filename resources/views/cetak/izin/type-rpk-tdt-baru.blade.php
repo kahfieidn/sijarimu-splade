@@ -55,7 +55,7 @@ src="images/headercop.png"></span></p>
   </td>
   <td width="47%" valign=top style='width:47.06%;padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal align=right style='text-align:right'><span lang=id
-  style='font-size:9.5pt;font-family:"Arial",sans-serif'>Tanjungpinang, @if($pemohon->tgl_izin_terbit != null){{ \Carbon\Carbon::parse($pemohon->tgl_izin_terbit)->isoFormat('D MMMM Y') }}@else [DRAFT_TGL_IZIN_TERBIT] @endif</span></p>
+  style='font-size:9.5pt;font-family:"Arial",sans-serif'>Tanjungpinang, @if($pemohon->tgl_izin_terbit != null){{ \Carbon\Carbon::parse($pemohon->updated_at)->isoFormat('D MMMM Y') }}@else [DRAFT_TGL_IZIN_TERBIT] @endif</span></p>
   </td>
  </tr>
 </table>
@@ -340,7 +340,7 @@ src="images/headercop.png"></span></p>
   </td>
   <td width="88%" valign=top style='width:88.12%;padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal style='text-align:justify'><span lang=id style='text-align:justify;font-size:9.5pt;font-family:"Arial",sans-serif'>Pengoperasian
-  Kapal Pelra pada Trayek Tetap dan Teratur ini berlaku pada tanggal @if($pemohon->tgl_izin_terbit == null){{ \Carbon\Carbon::parse(\Carbon\Carbon::now())->isoFormat('D MMMM Y') }}@else {{ \Carbon\Carbon::parse($pemohon->tgl_izin_terbit)->isoFormat('D MMMM Y') }} @endif sampai dengan @if($pemohon->tgl_izin_terbit == null){{ \Carbon\Carbon::parse(\Carbon\Carbon::now())->addMonths(6)->isoFormat('D MMMM Y') }}@else {{ \Carbon\Carbon::parse($pemohon->tgl_izin_terbit)->addMonths(6)->isoFormat('D MMMM Y') }} @endif, selain itu Saudara wajib
+  Kapal Pelra pada Trayek Tetap dan Teratur ini berlaku pada tanggal @if($pemohon->tgl_izin_terbit == null){{ \Carbon\Carbon::parse(\Carbon\Carbon::now())->isoFormat('D MMMM Y') }}@else {{ \Carbon\Carbon::parse($pemohon->tgl_izin_terbit)->isoFormat('D MMMM Y') }} @endif sampai dengan @if($pemohon->tgl_izin_terbit_exp == null){{ \Carbon\Carbon::parse(\Carbon\Carbon::now())->isoFormat('D MMMM Y') }}@else {{ \Carbon\Carbon::parse($pemohon->tgl_izin_terbit_exp)->isoFormat('D MMMM Y') }}@endif, selain itu Saudara wajib
   memperhatikan :</span></p>
   </td>
  </tr>

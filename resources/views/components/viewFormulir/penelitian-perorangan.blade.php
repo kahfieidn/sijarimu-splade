@@ -9,10 +9,10 @@
         </div>
         <div class="grid md:grid-cols-3 md:gap-6">
             <div class="relative z-999 w-full mb-6 group">
-                <x-splade-input readonly required name="penelitian.waktu_awal_penelitian" date label="Waktu Awal Penelitian" />
+                <x-splade-input disabled required name="penelitian.waktu_awal_penelitian" date label="Waktu Awal Penelitian" />
             </div>
             <div class="relative z-999 w-full mb-6 group">
-                <x-splade-input readonly required name="penelitian.waktu_akhir_penelitian" date label="Waktu Akhir Penelitian" />
+                <x-splade-input disabled required name="penelitian.waktu_akhir_penelitian" date label="Waktu Akhir Penelitian" />
             </div>
             <div class="relative z-0 w-full mb-6 group">
                 <x-splade-input readonly required name="penelitian.lokasi_penelitian" type="text" placeholder="DPMPTSP Provinsi Kepulauan Riau, Dikominfo Kepri" label="Lokasi Penelitian" />

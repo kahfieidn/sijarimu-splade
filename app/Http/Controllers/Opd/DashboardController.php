@@ -130,12 +130,13 @@ class DashboardController extends Controller
         if ($pemohon->perizinan->id == 4) {
             $request->validate([
                 'status_permohonan_id' => ['required', 'string', 'max:255'],
-                'no_surat_rekomendasi' => ['required', 'string', 'max:255'],
-                'tgl_surat_rekomendasi' => ['date', 'required'],
+                'no_surat_rekomendasi' => ['nullable', 'string', 'max:255'],
+                'tgl_surat_rekomendasi' => ['date', 'nullable'],
             ]);
             $pemohon->update([
                 'status_permohonan_id' => $request->status_permohonan_id,
                 'catatan' => $request->catatan,
+                'catatan_office' => $request->catatan_back_office,
                 'no_surat_rekomendasi' => $request->no_surat_rekomendasi,
                 'surat_rekomendasi' => $surat_rekomendasiRequest[$fieldName],
                 'tgl_surat_rekomendasi' => $request->tgl_surat_rekomendasi,
@@ -149,6 +150,7 @@ class DashboardController extends Controller
             $pemohon->update([
                 'status_permohonan_id' => $request->status_permohonan_id,
                 'catatan' => $request->catatan,
+                'catatan_office' => $request->catatan_back_office,
                 'no_surat_rekomendasi' => $request->no_surat_rekomendasi,
                 'surat_rekomendasi' => $surat_rekomendasiRequest[$fieldName],
                 'tgl_surat_rekomendasi' => $request->tgl_surat_rekomendasi,

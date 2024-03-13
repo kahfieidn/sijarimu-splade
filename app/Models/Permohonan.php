@@ -133,7 +133,6 @@ class Permohonan extends Model
     }
 
 
-
     public function setTglSuratPermohonanAttribute($value)
     {
         $this->attributes['tgl_surat_permohonan'] = Carbon::createFromFormat('d-m-Y', $value)->format('Y-m-d');
@@ -158,7 +157,13 @@ class Permohonan extends Model
 
     public function setTglSuratRekomendasiAttribute($value)
     {
-        $this->attributes['tgl_surat_rekomendasi'] = Carbon::createFromFormat('d-m-Y', $value)->format('Y-m-d');
+        if ($value == null) {
+            $this->attributes['tgl_surat_rekomendasi'] = null;
+        } else if($value != null){
+            $this->attributes['tgl_surat_rekomendasi'] = Carbon::createFromFormat('d-m-Y', $value)->format('Y-m-d');
+        }
+
+        
     }
     public function getTglSuratRekomendasiAttribute()
     {
