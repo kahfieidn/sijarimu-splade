@@ -34,10 +34,18 @@
         </x-splade-form>
     </div>
     <div v-if="{{ $perizinan->id }} == 4">
-        <x-splade-form :default="['ket_berkas' => $ket_berkas, 'status_berkas' => $status_berkas, 'profile' => $profile,'type_rpk' => $type_rpk, 'fields' => $fields]" confirm="Konfirmasi Submit Permohonan" confirm-text="Apakah anda yakin sudah memastikan seluruh berkas sesuai?" confirm-button="Ya, Saya Yakin!" cancel-button="Tidak, Masih ada yang salah!" action="{{ route('pemohon.update', $pemohon->id) }}" method="PATCH">
+        <x-splade-form :default="['ket_berkas' => $ket_berkas, 'status_berkas' => $status_berkas, 'profile' => $profile,'type_rpk' => $type_rpk,'fields' => $fields]" confirm="Konfirmasi Submit Permohonan" confirm-text="Apakah anda yakin sudah memastikan seluruh berkas sesuai?" confirm-button="Ya, Saya Yakin!" cancel-button="Tidak, Masih ada yang salah!" action="{{ route('pemohon.update', $pemohon->id) }}" method="PATCH">
             <x-splade-input readonly class="hidden" name="id" /> 
             @include('components/editFormulir/profile-usaha')
             @include('components/editFormulir/type-rpk')
+            @include('components/berkas-pemohon')
+        </x-splade-form>
+    </div>
+    <div v-if="{{ $perizinan->id }} == 5">
+        <x-splade-form :default="['ket_berkas' => $ket_berkas, 'status_berkas' => $status_berkas, 'profile' => $profile, 'type_rpk_roro' => $type_rpk_roro, 'fields' => $fields]" confirm="Konfirmasi Submit Permohonan" confirm-text="Apakah anda yakin sudah memastikan seluruh berkas sesuai?" confirm-button="Ya, Saya Yakin!" cancel-button="Tidak, Masih ada yang salah!" action="{{ route('pemohon.update', $pemohon->id) }}" method="PATCH">
+            <x-splade-input readonly class="hidden" name="id" /> 
+            @include('components/editFormulir/profile-usaha')
+            @include('components/editFormulir/type-rpk-roro')
             @include('components/berkas-pemohon')
         </x-splade-form>
     </div>

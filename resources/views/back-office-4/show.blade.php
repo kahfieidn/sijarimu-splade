@@ -24,7 +24,7 @@
             @include('components/partials/catatan-back-office')
             @include('components/partials/profile')
             @include('components/partials/profile-usaha')
-            @include('components/viewFormulir/type-rpk-roro')
+            @include('components/editFormulir/type-rpk-roro')
             @include('components/review-berkas/view-berkas-pemohon')
             @include('components/back-office-4/formulir/type-rpk-roro')
         </x-splade-form>

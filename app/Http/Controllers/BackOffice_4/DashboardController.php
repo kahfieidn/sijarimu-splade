@@ -142,7 +142,10 @@ class DashboardController extends Controller
                 'catatan' => $request->catatan,
                 'catatan_back_office' => null,
                 'no_izin' => $request->no_izin,
+                'tgl_izin_terbit' => $request->tgl_izin_terbit,
+                'tgl_izin_terbit_exp' => $request->tgl_izin_terbit_exp
             ]);
+            $pemohon->type_rpk_roro->first()->update($request->type_rpk_roro);
         }
 
         Toast::title('Permohonan berhasil di review!')

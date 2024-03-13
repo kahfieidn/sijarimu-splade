@@ -290,7 +290,6 @@ class DashboardController extends Controller
             $profile['nib_file'] = ExistingFile::fromDisk('public')->get('/profile_usaha' . '/' . $profile->{'nib_file'});
         }
 
-        $type_rpk = $pemohon->type_rpk()->first();
         return view('pemohon.edit', [
             'pemohon' => $pemohon,
             'perizinan' => $perizinan,
@@ -300,9 +299,10 @@ class DashboardController extends Controller
             'ket_berkas' => $ket_berkas,
             'penelitian' => $penelitian,
             'peneliti' => $peneliti,
+            'type_rpk' => $pemohon->type_rpk->first(),
+            'type_rpk_roro' => $pemohon->type_rpk_roro->first(),
             'fields' => $fields,
             'profile' => $profile,
-            'type_rpk' => $type_rpk,
         ]);
     }
 
@@ -424,6 +424,8 @@ class DashboardController extends Controller
             }
         } else if ($typeId == 4) {
             $pemohon->type_rpk()->first()->update($request->type_rpk);
+        } else if ($typeId == 5) {
+            $pemohon->type_rpk_roro()->first()->update($request->type_rpk_roro);
         }
         Toast::title('Permohonan anda berhasil di ajukan kembali!')
             ->rightBottom()

@@ -96,7 +96,7 @@
                 <option value="" disabled>Pilih salah satu...</option>
                 <option value="1">Ditolak</option>
                 <option value="2">Revisi</option>
-                <option value="10">Setujui (Terbitkan Izin)</option>
+                <option value="12">Setujui (Terbitkan Izin)</option>
             </x-splade-select>
 
         </div>

@@ -144,8 +144,8 @@ class DashboardController extends Controller
         } else if ($pemohon->perizinan->id == 5) {
             $request->validate([
                 'status_permohonan_id' => ['required', 'string', 'max:255'],
-                'no_surat_rekomendasi' => ['required', 'string', 'max:255'],
-                'tgl_surat_rekomendasi' => ['date', 'required'],
+                'no_surat_rekomendasi' => ['nullable', 'string', 'max:255'],
+                'tgl_surat_rekomendasi' => ['date', 'nullable'],
             ]);
             $pemohon->update([
                 'status_permohonan_id' => $request->status_permohonan_id,
