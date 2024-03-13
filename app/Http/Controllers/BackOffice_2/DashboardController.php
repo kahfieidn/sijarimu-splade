@@ -126,7 +126,7 @@ class DashboardController extends Controller
         //Notify
         if ($request->status_permohonan_id == 1 || $request->status_permohonan_id == 2) {
             $pemohon->user->notify(new PermohonanRejected($pemohon));
-        } else if ($request->status_permohonan_id == 10) {
+        } else if ($request->status_permohonan_id == 12) {
             $pemohon->user->notify(new PermohonanDone($pemohon));
         }
 

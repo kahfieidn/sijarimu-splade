@@ -189,7 +189,7 @@ class DashboardController extends Controller
                 'status_permohonan_id' => $request->status_permohonan_id,
                 'catatan' => $request->catatan,
             ]);
-        } else {
+        } else if(!in_array($pemohon->perizinan_id, [1,2,3])){
             $request->validate([
                 'status_permohonan_id' => ['required', 'string', 'max:255'],
                 'catatan' => ['nullable'],
@@ -222,7 +222,7 @@ class DashboardController extends Controller
         //Notify
         if ($request->status_permohonan_id == 1 || $request->status_permohonan_id == 2) {
             $pemohon->user->notify(new PermohonanRejected($pemohon));
-        } else if ($request->status_permohonan_id == 10) {
+        } else if ($request->status_permohonan_id == 12) {
             $pemohon->user->notify(new PermohonanDone($pemohon));
         }
 

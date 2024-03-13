@@ -10,8 +10,8 @@
                 <x-splade-input readonly required name="no_izin" type="text" placeholder="Nomor Izin" label="Nomor Izin" />
             </div>
             <div class="relative z-0 w-full mb-6 group">
-                <x-splade-input v-if="form.status_permohonan_id == 7" name="penelitian.menimbang" type="text" placeholder="Kementerian Pendidikan, Kebudayaan, Riset dan Teknologi.." label="Menimbang" required />
-                <x-splade-input v-if="form.status_permohonan_id != 7" name="penelitian.menimbang" type="text" placeholder="Kementerian Pendidikan, Kebudayaan, Riset dan Teknologi.." label="Menimbang" />
+                <x-splade-input v-if="form.status_permohonan_id == 10" name="penelitian.menimbang" type="text" placeholder="Kementerian Pendidikan, Kebudayaan, Riset dan Teknologi.." label="Menimbang" required />
+                <x-splade-input v-if="form.status_permohonan_id != 10" name="penelitian.menimbang" type="text" placeholder="Kementerian Pendidikan, Kebudayaan, Riset dan Teknologi.." label="Menimbang" />
             </div>
         </div>
     </div>
