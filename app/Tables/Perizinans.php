@@ -2,12 +2,13 @@
 
 namespace App\Tables;
 
-use App\Models\Persyaratan;
+use App\Models\Perizinan;
+use App\Models\Permohonan;
 use Illuminate\Http\Request;
-use ProtoneMedia\Splade\AbstractTable;
 use ProtoneMedia\Splade\SpladeTable;
+use ProtoneMedia\Splade\AbstractTable;
 
-class Persyaratans extends AbstractTable
+class Perizinans extends AbstractTable
 {
     /**
      * Create a new instance.
@@ -36,7 +37,7 @@ class Persyaratans extends AbstractTable
      */
     public function for()
     {
-        return Persyaratan::query();
+        return Perizinan::query();
     }
 
     /**
@@ -48,16 +49,18 @@ class Persyaratans extends AbstractTable
     public function configure(SpladeTable $table)
     {
         $table
-            ->withGlobalSearch(columns: ['id'])
-            ->column('id', sortable: true)
-            ->column('nama_persyaratan', sortable: true);
-
+            ->withGlobalSearch(columns: [])
+            ->column(key: 'id', sortable: true, label: 'ID')
+            ->column(key: 'nama_perizinan', sortable: true, label: 'Nama Perizin')
+            ->column(key: 'sektor.nama_sektor', sortable: true, label: 'Sektor')
+            ->column(label: 'Actions')
+            ->paginate(5);
 
         // ->searchInput()
-            // ->selectFilter()
-            // ->withGlobalSearch()
+        // ->selectFilter()
+        // ->withGlobalSearch()
 
-            // ->bulkAction()
-            // ->export()
+        // ->bulkAction()
+        // ->export()
     }
 }

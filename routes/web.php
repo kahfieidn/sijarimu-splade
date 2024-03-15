@@ -37,7 +37,7 @@ Route::middleware('splade')->group(function () {
         Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
         Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     });
-    
+
     Route::prefix('dashboard')->group(function () {
         Route::group(['middleware' => ['role:pemohon']], function () {
             Route::resource('/pemohon', App\Http\Controllers\Pemohon\DashboardController::class);
@@ -95,9 +95,17 @@ Route::middleware('splade')->group(function () {
         });
     });
 
-    Route::group(['middleware' => ['role:pemohon|front_office|back_office|opd|verifikator_1|verifikator_2|kepala_dinas|admin|admin_1|admin_2|admin3']], function () {
+    Route::group(['middleware' => ['role:front_office|back_office|opd|verifikator_1|verifikator_2|kepala_dinas|admin|admin_1|admin_2|admin3']], function () {
+        Route::resource('/tracking', App\Http\Controllers\Tracking\DashboardController::class)->parameters([
+            'tracking' => 'pemohon'
+        ]);
         Route::get('/dashboard/tracking/review_permohonan/{perizinan_id}/{permohonan_id}', [App\Http\Controllers\Tracking\ReviewPermohonanController::class, 'index'])->name('dashboard.tracking');
+    });
 
+    Route::group(['middleware' => ['role:pemohon|front_office|back_office|opd|verifikator_1|verifikator_2|kepala_dinas|admin|admin_1|admin_2|admin3']], function () {
+        Route::resource('/persyaratan', App\Http\Controllers\Persyaratan\DashboardController::class)->parameters([
+            'persyaratan' => 'perizinan'
+        ]);
         Route::get('/dashboard/generate/permintaan_rekomendasi/{perizinan_id}/{permohonan_id}', [App\Http\Controllers\Cetak\GeneratePermintaanRekomendasi::class, 'generatePermintaanRekomendasi'])->name('dashboard.cetak.permintaan-rekomendasi-request');
         Route::get('/dashboard/generate/penelitian/{perizinan_id}/{permohonan_id}', [App\Http\Controllers\Cetak\GeneratePenelitian::class, 'generatePenelitian'])->name('dashboard.cetak.request');
         Route::get('/dashboard/generate/perizinan/{perizinan_id}/{permohonan_id}', [App\Http\Controllers\Cetak\GeneratePerizinan::class, 'generatePerizinan'])->name('dashboard.cetak.perizinan.request');
