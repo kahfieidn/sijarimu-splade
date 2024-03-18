@@ -49,7 +49,14 @@ class Users extends AbstractTable
     {
         $table
             ->withGlobalSearch(columns: ['id'])
-            ->column('id', sortable: true);
+            ->column('id', sortable: true)
+            ->column('email', sortable: true)
+            ->column('name', sortable: true)
+            ->column('nik', sortable: true)
+            ->column('alamat', sortable: true)
+            ->column('nomor_handphone', sortable: true)
+            ->paginate(10);
+            
 
             // ->searchInput()
             // ->selectFilter()

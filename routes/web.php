@@ -86,6 +86,9 @@ Route::middleware('splade')->group(function () {
             Route::resource('/admin', App\Http\Controllers\Admin\DashboardController::class)->parameters([
                 'admin' => 'pemohon'
             ]);
+            Route::resource('/admin-management-user', App\Http\Controllers\Admin\ManagementUser::class)->parameters([
+                'admin-management-user' => 'perizinan_id'
+            ]);
             Route::resource('/admin-management-perizinan', App\Http\Controllers\Admin\ManagementPerizinan::class)->parameters([
                 'admin-management-perizinan' => 'perizinan_id'
             ]);
