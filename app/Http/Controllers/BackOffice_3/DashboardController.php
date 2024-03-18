@@ -9,7 +9,8 @@ use App\Models\Perizinan;
 use App\Models\Permohonan;
 use App\Models\Persyaratan;
 use Illuminate\Http\Request;
-use Barryvdh\DomPDF\Facade\PDF;
+use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Notifications\PermohonanDone;
@@ -159,7 +160,7 @@ class DashboardController extends Controller
                 'users' => $users,
             ];
             $storageDirectory = 'izin_terbit/' . $currentMonthYear . '/' . $pemohon->id . '.pdf';
-            $pdf = PDF::loadView('cetak.request', $data);
+            $pdf = FacadePdf::loadView('cetak.request', $data);
             $customPaper = array(0, 0, 609.4488, 935.433);
             $pdf->set_paper($customPaper);
 
@@ -193,7 +194,7 @@ class DashboardController extends Controller
                 ];
             }
             $storageDirectory = 'permintaan_rekomendasi/' . $currentMonthYear . '/' . $pemohon->id . '.pdf';
-            $pdf = PDF::loadView('cetak.permintaan-rekomendasi-request', $data);
+            $pdf = FacadePdf::loadView('cetak.permintaan-rekomendasi-request', $data);
             $customPaper = array(0, 0, 609.4488, 935.433);
             $pdf->set_paper($customPaper);
             $fileContent = $pdf->output();
