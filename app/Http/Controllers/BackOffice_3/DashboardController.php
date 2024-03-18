@@ -5,7 +5,7 @@ namespace App\Http\Controllers\BackOffice_3;
 use Carbon\Carbon;
 use App\Models\Profile;
 use App\Models\TypeRpk;
-use Barryvdh\DomPDF\PDF;
+use Barryvdh\DomPDF\Facade as PDF;
 use App\Models\Perizinan;
 use App\Models\Permohonan;
 use App\Models\Persyaratan;
