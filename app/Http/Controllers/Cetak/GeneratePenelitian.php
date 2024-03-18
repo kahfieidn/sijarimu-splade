@@ -8,7 +8,7 @@ use App\Models\Peneliti;
 use App\Models\Penelitian;
 use App\Models\Permohonan;
 use Illuminate\Http\Request;
-use Barryvdh\DomPDF\Facade\Pdf;
+use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
@@ -36,7 +36,7 @@ class GeneratePenelitian extends Controller
                 'date_ttd' => $date_ttd,
                 'get_id_users' => $get_id_users
             ];
-            $pdf = Pdf::loadView('cetak.request', $data);
+            $pdf = FacadePdf::loadView('cetak.request', $data);
             $customPaper = array(0, 0, 609.4488, 935.433);
             $pdf->set_paper($customPaper);
             $pdf->render();
@@ -50,7 +50,7 @@ class GeneratePenelitian extends Controller
                 'date_ttd' => $date_ttd,
                 'get_id_users' => $get_id_users
             ];
-            $pdf = Pdf::loadView('cetak.request', $data);
+            $pdf = FacadePdf::loadView('cetak.request', $data);
             $customPaper = array(0, 0, 609.4488, 935.433);
             $pdf->set_paper($customPaper);
             $pdf->render();
@@ -66,7 +66,7 @@ class GeneratePenelitian extends Controller
                 'date_ttd' => $date_ttd,
                 'get_id_users' => $get_id_users
             ];
-            $pdf = Pdf::loadView('cetak.request', $data);
+            $pdf = FacadePdf::loadView('cetak.request', $data);
             $customPaper = array(0, 0, 609.4488, 935.433);
             $pdf->set_paper($customPaper);
             $pdf->render();

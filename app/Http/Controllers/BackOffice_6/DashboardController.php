@@ -4,7 +4,7 @@ namespace App\Http\Controllers\BackOffice_6;
 
 use Carbon\Carbon;
 use App\Models\Profile;
-use Barryvdh\DomPDF\Facade\PDF;
+use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
 use App\Models\Perizinan;
 use App\Models\Permohonan;
 use App\Models\Persyaratan;
@@ -199,7 +199,7 @@ class DashboardController extends Controller
             ];
 
             $storageDirectory = 'izin/' . $currentMonthYear . '/' . $pemohon->id . '.pdf';
-            $pdf = PDF::loadView('cetak.request', $data);
+            $pdf = FacadePdf::loadView('cetak.request', $data);
             $customPaper = array(0, 0, 609.4488, 935.433);
             $pdf->set_paper($customPaper);
 

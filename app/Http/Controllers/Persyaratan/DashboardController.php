@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Persyaratan;
 use App\Models\Perizinan;
 use App\Tables\Perizinans;
 use Illuminate\Http\Request;
-use Barryvdh\DomPDF\Facade\Pdf;
+use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
 use App\Http\Controllers\Controller;
 use App\Models\Persyaratan;
 
@@ -50,7 +50,7 @@ class DashboardController extends Controller
             'persyaratan' => $persyaratan,
             'sektor' => $perizinan->sektor
         ];
-        $pdf = Pdf::loadView('cetak.persyaratan-request', $data);
+        $pdf = FacadePdf::loadView('cetak.persyaratan-request', $data);
         $customPaper = array(0, 0, 609.4488, 935.433);
         $pdf->set_paper($customPaper);
         $pdf->render();

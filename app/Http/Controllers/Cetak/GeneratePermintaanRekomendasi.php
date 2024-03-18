@@ -8,7 +8,7 @@ use App\Models\TypeRpk;
 use App\Models\Permohonan;
 use App\Models\TypeRpkRoro;
 use Illuminate\Http\Request;
-use Barryvdh\DomPDF\Facade\Pdf;
+use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
@@ -42,7 +42,7 @@ class GeneratePermintaanRekomendasi extends Controller
                 'get_id_users' => $get_id_users,
                 'profile' => $profile
             ];
-            $pdf = Pdf::loadView('cetak.permintaan-rekomendasi-request', $data);
+            $pdf = FacadePdf::loadView('cetak.permintaan-rekomendasi-request', $data);
             $customPaper = array(0, 0, 609.4488, 935.433);
             $pdf->set_paper($customPaper);
             $pdf->render();
@@ -55,7 +55,7 @@ class GeneratePermintaanRekomendasi extends Controller
                 'get_id_users' => $get_id_users,
                 'profile' => $profile
             ];
-            $pdf = Pdf::loadView('cetak.permintaan-rekomendasi-request', $data);
+            $pdf = FacadePdf::loadView('cetak.permintaan-rekomendasi-request', $data);
             $customPaper = array(0, 0, 609.4488, 935.433);
             $pdf->set_paper($customPaper);
             $pdf->render();

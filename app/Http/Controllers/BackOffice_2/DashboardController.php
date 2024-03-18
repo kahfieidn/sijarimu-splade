@@ -9,7 +9,7 @@ use App\Models\Perizinan;
 use App\Models\Permohonan;
 use App\Models\Persyaratan;
 use Illuminate\Http\Request;
-use Barryvdh\DomPDF\Facade\Pdf;
+use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Notifications\PermohonanDone;

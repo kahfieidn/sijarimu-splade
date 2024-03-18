@@ -10,7 +10,7 @@ use App\Models\Penelitian;
 use App\Models\Permohonan;
 use App\Models\Persyaratan;
 use Illuminate\Http\Request;
-use Barryvdh\DomPDF\Facade\Pdf;
+use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Notifications\PermohonanDone;
@@ -210,7 +210,7 @@ class DashboardController extends Controller
                 ];
             }
             $storageDirectory = 'izin/' . $currentMonthYear . '/' . $pemohon->id . '.pdf';
-            $pdf = PDF::loadView('cetak.request', $data);
+            $pdf = FacadePdf::loadView('cetak.request', $data);
             $customPaper = array(0, 0, 609.4488, 935.433);
             $pdf->set_paper($customPaper);
 
