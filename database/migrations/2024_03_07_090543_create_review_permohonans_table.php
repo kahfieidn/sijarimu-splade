@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('review_permohonans', function (Blueprint $table) {
             $table->id();
-            $table->integer('review_permohonanable_id');
+            $table->uuid('review_permohonanable_id');
             $table->string('review_permohonanable_type');
             $table->foreignId('front_office')->nullable()->references('id')->on('users');
             $table->foreignId('back_office_1')->nullable()->references('id')->on('users');

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('penelitis', function (Blueprint $table) {
             $table->id();
-            $table->integer('penelitiable_id');
+            $table->uuid('penelitiable_id');
             $table->string('penelitiable_type');
             $table->string('jenis_identitas')->nullable();
             $table->string('no_identitas')->nullable();

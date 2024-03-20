@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('type_rpks', function (Blueprint $table) {
             $table->id();
-            $table->integer('type_rpkable_id');
+            $table->uuid('type_rpkable_id');
             $table->string('type_rpkable_type');
             $table->string('type_trayek');
             $table->string('type_rpk');

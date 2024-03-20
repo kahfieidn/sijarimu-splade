@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('type_rpk_roros', function (Blueprint $table) {
             $table->id();
-            $table->integer('type_rpk_roroable_id');
+            $table->uuid('type_rpk_roroable_id');
             $table->string('type_rpk_roroable_type');
             $table->string('type_rpk_roro');
             $table->string('nama_kapal')->nullable();

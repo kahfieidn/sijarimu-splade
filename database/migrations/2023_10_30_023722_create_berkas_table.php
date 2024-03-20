@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('berkas', function (Blueprint $table) {
             $table->id();
-            $table->integer('berkasable_id');
+            $table->uuid('berkasable_id');
             $table->string('berkasable_type');
             $table->string('field_1')->nullable();
             $table->string('field_2')->nullable();
