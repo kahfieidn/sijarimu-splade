@@ -15,7 +15,6 @@
         "maatwebsite/excel": "^3.1",
         "protonemedia/laravel-splade-breeze": "^2.5",
         "ramsey/uuid": "^4.7",
-        "ramsey/uuid-doctrine": "^2.0",
         "spatie/laravel-permission": "^6.0",
         "spatie/laravel-query-builder": "^5.7"
     },

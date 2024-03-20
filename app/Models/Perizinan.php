@@ -16,6 +16,7 @@ class Perizinan extends Model
         'jenis_izin_id',
         'status'
     ];
+    
 
     public function sektor(){
         return $this->belongsTo(Sektor::class, 'sektor_id');
