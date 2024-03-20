@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Tables\Admin\Permohonans;
 use App\Http\Controllers\Controller;
+use App\Tables\Admin\Penelitian\Permohonans as Penelitians;
 
 class DashboardController extends Controller
 {
@@ -17,6 +18,7 @@ class DashboardController extends Controller
 
         return view('admin.index', [
             'permohonans' => Permohonans::class,
+            'penelitians' => Penelitians::class,
             'getLifecycle' => $getLifecycle,
         ]);
     }

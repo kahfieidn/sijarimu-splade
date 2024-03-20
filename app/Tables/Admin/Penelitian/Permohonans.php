@@ -73,6 +73,7 @@ class Permohonans extends AbstractTable
         });
 
         return QueryBuilder::for(Permohonan::class)
+            ->whereIn('perizinan_id', [1, 2, 3])
             ->defaultSort('id')
             ->allowedFilters(['user.id', 'izin.jenis_izin.id', 'izin.sektor.nama_sektor', $yearFilter, $monthFilter, $status_permohonanFilter, $globalSearch]);
     }

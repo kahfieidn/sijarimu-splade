@@ -73,6 +73,7 @@ class Permohonans extends AbstractTable
         });
 
         return QueryBuilder::for(Permohonan::class)
+            ->whereNotIn('perizinan_id', [1, 2, 3])
             ->defaultSort('id')
             ->allowedFilters(['user.id', 'izin.jenis_izin.id', 'izin.sektor.nama_sektor', $yearFilter, $monthFilter, $status_permohonanFilter, $globalSearch]);
     }
@@ -88,9 +89,8 @@ class Permohonans extends AbstractTable
         $table
             ->withGlobalSearch(columns: ['user.name', 'perizinan.nama_perizinan', 'status_permohonan.nama_status'])
             ->column(key: 'id', sortable: true, label: 'ID')
-            ->column(key: 'profile.perusahaan', sortable:true, label: 'Perusahaan')
-            ->column(key: 'user.name', sortable: true, label: 'Nama Pemohon')
-            ->column(key: 'user.nik', sortable: true, label: 'NIK')
+            ->column(key: 'profile.perusahaan', sortable: true, label: 'Perusahaan')
+            ->column(key: 'profile.alamat', sortable: true, label: 'Alamat')
             ->column(key: 'perizinan.nama_perizinan', sortable: true, label: 'Jenis Izin')
             ->column(key: 'perizinan.sektor.nama_sektor', sortable: true, label: 'Sektor')
             ->column(key: 'created_at', sortable: true, label: 'Tanggal Pengajuan', as: fn ($created_at) => $created_at->isoFormat('D MMMM Y'))
