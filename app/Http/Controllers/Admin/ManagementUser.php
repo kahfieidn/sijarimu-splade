@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\User;
 use App\Tables\Users;
 use App\Tables\Perizinans;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class ManagementUser extends Controller
 {
@@ -27,7 +30,9 @@ class ManagementUser extends Controller
     public function create()
     {
         //
+        $user_role = Role::all();
         return view('admin.management_user.create', [
+            'user_role' => $user_role
         ]);
     }
 
@@ -37,6 +42,7 @@ class ManagementUser extends Controller
     public function store(Request $request)
     {
         //
+        dd($request->all());        
     }
 
     /**

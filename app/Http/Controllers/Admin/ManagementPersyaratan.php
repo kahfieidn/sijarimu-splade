@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\User;
 use App\Models\Perizinan;
 use App\Models\Persyaratan;
 use Illuminate\Http\Request;
