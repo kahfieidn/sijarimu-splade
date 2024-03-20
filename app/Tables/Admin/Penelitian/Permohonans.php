@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Tables\Admin;
+namespace App\Tables\Admin\Penelitian;
 
 use App\Models\Permohonan;
 use Illuminate\Http\Request;
@@ -88,7 +88,6 @@ class Permohonans extends AbstractTable
         $table
             ->withGlobalSearch(columns: ['user.name', 'perizinan.nama_perizinan', 'status_permohonan.nama_status'])
             ->column(key: 'id', sortable: true, label: 'ID')
-            ->column(key: 'profile.perusahaan', sortable:true, label: 'Perusahaan')
             ->column(key: 'user.name', sortable: true, label: 'Nama Pemohon')
             ->column(key: 'user.nik', sortable: true, label: 'NIK')
             ->column(key: 'perizinan.nama_perizinan', sortable: true, label: 'Jenis Izin')

@@ -11,10 +11,13 @@ class DashboardController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
+        $getLifecycle = $request->lifecycle;
+
         return view('admin.index', [
-            'permohonans' => Permohonans::class
+            'permohonans' => Permohonans::class,
+            'getLifecycle' => $getLifecycle,
         ]);
     }
 
@@ -24,6 +27,7 @@ class DashboardController extends Controller
     public function create()
     {
         //
+
     }
 
     /**
