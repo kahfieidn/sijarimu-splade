@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use ProtoneMedia\Splade\Facades\Toast;
 
 class ManagementUser extends Controller
 {
@@ -42,7 +43,31 @@ class ManagementUser extends Controller
     public function store(Request $request)
     {
         //
-        dd($request->all());        
+        $request->validate([
+            'nik' => 'required',
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+            'alamat' => 'required',
+            'nomor_handphone' => 'required',
+            'user_role' => 'required'
+        ]);
+        
+        $user = User::create([
+            'nik' => $request->nik,
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+            'alamat' => $request->alamat,
+            'nomor_handphone' => $request->nomor_handphone,
+        ]);
+        $user->assignRole($request->user_role);
+
+        Toast::title('User berhasil di tambah!')
+        ->rightBottom()
+        ->autoDismiss(10);
+        return redirect()->route('admin-management-user.index');
+        
     }
 
     /**

@@ -55,6 +55,7 @@ class Users extends AbstractTable
             ->column('nik', sortable: true)
             ->column('alamat', sortable: true)
             ->column('nomor_handphone', sortable: true)
+            ->column('roles.name', label: 'Role', sortable: true)
             ->paginate(10);
             
 
