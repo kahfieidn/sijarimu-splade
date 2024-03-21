@@ -81,8 +81,4 @@
 
 
 
-<<<<<<< HEAD
 </x-guest-layout>
-=======
-</x-guest-layout>
->>>>>>> origin/main
