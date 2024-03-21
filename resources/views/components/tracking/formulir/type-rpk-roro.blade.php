@@ -107,7 +107,7 @@
                 </Link>
             </li>
             <x-splade-modal name="modal-izin-terbit" max-width="7xl">
-                <h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">Surat <span class="underline underline-offset-3 decoration-8 decoration-blue-400 dark:decoration-blue-600">Rekomendasi</span></h1>
+                <h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">Izin <span class="underline underline-offset-3 decoration-8 decoration-blue-400 dark:decoration-blue-600">Terbit</span></h1>
                 <div class="p-4">
                     <iframe src="{{ url('/storage/izin/' . $pemohon->file_izin_terbit)}}" width="100%" height="500"></iframe>
 

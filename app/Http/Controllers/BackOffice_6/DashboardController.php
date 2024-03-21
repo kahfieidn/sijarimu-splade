@@ -194,7 +194,7 @@ class DashboardController extends Controller
             $data = [
                 'pemohon' => $pemohon,
                 'penelitians' => $pemohon->penelitian->first(),
-                'penelitis' => $pemohon->peneliti->first(),
+                'penelitis' => $pemohon->peneliti,
                 'users' => $pemohon->user->first(),
             ];
 
