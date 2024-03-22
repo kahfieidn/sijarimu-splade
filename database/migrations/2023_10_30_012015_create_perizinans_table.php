@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('sektor_id')->constrained();
             $table->foreignId('jenis_izin_id')->constrained();
             $table->string('status')->nullable();
+            $table->text('note')->nullable();
             $table->timestamps();
         });
     }

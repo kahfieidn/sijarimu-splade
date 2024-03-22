@@ -51,12 +51,12 @@ class PersyaratanSeeder extends Seeder
             'status' => 'active',
         ]);
         \App\Models\Persyaratan::create([
-            'nama_persyaratan' => 'Surat Keabsahan Keaslian',
+            'nama_persyaratan' => 'Surat Keabsahan Keaslian (Bermaterai)',
             'perizinan_id' => '2',
             'status' => 'active',
         ]);
         \App\Models\Persyaratan::create([
-            'nama_persyaratan' => 'Surat Mentaati Peraturan Perundang-undangan',
+            'nama_persyaratan' => 'Surat Mentaati Peraturan Perundang-undangan (Bermaterai)',
             'perizinan_id' => '2',
             'status' => 'active',
         ]);

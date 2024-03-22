@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta content="text/html; charset=UTF-8" http-equiv="content-type">
     <title>Daftar Persyaratan</title>
@@ -10,10 +11,10 @@
         }
 
         .doc-content {
-            max-width: 451.4pt;
-            padding: 0 72pt 72pt 50pt;
+            max-width: 100%;
             background-color: #ffffff;
-            text-align: center; /* Center the title text */
+            text-align: center;
+            /* Center the title text */
 
         }
 
@@ -23,14 +24,15 @@
             color: #000000;
             padding-top: 0;
             line-height: 1.15;
-            text-align: center; /* Center the title text */
+            text-align: center;
+            /* Center the title text */
         }
 
         .subtitle {
             font-size: 13pt;
             color: #666666;
-            padding-top: 16pt;
-            padding-bottom: 16pt;
+            padding-top: 5pt;
+            padding-bottom: 5pt;
             line-height: 1.15;
         }
 
@@ -39,9 +41,10 @@
             width: 100%;
         }
 
-        th, td {
+        th,
+        td {
             border: 1pt solid #000000;
-            padding: 5pt;
+            padding: 2pt;
             text-align: left;
         }
 
@@ -55,10 +58,14 @@
         }
     </style>
 </head>
+
 <body>
+
+
     <div class="doc-content">
-        <p><span class="title">Daftar Persyaratan {{$perizinan->nama_perizinan}}</span></p>
-        <p><span class="subtitle">{{$sektor->nama_sektor}}</span></p>
+    <p><span class="title">Daftar Persyaratan {{$perizinan->nama_perizinan}}</span></p>
+<p><span class="subtitle">{{$sektor->nama_sektor}}</span></p>
+
         <table>
             <thead>
                 <tr>
@@ -78,5 +85,10 @@
             </tbody>
         </table>
     </div>
+
+    <p><span class="title">Catatan:</span></p>
+    <ol>{!! $perizinan->note !!}</ol>
+
 </body>
+
 </html>
