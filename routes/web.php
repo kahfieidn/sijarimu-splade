@@ -30,6 +30,8 @@ Route::middleware('splade')->group(function () {
     Route::get('/', function () {
         return view('welcome');
     });
+    Route::get('/home/persyaratan', [App\Http\Controllers\HomepageController::class, 'persyaratan'])->name('home.persyaratan');
+
 
     Route::middleware('auth')->group(function () {
         Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->middleware(['verified'])->name('dashboard');
@@ -105,7 +107,7 @@ Route::middleware('splade')->group(function () {
         Route::get('/dashboard/tracking/review_permohonan/{perizinan_id}/{permohonan_id}', [App\Http\Controllers\Tracking\ReviewPermohonanController::class, 'index'])->name('dashboard.tracking');
     });
 
-    Route::group(['middleware' => ['role:pemohon|front_office|back_office|opd|verifikator_1|verifikator_2|kepala_dinas|admin|admin_1|admin_2|admin3']], function () {
+    Route::group(['middleware' => []], function () {
         Route::resource('/persyaratan', App\Http\Controllers\Persyaratan\DashboardController::class)->parameters([
             'persyaratan' => 'perizinan'
         ]);
