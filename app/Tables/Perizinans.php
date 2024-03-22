@@ -49,7 +49,7 @@ class Perizinans extends AbstractTable
     public function configure(SpladeTable $table)
     {
         $table
-            ->withGlobalSearch(columns: [])
+            ->withGlobalSearch(columns: ['nama_perizinan'])
             ->column(key: 'id', sortable: true, label: 'ID')
             ->column(key: 'nama_perizinan', sortable: true, label: 'Nama Perizin')
             ->column(key: 'sektor.nama_sektor', sortable: true, label: 'Sektor')

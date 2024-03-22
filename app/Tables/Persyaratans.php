@@ -48,7 +48,7 @@ class Persyaratans extends AbstractTable
     public function configure(SpladeTable $table)
     {
         $table
-            ->withGlobalSearch(columns: ['id'])
+            ->withGlobalSearch(columns: ['nama_persyaratan'])
             ->column('id', sortable: true)
             ->column('nama_persyaratan', sortable: true);
 
