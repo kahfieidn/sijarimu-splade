@@ -91,6 +91,9 @@ Route::middleware('splade')->group(function () {
             Route::resource('/admin-management-user', App\Http\Controllers\Admin\ManagementUser::class)->parameters([
                 'admin-management-user' => 'perizinan_id'
             ]);
+            Route::resource('/admin-management-opd', App\Http\Controllers\Admin\ManagementOpd::class)->parameters([
+                'admin-management-opd' => 'opd_id'
+            ]);
             Route::resource('/admin-management-perizinan', App\Http\Controllers\Admin\ManagementPerizinan::class)->parameters([
                 'admin-management-perizinan' => 'perizinan_id'
             ]);

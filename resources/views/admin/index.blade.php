@@ -16,7 +16,6 @@
             </x-splade-form>
         </div>
     </div>
-
     @if($getLifecycle == 'perizinan')
     <div class="p-4 h-full sm:ml-64">
         <div class="bg-white p-8 border-dashed rounded-lg dark:border-gray-700">

@@ -32,21 +32,14 @@ class ManagementPerizinan extends Controller
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
         return view('admin.management_perizinan.create', [
             'jenis_izin_id' => JenisIzin::all(),
             'sektor_id' => Sektor::all(),
         ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $request->validate([
