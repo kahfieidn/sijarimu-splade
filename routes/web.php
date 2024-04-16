@@ -111,6 +111,9 @@ Route::middleware('splade')->group(function () {
         Route::resource('/persyaratan', App\Http\Controllers\Persyaratan\DashboardController::class)->parameters([
             'persyaratan' => 'perizinan'
         ]);
+        Route::resource('/bantuan', App\Http\Controllers\Bantuan\DashboardController::class)->parameters([
+            'bantuan' => 'bantuan'
+        ]);      
         Route::get('/dashboard/generate/permintaan_rekomendasi/{perizinan_id}/{permohonan_id}', [App\Http\Controllers\Cetak\GeneratePermintaanRekomendasi::class, 'generatePermintaanRekomendasi'])->name('dashboard.cetak.permintaan-rekomendasi-request');
         Route::get('/dashboard/generate/penelitian/{perizinan_id}/{permohonan_id}', [App\Http\Controllers\Cetak\GeneratePenelitian::class, 'generatePenelitian'])->name('dashboard.cetak.request');
         Route::get('/dashboard/generate/perizinan/{perizinan_id}/{permohonan_id}', [App\Http\Controllers\Cetak\GeneratePerizinan::class, 'generatePerizinan'])->name('dashboard.cetak.perizinan.request');
