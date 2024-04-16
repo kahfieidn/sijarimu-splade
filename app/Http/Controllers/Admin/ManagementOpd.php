@@ -85,7 +85,6 @@ class ManagementOpd extends Controller
      */
     public function destroy(Opd $opd_id)
     {
-        //
         $opd_id->delete();
 
         Toast::title('Opd berhasil di hapus!')
