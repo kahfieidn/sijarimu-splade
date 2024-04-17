@@ -17,7 +17,7 @@
                         <x-splade-input type="number" id="nik" name="nik" :label="__('NIK')" required />
                     </div>
                     <div class="relative z-0 w-full group">
-                        <x-splade-input type="number" id="nomor_handphone" name="nomor_handphone" :label="__('Nomor Handphone : (62812....)')" required autofocus     oninput="if(!this.value.startsWith('62')) this.value = '62' + this.value;" 
+                        <x-splade-input type="number" id="nomor_handphone" name="nomor_handphone" :label="__('Nomor Handphone : (0812....)')" required autofocus 
  />
                     </div>
                 </div>
