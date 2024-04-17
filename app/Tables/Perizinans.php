@@ -3,7 +3,6 @@
 namespace App\Tables;
 
 use App\Models\Perizinan;
-use App\Models\Permohonan;
 use Illuminate\Http\Request;
 use ProtoneMedia\Splade\SpladeTable;
 use ProtoneMedia\Splade\AbstractTable;
