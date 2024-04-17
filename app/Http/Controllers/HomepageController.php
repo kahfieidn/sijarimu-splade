@@ -13,7 +13,6 @@ class HomepageController extends Controller
     public function index()
     {
         //
-        dd('here');
         return view('persyaratan', [
             'perizinans' => Perizinans::class
         ]);
