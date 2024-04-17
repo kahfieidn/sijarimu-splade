@@ -12,19 +12,19 @@
         </div>
         <div class="grid md:grid-cols-2 md:gap-6">
             <div class="relative z-0 w-full mb-6 group">
-                <x-splade-input required name="nama_kapal" type="text" placeholder="Nama Kapal" label="Nama Kapal" />
+                <x-splade-input required name="nama_kapal" type="text" placeholder="Nama Kapal" label="Nama Kapal" oninput="this.value = this.value.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');" />
             </div>
             <div class="relative z-0 w-full mb-6 group">
-                <x-splade-input required name="pemilik_kapal" type="text" placeholder="Pemilik Kapal" label="Nama Pemilik Kapal" />
+                <x-splade-input required name="pemilik_kapal" type="text" placeholder="Pemilik Kapal" label="Nama Pemilik Kapal" oninput="this.value = this.value.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');" />
             </div>
         </div>
         <div class="grid md:grid-cols-2 md:gap-6">
             <div class="relative z-0 w-full mb-6 group">
-                <x-splade-input required name="lintas" type="text" placeholder="Lintas" label="Lintas" />
+                <x-splade-input required name="lintas" type="text" placeholder="Lintas" label="Lintas" oninput="this.value = this.value.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');" />
             </div>
             <div class="relative z-0 w-full mb-6 group">
                 <x-splade-input required name="nomor_siuap" type="text" placeholder="Cth : 8932893" label="NOMOR IJIN USAHA ANGKUTAN
-PENYEBERANGAN (SIUAP)" />
+PENYEBERANGAN (SIUAP)" oninput="this.value = this.value.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');" />
             </div>
         </div>
     </div>

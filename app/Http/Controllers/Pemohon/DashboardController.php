@@ -418,9 +418,11 @@ class DashboardController extends Controller
             $pemohon->penelitian()->first()->update($request->penelitian);
         } else if ($typeId == 3) {
             $pemohon->penelitian()->first()->update($request->penelitian);
-            foreach ($request->peneliti as $penelitiData) {
-                $penelitiId = $penelitiData['id'];
-                $pemohon->peneliti()->where('id', $penelitiId)->first()->update($penelitiData);
+            if($request->peneliti != null){
+                foreach ($request->peneliti as $penelitiData) {
+                    $penelitiId = $penelitiData['id'];
+                    $pemohon->peneliti()->where('id', $penelitiId)->first()->update($penelitiData);
+                }
             }
         } else if ($typeId == 4) {
             $pemohon->type_rpk()->first()->update($request->type_rpk);

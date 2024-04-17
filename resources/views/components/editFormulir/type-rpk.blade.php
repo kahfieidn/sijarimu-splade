@@ -30,31 +30,31 @@
         </div>
         <div class="grid md:grid-cols-2 md:gap-6">
             <div class="relative z-0 w-full mb-6 group">
-                <x-splade-input required name="type_rpk.nama_kapal" type="text" placeholder="Nama Kapal" label="Nama Kapal" />
+                <x-splade-input required name="type_rpk.nama_kapal" type="text" placeholder="Nama Kapal" label="Nama Kapal" oninput="this.value = this.value.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');" />
             </div>
             <div class="relative z-0 w-full mb-6 group">
-                <x-splade-input required name="type_rpk.jenis_kapal" type="text" placeholder="Cth : Kapal Penumpang / Kapal Barang / dll" label="Jenis Kapal" />
-            </div>
-        </div>
-        <div class="grid md:grid-cols-2 md:gap-6">
-            <div class="relative z-0 w-full mb-6 group">
-                <x-splade-input required name="type_rpk.isi_kotor" type="text" placeholder="Cth : GT. 20 No. 124/GGg" label="Isi Kotor/Bobot Mati" />
-            </div>
-            <div class="relative z-0 w-full mb-6 group">
-                <x-splade-input required name="type_rpk.tenaga_penggerak" type="text" placeholder="Cth : YAMAHA 6 x 200 PK" label="Tenaga Penggerak" />
+                <x-splade-input required name="type_rpk.jenis_kapal" type="text" placeholder="Cth : Kapal Penumpang / Kapal Barang / dll" label="Jenis Kapal" oninput="this.value = this.value.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');" />
             </div>
         </div>
         <div class="grid md:grid-cols-2 md:gap-6">
             <div class="relative z-0 w-full mb-6 group">
-                <x-splade-input required name="type_rpk.status_kepemilikan_kapal" type="text" placeholder="Cth : Keagenan Dioperasikan" label="Status Kepemilikan Kapal" />
+                <x-splade-input required name="type_rpk.isi_kotor" type="text" placeholder="Cth : GT. 20 No. 124/GGg" label="Isi Kotor/Bobot Mati" oninput="this.value = this.value.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');" />
             </div>
             <div class="relative z-0 w-full mb-6 group">
-                <x-splade-input required name="type_rpk.kapasitas_angkut" type="text" placeholder="Cth : 14 (empat belas) orang" label="Kapasitas Angkut" />
+                <x-splade-input required name="type_rpk.tenaga_penggerak" type="text" placeholder="Cth : YAMAHA 6 x 200 PK" label="Tenaga Penggerak" oninput="this.value = this.value.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');" />
             </div>
         </div>
         <div class="grid md:grid-cols-2 md:gap-6">
             <div class="relative z-0 w-full mb-6 group">
-                <x-splade-input required name="type_rpk.pelabuhan_pangkal" type="text" placeholder="Cth : Tanjung Uban" label="Pelabuhan Pangkal" />
+                <x-splade-input required name="type_rpk.status_kepemilikan_kapal" type="text" placeholder="Cth : Keagenan Dioperasikan" label="Status Kepemilikan Kapal" oninput="this.value = this.value.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');" />
+            </div>
+            <div class="relative z-0 w-full mb-6 group">
+                <x-splade-input required name="type_rpk.kapasitas_angkut" type="text" placeholder="Cth : 14 (empat belas) orang" label="Kapasitas Angkut" oninput="this.value = this.value.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');" />
+            </div>
+        </div>
+        <div class="grid md:grid-cols-2 md:gap-6">
+            <div class="relative z-0 w-full mb-6 group">
+                <x-splade-input required name="type_rpk.pelabuhan_pangkal" type="text" placeholder="Cth : Tanjung Uban" label="Pelabuhan Pangkal" oninput="this.value = this.value.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');" />
             </div>
             <div class="relative z-999 w-full mb-6 group">
                 <x-splade-select required choices name="type_rpk.urgensi" label="Urgensi">
@@ -66,21 +66,21 @@
         </div>
         <div class="grid md:grid-cols-1 md:gap-6">
             <div class="relative z-0 w-full mb-6 group">
-                <x-splade-textarea autosize required name="type_rpk.trayek" type="text" placeholder="Cth : Telaga Punggur, Lagoi Bintan" label="Route Trayek" />
+                <x-splade-textarea autosize required name="type_rpk.trayek" type="text" placeholder="Cth : Telaga Punggur, Lagoi Bintan" label="Route Trayek" oninput="this.value = this.value.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');" />
             </div>
         </div>
         <div class="grid md:grid-cols-4 md:gap-6">
             <div class="relative z-0 w-full mb-6 group">
-                <x-splade-input required name="type_rpk.nomor_siupper" type="text" placeholder="Cth: 234134234234" label="Nomor SIUPPER" />
+                <x-splade-input required name="type_rpk.nomor_siupper" type="text" placeholder="Cth: 234134234234" label="Nomor SIUPPER" oninput="this.value = this.value.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');" />
             </div>
             <div class="relative z-999 w-full mb-6 group">
                 <x-splade-input date required name="type_rpk.tgl_siupper" placeholder="Pilih tanggal..." type="text" label="Tanggal SIUPPER" />
             </div>
             <div class="relative z-0 w-full mb-6 group">
-                <x-splade-input v-if="form.type_rpk.type_rpk == 'perpanjangan'" required name="type_rpk.nomor_rpk_sebelumnya" type="text" placeholder="Cth: 231/1D.b/DPMPTSP/X/2023" label="Nomor RPK Sebelumnya" />
+                <x-splade-input v-if="form.type_rpk.type_rpk == 'perpanjangan'" required name="type_rpk.nomor_rpk_sebelumnya" type="text" placeholder="Cth: 231/1D.b/DPMPTSP/X/2023" label="Nomor RPK Sebelumnya" oninput="this.value = this.value.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');" />
             </div>
             <div class="relative z-999 w-full mb-6 group">
-                <x-splade-input date v-if="form.type_rpk.type_rpk == 'perpanjangan'" required name="type_rpk.tgl_rpk_sebelumnya" type="text" placeholder="Pilih tanggal..." label="Tanggal RPK Sebelumnya" />
+                <x-splade-input date v-if="form.type_rpk.type_rpk == 'perpanjangan'" required name="type_rpk.tgl_rpk_sebelumnya" type="text" placeholder="Pilih tanggal..." label="Tanggal RPK Sebelumnya" oninput="this.value = this.value.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');" />
             </div>
         </div>
     </div>

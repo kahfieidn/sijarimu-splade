@@ -7,17 +7,17 @@
             <h3 class="text-xl font-bold dark:text-white">Data diri</h3>
 
                 <div class="relative z-0 w-full mb-6 group">
-                    <x-splade-input id="name" type="text" name="name" :label="__('Nama Lengkap')" required autofocus />
+                    <x-splade-input id="name" type="text" name="name" :label="__('Nama Lengkap')" required autofocus oninput="this.value = this.value.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');" />
                 </div>
                 <div class="relative z-0 w-full mb-6 group">
-                    <x-splade-textarea name="alamat" autosize label="Alamat lengkap" required />
+                    <x-splade-textarea name="alamat" autosize label="Alamat lengkap" required oninput="this.value = this.value.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');" />
                 </div>
                 <div class="grid md:grid-cols-2 md:gap-6">
                     <div class="relative z-0 w-full mb-6 group">
-                        <x-splade-input id="nik" name="nik" :label="__('NIK')" required />
+                        <x-splade-input type="number" id="nik" name="nik" :label="__('NIK')" required />
                     </div>
                     <div class="relative z-0 w-full group">
-                        <x-splade-input id="nomor_handphone" name="nomor_handphone" :label="__('Nomor Handphone')" required autofocus />
+                        <x-splade-input type="number" id="nomor_handphone" name="nomor_handphone" :label="__('Nomor Handphone (08..)')" value="62" required autofocus  />
                     </div>
                 </div>
                 <h3 class="text-xl font-bold dark:text-white">Akses login anda</h3>

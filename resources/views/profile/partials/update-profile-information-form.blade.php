@@ -10,9 +10,9 @@
     </header>
 
     <x-splade-form method="patch" :action="route('profile.update')" :default="$user" class="mt-6 space-y-6" preserve-scroll>
-        <x-splade-input id="nik" name="nik" type="text" :label="__('NIK')" required autofocus autocomplete="nik" />
-        <x-splade-input id="nomor_handphone" name="nomor_handphone" type="text" :label="__('Nomor Handphone')" required autofocus autocomplete="nomor_handphone" />
-        <x-splade-input id="name" name="name" type="text" :label="__('Name')" required autofocus autocomplete="name" />
+        <x-splade-input id="nik" name="nik" type="number" :label="__('NIK')" required autofocus autocomplete="nik" />
+        <x-splade-input id="nomor_handphone" name="nomor_handphone" type="number" :label="__('Nomor Handphone')" required autofocus autocomplete="nomor_handphone" />
+        <x-splade-input id="name" name="name" type="text" :label="__('Name')" required autofocus autocomplete="name" oninput="this.value = this.value.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');" />
         <x-splade-input id="email" name="email" type="email" :label="__('Email')" required autocomplete="email" />
 
         @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && ! $user->hasVerifiedEmail())
