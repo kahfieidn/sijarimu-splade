@@ -18,9 +18,12 @@ jobs:
       run: echo "${{ secrets.DOT_ENV_PRODUCTION }}" > .env
 
     - name: Create htaccess file
-      run: 
-        mkdir -p ${{ secrets.DOT_HTACCESS }}/
-        touch "${{ secrets.DOT_HTACCESS }}" > .htaccess
+      run: echo "Options +FollowSymlinks
+      Options -SymLinksIfOwnerMatch
+      <IfModule mod_rewrite.c>
+      RewriteEngine On
+      RewriteRule ^(.*)$ public/$1 [L]
+      </IfModule>" > .htaccess
       
     - name: Config Clearing
       run: php artisan config:clear
